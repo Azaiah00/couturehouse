@@ -15,7 +15,7 @@ export default function ContactPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-charcoal mb-6">
             Let's Create Something <br />
-            <span className="text-gold italic">Beautiful</span>
+            <span className="text-rose-gold italic">Beautiful</span>
           </h1>
           <p className="text-neutral-500 max-w-xl mx-auto">
             Whether you're a brand looking to revolutionize your content or a model ready to monetize your influence, we're here to help.
@@ -29,19 +29,19 @@ export default function ContactPage() {
               <h3 className="text-xl font-serif font-bold mb-6 text-charcoal">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-gold">
+                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
                     <Mail size={18} />
                   </div>
                   <div>
                     <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:hello@couturehouseco.com" className="text-lg font-medium hover:text-gold transition-colors">
+                    <a href="mailto:hello@couturehouseco.com" className="text-lg font-medium hover:text-rose-gold transition-colors">
                       hello@couturehouseco.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-gold">
+                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
                     <MapPin size={18} />
                   </div>
                   <div>
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-gold">
+                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
                     <Clock size={18} />
                   </div>
                   <div>
@@ -76,9 +76,9 @@ export default function ContactPage() {
                 <input 
                   type="email" 
                   placeholder="Email address" 
-                  className="bg-white/10 border border-white/20 rounded-sm px-4 py-2 w-full text-sm focus:outline-none focus:border-gold"
+                  className="bg-white/10 border border-white/20 rounded-sm px-4 py-2 w-full text-sm focus:outline-none focus:border-rose-gold"
                 />
-                <button className="bg-gold text-white px-4 py-2 rounded-sm hover:bg-gold-dark transition-colors font-medium text-sm">
+                <button className="bg-rose-gold text-white px-4 py-2 rounded-sm hover:bg-rose-gold-dark transition-colors font-medium text-sm">
                   Join
                 </button>
               </div>

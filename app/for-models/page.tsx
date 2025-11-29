@@ -35,7 +35,7 @@ export default function ForModelsPage() {
       <section className="container mx-auto px-6 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-gold text-sm uppercase tracking-[0.2em] mb-4">Benefits</h2>
+            <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Benefits</h2>
             <h3 className="text-4xl font-serif font-bold text-charcoal mb-8">Why Top Models Choose Us</h3>
             
             <div className="space-y-8">
@@ -82,7 +82,7 @@ export default function ForModelsPage() {
                 "Exclusive Rights Availability"
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-neutral-700">
-                  <Check className="text-gold" />
+                  <Check className="text-rose-gold" />
                   {item}
                 </li>
               ))}

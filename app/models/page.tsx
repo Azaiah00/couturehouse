@@ -162,7 +162,7 @@ export default function ModelsPage() {
                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                    <div className="flex justify-between items-end mb-1">
                      <h3 className="text-2xl font-serif text-white">{model.name}</h3>
-                     <span className="text-gold font-medium">{model.followers}</span>
+                     <span className="text-rose-gold font-medium">{model.followers}</span>
                    </div>
                    <p className="text-white/80 text-sm uppercase tracking-wider">{model.category}</p>
                 </div>

@@ -3,11 +3,12 @@
 @theme {
   --color-charcoal: #1a1a1a;
   --color-charcoal-light: #2d2d2d;
-  --color-gold: #d4af37;
-  --color-gold-light: #f4cf57;
-  --color-gold-dark: #b48f17;
   --color-rose-gold: #b76e79;
   --color-rose-gold-light: #d78e99;
+  --color-rose-gold-lighter: #e8a5b0;
+  --color-rose-gold-dark: #9d5a66;
+  --color-rose-gold-darker: #8a4d58;
+  --color-rose-gold-accent: #c88a94;
   --color-cream: #faf9f6;
   --color-cream-dark: #eae9e6;
 
@@ -44,11 +45,11 @@
 @utility glass-panel-dark {
   background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(183, 110, 121, 0.2);
 }
 
-@utility text-gold-gradient {
-  background: linear-gradient(to right, #d4af37, #f4cf57, #d4af37);
+@utility text-rose-gold-gradient {
+  background: linear-gradient(to right, #b76e79, #d78e99, #e8a5b0, #d78e99, #b76e79);
   -webkit-background-clip: text;
   color: transparent;
   background-size: 200% auto;
@@ -57,6 +58,10 @@
 @layer base {
   body {
     @apply bg-cream text-charcoal;
+  }
+  
+  ::selection {
+    @apply bg-rose-gold/30 text-charcoal;
   }
   
   h1, h2, h3, h4, h5, h6 {

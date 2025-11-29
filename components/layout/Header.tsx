@@ -47,7 +47,7 @@ export function Header() {
             "text-2xl font-serif font-bold tracking-widest uppercase transition-colors",
             isScrolled || mobileMenuOpen ? "text-charcoal" : "text-white"
           )}>
-            Couture<span className="text-gold">House</span>
+            Couture<span className="text-rose-gold">House</span>
           </h1>
         </Link>
 
@@ -58,7 +58,7 @@ export function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                "text-sm font-medium uppercase tracking-wider hover:text-gold transition-colors",
+                "text-sm font-medium uppercase tracking-wider hover:text-rose-gold transition-colors",
                 isScrolled ? "text-charcoal" : "text-white/90"
               )}
             >
@@ -102,7 +102,7 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-2xl font-serif text-charcoal hover:text-gold transition-colors"
+                  className="text-2xl font-serif text-charcoal hover:text-rose-gold transition-colors"
                 >
                   {item.name}
                 </Link>

@@ -31,7 +31,7 @@ export function ModelCard({ name, image, followers, tags }: ModelCardProps) {
       <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
         <div className="flex justify-between items-end mb-2">
           <h3 className="text-2xl font-serif text-white">{name}</h3>
-          <div className="flex items-center gap-2 text-gold">
+          <div className="flex items-center gap-2 text-rose-gold">
             <Instagram size={16} />
             <span className="text-sm font-medium">{followers}</span>
           </div>

@@ -35,7 +35,7 @@ export default function AboutPage() {
       <section className="container mx-auto px-6 mb-24 text-center">
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-charcoal mb-8">
           Redefining <br />
-          <span className="text-gold italic">The Industry Standard</span>
+          <span className="text-rose-gold italic">The Industry Standard</span>
         </h1>
         <p className="text-xl text-neutral-500 max-w-3xl mx-auto leading-relaxed">
           Couture House Co was born from a simple observation: the traditional fashion content model is broken. 
@@ -64,7 +64,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="bg-charcoal text-white p-8 flex-1 flex flex-col justify-center rounded-sm">
-              <h3 className="text-3xl font-serif mb-4 text-gold">Our Mission</h3>
+              <h3 className="text-3xl font-serif mb-4 text-rose-gold">Our Mission</h3>
               <p className="text-neutral-300 font-light leading-relaxed">
                 To democratize access to high-end fashion imagery for brands while empowering models to monetize their likeness at scale.
               </p>
@@ -100,14 +100,14 @@ export default function AboutPage() {
       {/* Testimonials */}
       <section className="container mx-auto px-6 mb-24">
         <div className="text-center mb-16">
-          <h2 className="text-gold text-sm uppercase tracking-[0.2em] mb-4">Social Proof</h2>
+          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Social Proof</h2>
           <h3 className="text-4xl font-serif font-bold text-charcoal">What People Are Saying</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((item, i) => (
-            <div key={i} className="bg-white p-8 border border-neutral-100 hover:border-gold/30 transition-all duration-300 shadow-sm hover:shadow-md group">
-              <div className="mb-6 text-gold opacity-50 group-hover:opacity-100 transition-opacity">
+            <div key={i} className="bg-white p-8 border border-neutral-100 hover:border-rose-gold/30 transition-all duration-300 shadow-sm hover:shadow-md group">
+              <div className="mb-6 text-rose-gold opacity-50 group-hover:opacity-100 transition-opacity">
                 <Quote size={40} />
               </div>
               <p className="text-neutral-600 mb-8 leading-relaxed min-h-[100px]">

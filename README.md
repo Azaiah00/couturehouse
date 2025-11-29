@@ -4,7 +4,7 @@ Couture House Co. is an exclusive modeling agency bridging the gap between high-
 
 ## Features
 
-- **Stunning Visuals:** Luxury design system with charcoal, gold, and rose gold theme.
+- **Stunning Visuals:** Luxury design system with charcoal black and rose gold theme.
 - **Dual Pathways:** Tailored experiences for both Brands and Models.
 - **Interactive Gallery:** Filterable model roster with detailed profile modals.
 - **Conversion Optimized:** Strategic CTAs and pricing tiers.

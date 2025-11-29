@@ -67,7 +67,7 @@ export default function ForBrandsPage() {
       <section className="container mx-auto px-6 mb-24 text-center">
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-charcoal mb-6">
           Elevate Your Brand <br />
-          <span className="text-gold italic">With Elite Influence</span>
+          <span className="text-rose-gold italic">With Elite Influence</span>
         </h1>
         <p className="text-xl text-neutral-500 max-w-2xl mx-auto mb-10">
           Skip the logistics of traditional photoshoots. We deliver high-fashion campaign content at the speed of digital.
@@ -83,7 +83,7 @@ export default function ForBrandsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {benefits.map((benefit) => (
               <div key={benefit.title} className="text-center p-6">
-                <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-gold mb-6 shadow-sm">
+                <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-rose-gold mb-6 shadow-sm">
                   <benefit.icon size={32} strokeWidth={1} />
                 </div>
                 <h3 className="text-xl font-serif font-bold mb-3">{benefit.title}</h3>
@@ -97,7 +97,7 @@ export default function ForBrandsPage() {
       {/* Pricing */}
       <section id="pricing" className="container mx-auto px-6 mb-24">
         <div className="text-center mb-16">
-          <h2 className="text-gold text-sm uppercase tracking-[0.2em] mb-4">Investment</h2>
+          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Investment</h2>
           <h3 className="text-4xl font-serif font-bold text-charcoal">Membership Packages</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">

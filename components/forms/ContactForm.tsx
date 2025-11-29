@@ -47,7 +47,7 @@ export function ContactForm() {
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white p-12 rounded-sm shadow-xl text-center border-t-4 border-gold"
+        className="bg-white p-12 rounded-sm shadow-xl text-center border-t-4 border-rose-gold"
       >
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
           <CheckCircle2 size={40} />
@@ -66,7 +66,7 @@ export function ContactForm() {
       <div className="flex gap-6 mb-8">
         <label className={cn(
           "flex-1 cursor-pointer border rounded-lg p-4 text-center transition-all duration-300",
-          type === "brand" ? "border-gold bg-gold/5" : "border-neutral-200 hover:border-neutral-300"
+          type === "brand" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
         )}>
           <input 
             type="radio" 
@@ -74,13 +74,13 @@ export function ContactForm() {
             className="hidden" 
             {...register("type")} 
           />
-          <span className={cn("font-serif font-bold block mb-1", type === "brand" ? "text-gold-dark" : "text-neutral-600")}>I'm a Brand</span>
+          <span className={cn("font-serif font-bold block mb-1", type === "brand" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm a Brand</span>
           <span className="text-xs text-neutral-400">Looking for models</span>
         </label>
 
         <label className={cn(
           "flex-1 cursor-pointer border rounded-lg p-4 text-center transition-all duration-300",
-          type === "model" ? "border-gold bg-gold/5" : "border-neutral-200 hover:border-neutral-300"
+          type === "model" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
         )}>
           <input 
             type="radio" 
@@ -88,7 +88,7 @@ export function ContactForm() {
             className="hidden" 
             {...register("type")} 
           />
-          <span className={cn("font-serif font-bold block mb-1", type === "model" ? "text-gold-dark" : "text-neutral-600")}>I'm a Model</span>
+          <span className={cn("font-serif font-bold block mb-1", type === "model" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm a Model</span>
           <span className="text-xs text-neutral-400">Applying to join</span>
         </label>
       </div>
@@ -98,7 +98,7 @@ export function ContactForm() {
           <label className="text-sm font-medium text-neutral-700">Full Name</label>
           <input
             {...register("name")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-gold transition-colors"
+            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
             placeholder="John Doe"
           />
           {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
@@ -108,7 +108,7 @@ export function ContactForm() {
           <label className="text-sm font-medium text-neutral-700">Email Address</label>
           <input
             {...register("email")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-gold transition-colors"
+            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
             placeholder="john@example.com"
           />
           {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
@@ -120,7 +120,7 @@ export function ContactForm() {
           </label>
           <input
             {...register("company")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-gold transition-colors"
+            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
             placeholder={type === "brand" ? "Acme Fashion" : "https://portfolio.com"}
           />
         </div>
@@ -131,7 +131,7 @@ export function ContactForm() {
           </label>
           <input
             {...register("socialHandle")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-gold transition-colors"
+            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
             placeholder={type === "brand" ? "@brandname" : "@username"}
           />
           {errors.socialHandle && <p className="text-red-500 text-xs">{errors.socialHandle.message}</p>}
@@ -143,7 +143,7 @@ export function ContactForm() {
         <textarea
           {...register("message")}
           rows={5}
-          className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-gold transition-colors resize-none"
+          className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors resize-none"
           placeholder="Tell us about your project or background..."
         />
         {errors.message && <p className="text-red-500 text-xs">{errors.message.message}</p>}

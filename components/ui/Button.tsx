@@ -9,11 +9,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-charcoal text-white hover:bg-charcoal-light",
-        gold: "bg-gold text-white hover:bg-gold-dark",
+        gold: "bg-rose-gold text-white hover:bg-rose-gold-dark",
         outline: "border border-charcoal bg-transparent hover:bg-charcoal hover:text-white",
         ghost: "hover:bg-neutral-100 hover:text-neutral-900",
         link: "text-neutral-900 underline-offset-4 hover:underline",
-        luxury: "bg-gold text-white hover:bg-white hover:text-gold border border-gold transition-all duration-300",
+        luxury: "bg-rose-gold text-white hover:bg-white hover:text-rose-gold border border-rose-gold transition-all duration-300",
       },
       size: {
         default: "h-12 px-8 py-2",

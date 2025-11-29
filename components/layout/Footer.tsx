@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <h2 className="text-2xl font-serif font-bold tracking-widest uppercase">
-              Couture<span className="text-gold">House</span>
+              Couture<span className="text-rose-gold">House</span>
             </h2>
             <p className="text-neutral-400 text-sm leading-relaxed">
               The premier luxury modeling agency bridging high-fashion brands with elite digital talent. Where fashion meets influence.
@@ -16,7 +16,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-serif mb-6 text-gold">Services</h3>
+            <h3 className="text-lg font-serif mb-6 text-rose-gold">Services</h3>
             <ul className="space-y-4 text-neutral-400 text-sm">
               <li><Link href="/for-brands" className="hover:text-white transition-colors">For Brands</Link></li>
               <li><Link href="/for-models" className="hover:text-white transition-colors">For Models</Link></li>
@@ -26,7 +26,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-serif mb-6 text-gold">Company</h3>
+            <h3 className="text-lg font-serif mb-6 text-rose-gold">Company</h3>
             <ul className="space-y-4 text-neutral-400 text-sm">
               <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
@@ -36,7 +36,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-serif mb-6 text-gold">Connect</h3>
+            <h3 className="text-lg font-serif mb-6 text-rose-gold">Connect</h3>
             <div className="flex gap-4 mb-6">
               <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-charcoal transition-all">
                 <Instagram className="w-4 h-4" />

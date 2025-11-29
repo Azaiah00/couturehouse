@@ -31,7 +31,7 @@ export function FeaturedModels() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
-            <h2 className="text-gold text-sm uppercase tracking-[0.2em] mb-4">Our Talent</h2>
+            <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Our Talent</h2>
             <h3 className="text-4xl md:text-5xl font-serif text-charcoal">Featured Models</h3>
           </div>
           <Link href="/models">

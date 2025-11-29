@@ -27,14 +27,14 @@ export function HowItWorks() {
     <section className="py-32 bg-charcoal text-white relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-gold text-sm uppercase tracking-[0.2em] mb-4">Process</h2>
+          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Process</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-white mb-8">How It Works</h3>
           
           <div className="flex justify-center gap-8 mb-12">
             <button
               onClick={() => setActiveTab('brands')}
               className={`text-lg pb-2 border-b transition-all duration-300 ${
-                activeTab === 'brands' ? 'text-white border-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
+                activeTab === 'brands' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
               }`}
             >
               For Brands
@@ -42,7 +42,7 @@ export function HowItWorks() {
             <button
               onClick={() => setActiveTab('models')}
               className={`text-lg pb-2 border-b transition-all duration-300 ${
-                activeTab === 'models' ? 'text-white border-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
+                activeTab === 'models' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
               }`}
             >
               For Models
@@ -63,11 +63,11 @@ export function HowItWorks() {
               <div className="space-y-12">
                 {steps[activeTab].map((step, index) => (
                   <div key={index} className="flex gap-6 group">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-gold font-serif text-xl group-hover:bg-gold group-hover:text-charcoal transition-all duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-rose-gold font-serif text-xl group-hover:bg-rose-gold group-hover:text-charcoal transition-all duration-300">
                       {index + 1}
                     </div>
                     <div>
-                      <h4 className="text-xl font-serif mb-2 group-hover:text-gold transition-colors">{step.title}</h4>
+                      <h4 className="text-xl font-serif mb-2 group-hover:text-rose-gold transition-colors">{step.title}</h4>
                       <p className="text-neutral-400 font-light">{step.desc}</p>
                     </div>
                   </div>

@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${inter.variable} antialiased bg-cream text-charcoal overflow-x-hidden selection:bg-gold/30`}
+        className={`${playfair.variable} ${inter.variable} antialiased bg-cream text-charcoal overflow-x-hidden`}
       >
         <Header />
         <main className="min-h-screen">

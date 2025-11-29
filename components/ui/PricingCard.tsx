@@ -18,11 +18,11 @@ export function PricingCard({ title, price, description, features, isPopular, ct
     <div className={cn(
       "relative p-8 bg-white border transition-all duration-300 flex flex-col h-full",
       isPopular 
-        ? "border-gold shadow-xl scale-105 z-10" 
-        : "border-neutral-200 hover:border-gold/50"
+        ? "border-rose-gold shadow-xl scale-105 z-10" 
+        : "border-neutral-200 hover:border-rose-gold/50"
     )}>
       {isPopular && (
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-white text-xs font-bold uppercase tracking-widest py-1 px-4 rounded-full">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rose-gold text-white text-xs font-bold uppercase tracking-widest py-1 px-4 rounded-full">
           Most Popular
         </div>
       )}
@@ -39,7 +39,7 @@ export function PricingCard({ title, price, description, features, isPopular, ct
       <ul className="space-y-4 mb-8 flex-grow">
         {features.map((feature) => (
           <li key={feature} className="flex items-start gap-3 text-sm text-neutral-600">
-            <Check className="w-4 h-4 text-gold mt-0.5 flex-shrink-0" />
+            <Check className="w-4 h-4 text-rose-gold mt-0.5 flex-shrink-0" />
             <span>{feature}</span>
           </li>
         ))}
