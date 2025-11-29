@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -38,17 +39,21 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-white/90 backdrop-blur-md border-b border-neutral-200 py-4"
-          : "bg-transparent py-6"
+          : "bg-charcoal/95 border-b border-black/40 py-4"
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="relative z-50 group">
-          <h1 className={cn(
-            "text-2xl font-serif font-bold tracking-widest uppercase transition-colors",
-            isScrolled || mobileMenuOpen ? "text-charcoal" : "text-white"
-          )}>
-            Couture<span className="text-rose-gold">House</span>
-          </h1>
+          {/* Clean logo without pill/oval so it sits directly on the header background. */}
+          <div className="relative h-10 w-40 md:h-12 md:w-48">
+            <Image
+              src="/logo-couture-house.png"
+              alt="Couture House"
+              className="object-contain transition-opacity contrast-125 brightness-110"
+              fill
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}

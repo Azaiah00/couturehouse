@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 
 export function Footer() {
@@ -7,9 +8,15 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <h2 className="text-2xl font-serif font-bold tracking-widest uppercase">
-              Couture<span className="text-rose-gold">House</span>
-            </h2>
+            {/* Footer logo (slightly larger for visibility on dark background) */}
+            <div className="relative h-12 w-48 md:h-14 md:w-56">
+              <Image
+                src="/footer-logo.png"
+                alt="Couture House"
+                fill
+                className="object-contain drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]"
+              />
+            </div>
             <p className="text-neutral-400 text-sm leading-relaxed">
               The premier luxury modeling agency bridging high-fashion brands with elite digital talent. Where fashion meets influence.
             </p>
