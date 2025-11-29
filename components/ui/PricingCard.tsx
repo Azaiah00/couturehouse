@@ -1,19 +1,34 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 interface PricingCardProps {
   title: string;
   price: string;
+  priceNote?: string;
+  examplePrice?: string;
+  exampleCount?: string;
   description: string;
   features: string[];
   isPopular?: boolean;
   ctaText?: string;
+  savings?: string | null;
 }
 
-export function PricingCard({ title, price, description, features, isPopular, ctaText = "Get Started" }: PricingCardProps) {
+export function PricingCard({ 
+  title, 
+  price, 
+  priceNote,
+  examplePrice,
+  exampleCount,
+  description, 
+  features, 
+  isPopular, 
+  ctaText = "Get Started",
+  savings
+}: PricingCardProps) {
   return (
     <div className={cn(
       "relative p-8 bg-white border transition-all duration-300 flex flex-col h-full",
@@ -29,11 +44,37 @@ export function PricingCard({ title, price, description, features, isPopular, ct
 
       <div className="mb-8">
         <h3 className="text-xl font-serif font-bold text-charcoal mb-2">{title}</h3>
-        <p className="text-neutral-500 text-sm mb-6 h-10">{description}</p>
-        <div className="flex items-baseline gap-1">
-          <span className="text-3xl font-bold text-charcoal">{price}</span>
-          {price !== "Custom" && <span className="text-neutral-400 text-sm">/month</span>}
+        <p className="text-neutral-500 text-sm mb-6 min-h-[2.5rem]">{description}</p>
+        
+        {/* Main Price Display */}
+        <div className="mb-4">
+          <div className="flex items-baseline gap-2 mb-1">
+            <span className="text-4xl font-bold text-charcoal">{price}</span>
+            {priceNote && (
+              <span className="text-sm text-neutral-500 font-medium">{priceNote}</span>
+            )}
+          </div>
+          {savings && (
+            <div className="flex items-center gap-2 mt-2 text-sm text-rose-gold font-medium">
+              <Sparkles className="w-4 h-4" />
+              <span>{savings}</span>
+            </div>
+          )}
         </div>
+
+        {/* Example Calculation */}
+        {examplePrice && exampleCount && examplePrice !== "Contact us" && (
+          <div className="bg-rose-gold/5 border border-rose-gold/20 rounded-lg p-4 mb-4">
+            <p className="text-xs text-neutral-500 uppercase tracking-wider mb-1">Example</p>
+            <p className="text-lg font-bold text-charcoal">{exampleCount}</p>
+            <p className="text-2xl font-serif text-rose-gold font-bold">{examplePrice}</p>
+          </div>
+        )}
+        {examplePrice === "Contact us" && (
+          <div className="bg-neutral-50 border border-neutral-200 rounded-lg p-4 mb-4 text-center">
+            <p className="text-sm text-neutral-600 font-medium">{examplePrice}</p>
+          </div>
+        )}
       </div>
 
       <ul className="space-y-4 mb-8 flex-grow">

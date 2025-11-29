@@ -20,43 +20,61 @@ const benefits = [
 
 const pricingTiers = [
   {
-    title: "Boutique Launch",
-    price: "$997",
-    description: "Perfect for emerging brands launching their first collection.",
+    title: "Starter Collection",
+    price: "Starting at $50",
+    priceNote: "per image (1-15 images)",
+    examplePrice: "$500",
+    exampleCount: "10 images",
+    description: "Perfect for testing the waters or launching a small capsule collection.",
     features: [
-      "10 styled product images/month",
-      "1 model selection",
+      "$50 per styled image",
+      "1-15 images per order",
+      "1 model selection per image",
       "Standard turnaround (5-7 days)",
       "Social media optimization",
-      "Basic usage rights"
-    ]
+      "Basic usage rights",
+      "Professional retouching"
+    ],
+    savings: null
   },
   {
-    title: "Collection Campaign",
-    price: "$2,497",
-    description: "Ideal for growing brands needing consistent content.",
+    title: "Volume Campaign",
+    price: "$45",
+    priceNote: "per image (16+ images)",
+    examplePrice: "$1,440",
+    exampleCount: "32 images",
+    description: "Ideal for full collections, seasonal campaigns, and high-volume content needs.",
     isPopular: true,
     features: [
-      "30 styled product images/month",
-      "3 model selections",
+      "$45 per styled image (save $5/image)",
+      "16+ images per order",
+      "Multiple model selections",
       "Priority turnaround (3-5 days)",
       "Social media + website optimization",
       "Model story posts included",
-      "Commercial usage rights"
-    ]
+      "Commercial usage rights",
+      "Bulk discount applied"
+    ],
+    savings: "Save $5 per image"
   },
   {
-    title: "Luxury Partnership",
-    price: "$5,997",
-    description: "Full-scale campaign management for established houses.",
+    title: "Enterprise Solution",
+    price: "Custom Pricing",
+    priceNote: "Volume discounts available",
+    examplePrice: "Contact us",
+    exampleCount: "100+ images",
+    description: "Full-scale campaign management for established fashion houses and agencies.",
     features: [
-      "60+ styled product images/month",
+      "Custom pricing for 50+ images",
       "Unlimited model selections",
       "Express turnaround (24-48h)",
       "Full campaign package",
       "Dedicated account manager",
-      "Influencer promotion guaranteed"
-    ]
+      "Influencer promotion guaranteed",
+      "Extended usage rights",
+      "White-glove service"
+    ],
+    savings: null
   }
 ];
 
@@ -98,11 +116,85 @@ export default function ForBrandsPage() {
       <section id="pricing" className="container mx-auto px-6 mb-24">
         <div className="text-center mb-16">
           <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Investment</h2>
-          <h3 className="text-4xl font-serif font-bold text-charcoal">Membership Packages</h3>
+          <h3 className="text-4xl font-serif font-bold text-charcoal mb-6">Flexible Pricing Packages</h3>
+          <p className="text-neutral-500 max-w-2xl mx-auto">
+            Pay per image with volume discounts. No monthly commitments—order exactly what you need, when you need it.
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+
+        {/* Pricing Structure Visual */}
+        <div className="max-w-4xl mx-auto mb-16 bg-cream rounded-2xl p-8 md:p-12 border border-neutral-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 className="text-2xl font-serif font-bold text-charcoal mb-4">How It Works</h4>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-rose-gold/10 flex items-center justify-center text-rose-gold font-bold text-lg shrink-0">
+                    1
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-charcoal mb-1">Small Orders (1-15 images)</h5>
+                    <p className="text-neutral-600 text-sm">$50 per styled image. Perfect for testing or small collections.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-rose-gold/10 flex items-center justify-center text-rose-gold font-bold text-lg shrink-0">
+                    2
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-charcoal mb-1">Volume Orders (16+ images)</h5>
+                    <p className="text-neutral-600 text-sm">$45 per styled image. Save $5 per image on larger campaigns.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-rose-gold/10 flex items-center justify-center text-rose-gold font-bold text-lg shrink-0">
+                    3
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-charcoal mb-1">Enterprise (50+ images)</h5>
+                    <p className="text-neutral-600 text-sm">Custom pricing with dedicated support. Contact us for a quote.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-neutral-200">
+              <h5 className="font-bold text-charcoal mb-4 text-center">Quick Calculation</h5>
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between items-center pb-3 border-b border-neutral-100">
+                  <span className="text-neutral-600">5 images</span>
+                  <span className="font-bold text-charcoal">$250</span>
+                </div>
+                <div className="flex justify-between items-center pb-3 border-b border-neutral-100">
+                  <span className="text-neutral-600">15 images</span>
+                  <span className="font-bold text-charcoal">$750</span>
+                </div>
+                <div className="flex justify-between items-center pb-3 border-b border-rose-gold/30">
+                  <span className="text-neutral-600">20 images</span>
+                  <span className="font-bold text-rose-gold">$900</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-neutral-600">50 images</span>
+                  <span className="font-bold text-rose-gold">$2,250</span>
+                </div>
+              </div>
+              <p className="text-xs text-neutral-400 mt-4 text-center italic">Volume pricing automatically applied</p>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
           {pricingTiers.map((tier) => (
-            <PricingCard key={tier.title} {...tier} />
+            <PricingCard 
+              key={tier.title} 
+              title={tier.title}
+              price={tier.price}
+              priceNote={tier.priceNote}
+              examplePrice={tier.examplePrice}
+              exampleCount={tier.exampleCount}
+              description={tier.description}
+              features={tier.features}
+              isPopular={tier.isPopular}
+              savings={tier.savings}
+            />
           ))}
         </div>
         <div className="text-center mt-12">
