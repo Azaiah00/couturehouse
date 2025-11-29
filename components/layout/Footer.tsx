@@ -56,7 +56,7 @@ export function Footer() {
               </a>
             </div>
             <p className="text-neutral-500 text-xs">
-              New York • Paris • Milan • London
+              New York • Paris • Milan • London • Colombia
             </p>
           </div>
         </div>

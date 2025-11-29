@@ -21,37 +21,31 @@ const benefits = [
 const pricingTiers = [
   {
     title: "Starter Collection",
-    price: "Starting at $50",
+    price: "$50",
     priceNote: "per image (1-15 images)",
     examplePrice: "$500",
     exampleCount: "10 images",
     description: "Perfect for testing the waters or launching a small capsule collection.",
     features: [
-      "$50 per styled image",
       "1-15 images per order",
-      "1 model selection per image",
       "Standard turnaround (5-7 days)",
-      "Social media optimization",
-      "Basic usage rights",
-      "Professional retouching"
+      "Professional retouching",
+      "Basic usage rights"
     ],
     savings: null
   },
   {
     title: "Volume Campaign",
     price: "$45",
-    priceNote: "per image (16+ images)",
-    examplePrice: "$1,440",
-    exampleCount: "32 images",
+    priceNote: "per image (15+ images)",
+    examplePrice: "$1,350",
+    exampleCount: "30 images",
     description: "Ideal for full collections, seasonal campaigns, and high-volume content needs.",
     isPopular: true,
     features: [
-      "$45 per styled image (save $5/image)",
-      "16+ images per order",
-      "Multiple model selections",
+      "15+ images per order",
       "Priority turnaround (3-5 days)",
-      "Social media + website optimization",
-      "Model story posts included",
+      "Multiple model selections",
       "Commercial usage rights",
       "Bulk discount applied"
     ],
@@ -62,15 +56,13 @@ const pricingTiers = [
     price: "Custom Pricing",
     priceNote: "Volume discounts available",
     examplePrice: "Contact us",
-    exampleCount: "100+ images",
+    exampleCount: "50+ images",
     description: "Full-scale campaign management for established fashion houses and agencies.",
     features: [
-      "Custom pricing for 50+ images",
-      "Unlimited model selections",
+      "50+ images per order",
       "Express turnaround (24-48h)",
-      "Full campaign package",
+      "Unlimited model selections",
       "Dedicated account manager",
-      "Influencer promotion guaranteed",
       "Extended usage rights",
       "White-glove service"
     ],
@@ -122,6 +114,52 @@ export default function ForBrandsPage() {
           </p>
         </div>
 
+        {/* What's Included - All Packages */}
+        <div className="max-w-5xl mx-auto mb-16 bg-gradient-to-br from-rose-gold/5 via-rose-gold/10 to-rose-gold/5 rounded-2xl p-8 md:p-12 border-2 border-rose-gold/20">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-serif font-bold text-charcoal mb-3">What's Included in Every Package</h3>
+            <p className="text-neutral-600">Every image order includes these premium features at no extra cost</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h4 className="font-bold text-charcoal mb-2">Real Person Model</h4>
+              <p className="text-sm text-neutral-600">Authentic models from our exclusive roster, not AI-generated</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                </svg>
+              </div>
+              <h4 className="font-bold text-charcoal mb-2">Model Social Promotion</h4>
+              <p className="text-sm text-neutral-600">Your model promotes your brand on their social media channels</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h4 className="font-bold text-charcoal mb-2">Couture House Post</h4>
+              <p className="text-sm text-neutral-600">Featured on our official social media accounts for maximum reach</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </div>
+              <h4 className="font-bold text-charcoal mb-2">Interactive Sales</h4>
+              <p className="text-sm text-neutral-600">Your clothing featured on our website with direct sales integration</p>
+            </div>
+          </div>
+        </div>
+
         {/* Pricing Structure Visual */}
         <div className="max-w-4xl mx-auto mb-16 bg-cream rounded-2xl p-8 md:p-12 border border-neutral-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -142,7 +180,7 @@ export default function ForBrandsPage() {
                     2
                   </div>
                   <div>
-                    <h5 className="font-bold text-charcoal mb-1">Volume Orders (16+ images)</h5>
+                    <h5 className="font-bold text-charcoal mb-1">Volume Orders (15+ images)</h5>
                     <p className="text-neutral-600 text-sm">$45 per styled image. Save $5 per image on larger campaigns.</p>
                   </div>
                 </div>
@@ -175,6 +213,10 @@ export default function ForBrandsPage() {
                 <div className="flex justify-between items-center">
                   <span className="text-neutral-600">50 images</span>
                   <span className="font-bold text-rose-gold">$2,250</span>
+                </div>
+                <div className="flex justify-between items-center pt-2 border-t border-rose-gold/30 mt-2">
+                  <span className="text-neutral-600 font-medium">100 images</span>
+                  <span className="font-bold text-rose-gold text-lg">$4,500</span>
                 </div>
               </div>
               <p className="text-xs text-neutral-400 mt-4 text-center italic">Volume pricing automatically applied</p>

@@ -77,7 +77,7 @@ export function PricingCard({
         )}
       </div>
 
-      <ul className="space-y-4 mb-8 flex-grow">
+      <ul className="space-y-4 mb-6 flex-grow">
         {features.map((feature) => (
           <li key={feature} className="flex items-start gap-3 text-sm text-neutral-600">
             <Check className="w-4 h-4 text-rose-gold mt-0.5 flex-shrink-0" />
@@ -85,6 +85,14 @@ export function PricingCard({
           </li>
         ))}
       </ul>
+
+      {/* Included Features Note */}
+      <div className="mb-6 p-4 bg-rose-gold/5 border border-rose-gold/20 rounded-lg">
+        <p className="text-xs text-neutral-500 uppercase tracking-wider mb-2 font-medium">Plus Included:</p>
+        <p className="text-xs text-neutral-600 leading-relaxed">
+          Real person model • Model social promotion • Couture House post • Interactive website sales
+        </p>
+      </div>
 
       <Button 
         variant={isPopular ? "gold" : "outline"} 
