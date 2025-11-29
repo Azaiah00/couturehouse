@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
@@ -34,22 +34,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:hello@couturehouseco.com" className="text-lg font-medium hover:text-rose-gold transition-colors">
-                      hello@couturehouseco.com
+                    <a href="mailto:couturehousefirm@gmail.com" className="text-lg font-medium hover:text-rose-gold transition-colors">
+                      couturehousefirm@gmail.com
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
-                    <MapPin size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">Headquarters</p>
-                    <p className="text-lg font-medium">
-                      123 Fashion Avenue, Suite 400<br />
-                      New York, NY 10018
-                    </p>
                   </div>
                 </div>
 
@@ -60,7 +47,7 @@ export default function ContactPage() {
                   <div>
                     <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">Office Hours</p>
                     <p className="text-lg font-medium">
-                      Mon - Fri: 9:00 AM - 6:00 PM EST
+                      9:00 AM - 9:00 PM
                     </p>
                   </div>
                 </div>
