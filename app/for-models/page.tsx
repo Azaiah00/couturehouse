@@ -45,7 +45,7 @@ export default function ForModelsPage() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold mb-2">Passive Revenue</h4>
-                  <p className="text-neutral-600">Earn 30-40% commission on every partnership. Our top models earn $5k+/month in passive income.</p>
+                  <p className="text-neutral-600">Earn 20% commission on every partnership. Our top models earn $5k+/month in passive income.</p>
                 </div>
               </div>
               
