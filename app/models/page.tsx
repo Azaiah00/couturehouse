@@ -14,31 +14,27 @@ const models = [
   {
     id: 1,
     name: "Kendal",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
+    image: "/kendal-profile.PNG",
     followers: "In-House Model",
     category: "Editorial",
     height: "5'10\"",
     location: "New York",
     bio: "Kendal is our exclusive in-house model, specializing in high-fashion editorial work with a focus on luxury aesthetics. Her versatile look has graced digital campaigns for premium brands.",
     gallery: [
-       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
-       "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2550&auto=format&fit=crop",
-       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2787&auto=format&fit=crop"
+       "/kendal-profile.PNG"
     ]
   },
   {
     id: 2,
     name: "Valentina",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2787&auto=format&fit=crop",
+    image: "/valintina-profile.JPG",
     followers: "14.7K",
     category: "Fashion",
     height: "5'9\"",
     location: "Milan",
     bio: "Valentina brings elegance and sophistication to every campaign. With 14.7K engaged followers, she's perfect for fashion and lifestyle brands looking for authentic, high-quality representation.",
     gallery: [
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2787&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2459&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2550&auto=format&fit=crop"
+      "/valintina-profile.JPG"
     ]
   }
 ];
@@ -50,9 +46,8 @@ export default function ModelsPage() {
 
   const categories = [t("models.all"), "Editorial", "Fashion", "Lifestyle"];
 
-  const filteredModels = activeCategory === t("models.all") 
-    ? models 
-    : models.filter(model => model.category === activeCategory);
+  // Show all models in all categories until we have more models
+  const filteredModels = models;
 
   return (
     <div className="pt-24 pb-24 min-h-screen bg-neutral-50">

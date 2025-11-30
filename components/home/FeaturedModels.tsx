@@ -8,13 +8,13 @@ import { useLanguage } from "@/lib/i18n/context";
 const featuredModels = [
   {
     name: "Kendal",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
+    image: "/kendal-profile.PNG",
     followers: "In-House Model",
     tags: ["Editorial", "Luxury"]
   },
   {
     name: "Valentina",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2787&auto=format&fit=crop",
+    image: "/valintina-profile.JPG",
     followers: "14.7K",
     tags: ["Fashion", "Lifestyle"]
   }
