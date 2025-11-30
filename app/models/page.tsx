@@ -9,17 +9,17 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { useLanguage } from "@/lib/i18n/context";
 
-// Mock Data
+// Models Data
 const models = [
   {
     id: 1,
-    name: "Elena V.",
+    name: "Kendal",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
-    followers: "125K",
+    followers: "In-House Model",
     category: "Editorial",
     height: "5'10\"",
     location: "New York",
-    bio: "Elena specializes in high-fashion editorial work with a focus on luxury aesthetics. Her unique look has graced digital campaigns for top European houses.",
+    bio: "Kendal is our exclusive in-house model, specializing in high-fashion editorial work with a focus on luxury aesthetics. Her versatile look has graced digital campaigns for premium brands.",
     gallery: [
        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
        "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2550&auto=format&fit=crop",
@@ -28,69 +28,17 @@ const models = [
   },
   {
     id: 2,
-    name: "Marcus J.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2574&auto=format&fit=crop",
-    followers: "85K",
-    category: "Streetwear",
-    height: "6'1\"",
-    location: "Los Angeles",
-    bio: "Marcus brings a raw, urban energy to digital campaigns. Perfect for streetwear and lifestyle brands looking for authentic representation.",
-    gallery: [
-       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2574&auto=format&fit=crop",
-       "https://images.unsplash.com/photo-1480429370139-e0132c086e2a?q=80&w=2576&auto=format&fit=crop"
-    ]
-  },
-  {
-    id: 3,
-    name: "Sophia L.",
+    name: "Valentina",
     image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2787&auto=format&fit=crop",
-    followers: "250K",
-    category: "Beauty",
+    followers: "14.7K",
+    category: "Fashion",
     height: "5'9\"",
-    location: "London",
-    bio: "With flawless features perfect for beauty close-ups, Sophia is the top choice for cosmetics and skincare brands entering the digital space.",
+    location: "Milan",
+    bio: "Valentina brings elegance and sophistication to every campaign. With 14.7K engaged followers, she's perfect for fashion and lifestyle brands looking for authentic, high-quality representation.",
     gallery: [
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2787&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2459&auto=format&fit=crop"
-    ]
-  },
-  {
-    id: 4,
-    name: "Kai R.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop",
-    followers: "45K",
-    category: "Editorial",
-    height: "6'0\"",
-    location: "Berlin",
-    bio: "Kai's sharp features and versatile look make him ideal for avant-garde fashion and modern luxury campaigns.",
-    gallery: [
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop"
-    ]
-  },
-  {
-    id: 5,
-    name: "Amara K.",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=2574&auto=format&fit=crop",
-    followers: "180K",
-    category: "Lifestyle",
-    height: "5'8\"",
-    location: "Miami",
-    bio: "Amara radiates warmth and approachability. Her lifestyle-focused content converts highly for consumer brands.",
-    gallery: [
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=2574&auto=format&fit=crop"
-    ]
-  },
-  {
-    id: 6,
-    name: "David C.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop",
-    followers: "95K",
-    category: "Commercial",
-    height: "6'2\"",
-    location: "Toronto",
-    bio: "David is the quintessential commercial model. Reliable, versatile, and classic.",
-    gallery: [
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2459&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2550&auto=format&fit=crop"
     ]
   }
 ];
@@ -100,7 +48,7 @@ export default function ModelsPage() {
   const [activeCategory, setActiveCategory] = useState(t("models.all"));
   const [selectedModel, setSelectedModel] = useState<typeof models[0] | null>(null);
 
-  const categories = [t("models.all"), "Editorial", "Streetwear", "Beauty", "Lifestyle", "Commercial"];
+  const categories = [t("models.all"), "Editorial", "Fashion", "Lifestyle"];
 
   const filteredModels = activeCategory === t("models.all") 
     ? models 
