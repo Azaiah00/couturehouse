@@ -1,27 +1,34 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { Check, Star, TrendingUp, Users } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-
-export const metadata: Metadata = {
-  title: "For Models | Couture House Co",
-  description: "Join our exclusive roster of elite digital models and earn from partnerships effortlessly.",
-};
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function ForModelsPage() {
+  const { t } = useLanguage();
+
+  const requirements = [
+    t("forModels.req1"),
+    t("forModels.req2"),
+    t("forModels.req3"),
+    t("forModels.req4"),
+    t("forModels.req5"),
+  ];
+
   return (
     <div className="pt-24 pb-24">
       {/* Hero */}
       <section className="container mx-auto px-6 mb-24 text-center">
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-charcoal mb-6">
-          Build Your Empire <br />
-          <span className="text-rose-gold italic">Your Way</span>
+          {t("forModels.title")} <br />
+          <span className="text-rose-gold italic">{t("forModels.titleAccent")}</span>
         </h1>
         <p className="text-xl text-neutral-500 max-w-2xl mx-auto mb-10">
-          Monetize your likeness 24/7. We secure premium brand partnerships while you focus on building your influence.
+          {t("forModels.description")}
         </p>
         <Link href="#apply">
-          <Button variant="default" size="lg">Apply to Join</Button>
+          <Button variant="default" size="lg">{t("forModels.apply")}</Button>
         </Link>
       </section>
 
@@ -35,8 +42,8 @@ export default function ForModelsPage() {
       <section className="container mx-auto px-6 mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Benefits</h2>
-            <h3 className="text-4xl font-serif font-bold text-charcoal mb-8">Why Top Models Choose Us</h3>
+            <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">{t("forModels.benefits")}</h2>
+            <h3 className="text-4xl font-serif font-bold text-charcoal mb-8">{t("forModels.whyChoose")}</h3>
             
             <div className="space-y-8">
               <div className="flex gap-4">
@@ -44,8 +51,8 @@ export default function ForModelsPage() {
                   <TrendingUp size={24} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">Passive Revenue</h4>
-                  <p className="text-neutral-600">Earn 20% commission on every partnership you're featured in. Build your income stream as brands discover and select you for their campaigns.</p>
+                  <h4 className="text-xl font-bold mb-2">{t("forModels.passiveRevenue")}</h4>
+                  <p className="text-neutral-600">{t("forModels.passiveRevenueDesc")}</p>
                 </div>
               </div>
               
@@ -54,8 +61,8 @@ export default function ForModelsPage() {
                   <Star size={24} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">Premium Brands</h4>
-                  <p className="text-neutral-600">Work with established fashion houses and emerging luxury labels without casting calls.</p>
+                  <h4 className="text-xl font-bold mb-2">{t("forModels.premiumBrands")}</h4>
+                  <p className="text-neutral-600">{t("forModels.premiumBrandsDesc")}</p>
                 </div>
               </div>
 
@@ -64,24 +71,18 @@ export default function ForModelsPage() {
                   <Users size={24} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">Portfolio Growth</h4>
-                  <p className="text-neutral-600">Get professional, high-fashion content added to your portfolio regularly.</p>
+                  <h4 className="text-xl font-bold mb-2">{t("forModels.portfolioGrowth")}</h4>
+                  <p className="text-neutral-600">{t("forModels.portfolioGrowthDesc")}</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="bg-cream p-10 rounded-2xl border border-neutral-200">
-            <h3 className="text-2xl font-serif font-bold mb-6">Requirements</h3>
+            <h3 className="text-2xl font-serif font-bold mb-6">{t("forModels.requirements")}</h3>
             <ul className="space-y-4">
-              {[
-                "10k+ Authentic Social Following",
-                "High-Quality Portfolio Images",
-                "Consistent Engagement Rate (>2%)",
-                "Professional Conduct",
-                "Exclusive Rights Availability"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-neutral-700">
+              {requirements.map((item, index) => (
+                <li key={index} className="flex items-center gap-3 text-neutral-700">
                   <Check className="text-rose-gold" />
                   {item}
                 </li>
@@ -89,7 +90,7 @@ export default function ForModelsPage() {
             </ul>
             <div className="mt-10 p-6 bg-white rounded-xl border border-neutral-100">
               <p className="text-sm text-neutral-500 italic">
-                "Joining Couture House Co changed my career. I tripled my monthly income without adding any extra work hours."
+                "{t("forModels.testimonial")}"
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="w-10 h-10 bg-neutral-200 rounded-full overflow-hidden">
@@ -98,7 +99,7 @@ export default function ForModelsPage() {
                 </div>
                 <div>
                   <p className="font-bold text-sm">Sarah M.</p>
-                  <p className="text-xs text-neutral-400">Model since 2023</p>
+                  <p className="text-xs text-neutral-400">{t("forModels.modelSince")}</p>
                 </div>
               </div>
             </div>
@@ -109,14 +110,13 @@ export default function ForModelsPage() {
       {/* Application CTA */}
       <section id="apply" className="bg-charcoal text-white py-24">
          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">Ready to Join the Elite?</h2>
-            <p className="text-neutral-400 mb-10">Applications are reviewed on a rolling basis.</p>
+            <h2 className="text-3xl md:text-4xl font-serif mb-6">{t("forModels.readyJoin")}</h2>
+            <p className="text-neutral-400 mb-10">{t("forModels.applications")}</p>
             <Link href="/contact?type=model">
-              <Button variant="gold" size="lg">Submit Application</Button>
+              <Button variant="gold" size="lg">{t("forModels.submitApplication")}</Button>
             </Link>
          </div>
       </section>
     </div>
   );
 }
-

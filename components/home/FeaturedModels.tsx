@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ModelCard } from "@/components/ui/ModelCard";
+import { useLanguage } from "@/lib/i18n/context";
 
 const featuredModels = [
   {
@@ -26,16 +27,17 @@ const featuredModels = [
 ];
 
 export function FeaturedModels() {
+  const { t } = useLanguage();
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
-            <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Our Talent</h2>
-            <h3 className="text-4xl md:text-5xl font-serif text-charcoal">Featured Models</h3>
+            <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">{t("featuredModels.subtitle")}</h2>
+            <h3 className="text-4xl md:text-5xl font-serif text-charcoal">{t("featuredModels.title")}</h3>
           </div>
           <Link href="/models">
-            <Button variant="outline" className="hidden md:flex">View Full Board</Button>
+            <Button variant="outline" className="hidden md:flex">{t("featuredModels.viewFull")}</Button>
           </Link>
         </div>
 
@@ -47,7 +49,7 @@ export function FeaturedModels() {
 
         <div className="text-center md:hidden">
           <Link href="/models">
-            <Button variant="outline" className="w-full">View Full Board</Button>
+            <Button variant="outline" className="w-full">{t("featuredModels.viewFull")}</Button>
           </Link>
         </div>
       </div>

@@ -1,89 +1,88 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { CheckCircle2, Clock, DollarSign, Globe, Layers, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { PricingCard } from "@/components/ui/PricingCard";
-
-export const metadata: Metadata = {
-  title: "For Brands | Couture House Co",
-  description: "Scale your fashion brand with elite influencer marketing and virtual staging technology.",
-};
-
-const benefits = [
-  { title: "No Physical Samples", desc: "Keep your inventory. We digitize everything.", icon: Layers },
-  { title: "10x Faster", desc: "From concept to campaign in days, not weeks.", icon: Clock },
-  { title: "Cost Effective", desc: "Fraction of traditional photoshoot costs.", icon: DollarSign },
-  { title: "Global Reach", desc: "Access models across all major markets.", icon: Globe },
-  { title: "Professional Quality", desc: "Magazine-grade lighting and composition.", icon: CheckCircle2 },
-  { title: "Scalable", desc: "From single items to entire collections.", icon: Zap },
-];
-
-const pricingTiers = [
-  {
-    title: "Starter Collection",
-    price: "$50",
-    priceNote: "per image (1-15 images)",
-    examplePrice: "$500",
-    exampleCount: "10 images",
-    description: "Perfect for testing the waters or launching a small capsule collection.",
-    features: [
-      "1-15 images per order",
-      "Standard turnaround (5-7 days)",
-      "Professional retouching",
-      "Basic usage rights"
-    ],
-    savings: null
-  },
-  {
-    title: "Volume Campaign",
-    price: "$45",
-    priceNote: "per image (15+ images)",
-    examplePrice: "$1,350",
-    exampleCount: "30 images",
-    description: "Ideal for full collections, seasonal campaigns, and high-volume content needs.",
-    isPopular: true,
-    features: [
-      "15+ images per order",
-      "Priority turnaround (3-5 days)",
-      "Multiple model selections",
-      "Commercial usage rights",
-      "Bulk discount applied"
-    ],
-    savings: "Save $5 per image"
-  },
-  {
-    title: "Enterprise Solution",
-    price: "Custom Pricing",
-    priceNote: "Volume discounts available",
-    examplePrice: "Contact us",
-    exampleCount: "50+ images",
-    description: "Full-scale campaign management for established fashion houses and agencies.",
-    features: [
-      "50+ images per order",
-      "Express turnaround (24-48h)",
-      "Unlimited model selections",
-      "Dedicated account manager",
-      "Extended usage rights",
-      "White-glove service"
-    ],
-    savings: null
-  }
-];
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function ForBrandsPage() {
+  const { t } = useLanguage();
+
+  const benefits = [
+    { title: t("forBrands.noSamples"), desc: t("forBrands.noSamplesDesc"), icon: Layers },
+    { title: t("forBrands.faster"), desc: t("forBrands.fasterDesc"), icon: Clock },
+    { title: t("forBrands.costEffective"), desc: t("forBrands.costEffectiveDesc"), icon: DollarSign },
+    { title: t("forBrands.globalReach"), desc: t("forBrands.globalReachDesc"), icon: Globe },
+    { title: t("forBrands.professionalQuality"), desc: t("forBrands.professionalQualityDesc"), icon: CheckCircle2 },
+    { title: t("forBrands.scalable"), desc: t("forBrands.scalableDesc"), icon: Zap },
+  ];
+
+  const pricingTiers = [
+    {
+      title: t("forBrands.starterTitle"),
+      price: t("forBrands.starterPrice"),
+      priceNote: t("forBrands.starterNote"),
+      examplePrice: "$500",
+      exampleCount: "10 images",
+      description: t("forBrands.starterDesc"),
+      features: [
+        t("forBrands.starterFeature1"),
+        t("forBrands.starterFeature2"),
+        t("forBrands.starterFeature3"),
+        t("forBrands.starterFeature4"),
+      ],
+      savings: null
+    },
+    {
+      title: t("forBrands.volumeTitle"),
+      price: t("forBrands.volumePrice"),
+      priceNote: t("forBrands.volumeNote"),
+      examplePrice: "$1,350",
+      exampleCount: "30 images",
+      description: t("forBrands.volumeDesc"),
+      isPopular: true,
+      features: [
+        t("forBrands.volumeFeature1"),
+        t("forBrands.volumeFeature2"),
+        t("forBrands.volumeFeature3"),
+        t("forBrands.volumeFeature4"),
+        t("forBrands.volumeFeature5"),
+      ],
+      savings: t("forBrands.volumeSavings")
+    },
+    {
+      title: t("forBrands.enterpriseTitle"),
+      price: t("forBrands.enterprisePrice"),
+      priceNote: t("forBrands.enterpriseNote"),
+      examplePrice: t("forBrands.enterpriseExample"),
+      exampleCount: "50+ images",
+      description: t("forBrands.enterpriseDesc"),
+      features: [
+        t("forBrands.enterpriseFeature1"),
+        t("forBrands.enterpriseFeature2"),
+        t("forBrands.enterpriseFeature3"),
+        t("forBrands.enterpriseFeature4"),
+        t("forBrands.enterpriseFeature5"),
+        t("forBrands.enterpriseFeature6"),
+      ],
+      savings: null
+    }
+  ];
+
   return (
     <div className="pt-24 pb-24">
       {/* Hero */}
       <section className="container mx-auto px-6 mb-24 text-center">
         <h1 className="text-5xl md:text-7xl font-serif font-bold text-charcoal mb-6">
-          Elevate Your Brand <br />
-          <span className="text-rose-gold italic">With Elite Influence</span>
+          {t("forBrands.title")} <br />
+          <span className="text-rose-gold italic">{t("forBrands.titleAccent")}</span>
         </h1>
         <p className="text-xl text-neutral-500 max-w-2xl mx-auto mb-10">
-          Skip the logistics of traditional photoshoots. We deliver high-fashion campaign content at the speed of digital.
+          {t("forBrands.description")}
         </p>
         <Link href="#pricing">
-          <Button variant="luxury" size="lg">View Pricing Plans</Button>
+          <Button variant="luxury" size="lg">{t("forBrands.viewPricing")}</Button>
         </Link>
       </section>
 
@@ -107,18 +106,18 @@ export default function ForBrandsPage() {
       {/* Pricing */}
       <section id="pricing" className="container mx-auto px-6 mb-24">
         <div className="text-center mb-16">
-          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Investment</h2>
-          <h3 className="text-4xl font-serif font-bold text-charcoal mb-6">Flexible Pricing Packages</h3>
+          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">{t("forBrands.investment")}</h2>
+          <h3 className="text-4xl font-serif font-bold text-charcoal mb-6">{t("forBrands.packages")}</h3>
           <p className="text-neutral-500 max-w-2xl mx-auto">
-            Pay per image with volume discounts. No monthly commitments—order exactly what you need, when you need it.
+            {t("forBrands.pricingDesc")}
           </p>
         </div>
 
         {/* What's Included - All Packages */}
         <div className="max-w-5xl mx-auto mb-16 bg-gradient-to-br from-rose-gold/5 via-rose-gold/10 to-rose-gold/5 rounded-2xl p-8 md:p-12 border-2 border-rose-gold/20">
           <div className="text-center mb-8">
-            <h3 className="text-3xl font-serif font-bold text-charcoal mb-3">What's Included in Every Package</h3>
-            <p className="text-neutral-600">Every image order includes these premium features at no extra cost</p>
+            <h3 className="text-3xl font-serif font-bold text-charcoal mb-3">{t("forBrands.includedTitle")}</h3>
+            <p className="text-neutral-600">{t("forBrands.includedDesc")}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
@@ -127,8 +126,8 @@ export default function ForBrandsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-charcoal mb-2">Real Person Model</h4>
-              <p className="text-sm text-neutral-600">Authentic models from our exclusive roster, not AI-generated</p>
+              <h4 className="font-bold text-charcoal mb-2">{t("forBrands.realModel")}</h4>
+              <p className="text-sm text-neutral-600">{t("forBrands.realModelDesc")}</p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
@@ -136,8 +135,8 @@ export default function ForBrandsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-charcoal mb-2">Model Social Promotion</h4>
-              <p className="text-sm text-neutral-600">Your model promotes your brand on their social media channels</p>
+              <h4 className="font-bold text-charcoal mb-2">{t("forBrands.modelPromo")}</h4>
+              <p className="text-sm text-neutral-600">{t("forBrands.modelPromoDesc")}</p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
@@ -145,8 +144,8 @@ export default function ForBrandsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-charcoal mb-2">Couture House Post</h4>
-              <p className="text-sm text-neutral-600">Featured on our official social media accounts for maximum reach</p>
+              <h4 className="font-bold text-charcoal mb-2">{t("forBrands.couturePost")}</h4>
+              <p className="text-sm text-neutral-600">{t("forBrands.couturePostDesc")}</p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
@@ -154,8 +153,8 @@ export default function ForBrandsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-charcoal mb-2">Interactive Sales</h4>
-              <p className="text-sm text-neutral-600">Your clothing featured on our website with direct sales integration</p>
+              <h4 className="font-bold text-charcoal mb-2">{t("forBrands.interactiveSales")}</h4>
+              <p className="text-sm text-neutral-600">{t("forBrands.interactiveSalesDesc")}</p>
             </div>
           </div>
         </div>
@@ -164,15 +163,15 @@ export default function ForBrandsPage() {
         <div className="max-w-4xl mx-auto mb-16 bg-cream rounded-2xl p-8 md:p-12 border border-neutral-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h4 className="text-2xl font-serif font-bold text-charcoal mb-4">How It Works</h4>
+              <h4 className="text-2xl font-serif font-bold text-charcoal mb-4">{t("forBrands.howItWorksTitle")}</h4>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-rose-gold/10 flex items-center justify-center text-rose-gold font-bold text-lg shrink-0">
                     1
                   </div>
                   <div>
-                    <h5 className="font-bold text-charcoal mb-1">Small Orders (1-15 images)</h5>
-                    <p className="text-neutral-600 text-sm">$50 per styled image. Perfect for testing or small collections.</p>
+                    <h5 className="font-bold text-charcoal mb-1">{t("forBrands.smallOrders")}</h5>
+                    <p className="text-neutral-600 text-sm">{t("forBrands.smallOrdersDesc")}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -180,8 +179,8 @@ export default function ForBrandsPage() {
                     2
                   </div>
                   <div>
-                    <h5 className="font-bold text-charcoal mb-1">Volume Orders (15+ images)</h5>
-                    <p className="text-neutral-600 text-sm">$45 per styled image. Save $5 per image on larger campaigns.</p>
+                    <h5 className="font-bold text-charcoal mb-1">{t("forBrands.volumeOrders")}</h5>
+                    <p className="text-neutral-600 text-sm">{t("forBrands.volumeOrdersDesc")}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -189,14 +188,14 @@ export default function ForBrandsPage() {
                     3
                   </div>
                   <div>
-                    <h5 className="font-bold text-charcoal mb-1">Enterprise (50+ images)</h5>
-                    <p className="text-neutral-600 text-sm">Custom pricing with dedicated support. Contact us for a quote.</p>
+                    <h5 className="font-bold text-charcoal mb-1">{t("forBrands.enterprise")}</h5>
+                    <p className="text-neutral-600 text-sm">{t("forBrands.enterpriseDesc")}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-white rounded-xl p-6 border border-neutral-200">
-              <h5 className="font-bold text-charcoal mb-4 text-center">Quick Calculation</h5>
+              <h5 className="font-bold text-charcoal mb-4 text-center">{t("forBrands.calculation")}</h5>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between items-center pb-3 border-b border-neutral-100">
                   <span className="text-neutral-600">5 images</span>
@@ -219,7 +218,7 @@ export default function ForBrandsPage() {
                   <span className="font-bold text-rose-gold text-lg">$4,500</span>
                 </div>
               </div>
-              <p className="text-xs text-neutral-400 mt-4 text-center italic">Volume pricing automatically applied</p>
+              <p className="text-xs text-neutral-400 mt-4 text-center italic">{t("forBrands.volumePricing")}</p>
             </div>
           </div>
         </div>
@@ -240,9 +239,9 @@ export default function ForBrandsPage() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <p className="text-neutral-500 mb-4">Need a custom enterprise solution?</p>
+          <p className="text-neutral-500 mb-4">{t("forBrands.customSolution")}</p>
           <Link href="/contact">
-            <Button variant="link">Contact our sales team</Button>
+            <Button variant="link">{t("forBrands.contactSales")}</Button>
           </Link>
         </div>
       </section>
@@ -251,13 +250,13 @@ export default function ForBrandsPage() {
       <section className="container mx-auto px-6">
         <div className="bg-charcoal text-white rounded-2xl p-12 md:p-20 text-center relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">Ready to Transform Your Content?</h2>
+            <h2 className="text-4xl md:text-5xl font-serif mb-6">{t("forBrands.readyTitle")}</h2>
             <p className="text-neutral-300 text-lg mb-10 max-w-2xl mx-auto">
-              Join the hundreds of brands using Couture House Co to scale their visual presence.
+              {t("forBrands.readyDesc")}
             </p>
             <Link href="/contact">
               <Button variant="gold" size="lg" className="min-w-[200px]">
-                Start Partnership
+                {t("forBrands.startPartnership")}
               </Button>
             </Link>
           </div>
@@ -268,4 +267,3 @@ export default function ForBrandsPage() {
     </div>
   );
 }
-

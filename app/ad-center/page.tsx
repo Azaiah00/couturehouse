@@ -6,6 +6,7 @@ import { Play, Pause, Volume2, VolumeX, ChevronRight, Sparkles } from "lucide-re
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from "@/lib/i18n/context";
 
 // Mock ad portfolio data - replace with actual examples
 const adPortfolio = [
@@ -65,10 +66,11 @@ const adPortfolio = [
   },
 ];
 
-const categories = ["All", "Editorial", "Lifestyle", "Beauty", "Accessories", "Seasonal", "Formal"];
-
 export default function AdCenterPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const { t } = useLanguage();
+  const [selectedCategory, setSelectedCategory] = useState(t("adCenter.all"));
+  
+  const categories = [t("adCenter.all"), "Editorial", "Lifestyle", "Beauty", "Accessories", "Seasonal", "Formal"];
   const [selectedAd, setSelectedAd] = useState<typeof adPortfolio[0] | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -77,7 +79,7 @@ export default function AdCenterPage() {
   const { scrollYProgress } = useScroll({ target: containerRef });
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  const filteredAds = selectedCategory === "All" 
+  const filteredAds = selectedCategory === t("adCenter.all") 
     ? adPortfolio 
     : adPortfolio.filter(ad => ad.category === selectedCategory);
 
@@ -152,10 +154,10 @@ export default function AdCenterPage() {
               <Sparkles className="w-16 h-16 text-rose-gold mx-auto" />
             </motion.div>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold mb-6 leading-tight">
-              Ad <span className="text-rose-gold italic">Center</span>
+              {t("adCenter.title").split(" ")[0]} <span className="text-rose-gold italic">{t("adCenter.title").split(" ")[1]}</span>
             </h1>
             <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12 font-light">
-              Where Your Brand Meets Cinematic Excellence
+              {t("adCenter.subtitle")}
             </p>
             
             {/* Video Controls */}
@@ -201,10 +203,10 @@ export default function AdCenterPage() {
             className="mb-12"
           >
             <h2 className="text-4xl md:text-6xl font-serif font-bold mb-4">
-              Our <span className="text-rose-gold">Portfolio</span>
+              {t("adCenter.portfolio").split(" ")[0]} <span className="text-rose-gold">{t("adCenter.portfolio").split(" ")[1]}</span>
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl">
-              Explore stunning examples of campaigns we've created for premium brands
+              {t("adCenter.portfolioDesc")}
             </p>
           </motion.div>
 
@@ -352,8 +354,8 @@ export default function AdCenterPage() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-neutral-900 border border-rose-gold/30 rounded-xl p-8"
               >
-                <h3 className="text-2xl font-serif font-bold mb-4">Included</h3>
-                <p className="text-neutral-400 mb-6">Video ads included in Volume Campaign (15+ images)</p>
+                <h3 className="text-2xl font-serif font-bold mb-4">{t("adCenter.included")}</h3>
+                <p className="text-neutral-400 mb-6">{t("adCenter.includedDesc")}</p>
                 <p className="text-3xl font-bold text-rose-gold mb-2">Free</p>
                 <p className="text-sm text-neutral-500">With qualifying orders</p>
               </motion.div>
@@ -365,8 +367,8 @@ export default function AdCenterPage() {
                 <div className="absolute top-4 right-4 bg-rose-gold text-black text-xs font-bold px-3 py-1 rounded-full">
                   POPULAR
                 </div>
-                <h3 className="text-2xl font-serif font-bold mb-4">Add-On</h3>
-                <p className="text-neutral-300 mb-6">Add video production to any package</p>
+                <h3 className="text-2xl font-serif font-bold mb-4">{t("adCenter.addOn")}</h3>
+                <p className="text-neutral-300 mb-6">{t("adCenter.addOnDesc")}</p>
                 <p className="text-3xl font-bold text-rose-gold mb-2">$299</p>
                 <p className="text-sm text-neutral-400">Per video ad</p>
               </motion.div>
@@ -375,8 +377,8 @@ export default function AdCenterPage() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-neutral-900 border border-rose-gold/30 rounded-xl p-8"
               >
-                <h3 className="text-2xl font-serif font-bold mb-4">Standalone</h3>
-                <p className="text-neutral-400 mb-6">Video ad production only</p>
+                <h3 className="text-2xl font-serif font-bold mb-4">{t("adCenter.standalone")}</h3>
+                <p className="text-neutral-400 mb-6">{t("adCenter.standaloneDesc")}</p>
                 <p className="text-3xl font-bold text-rose-gold mb-2">$499</p>
                 <p className="text-sm text-neutral-500">Per video ad</p>
               </motion.div>
@@ -384,7 +386,7 @@ export default function AdCenterPage() {
 
             <Link href="/contact">
               <Button variant="luxury" size="lg" className="bg-rose-gold hover:bg-rose-gold-dark">
-                Get Started
+                {t("adCenter.getStarted")}
               </Button>
             </Link>
           </motion.div>

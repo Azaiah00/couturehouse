@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
+import { useLanguage } from "@/lib/i18n/context";
 
 // Mock Data
 const models = [
@@ -94,13 +95,14 @@ const models = [
   }
 ];
 
-const categories = ["All", "Editorial", "Streetwear", "Beauty", "Lifestyle", "Commercial"];
-
 export default function ModelsPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const { t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState(t("models.all"));
   const [selectedModel, setSelectedModel] = useState<typeof models[0] | null>(null);
 
-  const filteredModels = activeCategory === "All" 
+  const categories = [t("models.all"), "Editorial", "Streetwear", "Beauty", "Lifestyle", "Commercial"];
+
+  const filteredModels = activeCategory === t("models.all") 
     ? models 
     : models.filter(model => model.category === activeCategory);
 
@@ -109,10 +111,10 @@ export default function ModelsPage() {
       {/* Header */}
       <section className="container mx-auto px-6 mb-12 text-center">
         <h1 className="text-4xl md:text-6xl font-serif font-bold text-charcoal mb-6">
-          Exclusive Roster
+          {t("models.title")}
         </h1>
         <p className="text-neutral-500 max-w-xl mx-auto mb-10">
-          Discover the faces that will define your next campaign.
+          {t("models.description")}
         </p>
         
         {/* Filters */}
@@ -173,7 +175,7 @@ export default function ModelsPage() {
 
         {filteredModels.length === 0 && (
           <div className="text-center py-20 text-neutral-400">
-            <p>No models found in this category.</p>
+            <p>{t("models.noModels")}</p>
           </div>
         )}
       </section>
@@ -196,18 +198,18 @@ export default function ModelsPage() {
                 <div className="flex items-center gap-4 text-neutral-500 mb-6">
                   <span className="flex items-center gap-1">
                     <Instagram size={18} />
-                    {selectedModel.followers} Followers
+                    {selectedModel.followers} {t("models.followers")}
                   </span>
                   <span>•</span>
                   <span>{selectedModel.location}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                   <div className="p-4 bg-neutral-50 rounded-lg">
-                    <span className="block text-neutral-400 text-xs uppercase">Category</span>
+                    <span className="block text-neutral-400 text-xs uppercase">{t("models.category")}</span>
                     <span className="font-medium">{selectedModel.category}</span>
                   </div>
                   <div className="p-4 bg-neutral-50 rounded-lg">
-                    <span className="block text-neutral-400 text-xs uppercase">Height</span>
+                    <span className="block text-neutral-400 text-xs uppercase">{t("models.height")}</span>
                     <span className="font-medium">{selectedModel.height}</span>
                   </div>
                 </div>
@@ -218,10 +220,10 @@ export default function ModelsPage() {
               
               <div className="flex flex-col gap-4 mt-auto">
                 <Button variant="luxury" className="w-full">
-                  Partner with {selectedModel.name}
+                  {t("models.partnerWith")} {selectedModel.name}
                 </Button>
                 <Button variant="outline" onClick={() => setSelectedModel(null)}>
-                  Close Profile
+                  {t("models.closeProfile")}
                 </Button>
               </div>
             </div>

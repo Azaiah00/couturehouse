@@ -1,24 +1,23 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Mail, Clock } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
-
-export const metadata: Metadata = {
-  title: "Contact | Couture House Co",
-  description: "Get in touch with our team to discuss brand partnerships or modeling opportunities.",
-};
+import { useLanguage } from "@/lib/i18n/context";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="pt-24 pb-24 bg-neutral-50 min-h-screen">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-charcoal mb-6">
-            Let's Create Something <br />
-            <span className="text-rose-gold italic">Beautiful</span>
+            {t("contact.title")} <br />
+            <span className="text-rose-gold italic">{t("contact.titleAccent")}</span>
           </h1>
           <p className="text-neutral-500 max-w-xl mx-auto">
-            Whether you're a brand looking to revolutionize your content or a model ready to monetize your influence, we're here to help.
+            {t("contact.description")}
           </p>
         </div>
 
@@ -26,14 +25,14 @@ export default function ContactPage() {
           {/* Contact Info */}
           <div className="space-y-10 lg:col-span-1">
             <div>
-              <h3 className="text-xl font-serif font-bold mb-6 text-charcoal">Contact Information</h3>
+              <h3 className="text-xl font-serif font-bold mb-6 text-charcoal">{t("contact.contactInfo")}</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">{t("contact.email")}</p>
                     <a href="mailto:couturehousefirm@gmail.com" className="text-lg font-medium hover:text-rose-gold transition-colors">
                       couturehousefirm@gmail.com
                     </a>
@@ -45,7 +44,7 @@ export default function ContactPage() {
                     <Clock size={18} />
                   </div>
                   <div>
-                    <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">Office Hours</p>
+                    <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">{t("contact.officeHours")}</p>
                     <p className="text-lg font-medium">
                       9:00 AM - 9:00 PM
                     </p>
@@ -55,18 +54,18 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-charcoal text-white p-8 rounded-sm">
-              <h4 className="text-lg font-serif mb-4">Newsletter</h4>
+              <h4 className="text-lg font-serif mb-4">{t("contact.newsletter")}</h4>
               <p className="text-neutral-400 text-sm mb-6">
-                Subscribe for the latest industry insights and casting calls.
+                {t("contact.newsletterDesc")}
               </p>
               <div className="flex gap-2">
                 <input 
                   type="email" 
-                  placeholder="Email address" 
+                  placeholder={t("contact.emailPlaceholder")} 
                   className="bg-white/10 border border-white/20 rounded-sm px-4 py-2 w-full text-sm focus:outline-none focus:border-rose-gold"
                 />
                 <button className="bg-rose-gold text-white px-4 py-2 rounded-sm hover:bg-rose-gold-dark transition-colors font-medium text-sm">
-                  Join
+                  {t("contact.join")}
                 </button>
               </div>
             </div>
@@ -81,4 +80,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

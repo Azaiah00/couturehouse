@@ -4,31 +4,33 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { CheckCircle2 } from "lucide-react";
-
-const steps = {
-  brands: [
-    { title: "Submit Products", desc: "Upload your product images to our secure platform." },
-    { title: "Model Match", desc: "Our AI matches you with the perfect models for your aesthetic." },
-    { title: "Digital Styling", desc: "We render your products on models with photorealistic precision." },
-    { title: "Launch Campaign", desc: "Receive high-res content ready for your marketing channels." },
-  ],
-  models: [
-    { title: "Apply to Join", desc: "Submit your portfolio and verify your social following." },
-    { title: "Get Approved", desc: "Join our exclusive roster of elite digital talent." },
-    { title: "Receive Offers", desc: "Get matched with premium brands that fit your style." },
-    { title: "Earn Revenue", desc: "Get paid for partnerships without physical photoshoots." },
-  ],
-};
+import { useLanguage } from "@/lib/i18n/context";
 
 export function HowItWorks() {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'brands' | 'models'>('brands');
+
+  const steps = {
+    brands: [
+      { title: t("howItWorks.brandsStep1"), desc: t("howItWorks.brandsStep1Desc") },
+      { title: t("howItWorks.brandsStep2"), desc: t("howItWorks.brandsStep2Desc") },
+      { title: t("howItWorks.brandsStep3"), desc: t("howItWorks.brandsStep3Desc") },
+      { title: t("howItWorks.brandsStep4"), desc: t("howItWorks.brandsStep4Desc") },
+    ],
+    models: [
+      { title: t("howItWorks.modelsStep1"), desc: t("howItWorks.modelsStep1Desc") },
+      { title: t("howItWorks.modelsStep2"), desc: t("howItWorks.modelsStep2Desc") },
+      { title: t("howItWorks.modelsStep3"), desc: t("howItWorks.modelsStep3Desc") },
+      { title: t("howItWorks.modelsStep4"), desc: t("howItWorks.modelsStep4Desc") },
+    ],
+  };
 
   return (
     <section className="py-32 bg-charcoal text-white relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">Process</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-white mb-8">How It Works</h3>
+          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">{t("howItWorks.subtitle")}</h2>
+          <h3 className="text-4xl md:text-5xl font-serif text-white mb-8">{t("howItWorks.title")}</h3>
           
           <div className="flex justify-center gap-8 mb-12">
             <button
@@ -37,7 +39,7 @@ export function HowItWorks() {
                 activeTab === 'brands' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
               }`}
             >
-              For Brands
+              {t("howItWorks.forBrands")}
             </button>
             <button
               onClick={() => setActiveTab('models')}
@@ -45,7 +47,7 @@ export function HowItWorks() {
                 activeTab === 'models' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
               }`}
             >
-              For Models
+              {t("howItWorks.forModels")}
             </button>
           </div>
         </div>
