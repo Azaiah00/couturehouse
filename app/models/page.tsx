@@ -31,7 +31,7 @@ const models = [
     followers: "14.7K",
     category: "Fashion",
     height: "5'9\"",
-    location: "Milan",
+    location: "Colombia",
     bio: "Valentina brings elegance and sophistication to every campaign. With 14.7K engaged followers, she's perfect for fashion and lifestyle brands looking for authentic, high-quality representation.",
     gallery: [
       "/valintina-profile.JPG"
