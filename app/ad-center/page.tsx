@@ -218,9 +218,6 @@ export default function AdCenterPage() {
             <h2 className="text-4xl md:text-6xl font-serif font-bold mb-4">
               Portfolio
             </h2>
-            <p className="text-neutral-400 text-lg max-w-2xl">
-              {t("adCenter.portfolioDesc")}
-            </p>
           </motion.div>
 
           {/* Category Filter */}
