@@ -34,7 +34,7 @@ export default function ForModelsPage() {
 
       {/* Image Break */}
       <section className="w-full h-[60vh] relative mb-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/valentina-for-model-bckground.png')] bg-cover bg-center bg-fixed" />
+        <div className="absolute inset-0 bg-[url('/valentina-for-model-bckground.png')] bg-cover bg-center bg-[center_top_30%] bg-fixed" />
         <div className="absolute inset-0 bg-black/20" />
       </section>
 
