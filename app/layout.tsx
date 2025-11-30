@@ -20,6 +20,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Couture House Co | Elite AI Model Agency",
   description: "Where Fashion Meets Influence. The premier luxury modeling agency bridging high-fashion brands with elite digital talent.",
+  icons: {
+    icon: "/favicon-logo.png",
+    apple: "/favicon-logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -211,6 +211,21 @@ export const translations = {
       join: "Join",
       emailPlaceholder: "Email address",
     },
+    // Ad Center
+    adCenter: {
+      title: "Ad Center",
+      subtitle: "Where Your Brand Meets Cinematic Excellence",
+      portfolio: "Portfolio",
+      portfolioDesc: "Explore stunning examples of campaigns we've created for premium brands",
+      all: "All",
+      included: "Included",
+      includedDesc: "Video ads included in Volume Campaign (15+ images)",
+      addOn: "Add-On",
+      addOnDesc: "Add video production to any package",
+      standalone: "Standalone",
+      standaloneDesc: "Video ad production only",
+      getStarted: "Get Started",
+    },
   },
   es: {
     // Navigation
