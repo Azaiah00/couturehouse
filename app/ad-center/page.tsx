@@ -168,6 +168,31 @@ export default function AdCenterPage() {
             {/* Right Side - Video Area (spacer for visual balance) */}
             <div className="hidden lg:block" />
           </div>
+          
+          {/* Video Controls - Centered */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="flex items-center justify-center gap-4 mt-8 lg:mt-0 lg:absolute lg:bottom-20 lg:left-1/2 lg:-translate-x-1/2"
+          >
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handlePlayPause}
+              className="w-16 h-16 rounded-full bg-rose-gold/90 hover:bg-rose-gold flex items-center justify-center text-black transition-all shadow-lg shadow-rose-gold/50"
+            >
+              {isPlaying ? <Pause size={24} /> : <Play size={24} className="ml-1" />}
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleMute}
+              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all backdrop-blur-sm border border-white/20"
+            >
+              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </motion.button>
+          </motion.div>
         </div>
 
         {/* Scroll Indicator */}
