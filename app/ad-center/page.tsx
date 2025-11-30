@@ -174,7 +174,7 @@ export default function AdCenterPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="flex items-center justify-center gap-4 mt-8 lg:mt-0 lg:absolute lg:bottom-20 lg:left-1/2 lg:-translate-x-1/2"
+            className="flex items-center justify-center gap-4 mt-8 lg:mt-0 lg:absolute lg:bottom-32 lg:left-1/2 lg:-translate-x-1/2"
           >
             <motion.button
               whileHover={{ scale: 1.1 }}
