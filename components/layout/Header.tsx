@@ -8,19 +8,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { name: "For Brands", href: "/for-brands" },
-  { name: "For Models", href: "/for-models" },
-  { name: "Model Board", href: "/models" },
-  { name: "Ad Center", href: "/ad-center" },
-  { name: "About", href: "/about" },
-];
+import { useLanguage } from "@/lib/i18n/context";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { name: t("nav.forBrands"), href: "/for-brands" },
+    { name: t("nav.forModels"), href: "/for-models" },
+    { name: t("nav.modelBoard"), href: "/models" },
+    { name: t("nav.adCenter"), href: "/ad-center" },
+    { name: t("nav.about"), href: "/about" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,11 +74,14 @@ export function Header() {
               {item.name}
             </Link>
           ))}
-          <Link href="/contact">
-            <Button variant={isScrolled ? "default" : "luxury"} size="sm">
-              Contact Us
-            </Button>
-          </Link>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <Link href="/contact">
+              <Button variant={isScrolled ? "default" : "luxury"} size="sm">
+                {t("nav.contact")}
+              </Button>
+            </Link>
+          </div>
         </nav>
 
         {/* Mobile Toggle */}
@@ -113,11 +119,14 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link href="/contact">
-                <Button size="lg" className="mt-4">
-                  Contact Us
-                </Button>
-              </Link>
+              <div className="flex flex-col items-center gap-4 mt-4">
+                <LanguageSwitcher />
+                <Link href="/contact">
+                  <Button size="lg" className="w-full">
+                    {t("nav.contact")}
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

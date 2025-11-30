@@ -2,26 +2,28 @@
 
 import { motion } from "framer-motion";
 import { Camera, Zap, TrendingUp } from "lucide-react";
-
-const features = [
-  {
-    title: "For Brands",
-    description: "Send us product images. We digitally render them on our models. Receive professional campaign-ready content. No shipping required.",
-    icon: Camera,
-  },
-  {
-    title: "For Models",
-    description: "Join our roster. Get matched with premium brands. Earn from partnerships without photoshoot commitments.",
-    icon: Zap,
-  },
-  {
-    title: "The Result",
-    description: "Seamless collaborations. Faster turnarounds. Maximum exposure. Revenue for all parties without the logistical headaches.",
-    icon: TrendingUp,
-  },
-];
+import { useLanguage } from "@/lib/i18n/context";
 
 export function ValueProposition() {
+  const { t } = useLanguage();
+
+  const features = [
+    {
+      title: t("valueProp.forBrands"),
+      description: t("valueProp.forBrandsDesc"),
+      icon: Camera,
+    },
+    {
+      title: t("valueProp.forModels"),
+      description: t("valueProp.forModelsDesc"),
+      icon: Zap,
+    },
+    {
+      title: t("valueProp.theResult"),
+      description: t("valueProp.theResultDesc"),
+      icon: TrendingUp,
+    },
+  ];
   return (
     <section className="py-24 bg-cream relative overflow-hidden">
       {/* Decorative Elements */}
