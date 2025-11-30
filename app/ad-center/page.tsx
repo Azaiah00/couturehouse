@@ -140,46 +140,60 @@ export default function AdCenterPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </div>
 
-        <div className="container relative z-10 text-center px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
+        <div className="container relative z-10 px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+            {/* Left Side - Text Content */}
             <motion.div
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="inline-block mb-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
             >
-              <Sparkles className="w-16 h-16 text-rose-gold mx-auto" />
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-block"
+              >
+                <Sparkles className="w-12 h-12 text-rose-gold" />
+              </motion.div>
+              
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight">
+                  <span className="block">{t("adCenter.title").split(" ")[0]}</span>
+                  <span className="text-rose-gold italic block">{t("adCenter.title").split(" ")[1]}</span>
+                </h1>
+                <p className="text-lg md:text-xl text-neutral-300 max-w-lg font-light leading-relaxed">
+                  {t("adCenter.subtitle")}
+                </p>
+              </div>
+              
+              {/* Video Controls */}
+              <div className="flex items-center gap-4 pt-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handlePlayPause}
+                  className="w-14 h-14 rounded-full bg-rose-gold/90 hover:bg-rose-gold flex items-center justify-center text-black transition-all shadow-lg shadow-rose-gold/50"
+                >
+                  {isPlaying ? <Pause size={22} /> : <Play size={22} className="ml-1" />}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleMute}
+                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all backdrop-blur-sm border border-white/20"
+                >
+                  {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                </motion.button>
+                <span className="text-sm text-neutral-400 ml-2">
+                  {isPlaying ? "Playing" : "Paused"}
+                </span>
+              </div>
             </motion.div>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold mb-6 leading-tight">
-              {t("adCenter.title").split(" ")[0]} <span className="text-rose-gold italic">{t("adCenter.title").split(" ")[1]}</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12 font-light">
-              {t("adCenter.subtitle")}
-            </p>
-            
-            {/* Video Controls */}
-            <div className="flex items-center justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handlePlayPause}
-                className="w-16 h-16 rounded-full bg-rose-gold/90 hover:bg-rose-gold flex items-center justify-center text-black transition-all shadow-lg shadow-rose-gold/50"
-              >
-                {isPlaying ? <Pause size={24} /> : <Play size={24} className="ml-1" />}
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleMute}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all backdrop-blur-sm"
-              >
-                {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-              </motion.button>
-            </div>
-          </motion.div>
+
+            {/* Right Side - Video Area (spacer for visual balance) */}
+            <div className="hidden lg:block" />
+          </div>
         </div>
 
         {/* Scroll Indicator */}
