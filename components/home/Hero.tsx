@@ -22,6 +22,7 @@ export function Hero() {
         </video>
         <div className="absolute inset-0 bg-charcoal/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-transparent to-charcoal/90" />
+        <div className="absolute inset-0 bg-white/10" />
       </div>
 
       {/* Content */}
