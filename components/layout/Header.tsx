@@ -22,7 +22,6 @@ export function Header() {
     { name: t("nav.forModels"), href: "/for-models" },
     { name: t("nav.modelBoard"), href: "/models" },
     { name: t("nav.adCenter"), href: "/ad-center" },
-    { name: t("nav.about"), href: "/about" },
   ];
 
   useEffect(() => {
