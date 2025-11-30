@@ -13,6 +13,7 @@ const navItems = [
   { name: "For Brands", href: "/for-brands" },
   { name: "For Models", href: "/for-models" },
   { name: "Model Board", href: "/models" },
+  { name: "Ad Center", href: "/ad-center" },
   { name: "About", href: "/about" },
 ];
 

@@ -7,12 +7,17 @@ import { Button } from "@/components/ui/Button";
 export function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-20 md:pt-24">
-      {/* Background Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509631179647-b8b941837303?q=80&w=2532&auto=format&fit=crop')] 
-          bg-cover bg-center bg-no-repeat"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-charcoal/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-transparent to-charcoal/90" />
       </div>

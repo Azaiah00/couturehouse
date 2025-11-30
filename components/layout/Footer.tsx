@@ -28,6 +28,7 @@ export function Footer() {
               <li><Link href="/for-brands" className="hover:text-white transition-colors">For Brands</Link></li>
               <li><Link href="/for-models" className="hover:text-white transition-colors">For Models</Link></li>
               <li><Link href="/models" className="hover:text-white transition-colors">Model Board</Link></li>
+              <li><Link href="/ad-center" className="hover:text-white transition-colors">Ad Center</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Consultation</Link></li>
             </ul>
           </div>
