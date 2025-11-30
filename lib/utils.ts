@@ -12,3 +12,4 @@ export function formatCurrency(amount: number) {
   }).format(amount);
 }
 
+
