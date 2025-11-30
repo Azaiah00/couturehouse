@@ -216,7 +216,7 @@ export default function AdCenterPage() {
             className="mb-12"
           >
             <h2 className="text-4xl md:text-6xl font-serif font-bold mb-4">
-              {t("adCenter.portfolio").split(" ")[0]} <span className="text-rose-gold">{t("adCenter.portfolio").split(" ")[1]}</span>
+              Portfolio
             </h2>
             <p className="text-neutral-400 text-lg max-w-2xl">
               {t("adCenter.portfolioDesc")}
