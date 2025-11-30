@@ -36,11 +36,17 @@ export function Header() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  const isAdCenter = pathname === "/ad-center";
+  
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
+        isAdCenter
+          ? isScrolled
+            ? "bg-black/80 backdrop-blur-md border-b border-white/10 py-3"
+            : "bg-transparent py-3"
+          : isScrolled
           ? "bg-white/90 backdrop-blur-md border-b border-neutral-200 py-4"
           : "bg-charcoal/95 border-b border-black/40 py-4"
       )}
@@ -67,7 +73,7 @@ export function Header() {
               href={item.href}
               className={cn(
                 "text-sm font-medium uppercase tracking-wider hover:text-rose-gold transition-colors",
-                isScrolled ? "text-charcoal" : "text-white/90"
+                isAdCenter ? "text-white/90" : isScrolled ? "text-charcoal" : "text-white/90"
               )}
             >
               {item.name}
@@ -76,7 +82,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <Link href="/contact">
-              <Button variant={isScrolled ? "default" : "luxury"} size="sm">
+              <Button variant={isAdCenter ? "luxury" : isScrolled ? "default" : "luxury"} size="sm">
                 {t("nav.contact")}
               </Button>
             </Link>
@@ -89,12 +95,12 @@ export function Header() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className="w-6 h-6 text-charcoal" />
+            <X className={cn("w-6 h-6", isAdCenter ? "text-white" : "text-charcoal")} />
           ) : (
             <Menu
               className={cn(
                 "w-6 h-6",
-                isScrolled ? "text-charcoal" : "text-white"
+                isAdCenter ? "text-white" : isScrolled ? "text-charcoal" : "text-white"
               )}
             />
           )}

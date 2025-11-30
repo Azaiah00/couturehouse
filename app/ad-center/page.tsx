@@ -125,19 +125,19 @@ export default function AdCenterPage() {
       {/* Hero Section with Video */}
       <motion.section 
         style={{ opacity }}
-        className="relative h-screen w-full flex items-center justify-center"
+        className="relative min-h-screen w-full flex items-center justify-center pt-16 md:pt-20"
       >
         <div className="absolute inset-0 z-0">
           <video
             ref={videoRef}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain"
             loop
             muted={isMuted}
             playsInline
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </div>
 
         <div className="container relative z-10 text-center px-6">
