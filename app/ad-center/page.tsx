@@ -162,32 +162,6 @@ export default function AdCenterPage() {
                   <span className="block">Ad</span>
                   <span className="text-rose-gold italic block">Center</span>
                 </h1>
-                <p className="text-lg md:text-xl text-neutral-300 max-w-lg font-light leading-relaxed">
-                  {t("adCenter.subtitle")}
-                </p>
-              </div>
-              
-              {/* Video Controls */}
-              <div className="flex items-center gap-4 pt-4">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handlePlayPause}
-                  className="w-14 h-14 rounded-full bg-rose-gold/90 hover:bg-rose-gold flex items-center justify-center text-black transition-all shadow-lg shadow-rose-gold/50"
-                >
-                  {isPlaying ? <Pause size={22} /> : <Play size={22} className="ml-1" />}
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleMute}
-                  className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all backdrop-blur-sm border border-white/20"
-                >
-                  {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-                </motion.button>
-                <span className="text-sm text-neutral-400 ml-2">
-                  {isPlaying ? "Playing" : "Paused"}
-                </span>
               </div>
             </motion.div>
 
