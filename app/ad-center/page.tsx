@@ -159,8 +159,8 @@ export default function AdCenterPage() {
               
               <div className="space-y-6">
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight">
-                  <span className="block">{t("adCenter.title").split(" ")[0]}</span>
-                  <span className="text-rose-gold italic block">{t("adCenter.title").split(" ")[1]}</span>
+                  <span className="block">Ad</span>
+                  <span className="text-rose-gold italic block">Center</span>
                 </h1>
                 <p className="text-lg md:text-xl text-neutral-300 max-w-lg font-light leading-relaxed">
                   {t("adCenter.subtitle")}
