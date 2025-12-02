@@ -27,14 +27,40 @@ const models = [
   {
     id: 2,
     name: "Valentina",
-    image: "/valintina-profile.JPG",
+    image: "/new-valentina-profile.png",
     followers: "14.7K",
     category: "Fashion",
-    height: "5'9\"",
+    height: "5'6\"",
     location: "Colombia",
     bio: "Valentina brings elegance and sophistication to every campaign. With 14.7K engaged followers, she's perfect for fashion and lifestyle brands looking for authentic, high-quality representation.",
     gallery: [
-      "/valintina-profile.JPG"
+      "/new-valentina-profile.png"
+    ]
+  },
+  {
+    id: 3,
+    name: "Ally",
+    image: "/ally-profile.png",
+    followers: "In-House Model",
+    category: "Fashion",
+    height: "5'6\"",
+    location: "Colombia",
+    bio: "Ally brings fresh energy and versatility to our model board. Her dynamic presence and authentic style make her perfect for fashion campaigns seeking contemporary elegance.",
+    gallery: [
+      "/ally-profile.png"
+    ]
+  },
+  {
+    id: 4,
+    name: "Dahiana",
+    image: "/dahiana-profile.PNG",
+    followers: "In-House Model",
+    category: "Editorial",
+    height: "5'7\"",
+    location: "Colombia",
+    bio: "Dahiana combines grace and sophistication with a modern edge. Her editorial versatility and commanding presence make her ideal for luxury fashion and high-end brand campaigns.",
+    gallery: [
+      "/dahiana-profile.PNG"
     ]
   }
 ];
@@ -50,18 +76,18 @@ export default function ModelsPage() {
   const filteredModels = models;
 
   return (
-    <div className="pt-24 pb-24 min-h-screen bg-neutral-50">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 md:pb-24 min-h-screen bg-neutral-50">
       {/* Header */}
-      <section className="container mx-auto px-6 mb-12 text-center">
-        <h1 className="text-4xl md:text-6xl font-serif font-bold text-charcoal mb-6">
+      <section className="container mx-auto px-4 sm:px-6 mb-8 sm:mb-12 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-charcoal mb-4 sm:mb-6">
           {t("models.title")}
         </h1>
-        <p className="text-neutral-500 max-w-xl mx-auto mb-10">
+        <p className="text-sm sm:text-base text-neutral-500 max-w-xl mx-auto mb-6 sm:mb-10 px-4">
           {t("models.description")}
         </p>
         
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -79,10 +105,10 @@ export default function ModelsPage() {
       </section>
 
       {/* Gallery */}
-      <section className="container mx-auto px-6">
+      <section className="container mx-auto px-4 sm:px-6">
         <motion.div 
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
         >
           <AnimatePresence>
             {filteredModels.map((model) => (
@@ -126,8 +152,8 @@ export default function ModelsPage() {
       {/* Model Modal */}
       <Modal isOpen={!!selectedModel} onClose={() => setSelectedModel(null)}>
         {selectedModel && (
-          <div className="grid grid-cols-1 md:grid-cols-2 h-full min-h-[600px]">
-            <div className="relative h-[300px] md:h-auto bg-neutral-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 h-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
+            <div className="relative h-[250px] sm:h-[300px] md:h-auto bg-neutral-100">
               <Image
                 src={selectedModel.image}
                 alt={selectedModel.name}
@@ -135,7 +161,7 @@ export default function ModelsPage() {
                 className="object-cover"
               />
             </div>
-            <div className="p-8 md:p-12 flex flex-col justify-center">
+            <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center">
               <div className="mb-8">
                 <h2 className="text-4xl font-serif font-bold mb-2">{selectedModel.name}</h2>
                 <div className="flex items-center gap-4 text-neutral-500 mb-6">
