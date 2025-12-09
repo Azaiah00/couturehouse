@@ -77,11 +77,11 @@ export function HowItWorks() {
               </div>
 
               <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-neutral-900 overflow-hidden hidden md:block">
-                 {/* Placeholder for Process Image */}
+                 {/* Process visual area: use local slide for brands to avoid external fetch */}
                  <div 
                   className={`absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-500 ${
                     activeTab === 'brands' 
-                      ? "bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop')]" 
+                      ? "bg-[url('/how-to-slide.jpg')]" 
                       : "bg-[url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2670&auto=format&fit=crop')]"
                   }`}
                  />
