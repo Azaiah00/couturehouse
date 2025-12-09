@@ -140,25 +140,25 @@ export default function AdCenterPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
         </div>
 
-        <div className="container relative z-10 px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+        <div className="container relative z-10 px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center min-h-[60vh] sm:min-h-[80vh]">
             {/* Left Side - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 className="inline-block"
               >
-                <Sparkles className="w-12 h-12 text-rose-gold" />
+                <Sparkles className="w-8 h-8 sm:w-12 sm:h-12 text-rose-gold" />
               </motion.div>
               
-              <div className="space-y-6">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight">
+              <div className="space-y-4 sm:space-y-6">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold leading-tight">
                   <span className="block">Ad</span>
                   <span className="text-rose-gold italic block">Center</span>
                 </h1>
@@ -174,23 +174,23 @@ export default function AdCenterPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="flex items-center justify-center gap-4 mt-8 lg:mt-0 lg:absolute lg:bottom-32 lg:left-1/2 lg:-translate-x-1/2"
+            className="flex items-center justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-32 lg:left-1/2 lg:-translate-x-1/2"
           >
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePlayPause}
-              className="w-16 h-16 rounded-full bg-rose-gold/90 hover:bg-rose-gold flex items-center justify-center text-black transition-all shadow-lg shadow-rose-gold/50"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-rose-gold/90 hover:bg-rose-gold flex items-center justify-center text-black transition-all shadow-lg shadow-rose-gold/50"
             >
-              {isPlaying ? <Pause size={24} /> : <Play size={24} className="ml-1" />}
+              {isPlaying ? <Pause size={20} className="sm:w-6 sm:h-6" /> : <Play size={20} className="sm:w-6 sm:h-6 ml-0.5 sm:ml-1" />}
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleMute}
-              className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all backdrop-blur-sm border border-white/20"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all backdrop-blur-sm border border-white/20"
             >
-              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+              {isMuted ? <VolumeX size={18} className="sm:w-5 sm:h-5" /> : <Volume2 size={18} className="sm:w-5 sm:h-5" />}
             </motion.button>
           </motion.div>
         </div>
@@ -206,16 +206,16 @@ export default function AdCenterPage() {
       </motion.section>
 
       {/* Portfolio Section */}
-      <section className="relative py-20 bg-black">
-        <div className="container mx-auto px-6">
+      <section className="relative py-12 sm:py-16 md:py-20 bg-black">
+        <div className="container mx-auto px-4 sm:px-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
-            <h2 className="text-4xl md:text-6xl font-serif font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">
               Portfolio
             </h2>
           </motion.div>
@@ -225,7 +225,7 @@ export default function AdCenterPage() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-wrap gap-4 mb-12"
+            className="flex flex-wrap gap-2 sm:gap-4 mb-8 sm:mb-12"
           >
             {categories.map((cat) => (
               <motion.button
@@ -245,7 +245,7 @@ export default function AdCenterPage() {
           </motion.div>
 
           {/* Ad Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             <AnimatePresence mode="popLayout">
               {filteredAds.map((ad, index) => (
                 <motion.div
@@ -418,7 +418,7 @@ export default function AdCenterPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl aspect-video bg-black rounded-lg overflow-hidden"
+              className="relative w-full max-w-6xl aspect-video bg-black rounded-lg overflow-hidden m-4"
             >
               <video
                 src={selectedAd.video}

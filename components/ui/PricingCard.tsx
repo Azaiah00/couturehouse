@@ -31,9 +31,9 @@ export function PricingCard({
 }: PricingCardProps) {
   return (
     <div className={cn(
-      "relative p-8 bg-white border transition-all duration-300 flex flex-col h-full",
+      "relative p-6 sm:p-8 bg-white border transition-all duration-300 flex flex-col h-full",
       isPopular 
-        ? "border-rose-gold shadow-xl scale-105 z-10" 
+        ? "border-rose-gold shadow-xl md:scale-105 z-10" 
         : "border-neutral-200 hover:border-rose-gold/50"
     )}>
       {isPopular && (
@@ -42,14 +42,14 @@ export function PricingCard({
         </div>
       )}
 
-      <div className="mb-8">
-        <h3 className="text-xl font-serif font-bold text-charcoal mb-2">{title}</h3>
-        <p className="text-neutral-500 text-sm mb-6 min-h-[2.5rem]">{description}</p>
+      <div className="mb-6 sm:mb-8">
+        <h3 className="text-lg sm:text-xl font-serif font-bold text-charcoal mb-2">{title}</h3>
+        <p className="text-neutral-500 text-xs sm:text-sm mb-4 sm:mb-6 min-h-[2.5rem]">{description}</p>
         
         {/* Main Price Display */}
-        <div className="mb-4">
+        <div className="mb-3 sm:mb-4">
           <div className="flex items-baseline gap-2 mb-1">
-            <span className="text-4xl font-bold text-charcoal">{price}</span>
+            <span className="text-3xl sm:text-4xl font-bold text-charcoal">{price}</span>
             {priceNote && (
               <span className="text-sm text-neutral-500 font-medium">{priceNote}</span>
             )}

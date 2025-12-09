@@ -33,8 +33,8 @@ Couture House Co. is an exclusive modeling agency bridging the gap between high-
    ```
 
 3. **Run the development server:**
-   ```bash
-   npm run dev
+```bash
+npm run dev
    ```
 
 4. **Open your browser:**

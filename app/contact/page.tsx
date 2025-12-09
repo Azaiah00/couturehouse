@@ -8,20 +8,20 @@ export default function ContactPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="pt-24 pb-24 bg-neutral-50 min-h-screen">
-      <div className="container mx-auto px-6">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 md:pb-24 bg-neutral-50 min-h-screen">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-charcoal mb-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-charcoal mb-4 sm:mb-6 leading-tight">
             {t("contact.title")} <br />
             <span className="text-rose-gold italic">{t("contact.titleAccent")}</span>
           </h1>
-          <p className="text-neutral-500 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-neutral-500 max-w-xl mx-auto px-4">
             {t("contact.description")}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 md:gap-16 max-w-7xl mx-auto">
           {/* Contact Info */}
           <div className="space-y-10 lg:col-span-1">
             <div>
@@ -53,18 +53,18 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-charcoal text-white p-8 rounded-sm">
-              <h4 className="text-lg font-serif mb-4">{t("contact.newsletter")}</h4>
-              <p className="text-neutral-400 text-sm mb-6">
+            <div className="bg-charcoal text-white p-6 sm:p-8 rounded-sm">
+              <h4 className="text-base sm:text-lg font-serif mb-3 sm:mb-4">{t("contact.newsletter")}</h4>
+              <p className="text-neutral-400 text-xs sm:text-sm mb-4 sm:mb-6">
                 {t("contact.newsletterDesc")}
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input 
                   type="email" 
                   placeholder={t("contact.emailPlaceholder")} 
                   className="bg-white/10 border border-white/20 rounded-sm px-4 py-2 w-full text-sm focus:outline-none focus:border-rose-gold"
                 />
-                <button className="bg-rose-gold text-white px-4 py-2 rounded-sm hover:bg-rose-gold-dark transition-colors font-medium text-sm">
+                <button className="bg-rose-gold text-white px-4 py-2 rounded-sm hover:bg-rose-gold-dark transition-colors font-medium text-sm whitespace-nowrap">
                   {t("contact.join")}
                 </button>
               </div>

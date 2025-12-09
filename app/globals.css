@@ -56,7 +56,7 @@
 }
 
 @layer base {
-  body {
+body {
     @apply bg-cream text-charcoal;
   }
   

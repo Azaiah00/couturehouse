@@ -109,8 +109,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 bg-white p-8 md:p-12 rounded-sm shadow-lg border border-neutral-100">
-      <div className="flex gap-6 mb-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 bg-white p-6 sm:p-8 md:p-12 rounded-sm shadow-lg border border-neutral-100">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-6 sm:mb-8">
         <label className={cn(
           "flex-1 cursor-pointer border rounded-lg p-4 text-center transition-all duration-300",
           type === "brand" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
@@ -140,7 +140,7 @@ export function ContactForm() {
         </label>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <div className="space-y-2">
           <label className="text-sm font-medium text-neutral-700">Full Name</label>
           <input

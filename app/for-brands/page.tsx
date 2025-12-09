@@ -52,44 +52,45 @@ export default function ForBrandsPage() {
       savings: t("forBrands.volumeSavings")
     },
     {
-      title: t("forBrands.enterpriseTitle"),
-      price: t("forBrands.enterprisePrice"),
-      priceNote: t("forBrands.enterpriseNote"),
-      examplePrice: t("forBrands.enterpriseExample"),
-      exampleCount: "50+ images",
-      description: t("forBrands.enterpriseDesc"),
+      title: t("forBrands.eliteTitle"),
+      price: t("forBrands.elitePrice"),
+      priceNote: t("forBrands.eliteNote"),
+      examplePrice: "$12,000",
+      exampleCount: "Unlimited images + 8 videos",
+      description: t("forBrands.eliteDesc"),
       features: [
-        t("forBrands.enterpriseFeature1"),
-        t("forBrands.enterpriseFeature2"),
-        t("forBrands.enterpriseFeature3"),
-        t("forBrands.enterpriseFeature4"),
-        t("forBrands.enterpriseFeature5"),
-        t("forBrands.enterpriseFeature6"),
+        t("forBrands.eliteFeature1"),
+        t("forBrands.eliteFeature2"),
+        t("forBrands.eliteFeature3"),
+        t("forBrands.eliteFeature4"),
+        t("forBrands.eliteFeature5"),
+        t("forBrands.eliteFeature6"),
+        t("forBrands.eliteFeature7"),
       ],
-      savings: null
+      savings: t("forBrands.eliteSavings")
     }
   ];
 
   return (
-    <div className="pt-24 pb-24">
+    <div className="pt-20 sm:pt-24 pb-16 sm:pb-24">
       {/* Hero */}
-      <section className="container mx-auto px-6 mb-24 text-center">
-        <h1 className="text-5xl md:text-7xl font-serif font-bold text-charcoal mb-6">
+      <section className="container mx-auto px-4 sm:px-6 mb-12 sm:mb-16 md:mb-24 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-charcoal mb-4 sm:mb-6 leading-tight">
           {t("forBrands.title")} <br />
           <span className="text-rose-gold italic">{t("forBrands.titleAccent")}</span>
         </h1>
-        <p className="text-xl text-neutral-500 max-w-2xl mx-auto mb-10">
+        <p className="text-base sm:text-lg md:text-xl text-neutral-500 max-w-2xl mx-auto mb-6 sm:mb-10 px-4">
           {t("forBrands.description")}
         </p>
         <Link href="#pricing">
-          <Button variant="luxury" size="lg">{t("forBrands.viewPricing")}</Button>
+          <Button variant="luxury" size="lg" className="w-full sm:w-auto">{t("forBrands.viewPricing")}</Button>
         </Link>
       </section>
 
       {/* Benefits Grid */}
-      <section className="bg-cream py-24 mb-24">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <section className="bg-cream py-12 sm:py-16 md:py-24 mb-12 sm:mb-16 md:mb-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
             {benefits.map((benefit) => (
               <div key={benefit.title} className="text-center p-6">
                 <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center text-rose-gold mb-6 shadow-sm">
@@ -104,22 +105,22 @@ export default function ForBrandsPage() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="container mx-auto px-6 mb-24">
-        <div className="text-center mb-16">
-          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">{t("forBrands.investment")}</h2>
-          <h3 className="text-4xl font-serif font-bold text-charcoal mb-6">{t("forBrands.packages")}</h3>
-          <p className="text-neutral-500 max-w-2xl mx-auto">
+      <section id="pricing" className="container mx-auto px-4 sm:px-6 mb-12 sm:mb-16 md:mb-24">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-rose-gold text-xs sm:text-sm uppercase tracking-[0.2em] mb-3 sm:mb-4">{t("forBrands.investment")}</h2>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-charcoal mb-4 sm:mb-6">{t("forBrands.packages")}</h3>
+          <p className="text-sm sm:text-base text-neutral-500 max-w-2xl mx-auto px-4">
             {t("forBrands.pricingDesc")}
           </p>
         </div>
 
         {/* What's Included - All Packages */}
-        <div className="max-w-5xl mx-auto mb-16 bg-gradient-to-br from-rose-gold/5 via-rose-gold/10 to-rose-gold/5 rounded-2xl p-8 md:p-12 border-2 border-rose-gold/20">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-serif font-bold text-charcoal mb-3">{t("forBrands.includedTitle")}</h3>
-            <p className="text-neutral-600">{t("forBrands.includedDesc")}</p>
+        <div className="max-w-5xl mx-auto mb-8 sm:mb-12 md:mb-16 bg-gradient-to-br from-rose-gold/5 via-rose-gold/10 to-rose-gold/5 rounded-2xl p-6 sm:p-8 md:p-12 border-2 border-rose-gold/20">
+          <div className="text-center mb-6 sm:mb-8">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-charcoal mb-2 sm:mb-3">{t("forBrands.includedTitle")}</h3>
+            <p className="text-sm sm:text-base text-neutral-600 px-4">{t("forBrands.includedDesc")}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <div className="bg-white rounded-xl p-6 border border-rose-gold/20 text-center hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 mx-auto mb-4 bg-rose-gold/10 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-rose-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,7 +223,7 @@ export default function ForBrandsPage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto items-start">
           {pricingTiers.map((tier) => (
             <PricingCard 
               key={tier.title} 
@@ -247,15 +248,15 @@ export default function ForBrandsPage() {
       </section>
 
       {/* CTA */}
-      <section className="container mx-auto px-6">
-        <div className="bg-charcoal text-white rounded-2xl p-12 md:p-20 text-center relative overflow-hidden">
+      <section className="container mx-auto px-4 sm:px-6">
+        <div className="bg-charcoal text-white rounded-2xl p-8 sm:p-12 md:p-16 lg:p-20 text-center relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-serif mb-6">{t("forBrands.readyTitle")}</h2>
-            <p className="text-neutral-300 text-lg mb-10 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4 sm:mb-6">{t("forBrands.readyTitle")}</h2>
+            <p className="text-neutral-300 text-base sm:text-lg mb-6 sm:mb-10 max-w-2xl mx-auto px-4">
               {t("forBrands.readyDesc")}
             </p>
-            <Link href="/contact">
-              <Button variant="gold" size="lg" className="min-w-[200px]">
+            <Link href="/contact" className="inline-block w-full sm:w-auto">
+              <Button variant="gold" size="lg" className="w-full sm:min-w-[200px]">
                 {t("forBrands.startPartnership")}
               </Button>
             </Link>

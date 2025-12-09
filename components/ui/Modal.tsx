@@ -53,7 +53,7 @@ export function Modal({ isOpen, onClose, children, className }: ModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3 }}
             className={cn(
-              "relative bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl rounded-sm",
+              "relative bg-white w-full max-w-5xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl rounded-sm",
               className
             )}
             onClick={(e) => e.stopPropagation()}

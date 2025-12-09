@@ -26,13 +26,13 @@ export function HowItWorks() {
   };
 
   return (
-    <section className="py-32 bg-charcoal text-white relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-rose-gold text-sm uppercase tracking-[0.2em] mb-4">{t("howItWorks.subtitle")}</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-white mb-8">{t("howItWorks.title")}</h3>
+    <section className="py-16 sm:py-24 md:py-32 bg-charcoal text-white relative">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-rose-gold text-xs sm:text-sm uppercase tracking-[0.2em] mb-3 sm:mb-4">{t("howItWorks.subtitle")}</h2>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-6 sm:mb-8">{t("howItWorks.title")}</h3>
           
-          <div className="flex justify-center gap-8 mb-12">
+          <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
             <button
               onClick={() => setActiveTab('brands')}
               className={`text-lg pb-2 border-b transition-all duration-300 ${
@@ -60,9 +60,9 @@ export function HowItWorks() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center"
             >
-              <div className="space-y-12">
+              <div className="space-y-8 sm:space-y-10 md:space-y-12">
                 {steps[activeTab].map((step, index) => (
                   <div key={index} className="flex gap-6 group">
                     <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-rose-gold font-serif text-xl group-hover:bg-rose-gold group-hover:text-charcoal transition-all duration-300">
@@ -76,7 +76,7 @@ export function HowItWorks() {
                 ))}
               </div>
 
-              <div className="relative h-[600px] bg-neutral-900 overflow-hidden hidden md:block">
+              <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-neutral-900 overflow-hidden hidden md:block">
                  {/* Placeholder for Process Image */}
                  <div 
                   className={`absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-500 ${

@@ -51,10 +51,10 @@ export function Header() {
           : "bg-charcoal/95 border-b border-black/40 py-4"
       )}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
         <Link href="/" className="relative z-50 group">
           {/* Clean logo without pill/oval so it sits directly on the header background. */}
-          <div className="relative h-10 w-40 md:h-12 md:w-48">
+          <div className="relative h-8 w-32 sm:h-10 sm:w-40 md:h-12 md:w-48">
             <Image
               src="/logo-couture-house.png"
               alt="Couture House"
@@ -66,23 +66,23 @@ export function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={cn(
-                "text-sm font-medium uppercase tracking-wider hover:text-rose-gold transition-colors",
+                "text-xs lg:text-sm font-medium uppercase tracking-wider hover:text-rose-gold transition-colors whitespace-nowrap",
                 isAdCenter ? "text-white/90" : isScrolled ? "text-charcoal" : "text-white/90"
               )}
             >
               {item.name}
             </Link>
           ))}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 lg:gap-4">
             <LanguageSwitcher />
             <Link href="/contact">
-              <Button variant={isAdCenter ? "luxury" : isScrolled ? "default" : "luxury"} size="sm">
+              <Button variant={isAdCenter ? "luxury" : isScrolled ? "default" : "luxury"} size="sm" className="text-xs lg:text-sm">
                 {t("nav.contact")}
               </Button>
             </Link>
@@ -113,20 +113,20 @@ export function Header() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8"
+              className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-6 sm:gap-8 px-4"
             >
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-2xl font-serif text-charcoal hover:text-rose-gold transition-colors"
+                  className="text-xl sm:text-2xl font-serif text-charcoal hover:text-rose-gold transition-colors text-center"
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col items-center gap-4 mt-4">
+              <div className="flex flex-col items-center gap-4 mt-4 w-full max-w-xs">
                 <LanguageSwitcher />
-                <Link href="/contact">
+                <Link href="/contact" className="w-full">
                   <Button size="lg" className="w-full">
                     {t("nav.contact")}
                   </Button>

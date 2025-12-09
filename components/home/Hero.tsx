@@ -8,7 +8,7 @@ import { useLanguage } from "@/lib/i18n/context";
 export function Hero() {
   const { t } = useLanguage();
   return (
-    <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-20 md:pt-24">
+    <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-16 sm:pt-20 md:pt-24">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
@@ -26,31 +26,31 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 text-center px-6">
+      <div className="container relative z-10 text-center px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-rose-gold text-sm md:text-base uppercase tracking-[0.3em] mb-6 font-medium">
+          <h2 className="text-rose-gold text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-6 font-medium px-2">
             {t("hero.subtitle")}
           </h2>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
             {t("hero.title").split(" ").slice(0, 2).join(" ")} <br />
             <span className="italic text-rose-gold-light">{t("hero.title").split(" ").slice(2).join(" ")}</span>
           </h1>
-          <p className="text-neutral-200 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          <p className="text-neutral-200 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 font-light leading-relaxed px-4">
             {t("hero.description")}
           </p>
 
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <Link href="/for-brands">
-              <Button size="lg" variant="luxury" className="min-w-[200px]">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
+            <Link href="/for-brands" className="w-full sm:w-auto">
+              <Button size="lg" variant="luxury" className="w-full sm:min-w-[200px]">
                 {t("hero.ctaBrands")}
               </Button>
             </Link>
-            <Link href="/for-models">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-charcoal min-w-[200px]">
+            <Link href="/for-models" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:min-w-[200px] text-white border-white hover:bg-white hover:text-charcoal">
                 {t("hero.ctaModels")}
               </Button>
             </Link>

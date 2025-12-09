@@ -8,9 +8,9 @@ import { useLanguage } from "@/lib/i18n/context";
 export function Footer() {
   const { t } = useLanguage();
   return (
-    <footer className="bg-charcoal text-white pt-20 pb-10">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-charcoal text-white pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12 md:mb-16">
           <div className="space-y-6">
             {/* Footer logo (slightly larger for visibility on dark background) */}
             <div className="relative h-12 w-48 md:h-14 md:w-56">
@@ -65,7 +65,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+        <div className="border-t border-white/10 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs text-neutral-500 text-center md:text-left">
           <p>&copy; {new Date().getFullYear()} Couture House Co. {t("footer.rights")}</p>
           <p>{t("footer.designed")}</p>
         </div>
