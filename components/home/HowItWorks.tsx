@@ -82,7 +82,7 @@ export function HowItWorks() {
                   className={`absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-500 ${
                     activeTab === 'brands' 
                       ? "bg-[url('/how-to-slide.jpg')]" 
-                      : "bg-[url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2670&auto=format&fit=crop')]"
+                      : "bg-[url('/kendal-val.jpeg')]"
                   }`}
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
