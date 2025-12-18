@@ -42,7 +42,7 @@ export function Footer() {
             <ul className="space-y-4 text-neutral-400 text-sm">
               <li><Link href="/contact" className="hover:text-white transition-colors">{t("nav.contact")}</Link></li>
               <li><Link href="#" className="hover:text-white transition-colors">{t("footer.careers")}</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">{t("footer.privacy")}</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors">{t("footer.privacy")}</Link></li>
             </ul>
           </div>
 

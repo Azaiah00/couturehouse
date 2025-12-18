@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ad Center | Couture House Co",
-  description: "Explore our portfolio of cinematic ad campaigns. Premium video production for luxury fashion brands.",
+  title: "House Gallery | Couture House Co",
+  description: "One hero film, flowing imagery, and portrait stories in motion.",
 };
 
 export default function AdCenterLayout({

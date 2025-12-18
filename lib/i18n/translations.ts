@@ -7,7 +7,7 @@ export const translations = {
       forBrands: "For Brands",
       forModels: "For Models",
       modelBoard: "Model Board",
-      adCenter: "Ad Center",
+      adCenter: "House Gallery",
       about: "About",
       contact: "Contact Us",
     },
@@ -243,8 +243,10 @@ export const translations = {
     },
     // Ad Center
     adCenter: {
-      title: "Ad Center",
-      subtitle: "Where Your Brand Meets Cinematic Excellence",
+      title: "House Gallery",
+      subtitle: "Couture visuals in motion",
+      galleryDescription:
+        "One hero film up top, with a flowing carousel for up to twenty images and a portrait-video rail you can unmute on tap.",
       portfolio: "Portfolio",
       portfolioDesc: "Explore stunning examples of campaigns we've created for premium brands",
       all: "All",
@@ -263,7 +265,7 @@ export const translations = {
       forBrands: "Para Marcas",
       forModels: "Para Modelos",
       modelBoard: "Galería de Modelos",
-      adCenter: "Centro de Anuncios",
+      adCenter: "Galería House",
       about: "Acerca de",
       contact: "Contáctanos",
     },
@@ -499,8 +501,10 @@ export const translations = {
     },
     // Ad Center
     adCenter: {
-      title: "Centro de Anuncios",
-      subtitle: "Donde Tu Marca Encuentra la Excelencia Cinematográfica",
+      title: "Galería House",
+      subtitle: "Visuales de lujo en movimiento",
+      galleryDescription:
+        "Un video principal arriba, un carrusel de hasta veinte imágenes y una pista de videos verticales que puedes activar con sonido al seleccionarlos.",
       portfolio: "Nuestro Portafolio",
       portfolioDesc: "Explora ejemplos impresionantes de campañas que hemos creado para marcas premium",
       all: "Todos",
