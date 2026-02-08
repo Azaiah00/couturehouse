@@ -80,7 +80,7 @@ export function Header() {
             </Link>
           ))}
           <div className="flex items-center gap-2 lg:gap-4">
-            <LanguageSwitcher />
+            <LanguageSwitcher variant={isAdCenter ? "light" : "default"} />
             <Link href="/contact">
               <Button variant={isAdCenter ? "luxury" : isScrolled ? "default" : "luxury"} size="sm" className="text-xs lg:text-sm">
                 {t("nav.contact")}
@@ -125,7 +125,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="flex flex-col items-center gap-4 mt-4 w-full max-w-xs">
-                <LanguageSwitcher />
+                <LanguageSwitcher variant={isAdCenter ? "light" : "default"} />
                 <Link href="/contact" className="w-full">
                   <Button size="lg" className="w-full">
                     {t("nav.contact")}

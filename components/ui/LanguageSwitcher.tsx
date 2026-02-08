@@ -5,7 +5,11 @@ import { useLanguage } from "@/lib/i18n/context";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 
-export function LanguageSwitcher() {
+type LanguageSwitcherProps = {
+  variant?: "default" | "light"; // light = solid white button for dark pages (House Gallery)
+};
+
+export function LanguageSwitcher({ variant = "default" }: LanguageSwitcherProps) {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -29,7 +33,11 @@ export function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all text-sm font-medium"
+        className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all text-sm font-medium ${
+          variant === "light"
+            ? "bg-white text-charcoal hover:bg-white/90 shadow-sm"
+            : "bg-white/10 hover:bg-white/20 backdrop-blur-sm"
+        }`}
       >
         <Globe className="w-4 h-4" />
         <span className="hidden sm:inline">{languages.find(l => l.code === language)?.flag}</span>

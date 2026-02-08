@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/context";
+import { SectionReveal } from "@/components/animations/SectionReveal";
 
 export function HowItWorks() {
   const { t } = useLanguage();
@@ -28,29 +29,31 @@ export function HowItWorks() {
   return (
     <section className="py-16 sm:py-24 md:py-32 bg-charcoal text-white relative">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <h2 className="text-rose-gold text-xs sm:text-sm uppercase tracking-[0.2em] mb-3 sm:mb-4">{t("howItWorks.subtitle")}</h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-6 sm:mb-8">{t("howItWorks.title")}</h3>
-          
-          <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
-            <button
-              onClick={() => setActiveTab('brands')}
-              className={`text-lg pb-2 border-b transition-all duration-300 ${
-                activeTab === 'brands' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
-              }`}
-            >
-              {t("howItWorks.forBrands")}
-            </button>
-            <button
-              onClick={() => setActiveTab('models')}
-              className={`text-lg pb-2 border-b transition-all duration-300 ${
-                activeTab === 'models' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
-              }`}
-            >
-              {t("howItWorks.forModels")}
-            </button>
+        <SectionReveal>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-rose-gold text-xs sm:text-sm uppercase tracking-[0.2em] mb-3 sm:mb-4">{t("howItWorks.subtitle")}</h2>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-6 sm:mb-8">{t("howItWorks.title")}</h3>
+            
+            <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
+              <button
+                onClick={() => setActiveTab('brands')}
+                className={`text-lg pb-2 border-b transition-all duration-300 ${
+                  activeTab === 'brands' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
+                }`}
+              >
+                {t("howItWorks.forBrands")}
+              </button>
+              <button
+                onClick={() => setActiveTab('models')}
+                className={`text-lg pb-2 border-b transition-all duration-300 ${
+                  activeTab === 'models' ? 'text-white border-rose-gold' : 'text-neutral-500 border-transparent hover:text-neutral-300'
+                }`}
+              >
+                {t("howItWorks.forModels")}
+              </button>
+            </div>
           </div>
-        </div>
+        </SectionReveal>
 
         <div className="relative min-h-[400px]">
           <AnimatePresence mode="wait">
@@ -64,29 +67,33 @@ export function HowItWorks() {
             >
               <div className="space-y-8 sm:space-y-10 md:space-y-12">
                 {steps[activeTab].map((step, index) => (
-                  <div key={index} className="flex gap-6 group">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-rose-gold font-serif text-xl group-hover:bg-rose-gold group-hover:text-charcoal transition-all duration-300">
-                      {index + 1}
+                  <SectionReveal key={index} delay={index * 0.15} direction="right">
+                    <div className="flex gap-6 group">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-rose-gold font-serif text-xl group-hover:bg-rose-gold group-hover:text-charcoal transition-all duration-300">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-serif mb-2 group-hover:text-rose-gold transition-colors">{step.title}</h4>
+                        <p className="text-neutral-400 font-light">{step.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-xl font-serif mb-2 group-hover:text-rose-gold transition-colors">{step.title}</h4>
-                      <p className="text-neutral-400 font-light">{step.desc}</p>
-                    </div>
-                  </div>
+                  </SectionReveal>
                 ))}
               </div>
 
-              <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-neutral-900 overflow-hidden hidden md:block">
-                 {/* Process visual area: use local slide for brands to avoid external fetch */}
-                 <div 
-                  className={`absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-500 ${
-                    activeTab === 'brands' 
-                      ? "bg-[url('/how-to-slide.jpg')]" 
-                      : "bg-[url('/kendal-val.jpeg')]"
-                  }`}
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
-              </div>
+              <SectionReveal direction="left" className="w-full">
+                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-neutral-900 overflow-hidden hidden md:block">
+                   {/* Process visual area: use local slide for brands to avoid external fetch */}
+                   <div 
+                    className={`absolute inset-0 bg-cover bg-center opacity-60 transition-opacity duration-500 ${
+                      activeTab === 'brands' 
+                        ? "bg-[url('/how-to-slide.jpg')]" 
+                        : "bg-[url('/kendal-val.jpeg')]"
+                    }`}
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
+                </div>
+              </SectionReveal>
             </motion.div>
           </AnimatePresence>
         </div>

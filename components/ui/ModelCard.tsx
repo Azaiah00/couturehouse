@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
 
 interface ModelCardProps {
   name: string;
   image: string;
-  followers: string;
+  followers: string; // Used for "deliverables" or subtitle in new positioning
   tags: string[];
 }
 
@@ -32,7 +31,7 @@ export function ModelCard({ name, image, followers, tags }: ModelCardProps) {
         <div className="flex justify-between items-end mb-2">
           <h3 className="text-2xl font-serif text-white">{name}</h3>
           <div className="flex items-center gap-2 text-rose-gold">
-            <Instagram size={16} />
+            {/* Removed Instagram icon for industry tiles */}
             <span className="text-sm font-medium">{followers}</span>
           </div>
         </div>

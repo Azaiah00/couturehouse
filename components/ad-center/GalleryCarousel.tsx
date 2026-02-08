@@ -10,10 +10,18 @@ type GalleryImage = {
 };
 
 // Up to 20 locally hosted images. Replace filenames with your uploads in /public/gallery.
-const localGallery = Array.from({ length: 20 }).map((_, idx) => ({
-  src: `/gallery/photo-${String(idx + 1).padStart(2, "0")}.jpg`,
-  alt: `House Gallery photo ${idx + 1}`,
-}));
+const localGallery = [
+  { src: "/download (1).png", alt: "Retail Creative Highlight 1" },
+  { src: "/download (2).png", alt: "Retail Creative Highlight 2" },
+  { src: "/download (3).png", alt: "Retail Creative Highlight 3" },
+  { src: "/download (4).png", alt: "Retail Creative Highlight 4" },
+  { src: "/download (5).png", alt: "Retail Creative Highlight 5" },
+  { src: "/download (6).png", alt: "Retail Creative Highlight 6" },
+  { src: "/download (7).png", alt: "Retail Creative Highlight 7" },
+  { src: "/download (8).png", alt: "Retail Creative Highlight 8" },
+  { src: "/download (9).png", alt: "Retail Creative Highlight 9" },
+  { src: "/download (10).png", alt: "Retail Creative Highlight 10" },
+];
 
 // Gentle fallback set so the carousel always has visuals even before uploads land.
 const fallbackPool = [
@@ -85,8 +93,7 @@ export function GalleryCarousel() {
             Constantly Flowing Highlights
           </h2>
           <p className="text-neutral-300 max-w-2xl mx-auto text-base sm:text-lg">
-            Drop up to twenty curated shots into <code>/public/gallery</code> and
-            they will glide here automatically. Hover to pause the flow.
+            A flowing highlights reel of our latest campaign creatives and retail marketing systems.
           </p>
         </div>
 
@@ -122,5 +129,8 @@ export function GalleryCarousel() {
     </section>
   );
 }
+
+
+
 
 

@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/lib/i18n/context";
+import { PageTransition } from "@/components/layout/PageTransition";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -18,8 +19,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Couture House Co | Elite AI Model Agency",
-  description: "Where Fashion Meets Influence. The premier luxury modeling agency bridging high-fashion brands with elite digital talent.",
+  title: "Couture House Co | Digital Marketing Studio for Retail Brands",
+  description: "Design-forward marketing for ecommerce and brick & mortar. We build creative systems, paid media, and performance-minded marketing assets.",
   icons: {
     icon: "/favicon-logo.png",
     apple: "/favicon-logo.png",
@@ -44,8 +45,11 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <Header />
+          {/* Main content wrapper with simple fade */}
           <main className="min-h-screen">
-        {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
           </main>
           <Footer />
         </LanguageProvider>

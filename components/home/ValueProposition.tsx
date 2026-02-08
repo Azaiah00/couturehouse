@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Camera, Zap, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/context";
+import { SectionReveal } from "@/components/animations/SectionReveal";
 
 export function ValueProposition() {
   const { t } = useLanguage();
@@ -32,24 +33,21 @@ export function ValueProposition() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="group p-6 sm:p-8 border border-transparent hover:border-rose-gold/20 hover:bg-white transition-all duration-500 ease-out"
-            >
-              <div className="mb-4 sm:mb-6 text-rose-gold group-hover:scale-110 transition-transform duration-500">
-                <feature.icon size={28} className="sm:w-8 sm:h-8" strokeWidth={1} />
+            <SectionReveal key={feature.title} delay={index * 0.2}>
+              <div
+                className="group p-6 sm:p-8 border border-transparent hover:border-rose-gold/20 hover:bg-white transition-all duration-500 ease-out"
+              >
+                <div className="mb-4 sm:mb-6 text-rose-gold group-hover:scale-110 transition-transform duration-500">
+                  <feature.icon size={28} className="sm:w-8 sm:h-8" strokeWidth={1} />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-serif mb-3 sm:mb-4 text-charcoal group-hover:text-rose-gold-dark transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl sm:text-2xl font-serif mb-3 sm:mb-4 text-charcoal group-hover:text-rose-gold-dark transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
-                {feature.description}
-              </p>
-            </motion.div>
+            </SectionReveal>
           ))}
         </div>
       </div>

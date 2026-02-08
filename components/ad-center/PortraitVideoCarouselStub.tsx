@@ -11,10 +11,10 @@ type PortraitVideo = {
 
 // Light-weight placeholder set; swap poster paths when you upload real clips.
 const portraitVideos: PortraitVideo[] = [
-  { src: "/hero-video.mp4", title: "Spotlight I", poster: "/kendal-profile.PNG" },
-  { src: "/hero-video.mp4", title: "Spotlight II", poster: "/ally-profile.png" },
-  { src: "/hero-video.mp4", title: "Spotlight III", poster: "/valintina-profile.JPG" },
-  { src: "/hero-video.mp4", title: "Spotlight IV", poster: "/new-valentina-profile.png" },
+  { src: "/Video_20251226_234909_771.mp4", title: "Creative System", poster: "/download (1).png" },
+  { src: "/Video_20251226_234909_771.mp4", title: "Retail Growth", poster: "/download (3).png" },
+  { src: "/Video_20251226_234909_771.mp4", title: "Ecommerce CRO", poster: "/download (5).png" },
+  { src: "/Video_20251226_234909_771.mp4", title: "Paid Media", poster: "/download (7).png" },
 ];
 
 export function PortraitVideoCarouselStub() {
@@ -160,5 +160,8 @@ export function PortraitVideoCarouselStub() {
     </section>
   );
 }
+
+
+
 
 

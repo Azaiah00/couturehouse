@@ -9,24 +9,23 @@ import { Button } from "@/components/ui/Button";
 import { CheckCircle2, Loader2, ChevronDown, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Company type options for brands
+// Company type options for retailers
 const COMPANY_TYPES = [
-  "Fashion Brand",
-  "Product Brand",
-  "E-commerce",
-  "Fashion Retailer",
+  "Ecommerce Brand",
+  "Brick & Mortar Retailer",
+  "Cannabis Dispensary",
+  "Fashion & Apparel",
+  "Jewelry Boutique",
+  "Home Goods & Fragrance",
+  "Beauty & Cosmetics",
   "Luxury Brand",
-  "Accessories Brand",
-  "Beauty/Cosmetics Brand",
-  "Jewelry Brand",
-  "Styling Agency",
-  "Marketing Agency",
-  "Photography Studio",
+  "Lifestyle Brand",
+  "Marketing Team",
   "Other"
 ] as const;
 
 const formSchema = z.object({
-  type: z.enum(["brand", "model"]),
+  type: z.enum(["brand", "retailer"]),
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   company: z.string().optional(),
@@ -121,22 +120,22 @@ export function ContactForm() {
             className="hidden" 
             {...register("type")} 
           />
-          <span className={cn("font-serif font-bold block mb-1", type === "brand" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm a Brand</span>
-          <span className="text-xs text-neutral-400">Looking for models</span>
+          <span className={cn("font-serif font-bold block mb-1", type === "brand" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm an Ecommerce Brand</span>
+          <span className="text-xs text-neutral-400">Looking to scale online</span>
         </label>
 
         <label className={cn(
           "flex-1 cursor-pointer border rounded-lg p-4 text-center transition-all duration-300",
-          type === "model" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
+          type === "retailer" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
         )}>
           <input 
             type="radio" 
-            value="model" 
+            value="retailer" 
             className="hidden" 
             {...register("type")} 
           />
-          <span className={cn("font-serif font-bold block mb-1", type === "model" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm a Model</span>
-          <span className="text-xs text-neutral-400">Applying to join</span>
+          <span className={cn("font-serif font-bold block mb-1", type === "retailer" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm a Retailer</span>
+          <span className="text-xs text-neutral-400">Brick & mortar or omnichannel</span>
         </label>
       </div>
 
@@ -163,18 +162,18 @@ export function ContactForm() {
 
         <div className="space-y-2">
           <label className="text-sm font-medium text-neutral-700">
-            {type === "brand" ? "Company Name" : "Portfolio URL (Optional)"}
+            {type === "brand" || type === "retailer" ? "Company Name" : "Portfolio URL (Optional)"}
           </label>
           <input
             {...register("company")}
             className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
-            placeholder={type === "brand" ? "Acme Fashion" : "https://portfolio.com"}
+            placeholder={type === "brand" || type === "retailer" ? "Acme Retail" : "https://portfolio.com"}
           />
         </div>
 
-        {/* Company Type Multi-Select - Only shown for brands */}
+        {/* Company Type Multi-Select - Only shown for brands/retailers */}
         <AnimatePresence>
-          {type === "brand" && (
+          {(type === "brand" || type === "retailer") && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
@@ -272,12 +271,12 @@ export function ContactForm() {
 
         <div className="space-y-2">
           <label className="text-sm font-medium text-neutral-700">
-            {type === "brand" ? "Instagram / Website" : "Instagram Handle"}
+            Instagram / Website
           </label>
           <input
             {...register("socialHandle")}
             className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
-            placeholder={type === "brand" ? "@brandname" : "@username"}
+            placeholder="@brandname"
           />
           {errors.socialHandle && <p className="text-red-500 text-xs">{errors.socialHandle.message}</p>}
         </div>
