@@ -12,7 +12,7 @@ const industries2 = [
 
 export function IndustriesMarquee() {
   return (
-    <section className="py-24 md:py-32 bg-charcoal overflow-hidden">
+    <section className="py-24 md:py-32 bg-charcoal-light overflow-hidden">
       <div className="mb-16 container mx-auto px-6 text-center">
         <h2 className="text-dusty-rose text-sm font-sans uppercase tracking-widest">Industries We Serve</h2>
       </div>

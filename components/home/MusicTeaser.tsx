@@ -31,7 +31,7 @@ export function MusicTeaser() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-cream-dark relative overflow-hidden border-y border-white/5">
+    <section ref={containerRef} className="py-24 md:py-32 bg-black relative overflow-hidden border-y border-white/5">
       <div className="absolute inset-0 opacity-10 flex items-center justify-center gap-1 md:gap-2">
         {Array.from({ length: 40 }).map((_, i) => (
           <div 

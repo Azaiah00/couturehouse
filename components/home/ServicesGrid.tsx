@@ -67,7 +67,7 @@ export function ServicesGrid() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 md:py-40 bg-cream relative z-10">
+    <section ref={containerRef} className="py-24 md:py-40 bg-charcoal-light relative z-10">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <TextReveal as="h2" className="text-4xl md:text-6xl font-serif text-white uppercase">
