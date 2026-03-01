@@ -14,7 +14,7 @@ const featuredWork = [
     tags: ["Paid Social", "Brand ID"]
   },
   {
-    name: "Cannabis Growth",
+    name: "Product Growth",
     image: "/download (3).png",
     followers: "Local Promo",
     tags: ["Compliance", "Growth"]

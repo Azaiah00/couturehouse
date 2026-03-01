@@ -11,7 +11,7 @@ const categories = ["All", "Fashion", "Cannabis", "Home Goods", "Jewelry", "Auto
 
 const portfolio = [
   { id: 1, title: "Luxury Apparel Launch", category: "Fashion", tags: ["Creative System", "Paid Social"], img: "/download (1).png" },
-  { id: 2, title: "Cannabis Dispensary Growth", category: "Cannabis", tags: ["Local Promos", "OOH"], img: "/download (2).png" },
+  { id: 2, title: "Product Growth", category: "Cannabis", tags: ["Local Promos", "OOH"], img: "/download (2).png" },
   { id: 3, title: "Artisan Candle Studio", category: "Home Goods", tags: ["Branding", "Ecommerce CRO"], img: "/download (3).png" },
   { id: 4, title: "Boutique Jewelry", category: "Jewelry", tags: ["UGC Ads", "Email/SMS"], img: "/download (4).png" },
   { id: 5, title: "Winter Collection", category: "Fashion", tags: ["Video Production", "Web Design"], img: "/download (5).png" },

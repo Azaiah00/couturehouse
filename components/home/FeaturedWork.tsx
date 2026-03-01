@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const works = [
   { id: 1, title: "Luxury Apparel", category: "Creative System", img: "/download (1).png" },
-  { id: 2, title: "Cannabis Growth", category: "Local Promos", img: "/download (2).png" },
+  { id: 2, title: "Product Growth", category: "Local Promos", img: "/download (2).png" },
   { id: 3, title: "Candle Studio", category: "Branding", img: "/download (3).png" },
   { id: 4, title: "Jewelry Boutique", category: "Ads + Email", img: "/download (4).png" },
 ];
