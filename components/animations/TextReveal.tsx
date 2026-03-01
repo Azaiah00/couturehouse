@@ -10,7 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 interface TextRevealProps {
   children: ReactNode;
   className?: string;
-  as?: React.ElementType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: React.ElementType<any>;
   delay?: number;
 }
 
@@ -20,23 +21,17 @@ export function TextReveal({ children, className = "", as: Component = "div", de
   useEffect(() => {
     if (!textRef.current) return;
 
-    // Use a tiny timeout to ensure fonts are loaded/rendered before splitting
     const timer = setTimeout(() => {
       if (!textRef.current) return;
-      
+
       const split = new SplitType(textRef.current as HTMLElement, {
         types: "chars,words",
         tagName: "span",
       });
 
-      // Animate characters
       gsap.fromTo(
         split.chars,
-        {
-          y: 100,
-          opacity: 0,
-          rotateX: -90,
-        },
+        { y: 100, opacity: 0, rotateX: -90 },
         {
           y: 0,
           opacity: 1,
@@ -44,7 +39,7 @@ export function TextReveal({ children, className = "", as: Component = "div", de
           duration: 1,
           stagger: 0.03,
           ease: "power4.out",
-          delay: delay,
+          delay,
           scrollTrigger: {
             trigger: textRef.current,
             start: "top 90%",
@@ -61,6 +56,7 @@ export function TextReveal({ children, className = "", as: Component = "div", de
   }, [delay]);
 
   return (
+    // @ts-expect-error -- ElementType<any> ref forwarding is safe at runtime
     <Component ref={textRef} className={className}>
       {children}
     </Component>
