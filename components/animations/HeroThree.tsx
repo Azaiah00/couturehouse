@@ -59,13 +59,13 @@ function Particles({ count = 2000 }) {
 
 export function HeroThree() {
   return (
-    <div className="absolute inset-0 z-0 bg-charcoal pointer-events-none">
+    <div className="absolute inset-0 z-0 bg-black pointer-events-none">
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        <fog attach="fog" args={["#0D1927", 3, 10]} />
+        <fog attach="fog" args={["#000000", 3, 10]} />
         <Particles count={4000} />
       </Canvas>
       {/* Dark gradient overlay to blend with content */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-transparent to-charcoal pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black pointer-events-none" />
     </div>
   );
 }

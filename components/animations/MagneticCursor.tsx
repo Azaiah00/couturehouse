@@ -58,12 +58,22 @@ export function MagneticCursor() {
 
     const handleMouseEnter = () => {
       gsap.to(cursor, { scale: 0, duration: 0.2 });
-      gsap.to(follower, { scale: 1.5, backgroundColor: "rgba(156, 209, 243, 0.1)", borderColor: "rgba(156, 209, 243, 0.5)", duration: 0.3 });
+      gsap.to(follower, { 
+        scale: 1.5, 
+        backgroundColor: "rgba(156, 209, 243, 0.1)", 
+        borderColor: "rgba(156, 209, 243, 0.5)", 
+        duration: 0.3 
+      });
     };
 
     const handleMouseLeave = () => {
       gsap.to(cursor, { scale: 1, duration: 0.2 });
-      gsap.to(follower, { scale: 1, backgroundColor: "transparent", borderColor: "rgba(156, 209, 243, 0.3)", duration: 0.3 });
+      gsap.to(follower, { 
+        scale: 1, 
+        backgroundColor: "transparent", 
+        borderColor: "rgba(156, 209, 243, 0.3)", 
+        duration: 0.3 
+      });
     };
 
     // Add effect on mount and route change
@@ -89,7 +99,7 @@ export function MagneticCursor() {
     <>
       <div 
         ref={cursorRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-rose-gold rounded-full pointer-events-none z-[9999] mix-blend-screen hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 bg-crimson rounded-full pointer-events-none z-[9999] mix-blend-screen hidden md:block"
         style={{ transform: "translate(-50%, -50%)" }}
       />
       <div 
