@@ -250,7 +250,7 @@ export default function ForBrandsPage() {
                 {t("forBrands.readyDesc")}
               </p>
               <Link href="/contact" className="inline-block w-full sm:w-auto">
-                <Button variant="gold" size="lg" className="w-full sm:min-w-[200px]">
+                <Button variant="luxury" size="lg" className="w-full sm:min-w-[200px]">
                   {t("forBrands.startPartnership")}
                 </Button>
               </Link>

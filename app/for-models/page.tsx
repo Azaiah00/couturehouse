@@ -222,7 +222,7 @@ export default function ForModelsPage() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-4 sm:mb-6">{t("forModels.readyJoin")}</h2>
               <p className="text-neutral-400 mb-6 sm:mb-10 text-sm sm:text-base px-4">{t("forModels.applications")}</p>
               <Link href="/contact" className="inline-block w-full sm:w-auto">
-                <Button variant="gold" size="lg" className="w-full sm:min-w-[200px]">
+                <Button variant="luxury" size="lg" className="w-full sm:min-w-[200px]">
                   {t("forModels.submitApplication")}
                 </Button>
               </Link>
