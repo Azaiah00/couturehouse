@@ -1,19 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/lib/i18n/context";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { SmoothScroll } from "@/components/animations/SmoothScroll";
+import { MagneticCursor } from "@/components/animations/MagneticCursor";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-serif",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -41,17 +43,19 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${inter.variable} antialiased bg-cream text-charcoal overflow-x-hidden`}
+        className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-charcoal text-white overflow-x-hidden`}
       >
         <LanguageProvider>
-          <Header />
-          {/* Main content wrapper with simple fade */}
-          <main className="min-h-screen">
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </main>
-          <Footer />
+          <SmoothScroll>
+            <MagneticCursor />
+            <Header />
+            <main className="min-h-screen">
+              <PageTransition>
+                {children}
+              </PageTransition>
+            </main>
+            <Footer />
+          </SmoothScroll>
         </LanguageProvider>
       </body>
     </html>

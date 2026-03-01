@@ -1,36 +1,40 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle2, Loader2, ChevronDown, X } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Company type options for retailers
-const COMPANY_TYPES = [
-  "Ecommerce Brand",
-  "Brick & Mortar Retailer",
-  "Cannabis Dispensary",
+const SERVICES = [
+  "Creative & Design",
+  "Specialized Production",
+  "Digital & Web",
+  "AI & Automation",
+  "Strategy",
+  "Music & Sound"
+] as const;
+
+const INDUSTRIES = [
   "Fashion & Apparel",
-  "Jewelry Boutique",
-  "Home Goods & Fragrance",
-  "Beauty & Cosmetics",
-  "Luxury Brand",
-  "Lifestyle Brand",
-  "Marketing Team",
+  "Cannabis Dispensary",
+  "Jewelry & Accessories",
+  "Home Goods",
+  "Automotive",
+  "Music & Entertainment",
   "Other"
 ] as const;
 
 const formSchema = z.object({
-  type: z.enum(["brand", "retailer"]),
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  company: z.string().optional(),
-  companyType: z.array(z.string()).optional(),
-  socialHandle: z.string().min(1, "Social handle is required"),
+  company: z.string().min(1, "Company is required"),
+  industry: z.string().min(1, "Industry is required"),
+  services: z.array(z.string()).min(1, "Select at least one service"),
+  budget: z.string().min(1, "Budget is required"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -39,44 +43,24 @@ type FormValues = z.infer<typeof formSchema>;
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isCompanyTypeOpen, setIsCompanyTypeOpen] = useState(false);
-  const companyTypeRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      type: "brand",
-      companyType: [],
+      services: [],
+      industry: "",
+      budget: ""
     },
   });
 
-  const type = watch("type");
-  const companyType = watch("companyType") || [];
+  const selectedServices = watch("services") || [];
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (companyTypeRef.current && !companyTypeRef.current.contains(event.target as Node)) {
-        setIsCompanyTypeOpen(false);
-      }
-    };
-
-    if (isCompanyTypeOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isCompanyTypeOpen]);
-
-  // Toggle company type selection
-  const toggleCompanyType = (companyTypeValue: string) => {
-    const currentTypes = companyType || [];
-    const newTypes = currentTypes.includes(companyTypeValue)
-      ? currentTypes.filter(t => t !== companyTypeValue)
-      : [...currentTypes, companyTypeValue];
-    setValue("companyType", newTypes);
+  const toggleService = (service: string) => {
+    const current = selectedServices;
+    const newServices = current.includes(service)
+      ? current.filter(s => s !== service)
+      : [...current, service];
+    setValue("services", newServices, { shouldValidate: true });
   };
 
   const onSubmit = async (data: FormValues) => {
@@ -93,14 +77,14 @@ export function ContactForm() {
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white p-12 rounded-sm shadow-xl text-center border-t-4 border-rose-gold"
+        className="glass-panel-dark p-12 rounded-xl text-center border-t-4 border-rose-gold"
       >
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
+        <div className="w-20 h-20 bg-rose-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 text-rose-gold">
           <CheckCircle2 size={40} />
         </div>
-        <h3 className="text-2xl font-serif font-bold mb-4">Message Sent Successfully</h3>
-        <p className="text-neutral-500 mb-8">
-          Thank you for contacting Couture House Co. Our team will review your inquiry and get back to you within 24 hours.
+        <h3 className="text-2xl font-serif text-white mb-4">Message Sent Successfully</h3>
+        <p className="text-neutral-400 mb-8 font-sans">
+          Thank you for reaching out. We will review your inquiry and get back to you within 24 hours.
         </p>
         <Button variant="outline" onClick={() => setIsSuccess(false)}>Send Another Message</Button>
       </motion.div>
@@ -108,207 +92,124 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 bg-white p-6 sm:p-8 md:p-12 rounded-sm shadow-lg border border-neutral-100">
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-6 sm:mb-8">
-        <label className={cn(
-          "flex-1 cursor-pointer border rounded-lg p-4 text-center transition-all duration-300",
-          type === "brand" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
-        )}>
-          <input 
-            type="radio" 
-            value="brand" 
-            className="hidden" 
-            {...register("type")} 
-          />
-          <span className={cn("font-serif font-bold block mb-1", type === "brand" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm an Ecommerce Brand</span>
-          <span className="text-xs text-neutral-400">Looking to scale online</span>
-        </label>
-
-        <label className={cn(
-          "flex-1 cursor-pointer border rounded-lg p-4 text-center transition-all duration-300",
-          type === "retailer" ? "border-rose-gold bg-rose-gold/5" : "border-neutral-200 hover:border-neutral-300"
-        )}>
-          <input 
-            type="radio" 
-            value="retailer" 
-            className="hidden" 
-            {...register("type")} 
-          />
-          <span className={cn("font-serif font-bold block mb-1", type === "retailer" ? "text-rose-gold-dark" : "text-neutral-600")}>I'm a Retailer</span>
-          <span className="text-xs text-neutral-400">Brick & mortar or omnichannel</span>
-        </label>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 glass-panel-dark p-8 md:p-12 rounded-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-700">Full Name</label>
+          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Full Name</label>
           <input
             {...register("name")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
+            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans"
             placeholder="John Doe"
           />
-          {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
+          {errors.name && <p className="text-red-400 text-xs font-sans">{errors.name.message}</p>}
         </div>
         
         <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-700">Email Address</label>
+          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Email Address</label>
           <input
             {...register("email")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
+            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans"
             placeholder="john@example.com"
           />
-          {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
+          {errors.email && <p className="text-red-400 text-xs font-sans">{errors.email.message}</p>}
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-700">
-            {type === "brand" || type === "retailer" ? "Company Name" : "Portfolio URL (Optional)"}
-          </label>
+          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Company</label>
           <input
             {...register("company")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
-            placeholder={type === "brand" || type === "retailer" ? "Acme Retail" : "https://portfolio.com"}
+            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans"
+            placeholder="Acme Corp"
           />
+          {errors.company && <p className="text-red-400 text-xs font-sans">{errors.company.message}</p>}
         </div>
 
-        {/* Company Type Multi-Select - Only shown for brands/retailers */}
-        <AnimatePresence>
-          {(type === "brand" || type === "retailer") && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="space-y-2"
-            >
-              <label className="text-sm font-medium text-neutral-700">Company Type</label>
-              <div className="relative" ref={companyTypeRef}>
-                {/* Dropdown trigger button */}
-                <button
-                  type="button"
-                  onClick={() => setIsCompanyTypeOpen(!isCompanyTypeOpen)}
-                  className={cn(
-                    "w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors",
-                    "flex items-center justify-between text-left bg-white",
-                    companyType.length > 0 && "border-rose-gold"
-                  )}
-                >
-                  <span className={cn(
-                    "text-sm",
-                    companyType.length === 0 ? "text-neutral-400" : "text-neutral-700"
-                  )}>
-                    {companyType.length === 0 
-                      ? "Select company types..." 
-                      : companyType.length === 1
-                      ? companyType[0]
-                      : `${companyType.length} types selected`
-                    }
-                  </span>
-                  <ChevronDown className={cn(
-                    "w-4 h-4 text-neutral-400 transition-transform",
-                    isCompanyTypeOpen && "transform rotate-180"
-                  )} />
-                </button>
-
-                {/* Dropdown menu */}
-                <AnimatePresence>
-                  {isCompanyTypeOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute z-10 w-full mt-1 bg-white border border-neutral-200 rounded-sm shadow-lg max-h-60 overflow-y-auto"
-                    >
-                      <div className="p-2 space-y-1">
-                        {COMPANY_TYPES.map((companyTypeValue) => {
-                          const isSelected = companyType.includes(companyTypeValue);
-                          return (
-                            <label
-                              key={companyTypeValue}
-                              className={cn(
-                                "flex items-center p-2 rounded-sm cursor-pointer hover:bg-neutral-50 transition-colors",
-                                isSelected && "bg-rose-gold/5"
-                              )}
-                            >
-                              <input
-                                type="checkbox"
-                                checked={isSelected}
-                                onChange={() => toggleCompanyType(companyTypeValue)}
-                                className="w-4 h-4 text-rose-gold border-neutral-300 rounded focus:ring-rose-gold focus:ring-2"
-                              />
-                              <span className="ml-2 text-sm text-neutral-700">{companyTypeValue}</span>
-                            </label>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Selected tags display */}
-              {companyType.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {companyType.map((selectedType) => (
-                    <span
-                      key={selectedType}
-                      className="inline-flex items-center gap-1 px-2 py-1 text-xs bg-rose-gold/10 text-rose-gold-dark rounded-sm"
-                    >
-                      {selectedType}
-                      <button
-                        type="button"
-                        onClick={() => toggleCompanyType(selectedType)}
-                        className="hover:text-rose-gold-dark/70 transition-colors"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-700">
-            Instagram / Website
-          </label>
-          <input
-            {...register("socialHandle")}
-            className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors"
-            placeholder="@brandname"
-          />
-          {errors.socialHandle && <p className="text-red-500 text-xs">{errors.socialHandle.message}</p>}
+          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Industry</label>
+          <select
+            {...register("industry")}
+            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans appearance-none"
+          >
+            <option value="" disabled>Select your industry</option>
+            {INDUSTRIES.map(ind => (
+              <option key={ind} value={ind}>{ind}</option>
+            ))}
+          </select>
+          {errors.industry && <p className="text-red-400 text-xs font-sans">{errors.industry.message}</p>}
         </div>
       </div>
 
+      <div className="space-y-4">
+        <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Services of Interest</label>
+        <div className="flex flex-wrap gap-3">
+          {SERVICES.map((service) => {
+            const isSelected = selectedServices.includes(service);
+            return (
+              <button
+                type="button"
+                key={service}
+                onClick={() => toggleService(service)}
+                className={cn(
+                  "px-4 py-2 rounded-full text-sm font-sans transition-all duration-300 border",
+                  isSelected 
+                    ? "bg-crimson text-white border-crimson" 
+                    : "bg-transparent text-neutral-400 border-white/10 hover:border-white/30 hover:text-white"
+                )}
+              >
+                {service}
+              </button>
+            );
+          })}
+        </div>
+        {errors.services && <p className="text-red-400 text-xs font-sans">{errors.services.message}</p>}
+      </div>
+
+      <div className="space-y-4">
+        <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Project Budget</label>
+        <div className="flex flex-wrap gap-4">
+          {["<$5k", "$5k-$10k", "$10k-$25k", "$25k+"].map((budget) => (
+            <label key={budget} className="cursor-pointer">
+              <input
+                type="radio"
+                value={budget}
+                {...register("budget")}
+                className="hidden peer"
+              />
+              <span className="px-6 py-3 rounded-md border border-white/10 bg-charcoal text-neutral-400 peer-checked:border-rose-gold peer-checked:text-white transition-all font-sans inline-block hover:border-white/30">
+                {budget}
+              </span>
+            </label>
+          ))}
+        </div>
+        {errors.budget && <p className="text-red-400 text-xs font-sans">{errors.budget.message}</p>}
+      </div>
+
       <div className="space-y-2">
-        <label className="text-sm font-medium text-neutral-700">Message</label>
+        <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Project Details</label>
         <textarea
           {...register("message")}
           rows={5}
-          className="w-full p-3 border border-neutral-200 rounded-sm focus:outline-none focus:border-rose-gold transition-colors resize-none"
-          placeholder="Tell us about your project or background..."
+          className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors resize-none font-sans"
+          placeholder="Tell us about your goals, timeline, and current challenges..."
         />
-        {errors.message && <p className="text-red-500 text-xs">{errors.message.message}</p>}
+        {errors.message && <p className="text-red-400 text-xs font-sans">{errors.message.message}</p>}
       </div>
 
       <Button 
         type="submit" 
         variant="luxury" 
-        className="w-full" 
+        className="w-full py-6 text-lg" 
         disabled={isSubmitting}
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Sending...
+            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+            Submitting...
           </>
         ) : (
-          "Send Message"
+          "Submit Inquiry"
         )}
       </Button>
     </form>
   );
 }
-

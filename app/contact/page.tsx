@@ -1,87 +1,93 @@
 "use client";
 
-import { Mail, Clock } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { useLanguage } from "@/lib/i18n/context";
-import { SectionReveal } from "@/components/animations/SectionReveal";
+import { TextReveal } from "@/components/animations/TextReveal";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 export default function ContactPage() {
-  const { t } = useLanguage();
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    if (!containerRef.current) return;
+    gsap.fromTo(
+      containerRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1 }
+    );
+  }, []);
 
   return (
-    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 md:pb-24 bg-neutral-50 min-h-screen">
-      <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <SectionReveal>
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-charcoal mb-4 sm:mb-6 leading-tight">
-              {t("contact.title")} <br />
-              <span className="text-rose-gold italic">{t("contact.titleAccent")}</span>
-            </h1>
-            <p className="text-sm sm:text-base text-neutral-500 max-w-xl mx-auto px-4">
-              {t("contact.description")}
-            </p>
-          </div>
-        </SectionReveal>
+    <main className="pt-40 pb-20 bg-charcoal min-h-screen" ref={containerRef}>
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-20">
+          <TextReveal as="h1" className="text-5xl md:text-8xl font-serif text-white uppercase tracking-widest mb-6">
+            Let's <span className="text-crimson">Connect</span>
+          </TextReveal>
+          <p className="text-neutral-400 max-w-2xl mx-auto font-sans text-lg">
+            Ready to elevate your brand's digital presence? Tell us about your project and we'll be in touch.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 md:gap-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 max-w-7xl mx-auto">
           {/* Contact Info */}
-          <SectionReveal direction="right" className="lg:col-span-1">
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-xl font-serif font-bold mb-6 text-charcoal">{t("contact.contactInfo")}</h3>
-                <div className="space-y-6">
-                  <div className="flex gap-4">
-                    <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
-                      <Mail size={18} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">{t("contact.email")}</p>
-                      <a href="mailto:couturehousefirm@gmail.com" className="text-lg font-medium hover:text-rose-gold transition-colors">
-                        couturehousefirm@gmail.com
-                      </a>
-                    </div>
+          <div className="lg:col-span-1 space-y-12">
+            <div>
+              <h3 className="text-2xl font-serif text-white mb-8">Contact Info</h3>
+              <div className="space-y-8">
+                <div className="flex gap-4 items-start">
+                  <div className="w-12 h-12 rounded-full bg-crimson/10 border border-crimson/20 flex items-center justify-center text-crimson shrink-0">
+                    <Mail size={20} />
                   </div>
-
-                  <div className="flex gap-4">
-                    <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-rose-gold">
-                      <Clock size={18} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-neutral-400 uppercase tracking-wider mb-1">{t("contact.officeHours")}</p>
-                      <p className="text-lg font-medium">
-                        9:00 AM - 9:00 PM
-                      </p>
-                    </div>
+                  <div>
+                    <p className="text-xs text-neutral-500 font-sans uppercase tracking-widest mb-2">Email</p>
+                    <a href="mailto:hello@couturehouse.co" className="text-lg font-sans text-white hover:text-rose-gold transition-colors">
+                      hello@couturehouse.co
+                    </a>
                   </div>
                 </div>
-              </div>
 
-              <div className="bg-charcoal text-white p-6 sm:p-8 rounded-sm">
-                <h4 className="text-base sm:text-lg font-serif mb-3 sm:mb-4">{t("contact.newsletter")}</h4>
-                <p className="text-neutral-400 text-xs sm:text-sm mb-4 sm:mb-6">
-                  {t("contact.newsletterDesc")}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <input 
-                    type="email" 
-                    placeholder={t("contact.emailPlaceholder")} 
-                    className="bg-white/10 border border-white/20 rounded-sm px-4 py-2 w-full text-sm focus:outline-none focus:border-rose-gold"
-                  />
-                  <button className="bg-rose-gold text-white px-4 py-2 rounded-sm hover:bg-rose-gold-dark transition-colors font-medium text-sm whitespace-nowrap">
-                    {t("contact.join")}
-                  </button>
+                <div className="flex gap-4 items-start">
+                  <div className="w-12 h-12 rounded-full bg-crimson/10 border border-crimson/20 flex items-center justify-center text-crimson shrink-0">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-neutral-500 font-sans uppercase tracking-widest mb-2">Offices</p>
+                    <div className="space-y-2 text-white font-sans text-lg">
+                      <p>New York</p>
+                      <p>Paris</p>
+                      <p>Milan</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </SectionReveal>
+
+            <div className="glass-panel-dark p-8 rounded-xl">
+              <h4 className="text-xl font-serif text-white mb-4">Newsletter</h4>
+              <p className="text-neutral-400 text-sm mb-6 font-sans">
+                Insights on design, marketing, and the future of commerce.
+              </p>
+              <div className="flex flex-col gap-3">
+                <input 
+                  type="email" 
+                  placeholder="Email Address" 
+                  className="bg-charcoal border border-white/10 rounded-md px-4 py-3 w-full text-white font-sans focus:outline-none focus:border-rose-gold transition-colors"
+                />
+                <button className="bg-white/10 text-white px-4 py-3 rounded-md hover:bg-white hover:text-charcoal transition-colors font-sans uppercase tracking-widest text-sm font-medium">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
 
           {/* Form */}
-          <SectionReveal direction="left" className="lg:col-span-2">
+          <div className="lg:col-span-2">
              <ContactForm />
-          </SectionReveal>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
