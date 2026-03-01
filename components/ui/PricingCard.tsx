@@ -95,7 +95,7 @@ export function PricingCard({
       </div>
 
       <Button 
-        variant={isPopular ? "gold" : "outline"} 
+        variant={isPopular ? "luxury" : "outline"} 
         className="w-full"
       >
         {ctaText}
