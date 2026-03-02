@@ -7,15 +7,15 @@ import { TextReveal } from "@/components/animations/TextReveal";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
-const categories = ["All", "Fashion", "Cannabis", "Home Goods", "Jewelry", "Automotive"];
+const categories = ["All", "Fashion", "Retail", "Home Goods", "Jewelry", "Automotive", "Motion & Animation"];
 
 const portfolio = [
   { id: 1, title: "Luxury Apparel Launch", category: "Fashion", tags: ["Creative System", "Paid Social"], img: "/download (1).png" },
-  { id: 2, title: "Product Growth", category: "Cannabis", tags: ["Local Promos", "OOH"], img: "/download (2).png" },
-  { id: 3, title: "Artisan Candle Studio", category: "Home Goods", tags: ["Branding", "Ecommerce CRO"], img: "/download (3).png" },
+  { id: 2, title: "Product Growth", category: "Retail", tags: ["Local Promos", "OOH"], img: "/download (2).png" },
+  { id: 3, title: "Service Studio", category: "Home Goods", tags: ["Branding", "Ecommerce CRO"], img: "/download (3).png" },
   { id: 4, title: "Boutique Jewelry", category: "Jewelry", tags: ["UGC Ads", "Email/SMS"], img: "/download (4).png" },
-  { id: 5, title: "Winter Collection", category: "Fashion", tags: ["Video Production", "Web Design"], img: "/download (5).png" },
-  { id: 6, title: "Modern Dealership", category: "Automotive", tags: ["AI Ads", "Lead Gen"], img: "/download (6).png" },
+  { id: 5, title: "Winter Collection", category: "Motion & Animation", tags: ["Video Production", "Motion Design"], img: "/download (5).png" },
+  { id: 6, title: "Modern Dealership", category: "Automotive", tags: ["Campaign Creative", "Lead Gen"], img: "/download (6).png" },
 ];
 
 export default function WorkPage() {

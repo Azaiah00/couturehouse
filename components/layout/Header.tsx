@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -11,12 +12,12 @@ import { Menu, X } from "lucide-react";
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const pathname = usePathname();
 
   const navItems = [
     { name: "Services", href: "/services" },
     { name: "Work", href: "/work" },
-    { name: "Music", href: "/music" },
   ];
 
   useEffect(() => {
@@ -41,10 +42,24 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="relative z-50 group">
-          <span className="font-serif text-xl md:text-2xl font-bold tracking-widest text-white">
-            COUTURE HOUSE <span className="text-crimson text-sm align-top">CO.</span>
-          </span>
+        <Link href="/" className="relative z-50 group flex items-center">
+          {logoError ? (
+            <span className="font-serif text-xl md:text-2xl font-bold tracking-widest text-white">
+              COUTURE HOUSE <span className="text-crimson text-sm align-top">CO.</span>
+            </span>
+          ) : (
+            <div className="relative h-8 w-[140px] sm:h-9 sm:w-[160px] md:h-10 md:w-[180px]">
+              <Image
+                src="/logo-couture-house.png"
+                alt="Couture House Co."
+                fill
+                className="object-contain object-left"
+                priority
+                sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, 180px"
+                onError={() => setLogoError(true)}
+              />
+            </div>
+          )}
         </Link>
 
         {/* Desktop Nav */}

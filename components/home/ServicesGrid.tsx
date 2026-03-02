@@ -26,9 +26,9 @@ const services = [
     sub: ["Web Design", "Email Campaigns", "Product Design", "Copywriting", "Landing Pages"]
   },
   {
-    title: "AI & Automation",
-    desc: "Maximize efficiency with AI-powered creative and workflows.",
-    sub: ["AI-Powered Creative", "AI Consulting", "Workflow Automation"]
+    title: "Workflow & Campaign Automation",
+    desc: "Streamline production and scale campaigns without compromising craft.",
+    sub: ["Workflow Automation", "Campaign Automation", "Creative Pipelines"]
   },
   {
     title: "Strategy",
@@ -36,9 +36,9 @@ const services = [
     sub: ["Marketing Strategy", "Campaign Strategy", "Concept Creation"]
   },
   {
-    title: "Music & Sound",
-    desc: "Custom ad music, sound design, and our curated library.",
-    sub: ["Custom Ad Music", "Sound Design", "Audio Mixing", "Music Library"]
+    title: "Soundtrack & Scoring",
+    desc: "Copyright-free tracks for ads and content—an add-on for brands and creators.",
+    sub: ["Ad Soundtracks", "Sound Design", "Scoring", "Soundtrack Library"]
   }
 ];
 

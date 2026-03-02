@@ -24,7 +24,7 @@ export function Footer() {
             <ul className="space-y-4 font-sans text-neutral-300">
               <li><Link href="/services" className="hover:text-rose-gold transition-colors">Services</Link></li>
               <li><Link href="/work" className="hover:text-rose-gold transition-colors">Work</Link></li>
-              <li><Link href="/music" className="hover:text-rose-gold transition-colors">Music Library</Link></li>
+              <li><Link href="/music" className="hover:text-rose-gold transition-colors">Ad Soundtracks</Link></li>
               <li><Link href="/contact" className="hover:text-rose-gold transition-colors">Contact</Link></li>
             </ul>
           </div>

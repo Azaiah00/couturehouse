@@ -5,7 +5,6 @@ import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/lib/i18n/context";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
-import { MagneticCursor } from "@/components/animations/MagneticCursor";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -47,7 +46,6 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <SmoothScroll>
-            <MagneticCursor />
             <Header />
             <main className="min-h-screen">
               <PageTransition>

@@ -13,9 +13,9 @@ const SERVICES = [
   "Creative & Design",
   "Specialized Production",
   "Digital & Web",
-  "AI & Automation",
+  "Workflow & Campaign Automation",
   "Strategy",
-  "Music & Sound"
+  "Soundtrack & Scoring"
 ] as const;
 
 const INDUSTRIES = [

@@ -3,11 +3,11 @@
 import { InfiniteMarquee } from "@/components/animations/InfiniteMarquee";
 
 const industries1 = [
-  "Fashion", "Cannabis", "E-Commerce", "Jewelry", "Home Goods", "Beauty"
+  "Fashion", "Retail", "E-Commerce", "Beauty", "Lifestyle", "Consumer Brands"
 ];
 
 const industries2 = [
-  "Podcasts", "Real Estate", "Automotive", "Musicians", "Fitness", "Spas"
+  "DTC Brands", "Restaurants", "Wellness", "Entertainment", "Professional Services", "Creators"
 ];
 
 export function IndustriesMarquee() {

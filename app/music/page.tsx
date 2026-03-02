@@ -57,10 +57,10 @@ export default function MusicPage() {
     <main className="pt-40 pb-20 bg-charcoal min-h-screen">
       <div className="container mx-auto px-6 mb-16">
         <TextReveal as="h1" className="text-5xl md:text-8xl font-serif text-white uppercase tracking-widest mb-6">
-          Music <span className="text-rose-gold">Library</span>
+          Ad <span className="text-rose-gold">Soundtracks</span>
         </TextReveal>
         <p className="text-neutral-400 max-w-2xl font-sans text-lg">
-          Explore our curated selection of custom tracks and soundscapes designed specifically for high-impact campaigns.
+          Copyright-free soundtracks and scoring for ads and digital content. An optional add-on for brands and creators—use in your campaigns without licensing worries.
         </p>
       </div>
 
@@ -81,7 +81,7 @@ export default function MusicPage() {
       {/* Track List */}
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-serif text-white uppercase tracking-widest">All Tracks</h2>
+          <h2 className="text-xl font-serif text-white uppercase tracking-widest">Soundtracks</h2>
           <button 
             onClick={() => setMuted(!muted)}
             className="text-neutral-400 hover:text-white transition-colors"
@@ -129,7 +129,7 @@ export default function MusicPage() {
         
         <div className="mt-16 text-center">
           <p className="text-neutral-500 font-sans text-sm">
-            Need something specific? <a href="/contact" className="text-rose-gold hover:underline">Request a custom track</a>.
+            Need something specific? <a href="/contact" className="text-rose-gold hover:underline">Request custom scoring</a>.
           </p>
         </div>
       </div>

@@ -48,13 +48,13 @@ const serviceCategories = [
     ]
   },
   {
-    id: "ai-automation",
-    title: "AI & Automation",
-    desc: "Maximize efficiency and creativity with tailored AI strategies.",
+    id: "automation",
+    title: "Workflow & Campaign Automation",
+    desc: "Streamline production and scale campaigns without compromising craft.",
     items: [
-      "AI-Powered Creative - Human brilliance powered by AI",
-      "AI Consulting - Maximize AI with tailored strategies",
-      "Automation - Move fast without compromising craft"
+      "Workflow Automation - Efficient pipelines for creative production",
+      "Campaign Automation - Scale launches and multi-channel execution",
+      "Creative Pipelines - Move fast without compromising quality"
     ]
   },
   {
@@ -68,13 +68,13 @@ const serviceCategories = [
     ]
   },
   {
-    id: "music",
-    title: "Music & Sound",
-    desc: "Sonic architecture to make your brand unforgettable.",
+    id: "soundtrack",
+    title: "Soundtrack & Scoring",
+    desc: "Copyright-free soundtracks and scoring for ads and digital content. An optional add-on for brands and creators—no licensing worries.",
     items: [
-      "Custom Ad Music - Tailored tracks for your campaigns",
-      "Sound Design - Immersive audio for digital experiences",
-      "Music Library - Access to our exclusive tracks"
+      "Ad Soundtracks - Tailored scoring for campaigns and spots",
+      "Sound Design - Immersive audio for digital content",
+      "Soundtrack Library - Copyright-free tracks for ads and creators"
     ]
   }
 ];

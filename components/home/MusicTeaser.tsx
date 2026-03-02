@@ -45,10 +45,10 @@ export function MusicTeaser() {
 
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
         <TextReveal as="h2" className="text-3xl md:text-5xl font-serif text-white uppercase mb-6 tracking-widest">
-          Sonic Architecture
+          Ad Soundtracks & Scoring
         </TextReveal>
         <p className="text-neutral-400 max-w-xl font-sans mb-10 text-lg">
-          Custom ad music, sound design, and an exclusive audio library built to elevate your campaigns.
+          Copyright-free soundtracks and scoring for ads and digital content. An optional add-on for brands and creators—no licensing headaches.
         </p>
         <Link 
           href="/music"
@@ -57,7 +57,7 @@ export function MusicTeaser() {
           <div className="w-10 h-10 bg-crimson text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
             <Play className="w-4 h-4 ml-1" />
           </div>
-          <span className="font-sans uppercase tracking-widest text-sm text-white">Explore Our Sound</span>
+          <span className="font-sans uppercase tracking-widest text-sm text-white">Browse Soundtracks</span>
         </Link>
       </div>
     </section>
