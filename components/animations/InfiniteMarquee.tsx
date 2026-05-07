@@ -1,43 +1,33 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { ReactNode } from "react";
 
 interface InfiniteMarqueeProps {
-  children: React.ReactNode;
+  children: ReactNode;
   speed?: number;
   direction?: 1 | -1;
   className?: string;
 }
 
-export function InfiniteMarquee({ children, speed = 1, direction = 1, className = "" }: InfiniteMarqueeProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!trackRef.current) return;
-    
-    const track = trackRef.current;
-    
-    let tween: gsap.core.Tween;
-    if (direction === 1) {
-      tween = gsap.fromTo(track, { xPercent: 0 }, { xPercent: -50, ease: "none", duration: 20 / speed, repeat: -1 });
-    } else {
-      tween = gsap.fromTo(track, { xPercent: -50 }, { xPercent: 0, ease: "none", duration: 20 / speed, repeat: -1 });
-    }
-
-    return () => {
-      tween.kill();
-    };
-  }, [speed, direction]);
+export function InfiniteMarquee({
+  children,
+  speed = 1,
+  direction = 1,
+  className = "",
+}: InfiniteMarqueeProps) {
+  const duration = Math.max(8, 20 / speed);
 
   return (
-    <div ref={containerRef} className={`overflow-hidden flex whitespace-nowrap ${className}`}>
-      <div ref={trackRef} className="flex shrink-0 min-w-max w-max">
-        <div className="flex shrink-0 min-w-max px-4">
-          {children}
-        </div>
-        <div className="flex shrink-0 min-w-max px-4">
+    <div className={`overflow-hidden flex whitespace-nowrap ${className}`}>
+      <div
+        className="flex shrink-0 min-w-max w-max"
+        style={{
+          animation: `marqueeScroll ${duration}s linear infinite`,
+          animationDirection: direction === -1 ? "reverse" : "normal",
+        }}
+      >
+        <div className="flex shrink-0 min-w-max px-4">{children}</div>
+        <div className="flex shrink-0 min-w-max px-4" aria-hidden="true">
           {children}
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/lib/i18n/context";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
+import { Analytics } from "@/components/analytics/Analytics";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -96,15 +97,19 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased bg-charcoal text-white overflow-x-hidden`}
       >
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <LanguageProvider>
           <SmoothScroll>
             <Header />
-            <main className="min-h-screen">
+            <main id="main" className="min-h-screen">
               <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
           </SmoothScroll>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );

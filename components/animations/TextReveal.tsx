@@ -1,63 +1,46 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
-import gsap from "gsap";
-import SplitType from "split-type";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
+type TextRevealTag =
+  | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  | "p" | "span" | "div";
 
 interface TextRevealProps {
   children: ReactNode;
   className?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as?: React.ElementType<any>;
+  as?: TextRevealTag;
   delay?: number;
 }
 
-export function TextReveal({ children, className = "", as: Component = "div", delay = 0 }: TextRevealProps) {
-  const textRef = useRef<HTMLElement>(null);
+const motionMap = {
+  h1: motion.h1, h2: motion.h2, h3: motion.h3,
+  h4: motion.h4, h5: motion.h5, h6: motion.h6,
+  p: motion.p, span: motion.span, div: motion.div,
+} as const;
 
-  useEffect(() => {
-    if (!textRef.current) return;
-
-    const timer = setTimeout(() => {
-      if (!textRef.current) return;
-
-      const split = new SplitType(textRef.current as HTMLElement, {
-        types: "chars,words",
-        tagName: "span",
-      });
-
-      gsap.fromTo(
-        split.chars,
-        { y: 100, opacity: 0, rotateX: -90 },
-        {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          duration: 1,
-          stagger: 0.03,
-          ease: "power4.out",
-          delay,
-          scrollTrigger: {
-            trigger: textRef.current,
-            start: "top 90%",
-          },
-        }
-      );
-
-      return () => {
-        split.revert();
-      };
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [delay]);
+export function TextReveal({
+  children,
+  className = "",
+  as = "div",
+  delay = 0,
+}: TextRevealProps) {
+  const reduced = useReducedMotion();
+  const Component = motionMap[as];
 
   return (
-    // @ts-expect-error -- ElementType<any> ref forwarding is safe at runtime
-    <Component ref={textRef} className={className}>
+    <Component
+      className={className}
+      initial={reduced ? { opacity: 1 } : { opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{
+        duration: 0.95,
+        delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+    >
       {children}
     </Component>
   );

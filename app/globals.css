@@ -30,14 +30,8 @@
   --animate-fade-in: fadeIn 1s ease-out forwards;
 
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes fadeIn {
@@ -82,7 +76,6 @@
   color: transparent;
 }
 
-/* Display heading — large, uppercase, tight tracking */
 @utility display-heading {
   font-family: var(--font-serif);
   text-transform: uppercase;
@@ -91,7 +84,6 @@
   line-height: 0.95;
 }
 
-/* Eyebrow label — small, uppercase, wide tracking */
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -121,5 +113,36 @@
     text-transform: uppercase;
     letter-spacing: -0.01em;
     font-weight: 500;
+  }
+
+  /* Skip-to-content link — visually hidden until focused */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    transform: translateY(-200%);
+    background: #ffffff;
+    color: #000000;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    z-index: 100;
+    transition: transform 0.2s ease;
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+
+  /* Honour OS-level reduced-motion preference everywhere */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

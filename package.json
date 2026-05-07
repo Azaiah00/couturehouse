@@ -1,5 +1,5 @@
 {
-  "name": "couture-house-webisite",
+  "name": "couture-house-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,16 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-slot": "^1.2.4",
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.5.0",
-    "@types/three": "^0.182.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
-    "gsap": "^3.14.2",
     "lenis": "^1.3.17",
     "lucide-react": "^0.555.0",
     "next": "16.0.8",
@@ -26,9 +21,7 @@
     "react-dom": "19.2.0",
     "react-hook-form": "^7.67.0",
     "resend": "^6.12.3",
-    "split-type": "^0.3.4",
     "tailwind-merge": "^3.4.0",
-    "three": "^0.182.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {

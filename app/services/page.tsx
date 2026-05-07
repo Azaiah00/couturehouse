@@ -1,157 +1,132 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useReducedMotion } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const serviceCategories = [
   {
     id: "creative-design",
     title: "Creative & Design",
-    desc: "Eye-catching designs that perform and tell your brand's unique story.",
+    desc: "Eye-catching design that performs and tells your brand's story.",
     items: [
-      "Ad Creative - High-performing assets for paid social",
-      "Social Media Creative - Engaging assets for all platforms",
-      "Presentation Design - Captivating slides that tell your story",
-      "Illustration Design - Visual storytelling for your brand",
-      "Branding Services - Expertise & custom design services",
-      "eBooks & Report Design - Your digital content supercharged",
-      "Print Design - Tangible designs that leave a lasting impression",
-      "Packaging & Merchandise - Bring your brand to life"
-    ]
+      "Ad Creative — High-performing assets for paid social",
+      "Social Media Creative — Engaging assets for every platform",
+      "Presentation Design — Captivating slides that tell your story",
+      "Illustration — Visual storytelling for your brand",
+      "Branding — Identity and design systems",
+      "Editorial — Reports, eBooks, lookbooks",
+      "Print — Tangible work that lasts",
+      "Packaging & Merchandise — Bring the brand into the world",
+    ],
   },
   {
     id: "production",
     title: "Specialized Production",
     desc: "Effortless video production and immersive experiences at scale.",
     items: [
-      "Video Production - Scale your video output effortlessly",
-      "Motion Design - For websites, ads, and presentations",
-      "Immersive Design - Innovative solutions for 3D/AR",
-      "Product Staging - High-quality staging for ecommerce",
-      "Realistic AI Ads - Next-gen production for modern brands"
-    ]
+      "Video Production — Scale your video output",
+      "Motion Design — For ads, web, and presentations",
+      "Immersive Design — 3D and AR-ready experiences",
+      "Product Staging — Studio-grade ecommerce imagery",
+      "AI Production — Next-gen creative pipelines",
+    ],
   },
   {
     id: "digital",
     title: "Digital & Web",
     desc: "Stunning digital experiences built to engage and convert.",
     items: [
-      "Web Design - Stunning websites and landing pages",
-      "Design Systems - Robust systems driving visual consistency",
-      "Product Design - Engaging & intuitive experiences",
-      "Email Creation - Click-worthy emails that drive engagement",
-      "Copywriting - Persuasive words for clarity and action"
-    ]
+      "Web Design — Sites and landing pages",
+      "Design Systems — Consistency at scale",
+      "Product Design — Engaging, intuitive interfaces",
+      "Email — Click-worthy, deliverable, on-brand",
+      "Copywriting — Words that convert",
+    ],
   },
   {
     id: "automation",
     title: "Workflow & Campaign Automation",
     desc: "Streamline production and scale campaigns without compromising craft.",
     items: [
-      "Workflow Automation - Efficient pipelines for creative production",
-      "Campaign Automation - Scale launches and multi-channel execution",
-      "Creative Pipelines - Move fast without compromising quality"
-    ]
+      "Workflow Automation — Efficient creative pipelines",
+      "Campaign Automation — Multi-channel launches",
+      "Creative Pipelines — Move fast without losing quality",
+    ],
   },
   {
     id: "strategy",
     title: "Strategy",
-    desc: "Grow your brand with expert consultants and multi-market campaigns.",
+    desc: "Brand and campaign strategy from launch to scale.",
     items: [
-      "Marketing Strategy - Comprehensive growth roadmaps",
-      "Campaign Strategy - Messaging and concept for multi-market campaigns",
-      "Concept Creation - Big ideas crafted for maximum impact"
-    ]
+      "Marketing Strategy — Comprehensive growth roadmaps",
+      "Campaign Strategy — Concepts and messaging that move",
+      "Brand Positioning — Sharper, more defensible territory",
+    ],
   },
   {
     id: "soundtrack",
     title: "Soundtrack & Scoring",
-    desc: "Copyright-free soundtracks and scoring for ads and digital content. An optional add-on for brands and creators—no licensing worries.",
+    desc: "Original soundtracks and scoring for ads and digital content. License-free for clients.",
     items: [
-      "Ad Soundtracks - Tailored scoring for campaigns and spots",
-      "Sound Design - Immersive audio for digital content",
-      "Soundtrack Library - Copyright-free tracks for ads and creators"
-    ]
-  }
+      "Ad Soundtracks — Tailored scoring for spots",
+      "Sound Design — Immersive audio for digital content",
+      "Soundtrack Library — Reusable across campaigns",
+    ],
+  },
 ];
 
 export default function ServicesPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    sectionsRef.current.forEach((section, i) => {
-      if (!section) return;
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-          }
-        }
-      );
-    });
-  }, []);
+  const reduced = useReducedMotion();
 
   return (
-    <main className="pt-40 pb-20 bg-charcoal min-h-screen" ref={containerRef}>
-      <div className="container mx-auto px-6 mb-24">
-        <TextReveal as="h1" className="text-5xl md:text-8xl font-serif text-white uppercase tracking-widest mb-6">
-          Our <span className="text-crimson">Services</span>
-        </TextReveal>
-        <p className="text-neutral-400 max-w-2xl font-sans text-lg">
-          We provide a comprehensive suite of creative and marketing services designed to scale your brand across every channel.
-        </p>
-      </div>
-
-      <div className="container mx-auto px-6">
-        <div className="space-y-16 md:space-y-32">
-          {serviceCategories.map((category, i) => (
-            <div 
-              key={category.id}
-              ref={(el) => { sectionsRef.current[i] = el; }}
-              className="border-t border-white/10 pt-16"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div className="md:col-span-1">
-                  <h2 className="text-3xl md:text-4xl font-serif text-white uppercase mb-4">{category.title}</h2>
-                  <p className="text-dusty-rose font-sans text-sm">{category.desc}</p>
-                </div>
-                <div className="md:col-span-2">
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {category.items.map((item, idx) => {
-                      const [title, desc] = item.split(" - ");
-                      return (
-                        <li key={idx} className="glass-panel-dark p-8 rounded-xl border border-white/5 hover:border-dusty-rose/30 transition-colors group">
-                          <h3 className="text-white font-serif text-xl mb-3 group-hover:text-crimson transition-colors">{title}</h3>
-                          {desc && <p className="text-neutral-400 font-sans text-sm leading-relaxed">{desc}</p>}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
+    <main className="bg-charcoal min-h-screen pt-32 md:pt-40 pb-20 site-inset">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="max-w-4xl mb-20 md:mb-32">
+          <span className="eyebrow mb-6 block">What we do</span>
+          <TextReveal
+            as="h1"
+            className="display-heading text-white text-[clamp(3rem,9vw,9rem)] leading-[0.92]"
+          >
+            One studio.<br />Every channel.
+          </TextReveal>
+          <p className="text-white/65 max-w-2xl mt-8 font-sans text-base md:text-lg leading-relaxed">
+            A connected suite of services designed to scale your brand across every channel —
+            strategy, creative, production, digital, performance and original sound.
+          </p>
         </div>
 
-        {/* Cannabis Disclaimer */}
-        <div className="mt-32 p-8 glass-panel-dark border border-white/5 rounded-xl text-center max-w-4xl mx-auto">
-          <p className="text-xs text-neutral-500 font-sans uppercase tracking-widest leading-relaxed">
-            Clients are responsible for compliance with local regulations and platform policies. We build creative and strategies designed for compliant execution.
-          </p>
+        <div className="space-y-px bg-line">
+          {serviceCategories.map((cat, i) => (
+            <motion.div
+              key={cat.id}
+              initial={reduced ? { opacity: 1 } : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-15%" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-charcoal py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12"
+            >
+              <div className="md:col-span-1">
+                <span className="text-white/40 font-sans text-sm tracking-[0.22em]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="md:col-span-4">
+                <h2 className="text-white text-3xl md:text-5xl uppercase tracking-tight leading-[0.95] mb-4">
+                  {cat.title}
+                </h2>
+                <p className="text-white/55 font-sans text-sm md:text-base leading-relaxed max-w-md">
+                  {cat.desc}
+                </p>
+              </div>
+              <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                {cat.items.map((item) => (
+                  <p key={item} className="text-white/75 font-sans text-sm md:text-base">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </main>

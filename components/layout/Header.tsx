@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -13,7 +13,7 @@ const navItems = [
   { name: "Work", href: "/work" },
   { name: "Music", href: "/music" },
   { name: "Models", href: "/models" },
-  { name: "For Brands", href: "/for-brands" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -22,6 +22,9 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const pathname = usePathname();
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const previousFocus = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 30);
@@ -34,9 +37,54 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
+  // Lock body scroll, save focus, focus first menu item, restore on close.
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!open) {
+      document.body.style.overflow = "";
+      previousFocus.current?.focus?.();
+      return;
+    }
+    previousFocus.current = document.activeElement as HTMLElement;
+    document.body.style.overflow = "hidden";
+
+    const firstLink = overlayRef.current?.querySelector<HTMLElement>("a, button");
+    firstLink?.focus();
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Focus trap + Escape to close
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (e.key !== "Tab" || !overlayRef.current) return;
+
+      const focusable = overlayRef.current.querySelectorAll<HTMLElement>(
+        'a, button, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement;
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
   return (
@@ -50,7 +98,7 @@ export function Header() {
         )}
       >
         <div className="site-inset flex items-center justify-between py-5 md:py-6">
-          <Link href="/" className="relative z-50 flex items-center">
+          <Link href="/" className="relative z-50 flex items-center" aria-label="Couture House home">
             {logoError ? (
               <span className="text-white text-base md:text-lg uppercase tracking-[0.32em]">
                 Couture House
@@ -71,9 +119,12 @@ export function Header() {
           </Link>
 
           <button
+            ref={triggerRef}
             onClick={() => setOpen(!open)}
             className="relative z-50 flex items-center gap-3 text-white group"
             aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="primary-menu"
           >
             <span className="hidden sm:inline text-[11px] uppercase tracking-[0.22em] text-white/70 group-hover:text-white transition-colors">
               {open ? "Close" : "Menu"}
@@ -88,6 +139,11 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={overlayRef}
+            id="primary-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Primary navigation"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -100,7 +156,7 @@ export function Header() {
                   <span className="eyebrow">Navigate</span>
                 </div>
 
-                <nav className="md:col-span-7">
+                <nav className="md:col-span-7" aria-label="Primary">
                   <ul className="flex flex-col">
                     {navItems.map((item, i) => {
                       const active = pathname === item.href;
@@ -113,19 +169,18 @@ export function Header() {
                         >
                           <Link
                             href={item.href}
-                            className={cn(
-                              "group flex items-baseline gap-4 py-4 md:py-5 border-b border-line",
-                              "hover:border-white/40 transition-colors"
-                            )}
+                            className="group flex items-baseline gap-4 py-4 md:py-5 border-b border-line hover:border-white/40 transition-colors"
+                            aria-current={active ? "page" : undefined}
                           >
                             <span className="text-white/35 font-sans text-xs tracking-[0.22em] w-8">
                               {String(i + 1).padStart(2, "0")}
                             </span>
-                            <span className={cn(
-                              "uppercase tracking-tight text-2xl md:text-3xl lg:text-4xl",
-                              active ? "text-white" : "text-white/70 group-hover:text-white",
-                              "transition-colors"
-                            )}>
+                            <span
+                              className={cn(
+                                "uppercase tracking-tight text-2xl md:text-3xl lg:text-4xl transition-colors",
+                                active ? "text-white" : "text-white/70 group-hover:text-white",
+                              )}
+                            >
                               {item.name}
                             </span>
                           </Link>
@@ -144,12 +199,22 @@ export function Header() {
               >
                 <div className="md:col-span-3 md:col-start-1">
                   <p className="text-white/40 mb-2">Get in touch</p>
-                  <a href="mailto:hello@couturehouse.co" className="text-white hover:text-white/70 normal-case tracking-normal text-sm">
+                  <a
+                    href="mailto:hello@couturehouse.co"
+                    className="text-white hover:text-white/70 normal-case tracking-normal text-sm"
+                  >
                     hello@couturehouse.co
                   </a>
                 </div>
                 <div className="md:col-span-5 flex flex-wrap gap-x-6 gap-y-2 md:items-end">
-                  <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>
+                  <a
+                    href="https://www.instagram.com/couturehouse.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    Instagram
+                  </a>
                   <a href="#" className="hover:text-white">LinkedIn</a>
                   <a href="#" className="hover:text-white">Twitter</a>
                 </div>
