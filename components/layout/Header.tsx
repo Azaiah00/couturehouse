@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { name: "Services", href: "/services" },
@@ -72,10 +72,15 @@ export function Header() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="relative z-50 w-10 h-10 flex items-center justify-center text-white"
+            className="relative z-50 flex items-center gap-3 text-white group"
             aria-label={open ? "Close menu" : "Open menu"}
           >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <span className="hidden sm:inline text-[11px] uppercase tracking-[0.22em] text-white/70 group-hover:text-white transition-colors">
+              {open ? "Close" : "Menu"}
+            </span>
+            <span className="w-9 h-9 flex items-center justify-center border border-white/20 group-hover:border-white/60 transition-colors">
+              {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </span>
           </button>
         </div>
       </header>
@@ -86,52 +91,76 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black flex flex-col"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl"
           >
-            <div className="flex-1 flex flex-col justify-center site-inset">
-              <nav className="max-w-[1600px] mx-auto w-full">
-                <ul className="flex flex-col gap-2 md:gap-4">
-                  {navItems.map((item, i) => (
-                    <motion.li
-                      key={item.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <Link
-                        href={item.href}
-                        className="group flex items-center justify-between py-4 md:py-6 border-b border-line hover:border-white/40 transition-colors"
-                      >
-                        <span className="display-heading text-white text-[clamp(2.5rem,9vw,8rem)] leading-[0.95] group-hover:text-white/70 transition-colors">
-                          {item.name}
-                        </span>
-                        <ArrowUpRight className="w-8 h-8 md:w-12 md:h-12 text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                      </Link>
-                    </motion.li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
+            <div className="h-full flex flex-col pt-28 md:pt-32 pb-12 site-inset">
+              <div className="max-w-[1600px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 flex-1">
+                <div className="md:col-span-3 md:col-start-1 flex flex-col gap-3">
+                  <span className="eyebrow">Navigate</span>
+                </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="border-t border-line site-inset py-8 max-w-[1600px] mx-auto w-full flex flex-col md:flex-row md:justify-between gap-6 text-xs uppercase tracking-[0.22em] text-white/50 font-sans"
-            >
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>
-                <a href="#" className="hover:text-white">LinkedIn</a>
-                <a href="#" className="hover:text-white">Twitter</a>
+                <nav className="md:col-span-7">
+                  <ul className="flex flex-col">
+                    {navItems.map((item, i) => {
+                      const active = pathname === item.href;
+                      return (
+                        <motion.li
+                          key={item.name}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4, delay: 0.05 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                          <Link
+                            href={item.href}
+                            className={cn(
+                              "group flex items-baseline gap-4 py-4 md:py-5 border-b border-line",
+                              "hover:border-white/40 transition-colors"
+                            )}
+                          >
+                            <span className="text-white/35 font-sans text-xs tracking-[0.22em] w-8">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <span className={cn(
+                              "uppercase tracking-tight text-2xl md:text-3xl lg:text-4xl",
+                              active ? "text-white" : "text-white/70 group-hover:text-white",
+                              "transition-colors"
+                            )}>
+                              {item.name}
+                            </span>
+                          </Link>
+                        </motion.li>
+                      );
+                    })}
+                  </ul>
+                </nav>
               </div>
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                <span>New York</span>
-                <span>Paris</span>
-                <span>Milan</span>
-                <span>London</span>
-              </div>
-            </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                className="border-t border-line pt-8 mt-12 max-w-[1600px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-6 text-xs uppercase tracking-[0.22em] text-white/50 font-sans"
+              >
+                <div className="md:col-span-3 md:col-start-1">
+                  <p className="text-white/40 mb-2">Get in touch</p>
+                  <a href="mailto:hello@couturehouse.co" className="text-white hover:text-white/70 normal-case tracking-normal text-sm">
+                    hello@couturehouse.co
+                  </a>
+                </div>
+                <div className="md:col-span-5 flex flex-wrap gap-x-6 gap-y-2 md:items-end">
+                  <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>
+                  <a href="#" className="hover:text-white">LinkedIn</a>
+                  <a href="#" className="hover:text-white">Twitter</a>
+                </div>
+                <div className="md:col-span-4 flex flex-wrap gap-x-6 gap-y-2 md:justify-end md:items-end">
+                  <span>NYC</span>
+                  <span>Paris</span>
+                  <span>Milan</span>
+                  <span>London</span>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

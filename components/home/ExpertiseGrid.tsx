@@ -1,28 +1,41 @@
 "use client";
 
+import Image from "next/image";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TextReveal } from "@/components/animations/TextReveal";
-import { motion } from "framer-motion";
 
+// Swap these images for one branded photo per category.
+// Portrait 3:4 works best. ~1200px tall is plenty.
 const categories = [
-  "Beauty & Personal Care",
-  "Fashion & Apparel",
-  "Home & Lifestyle",
-  "Wellness",
-  "Food & Beverage",
-  "Hospitality",
-  "Consumer Tech",
-  "Sport & Performance",
-  "Spirits & Wine",
-  "Entertainment",
-  "Creators & Talent",
-  "Direct-to-Consumer",
+  { label: "Beauty & Personal Care", img: "/download (4).png" },
+  { label: "Fashion & Apparel", img: "/download (6).png" },
+  { label: "Home & Lifestyle", img: "/download (8).png" },
+  { label: "Wellness", img: "/download (10).png" },
+  { label: "Food & Beverage", img: "/download (12).png" },
+  { label: "Hospitality", img: "/download (14).png" },
+  { label: "Consumer Tech", img: "/download (16).png" },
+  { label: "Sport & Performance", img: "/download (18).png" },
+  { label: "Spirits & Wine", img: "/download (20).png" },
+  { label: "Entertainment", img: "/download (22).png" },
+  { label: "Creators & Talent", img: "/download (24).png" },
+  { label: "Direct-to-Consumer", img: "/download (26).png" },
 ];
 
 export function ExpertiseGrid() {
+  const scroller = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: -1 | 1) => {
+    const el = scroller.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLDivElement>("[data-card]")?.offsetWidth ?? 320;
+    el.scrollBy({ left: dir * (card + 16) * 2, behavior: "smooth" });
+  };
+
   return (
-    <section className="bg-charcoal-light py-32 md:py-48 site-inset">
-      <div className="max-w-[1600px] mx-auto">
-        <div className="mb-20 md:mb-28 max-w-4xl">
+    <section className="bg-charcoal-light py-32 md:py-48 border-t border-line overflow-hidden">
+      <div className="max-w-[1600px] mx-auto site-inset mb-16 md:mb-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div className="max-w-3xl">
           <span className="eyebrow mb-6 block">Expertise Across Categories</span>
           <TextReveal
             as="h2"
@@ -30,27 +43,54 @@ export function ExpertiseGrid() {
           >
             Broad in reach.<br />Precise in approach.
           </TextReveal>
+          <p className="text-white/65 max-w-xl mt-8 font-sans text-base md:text-lg leading-relaxed">
+            We build for category leaders — calibrating creative, channel, and cadence
+            to the rhythm of each market we work in.
+          </p>
         </div>
+        <div className="hidden md:flex gap-3">
+          <button
+            onClick={() => scroll(-1)}
+            aria-label="Previous"
+            className="w-14 h-14 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => scroll(1)}
+            aria-label="Next"
+            className="w-14 h-14 rounded-full border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t border-l border-line">
-          {categories.map((c, i) => (
-            <motion.div
-              key={c}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.04 }}
-              className="border-b border-r border-line py-10 md:py-14 px-6 md:px-8 group hover:bg-surface transition-colors"
-            >
-              <span className="text-white/30 font-sans text-xs tracking-[0.2em] block mb-4">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-white text-base md:text-xl uppercase tracking-tight leading-tight">
-                {c}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+      <div
+        ref={scroller}
+        className="flex gap-4 md:gap-5 overflow-x-auto snap-x site-inset pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {categories.map((c, i) => (
+          <div
+            key={c.label}
+            data-card
+            className="shrink-0 w-[260px] md:w-[300px] lg:w-[340px] snap-start group"
+          >
+            <div className="relative aspect-[3/4] bg-surface overflow-hidden mb-5">
+              <Image
+                src={c.img}
+                alt={c.label}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                sizes="(max-width: 768px) 260px, (max-width: 1024px) 300px, 340px"
+                loading={i < 4 ? "eager" : "lazy"}
+              />
+            </div>
+            <p className="text-white text-sm md:text-base uppercase tracking-[0.18em]">
+              {c.label}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
