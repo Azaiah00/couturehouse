@@ -1,93 +1,84 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { TextReveal } from "@/components/animations/TextReveal";
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
 
 export default function ContactPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (!containerRef.current) return;
-    gsap.fromTo(
-      containerRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1 }
-    );
-  }, []);
-
   return (
-    <main className="pt-40 pb-20 bg-charcoal min-h-screen" ref={containerRef}>
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <TextReveal as="h1" className="text-5xl md:text-8xl font-serif text-white uppercase tracking-widest mb-6">
-            Let's <span className="text-crimson">Connect</span>
+    <main className="bg-charcoal min-h-screen pt-32 md:pt-40 pb-20 site-inset">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="max-w-4xl mb-20 md:mb-28">
+          <span className="eyebrow mb-6 block">Start Something</span>
+          <TextReveal
+            as="h1"
+            className="display-heading text-white text-[clamp(3rem,9vw,9rem)] leading-[0.92]"
+          >
+            Tell us about<br />your brand.
           </TextReveal>
-          <p className="text-neutral-400 max-w-2xl mx-auto font-sans text-lg">
-            Ready to elevate your brand's digital presence? Tell us about your project and we'll be in touch.
+          <p className="text-white/65 max-w-xl mt-8 font-sans text-base md:text-lg leading-relaxed">
+            For founders and brand builders ready for a connected creative engine.
+            Send the brief — we&rsquo;ll come back with a point of view.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 max-w-7xl mx-auto">
-          {/* Contact Info */}
-          <div className="lg:col-span-1 space-y-12">
-            <div>
-              <h3 className="text-2xl font-serif text-white mb-8">Contact Info</h3>
-              <div className="space-y-8">
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 rounded-full bg-crimson/10 border border-crimson/20 flex items-center justify-center text-crimson shrink-0">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-neutral-500 font-sans uppercase tracking-widest mb-2">Email</p>
-                    <a href="mailto:hello@couturehouse.co" className="text-lg font-sans text-white hover:text-rose-gold transition-colors">
-                      hello@couturehouse.co
-                    </a>
-                  </div>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <aside className="lg:col-span-4 flex flex-col gap-12 border-t border-line pt-10 lg:border-t-0 lg:pt-0 lg:border-r lg:pr-12 lg:border-line">
+            <Block label="Email">
+              <a
+                href="mailto:hello@couturehouse.co"
+                className="text-white text-lg md:text-xl hover:text-white/70 transition-colors break-all"
+              >
+                hello@couturehouse.co
+              </a>
+            </Block>
+            <Block label="Studio">
+              <ul className="text-white text-lg md:text-xl space-y-1">
+                <li>New York</li>
+                <li>Paris</li>
+                <li>Milan</li>
+                <li>London</li>
+              </ul>
+            </Block>
+            <Block label="Follow">
+              <ul className="text-white space-y-1 font-sans text-sm">
+                <li>
+                  <a
+                    href="https://www.instagram.com/couturehouse.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white/70 transition-colors uppercase tracking-[0.18em]"
+                  >
+                    Instagram ↗
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white/70 transition-colors uppercase tracking-[0.18em]">
+                    LinkedIn ↗
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white/70 transition-colors uppercase tracking-[0.18em]">
+                    Twitter ↗
+                  </a>
+                </li>
+              </ul>
+            </Block>
+          </aside>
 
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 rounded-full bg-crimson/10 border border-crimson/20 flex items-center justify-center text-crimson shrink-0">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-neutral-500 font-sans uppercase tracking-widest mb-2">Offices</p>
-                    <div className="space-y-2 text-white font-sans text-lg">
-                      <p>New York</p>
-                      <p>Paris</p>
-                      <p>Milan</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass-panel-dark p-8 rounded-xl">
-              <h4 className="text-xl font-serif text-white mb-4">Newsletter</h4>
-              <p className="text-neutral-400 text-sm mb-6 font-sans">
-                Insights on design, marketing, and the future of commerce.
-              </p>
-              <div className="flex flex-col gap-3">
-                <input 
-                  type="email" 
-                  placeholder="Email Address" 
-                  className="bg-charcoal border border-white/10 rounded-md px-4 py-3 w-full text-white font-sans focus:outline-none focus:border-rose-gold transition-colors"
-                />
-                <button className="bg-white/10 text-white px-4 py-3 rounded-md hover:bg-white hover:text-charcoal transition-colors font-sans uppercase tracking-widest text-sm font-medium">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="lg:col-span-2">
-             <ContactForm />
+          <div className="lg:col-span-8">
+            <ContactForm />
           </div>
         </div>
       </div>
     </main>
+  );
+}
+
+function Block({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <p className="eyebrow mb-4">{label}</p>
+      {children}
+    </div>
   );
 }

@@ -6,26 +6,29 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, AlertCircle, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SERVICES = [
   "Creative & Design",
-  "Specialized Production",
-  "Digital & Web",
-  "Workflow & Campaign Automation",
+  "Production",
+  "Digital",
+  "Performance",
   "Strategy",
-  "Soundtrack & Scoring"
+  "Sound & Score",
 ] as const;
 
 const INDUSTRIES = [
   "Fashion & Apparel",
-  "Cannabis Dispensary",
-  "Jewelry & Accessories",
-  "Home Goods",
-  "Automotive",
-  "Music & Entertainment",
-  "Other"
+  "Beauty & Personal Care",
+  "Food & Beverage",
+  "Home & Lifestyle",
+  "Wellness",
+  "Hospitality",
+  "Consumer Tech",
+  "Spirits & Wine",
+  "Entertainment",
+  "Other",
 ] as const;
 
 const formSchema = z.object({
@@ -40,120 +43,127 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+const inputClass =
+  "w-full bg-transparent border-b border-white/15 focus:border-white text-white py-4 px-0 font-sans focus:outline-none transition-colors placeholder:text-white/30";
 
-  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<FormValues>({
+export function ContactForm() {
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      services: [],
-      industry: "",
-      budget: ""
-    },
+    defaultValues: { services: [], industry: "", budget: "" },
   });
 
   const selectedServices = watch("services") || [];
 
   const toggleService = (service: string) => {
     const current = selectedServices;
-    const newServices = current.includes(service)
-      ? current.filter(s => s !== service)
+    const next = current.includes(service)
+      ? current.filter((s) => s !== service)
       : [...current, service];
-    setValue("services", newServices, { shouldValidate: true });
+    setValue("services", next, { shouldValidate: true });
   };
 
   const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    console.log(data);
+    setSubmitting(true);
+    setServerError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.error ?? "Something went wrong");
+      }
+
+      setSuccess(true);
+      reset();
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Something went wrong";
+      setServerError(msg);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  if (isSuccess) {
+  if (success) {
     return (
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="glass-panel-dark p-12 rounded-xl text-center border-t-4 border-rose-gold"
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="border border-line p-12 md:p-16 text-center"
       >
-        <div className="w-20 h-20 bg-rose-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 text-rose-gold">
-          <CheckCircle2 size={40} />
+        <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center mx-auto mb-8 text-white">
+          <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h3 className="text-2xl font-serif text-white mb-4">Message Sent Successfully</h3>
-        <p className="text-neutral-400 mb-8 font-sans">
-          Thank you for reaching out. We will review your inquiry and get back to you within 24 hours.
+        <h3 className="display-heading text-white text-3xl md:text-4xl mb-4">Thanks. We&rsquo;ll be in touch.</h3>
+        <p className="text-white/55 mb-10 font-sans max-w-md mx-auto">
+          We typically respond within one business day. In the meantime, feel free to keep exploring.
         </p>
-        <Button variant="outline" onClick={() => setIsSuccess(false)}>Send Another Message</Button>
+        <Button variant="luxury" onClick={() => setSuccess(false)}>
+          Send another inquiry
+        </Button>
       </motion.div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 glass-panel-dark p-8 md:p-12 rounded-xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Full Name</label>
-          <input
-            {...register("name")}
-            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans"
-            placeholder="John Doe"
-          />
-          {errors.name && <p className="text-red-400 text-xs font-sans">{errors.name.message}</p>}
-        </div>
-        
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Email Address</label>
-          <input
-            {...register("email")}
-            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans"
-            placeholder="john@example.com"
-          />
-          {errors.email && <p className="text-red-400 text-xs font-sans">{errors.email.message}</p>}
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Company</label>
-          <input
-            {...register("company")}
-            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans"
-            placeholder="Acme Corp"
-          />
-          {errors.company && <p className="text-red-400 text-xs font-sans">{errors.company.message}</p>}
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Industry</label>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+        <Field label="Full name" error={errors.name?.message}>
+          <input {...register("name")} placeholder="Your name" className={inputClass} />
+        </Field>
+        <Field label="Email" error={errors.email?.message}>
+          <input {...register("email")} type="email" placeholder="you@brand.com" className={inputClass} />
+        </Field>
+        <Field label="Company" error={errors.company?.message}>
+          <input {...register("company")} placeholder="Brand or company" className={inputClass} />
+        </Field>
+        <Field label="Industry" error={errors.industry?.message}>
           <select
             {...register("industry")}
-            className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors font-sans appearance-none"
+            className={cn(inputClass, "appearance-none pr-8 cursor-pointer")}
+            defaultValue=""
           >
-            <option value="" disabled>Select your industry</option>
-            {INDUSTRIES.map(ind => (
-              <option key={ind} value={ind}>{ind}</option>
+            <option value="" disabled className="bg-black">
+              Select industry
+            </option>
+            {INDUSTRIES.map((ind) => (
+              <option key={ind} value={ind} className="bg-black">
+                {ind}
+              </option>
             ))}
           </select>
-          {errors.industry && <p className="text-red-400 text-xs font-sans">{errors.industry.message}</p>}
-        </div>
+        </Field>
       </div>
 
-      <div className="space-y-4">
-        <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Services of Interest</label>
-        <div className="flex flex-wrap gap-3">
+      <div className="space-y-5">
+        <Label>Services of interest</Label>
+        <div className="flex flex-wrap gap-2">
           {SERVICES.map((service) => {
-            const isSelected = selectedServices.includes(service);
+            const selected = selectedServices.includes(service);
             return (
               <button
                 type="button"
                 key={service}
                 onClick={() => toggleService(service)}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-sans transition-all duration-300 border",
-                  isSelected 
-                    ? "bg-crimson text-white border-crimson" 
-                    : "bg-transparent text-neutral-400 border-white/10 hover:border-white/30 hover:text-white"
+                  "px-5 py-2.5 text-xs uppercase tracking-[0.18em] font-sans transition-all duration-200 border",
+                  selected
+                    ? "bg-white text-black border-white"
+                    : "bg-transparent text-white/60 border-white/20 hover:border-white/60 hover:text-white",
                 )}
               >
                 {service}
@@ -161,55 +171,88 @@ export function ContactForm() {
             );
           })}
         </div>
-        {errors.services && <p className="text-red-400 text-xs font-sans">{errors.services.message}</p>}
+        {errors.services && <ErrorText>{errors.services.message}</ErrorText>}
       </div>
 
-      <div className="space-y-4">
-        <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Project Budget</label>
-        <div className="flex flex-wrap gap-4">
-          {["<$5k", "$5k-$10k", "$10k-$25k", "$25k+"].map((budget) => (
-            <label key={budget} className="cursor-pointer">
-              <input
-                type="radio"
-                value={budget}
-                {...register("budget")}
-                className="hidden peer"
-              />
-              <span className="px-6 py-3 rounded-md border border-white/10 bg-charcoal text-neutral-400 peer-checked:border-rose-gold peer-checked:text-white transition-all font-sans inline-block hover:border-white/30">
-                {budget}
+      <div className="space-y-5">
+        <Label>Project budget</Label>
+        <div className="flex flex-wrap gap-3">
+          {["< $5k", "$5k–$10k", "$10k–$25k", "$25k–$100k", "$100k+"].map((b) => (
+            <label key={b} className="cursor-pointer">
+              <input type="radio" value={b} {...register("budget")} className="hidden peer" />
+              <span className="px-5 py-2.5 text-xs uppercase tracking-[0.18em] font-sans border border-white/20 text-white/60 peer-checked:bg-white peer-checked:text-black peer-checked:border-white hover:border-white/60 hover:text-white transition-all inline-block">
+                {b}
               </span>
             </label>
           ))}
         </div>
-        {errors.budget && <p className="text-red-400 text-xs font-sans">{errors.budget.message}</p>}
+        {errors.budget && <ErrorText>{errors.budget.message}</ErrorText>}
       </div>
 
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-neutral-300 font-sans tracking-wide uppercase">Project Details</label>
+      <Field label="Project details" error={errors.message?.message}>
         <textarea
           {...register("message")}
           rows={5}
-          className="w-full p-4 bg-charcoal border border-white/10 rounded-md text-white focus:outline-none focus:border-rose-gold transition-colors resize-none font-sans"
-          placeholder="Tell us about your goals, timeline, and current challenges..."
+          placeholder="Tell us about your goals, timeline, and where things stand today."
+          className={cn(inputClass, "resize-none")}
         />
-        {errors.message && <p className="text-red-400 text-xs font-sans">{errors.message.message}</p>}
-      </div>
+      </Field>
 
-      <Button 
-        type="submit" 
-        variant="luxury" 
-        className="w-full py-6 text-lg" 
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            Submitting...
-          </>
-        ) : (
-          "Submit Inquiry"
-        )}
-      </Button>
+      {serverError && (
+        <div className="flex items-start gap-3 border border-white/30 px-5 py-4 text-white/85 text-sm font-sans">
+          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+          <p>{serverError}</p>
+        </div>
+      )}
+
+      <div className="pt-4 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p className="text-white/50 text-xs uppercase tracking-[0.22em] font-sans">
+          We respond within 1 business day
+        </p>
+        <Button type="submit" variant="default" size="lg" disabled={submitting} className="px-10">
+          {submitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending
+            </>
+          ) : (
+            <>
+              <span>Send inquiry</span>
+              <ArrowUpRight className="w-4 h-4 ml-2" />
+            </>
+          )}
+        </Button>
+      </div>
     </form>
   );
+}
+
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <label className="text-[10px] uppercase tracking-[0.22em] text-white/50 font-sans block">
+      {children}
+    </label>
+  );
+}
+
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <Label>{label}</Label>
+      {children}
+      {error && <ErrorText>{error}</ErrorText>}
+    </div>
+  );
+}
+
+function ErrorText({ children }: { children: React.ReactNode }) {
+  return <p className="text-white/70 text-xs font-sans">{children}</p>;
 }

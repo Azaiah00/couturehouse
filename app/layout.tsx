@@ -19,19 +19,71 @@ const inter = Inter({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://couturehouse.co";
+const SITE_NAME = "Couture House Co.";
+const DEFAULT_TITLE = "Couture House Co. — A digital platform for ambitious brands";
+const DEFAULT_DESCRIPTION =
+  "A connected creative platform for the brands shaping what comes next. Strategy, design, production, performance, and original sound — built to compound.";
+
 export const metadata: Metadata = {
-  title: "Couture House Co | Digital Marketing Studio for Retail Brands",
-  description: "Design-forward marketing for ecommerce and brick & mortar. We build creative systems, paid media, and performance-minded marketing assets.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: "%s",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  generator: "Next.js",
+  keywords: [
+    "creative studio",
+    "brand strategy",
+    "design",
+    "video production",
+    "performance marketing",
+    "ad soundtracks",
+    "Couture House",
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: { canonical: "/" },
   icons: {
     icon: "/favicon-logo.png",
     apple: "/favicon-logo.png",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    creator: "@couturehouseco",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -48,9 +100,7 @@ export default function RootLayout({
           <SmoothScroll>
             <Header />
             <main className="min-h-screen">
-              <PageTransition>
-                {children}
-              </PageTransition>
+              <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
           </SmoothScroll>
