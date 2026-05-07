@@ -1,108 +1,106 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { TextReveal } from "@/components/animations/TextReveal";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
+    n: "01",
     title: "Creative & Design",
-    desc: "Ad creative, branding, illustration, and design systems.",
-    sub: ["Ad Creative", "Social Media", "Branding", "Print & Packaging", "Presentations"]
+    desc: "Brand identity, ad creative, design systems, packaging.",
+    sub: ["Identity Systems", "Ad Creative", "Packaging", "Editorial"],
   },
   {
+    n: "02",
     title: "Production",
-    desc: "Video production, motion design, and AI-generated staging.",
-    sub: ["Video Production", "Motion Design", "Animated Videos", "AI Ads", "Product Staging"]
+    desc: "Video, motion, photography, AI-assisted staging.",
+    sub: ["Video Production", "Motion Design", "Photography", "AI Production"],
   },
   {
+    n: "03",
     title: "Digital",
-    desc: "Web design, email creation, and persuasive copywriting.",
-    sub: ["Web Design", "Email Campaigns", "Product Design", "Copywriting", "Landing Pages"]
+    desc: "Web, ecommerce, email, landing pages, copy.",
+    sub: ["Web Design", "Ecommerce", "Email", "Copywriting"],
   },
   {
-    title: "Workflow & Campaign Automation",
-    desc: "Streamline production and scale campaigns without compromising craft.",
-    sub: ["Workflow Automation", "Campaign Automation", "Creative Pipelines"]
+    n: "04",
+    title: "Performance",
+    desc: "Paid media, retention, analytics, growth strategy.",
+    sub: ["Paid Media", "CRM", "Analytics", "Growth"],
   },
   {
+    n: "05",
     title: "Strategy",
-    desc: "Marketing and campaign strategy for multi-market growth.",
-    sub: ["Marketing Strategy", "Campaign Strategy", "Concept Creation"]
+    desc: "Brand, marketing, and category strategy from launch to scale.",
+    sub: ["Brand Strategy", "Go-To-Market", "Positioning", "Research"],
   },
   {
-    title: "Soundtrack & Scoring",
-    desc: "Copyright-free tracks for ads and content—an add-on for brands and creators.",
-    sub: ["Ad Soundtracks", "Sound Design", "Scoring", "Soundtrack Library"]
-  }
+    n: "06",
+    title: "Sound & Score",
+    desc: "Original ad soundtracks and scoring — license-free.",
+    sub: ["Soundtracks", "Sound Design", "Scoring", "Library"],
+  },
 ];
 
 export function ServicesGrid() {
-  const containerRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    gsap.fromTo(
-      cardsRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        }
-      }
-    );
-  }, []);
-
   return (
-    <section ref={containerRef} className="py-24 md:py-40 bg-charcoal-light relative z-10">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-          <TextReveal as="h2" className="text-4xl md:text-6xl font-serif text-white uppercase">
-            Capabilities
-          </TextReveal>
-          <Link href="/services" className="group flex items-center gap-2 text-crimson hover:text-white transition-colors uppercase tracking-widest text-sm font-sans">
-            <span>View All Services</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+    <section className="bg-charcoal py-32 md:py-48 site-inset border-t border-line">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20 md:mb-28">
+          <div className="max-w-3xl">
+            <span className="eyebrow mb-6 block">360° Connected Studio</span>
+            <TextReveal
+              as="h2"
+              className="display-heading text-white text-[clamp(2.5rem,6vw,6rem)] leading-[0.95]"
+            >
+              One studio.<br />Every channel.
+            </TextReveal>
+          </div>
+          <Link
+            href="/services"
+            className="group inline-flex items-center gap-3 text-white/70 hover:text-white text-xs uppercase tracking-[0.22em] font-sans transition-colors"
+          >
+            All Services
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((srv, i) => (
-            <div 
-              key={srv.title}
-              ref={(el) => { cardsRef.current[i] = el; }}
-              className="group glass-panel-dark p-8 rounded-xl border border-white/5 hover:border-dusty-rose/30 transition-all duration-500 overflow-hidden relative"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-line">
+          {services.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: i * 0.06 }}
+              className="bg-charcoal p-8 md:p-10 group relative overflow-hidden hover:bg-surface transition-colors duration-500 min-h-[340px] flex flex-col justify-between"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-crimson/5 via-dusty-rose/5 to-rose-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <h3 className="text-2xl font-serif text-white mb-3 group-hover:text-dusty-rose transition-colors">{srv.title}</h3>
-                <p className="text-neutral-400 font-sans text-sm mb-6 h-10">{srv.desc}</p>
-                
-                <div className="space-y-2 max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                  <div className="pt-4 border-t border-white/10">
-                    {srv.sub.map((s, idx) => (
-                      <p key={idx} className="text-xs font-sans text-neutral-300 py-1 flex items-center gap-2">
-                        <span className={`w-1 h-1 ${idx % 2 === 0 ? 'bg-crimson' : 'bg-rose-gold'} rounded-full`} />
-                        {s}
-                      </p>
-                    ))}
-                  </div>
+              <div className="flex items-start justify-between">
+                <span className="text-white/40 font-sans text-sm tracking-[0.2em]">{s.n}</span>
+                <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" />
+              </div>
+
+              <div>
+                <h3 className="text-white text-2xl md:text-3xl uppercase tracking-tight mb-4 leading-tight">
+                  {s.title}
+                </h3>
+                <p className="text-white/55 font-sans text-sm leading-relaxed mb-6">
+                  {s.desc}
+                </p>
+                <div className="flex flex-wrap gap-x-4 gap-y-1">
+                  {s.sub.map((t) => (
+                    <span
+                      key={t}
+                      className="text-white/35 group-hover:text-white/70 transition-colors text-xs uppercase tracking-[0.18em] font-sans"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -3,56 +3,28 @@
 import { TextReveal } from "@/components/animations/TextReveal";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ArrowUpRight } from "lucide-react";
 
 export function ContactCTA() {
-  const containerRef = useRef<HTMLElement>(null);
-  
-  useEffect(() => {
-    if (!containerRef.current) return;
-    
-    gsap.fromTo(
-      containerRef.current,
-      { backgroundPosition: "0% 0%" },
-      {
-        backgroundPosition: "0% 100%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        }
-      }
-    );
-  }, []);
-
   return (
-    <section 
-      ref={containerRef}
-      className="py-32 md:py-48 relative overflow-hidden flex flex-col items-center justify-center text-center px-6"
-      style={{
-        background: "radial-gradient(circle at 50% 50%, rgba(117,10,26,0.2) 0%, rgba(151,80,112,0.1) 40%, rgba(13,25,39,1) 100%)",
-        backgroundSize: "100% 200%",
-      }}
-    >
-      <div className="relative z-10 max-w-3xl">
-        <TextReveal as="h2" className="text-5xl md:text-7xl lg:text-8xl font-serif text-white uppercase mb-8 leading-none tracking-widest">
-          LET'S BUILD <br/>
-          <span className="text-crimson">SOMETHING ICONIC.</span>
+    <section className="bg-charcoal py-32 md:py-56 site-inset border-t border-line">
+      <div className="max-w-[1600px] mx-auto flex flex-col items-center text-center">
+        <span className="eyebrow mb-8 block">Start Something</span>
+        <TextReveal
+          as="h2"
+          className="display-heading text-white text-[clamp(3rem,10vw,10rem)] leading-[0.9] max-w-[16ch]"
+        >
+          Build with us.
         </TextReveal>
-        
-        <p className="text-neutral-400 font-sans mb-12 text-lg">
-          Ready to elevate your brand's digital presence? Start the conversation today.
+
+        <p className="text-white/60 font-sans mt-10 max-w-xl text-base md:text-lg leading-relaxed">
+          For founders and brand builders ready for a connected creative engine.
         </p>
-        
-        <Link href="/contact">
-          <Button variant="luxury" size="lg" className="px-12 py-6 text-lg">
-            Start a Project
+
+        <Link href="/contact" className="mt-12">
+          <Button variant="luxury" size="lg" className="px-10 py-6 text-sm">
+            <span>Get in Touch</span>
+            <ArrowUpRight className="w-4 h-4 ml-3" />
           </Button>
         </Link>
       </div>

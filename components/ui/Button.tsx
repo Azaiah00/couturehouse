@@ -4,21 +4,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-charcoal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-gold focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wider font-sans",
+  "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-charcoal transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-[0.18em] font-sans",
   {
     variants: {
       variant: {
-        default: "bg-rose-gold text-charcoal hover:bg-white",
-        outline: "border border-rose-gold/50 bg-transparent text-white hover:bg-rose-gold/10",
-        ghost: "hover:bg-white/5 text-neutral-300 hover:text-white",
-        link: "text-rose-gold underline-offset-4 hover:underline",
-        luxury: "bg-charcoal text-white border border-rose-gold/30 hover:border-rose-gold hover:shadow-[0_0_20px_rgba(156,209,243,0.3)] transition-all duration-300",
-        crimson: "bg-crimson text-white hover:bg-[#8A1022] transition-all duration-300",
+        default: "bg-white text-black hover:bg-white/90",
+        outline: "border border-white/20 bg-transparent text-white hover:bg-white hover:text-black",
+        ghost: "text-white/70 hover:text-white",
+        link: "text-white underline-offset-4 hover:underline",
+        luxury: "bg-transparent text-white border border-white/25 hover:bg-white hover:text-black",
+        crimson: "bg-white text-black hover:bg-white/85",
       },
       size: {
         default: "h-12 px-8 py-2",
-        sm: "h-10 px-6",
-        lg: "h-14 px-10 text-base",
+        sm: "h-10 px-6 text-xs",
+        lg: "h-14 px-10 text-sm",
         icon: "h-10 w-10",
       },
     },

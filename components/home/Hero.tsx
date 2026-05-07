@@ -1,45 +1,66 @@
 "use client";
 
-import { HeroThree } from "@/components/animations/HeroThree";
-import { TextReveal } from "@/components/animations/TextReveal";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = muted;
+  }, [muted]);
+
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-      <HeroThree />
-      
-      <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-20">
-        <TextReveal as="h1" className="text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-serif font-bold text-white mb-6 uppercase tracking-[0.1em] md:tracking-[0.2em] leading-tight">
-          WE CREATE <br className="hidden md:block" />
-          <span className="text-crimson">WORLDS</span>
-        </TextReveal>
-        
+    <section className="relative h-screen w-full overflow-hidden bg-black">
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        playsInline
+        muted
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
+
+      <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-32 site-inset">
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="display-heading text-white text-[clamp(3rem,11vw,11rem)] leading-[0.9] max-w-[18ch]"
+        >
+          We create<br />worlds.
+        </motion.h1>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="text-lg md:text-2xl font-sans text-dusty-rose max-w-2xl font-light tracking-wide"
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          className="mt-6 text-white/65 max-w-md font-sans text-base md:text-lg"
         >
-          Creative studio for brands that demand more.
+          A digital platform for the brands shaping what comes next.
         </motion.p>
       </div>
 
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
+      <button
+        onClick={() => setMuted(!muted)}
+        aria-label={muted ? "Unmute" : "Mute"}
+        className="absolute right-6 bottom-6 z-20 flex items-center gap-3 group"
       >
-        <span className="text-xs uppercase tracking-widest text-neutral-400 font-sans">Scroll to explore</span>
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-crimson" />
-        </motion.div>
-      </motion.div>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors hidden md:inline">
+          {muted ? "Turn up the volume" : "Mute"}
+        </span>
+        <span className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 group-hover:text-white group-hover:border-white/60 transition-all">
+          {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+        </span>
+      </button>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { Play } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { TextReveal } from "@/components/animations/TextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,16 +12,14 @@ gsap.registerPlugin(ScrollTrigger);
 export function MusicTeaser() {
   const containerRef = useRef<HTMLElement>(null);
   const barsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const colors = ['bg-rose-gold', 'bg-crimson', 'bg-dusty-rose'];
 
   useEffect(() => {
     if (!containerRef.current) return;
-
-    barsRef.current.forEach((bar, i) => {
+    barsRef.current.forEach((bar) => {
       if (!bar) return;
       gsap.to(bar, {
         height: () => 20 + Math.random() * 80 + "%",
-        duration: 0.1 + Math.random() * 0.3,
+        duration: 0.2 + Math.random() * 0.4,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -31,34 +29,45 @@ export function MusicTeaser() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-black relative overflow-hidden border-y border-white/5">
-      <div className="absolute inset-0 opacity-10 flex items-center justify-center gap-1 md:gap-2">
-        {Array.from({ length: 40 }).map((_, i) => (
-          <div 
+    <section ref={containerRef} className="bg-charcoal-light py-32 md:py-48 site-inset border-t border-line relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.06] flex items-center justify-center gap-1 md:gap-2 pointer-events-none">
+        {Array.from({ length: 60 }).map((_, i) => (
+          <div
             key={i}
             ref={(el) => { barsRef.current[i] = el; }}
-            className={`w-2 md:w-3 lg:w-4 ${colors[i % 3]} rounded-full`}
+            className="w-2 md:w-3 bg-white"
             style={{ height: "20%" }}
           />
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-        <TextReveal as="h2" className="text-3xl md:text-5xl font-serif text-white uppercase mb-6 tracking-widest">
-          Ad Soundtracks & Scoring
-        </TextReveal>
-        <p className="text-neutral-400 max-w-xl font-sans mb-10 text-lg">
-          Copyright-free soundtracks and scoring for ads and digital content. An optional add-on for brands and creators—no licensing headaches.
-        </p>
-        <Link 
-          href="/music"
-          className="group flex items-center gap-4 bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md px-8 py-4 rounded-full transition-all duration-300"
-        >
-          <div className="w-10 h-10 bg-crimson text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Play className="w-4 h-4 ml-1" />
-          </div>
-          <span className="font-sans uppercase tracking-widest text-sm text-white">Browse Soundtracks</span>
-        </Link>
+      <div className="max-w-[1600px] mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
+        <div className="md:col-span-7">
+          <span className="eyebrow mb-6 block">Sound & Score</span>
+          <TextReveal
+            as="h2"
+            className="display-heading text-white text-[clamp(2.5rem,6vw,6rem)] leading-[0.95]"
+          >
+            Original sound.<br />License-free.
+          </TextReveal>
+          <p className="text-white/60 max-w-xl font-sans mt-8 text-base md:text-lg leading-relaxed">
+            A growing library of original soundtracks and scoring built for ads, content
+            and brand films. Use them across your campaigns — without licensing friction.
+          </p>
+        </div>
+
+        <div className="md:col-span-5 flex md:justify-end">
+          <Link
+            href="/music"
+            className="group inline-flex items-center gap-4 border border-white/20 hover:border-white/60 px-8 py-5 transition-all"
+          >
+            <span className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Play className="w-4 h-4 ml-0.5" fill="currentColor" />
+            </span>
+            <span className="font-sans uppercase tracking-[0.22em] text-xs text-white">Browse Library</span>
+            <ArrowUpRight className="w-4 h-4 text-white/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          </Link>
+        </div>
       </div>
     </section>
   );

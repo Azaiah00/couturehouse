@@ -6,115 +6,135 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+
+const navItems = [
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Music", href: "/music" },
+  { name: "Models", href: "/models" },
+  { name: "For Brands", href: "/for-brands" },
+  { name: "Contact", href: "/contact" },
+];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const pathname = usePathname();
 
-  const navItems = [
-    { name: "Services", href: "/services" },
-    { name: "Work", href: "/work" },
-  ];
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 30);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    setMobileMenuOpen(false);
+    setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "glass-panel-dark py-4"
-          : "bg-transparent py-6"
-      )}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="relative z-50 group flex items-center">
-          {logoError ? (
-            <span className="font-serif text-xl md:text-2xl font-bold tracking-widest text-white">
-              COUTURE HOUSE <span className="text-crimson text-sm align-top">CO.</span>
-            </span>
-          ) : (
-            <div className="relative h-8 w-[140px] sm:h-9 sm:w-[160px] md:h-10 md:w-[180px]">
-              <Image
-                src="/logo-couture-house.png"
-                alt="Couture House Co."
-                fill
-                className="object-contain object-left"
-                priority
-                sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, 180px"
-                onError={() => setLogoError(true)}
-              />
-            </div>
-          )}
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-sans text-neutral-300 hover:text-white transition-colors tracking-wide"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Link href="/contact">
-            <Button variant="luxury" size="sm">
-              Let's Talk
-            </Button>
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          isScrolled || open
+            ? "bg-black/85 backdrop-blur-xl border-b border-line"
+            : "bg-transparent",
+        )}
+      >
+        <div className="site-inset flex items-center justify-between py-5 md:py-6">
+          <Link href="/" className="relative z-50 flex items-center">
+            {logoError ? (
+              <span className="text-white text-base md:text-lg uppercase tracking-[0.32em]">
+                Couture House
+              </span>
+            ) : (
+              <div className="relative h-7 w-[130px] md:h-8 md:w-[150px]">
+                <Image
+                  src="/logo-couture-house.png"
+                  alt="Couture House Co."
+                  fill
+                  className="object-contain object-left"
+                  priority
+                  sizes="150px"
+                  onError={() => setLogoError(true)}
+                />
+              </div>
+            )}
           </Link>
-        </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden z-50 relative text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="relative z-50 w-10 h-10 flex items-center justify-center text-white"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </header>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-black flex flex-col"
+          >
+            <div className="flex-1 flex flex-col justify-center site-inset">
+              <nav className="max-w-[1600px] mx-auto w-full">
+                <ul className="flex flex-col gap-2 md:gap-4">
+                  {navItems.map((item, i) => (
+                    <motion.li
+                      key={item.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="group flex items-center justify-between py-4 md:py-6 border-b border-line hover:border-white/40 transition-colors"
+                      >
+                        <span className="display-heading text-white text-[clamp(2.5rem,9vw,8rem)] leading-[0.95] group-hover:text-white/70 transition-colors">
+                          {item.name}
+                        </span>
+                        <ArrowUpRight className="w-8 h-8 md:w-12 md:h-12 text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                      </Link>
+                    </motion.li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 glass-panel-dark z-40 flex flex-col items-center justify-center gap-8 px-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="border-t border-line site-inset py-8 max-w-[1600px] mx-auto w-full flex flex-col md:flex-row md:justify-between gap-6 text-xs uppercase tracking-[0.22em] text-white/50 font-sans"
             >
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-2xl font-serif text-white hover:text-rose-gold transition-colors text-center uppercase tracking-widest"
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Link href="/contact" className="w-full max-w-xs mt-8">
-                <Button size="lg" className="w-full" variant="luxury">
-                  Let's Talk
-                </Button>
-              </Link>
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a>
+                <a href="#" className="hover:text-white">LinkedIn</a>
+                <a href="#" className="hover:text-white">Twitter</a>
+              </div>
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <span>New York</span>
+                <span>Paris</span>
+                <span>Milan</span>
+                <span>London</span>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
