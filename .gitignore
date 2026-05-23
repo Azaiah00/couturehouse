@@ -39,3 +39,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local Netlify folder
+.netlify
+
+# content-drop is a staging area — track docs but never commit binary content
+/content-drop/**/*.mp4
+/content-drop/**/*.mov
+/content-drop/**/*.webm
+/content-drop/**/*.m4v
+/content-drop/**/*.jpg
+/content-drop/**/*.jpeg
+/content-drop/**/*.png
+/content-drop/**/*.webp
+/content-drop/**/*.avif
+/content-drop/**/*.heic
+/content-drop/**/*.gif
+/content-drop/**/*.svg
+/content-drop/**/*.ico
+/content-drop/**/*.mp3
+/content-drop/**/*.wav
+/content-drop/**/*.aac
+/content-drop/**/*.zip
