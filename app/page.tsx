@@ -3,6 +3,7 @@ import { Manifesto } from "@/components/home/Manifesto";
 import { PhotoGallery } from "@/components/home/PhotoGallery";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { BrandPartners } from "@/components/home/BrandPartners";
+import { HomeReels } from "@/components/home/HomeReels";
 import { DifferenceSection } from "@/components/home/DifferenceSection";
 import { ExpertiseGrid } from "@/components/home/ExpertiseGrid";
 import { FeaturedWork } from "@/components/home/FeaturedWork";
@@ -19,6 +20,7 @@ export default function Home() {
       <PhotoGallery />
       <ServicesGrid />
       <BrandPartners />
+      <HomeReels />
       <DifferenceSection />
       <ExpertiseGrid />
       <FeaturedWork />
