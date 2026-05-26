@@ -89,17 +89,28 @@ export default async function WorkDetailPage(
           </div>
         </div>
 
-        {work.video && (
-          <div className="mb-24 md:mb-32 max-w-2xl mx-auto">
-            <span className="eyebrow mb-6 block text-center">Brand Reel</span>
-            <div className="relative aspect-[9/16] bg-surface overflow-hidden">
-              <video
-                src={work.video}
-                controls
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+        {work.videos && work.videos.length > 0 && (
+          <div className="mb-24 md:mb-32">
+            <span className="eyebrow mb-8 md:mb-10 block">Brand Reels</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {work.videos.map((src, i) => (
+                <div
+                  key={src}
+                  className="relative aspect-[9/16] bg-surface overflow-hidden"
+                >
+                  <video
+                    src={src}
+                    controls
+                    playsInline
+                    muted
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <span className="absolute top-3 left-3 text-white/60 text-[10px] uppercase tracking-[0.22em] font-sans bg-black/40 backdrop-blur px-2 py-1">
+                    Reel {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         )}

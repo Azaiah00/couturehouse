@@ -14,7 +14,7 @@ export type Work = {
   brief: string;
   body: string[];
   gallery?: string[];
-  video?: string;
+  videos?: string[];
 };
 
 export const works: Work[] = [
@@ -46,7 +46,13 @@ export const works: Work[] = [
       "/work/magic-coils/04-collection.webp",
       "/work/magic-coils/05-light-of-nature.webp",
     ],
-    video: "/work/magic-coils/reel.mp4",
+    videos: [
+      "/work/magic-coils/reel.mp4",
+      "/work/magic-coils/magicpress.mp4",
+      "/work/magic-coils/studio-still-01.mp4",
+      "/work/magic-coils/studio-still-02.mp4",
+      "/work/magic-coils/studio-still-03.mp4",
+    ],
   },
   {
     slug: "sacrificial-conversations",
