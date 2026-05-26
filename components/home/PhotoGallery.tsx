@@ -5,16 +5,15 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TextReveal } from "@/components/animations/TextReveal";
 
-// Swap these for real campaign / product / lifestyle photography.
-// Aim for landscape 16:10 or 3:2 — high resolution (>= 2400px wide).
+// Magic Coils brand still-life set — burgundy stage, gold ritual objects.
+// All optimized via sharp to ~30-80KB each, served as WebP.
 const frames = [
-  { src: "/download (1).png", alt: "Campaign frame 01" },
-  { src: "/download (3).png", alt: "Campaign frame 02" },
-  { src: "/download (5).png", alt: "Campaign frame 03" },
-  { src: "/download (7).png", alt: "Campaign frame 04" },
-  { src: "/download (9).png", alt: "Campaign frame 05" },
-  { src: "/download (11).png", alt: "Campaign frame 06" },
-  { src: "/download (13).png", alt: "Campaign frame 07" },
+  { src: "/gallery/mc-bowl.webp", alt: "Ceramic mixing bowl with hair treatment and gold brush" },
+  { src: "/gallery/mc-scissors.webp", alt: "Gold shears against a strand of hair" },
+  { src: "/gallery/mc-crown-head.webp", alt: "Mannequin head wearing a delicate crown" },
+  { src: "/gallery/mc-lotus.webp", alt: "Pink lotus flower framed by gilded leaves" },
+  { src: "/gallery/mc-book-crown.webp", alt: "Open gilded book under a small crown" },
+  { src: "/gallery/mc-key.webp", alt: "Ornate gold key on burgundy velvet" },
 ];
 
 export function PhotoGallery() {
@@ -64,16 +63,16 @@ export function PhotoGallery() {
         >
           {frames.map((f, i) => (
             <div
-              key={i}
+              key={f.src}
               data-frame
-              className="relative shrink-0 w-[82vw] md:w-[68vw] lg:w-[60vw] xl:w-[50vw] aspect-[16/10] snap-center bg-surface overflow-hidden"
+              className="relative shrink-0 w-[82vw] md:w-[60vw] lg:w-[48vw] xl:w-[40vw] aspect-square snap-center bg-surface overflow-hidden"
             >
               <Image
                 src={f.src}
                 alt={f.alt}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 82vw, (max-width: 1024px) 68vw, 60vw"
+                sizes="(max-width: 768px) 82vw, (max-width: 1024px) 60vw, 48vw"
                 priority={i < 2}
               />
             </div>

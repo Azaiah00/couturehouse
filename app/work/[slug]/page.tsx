@@ -89,6 +89,21 @@ export default async function WorkDetailPage(
           </div>
         </div>
 
+        {work.video && (
+          <div className="mb-24 md:mb-32 max-w-2xl mx-auto">
+            <span className="eyebrow mb-6 block text-center">Brand Reel</span>
+            <div className="relative aspect-[9/16] bg-surface overflow-hidden">
+              <video
+                src={work.video}
+                controls
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        )}
+
         {work.gallery && work.gallery.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-24 md:mb-32">
             {work.gallery.map((src, i) => (

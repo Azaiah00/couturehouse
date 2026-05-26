@@ -28,7 +28,7 @@ export function Showreel() {
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/Video_20251226_234909_771.mp4" type="video/mp4" />
+          <source src="/showreel.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
       </motion.div>

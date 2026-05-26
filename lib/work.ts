@@ -1,8 +1,8 @@
 // Single source of truth for work / case studies.
-// Used by /work, /work/[slug], and the FeaturedWork home section.
+// Consumed by /work, /work/[slug], and the FeaturedWork section on the home page.
 //
-// To add a project: append an entry. Use a unique URL-safe slug.
-// `cover` should be a 4:5 portrait image at /public/work/<slug>.jpg (or any path).
+// To add a project: append a new entry. Slug must be URL-safe.
+// Cover image is 4:5 portrait, ≥1600px tall. Gallery items are 16:10 or 3:2 landscape.
 
 export type Work = {
   slug: string;
@@ -14,87 +14,66 @@ export type Work = {
   brief: string;
   body: string[];
   gallery?: string[];
+  video?: string;
 };
 
 export const works: Work[] = [
   {
-    slug: "luxury-apparel-launch",
-    title: "Luxury Apparel Launch",
-    category: "Fashion",
-    year: "2025",
-    cover: "/download (1).png",
-    tags: ["Identity System", "Paid Social", "Editorial Photography"],
-    brief:
-      "Identity, launch creative, and ongoing performance system for a luxury apparel brand entering its first DTC season.",
-    body: [
-      "Couture House was brought in pre-launch to design the brand system and lead the season-zero campaign across paid, owned and earned. The goal was to establish creative leadership in a saturated category without out-spending incumbent retailers.",
-      "We delivered a full identity refresh, an editorial-grade campaign shoot, a creative system for paid social and a launch retainer covering product drops, email and lifecycle. Performance creative and brand creative shared one system end to end.",
-    ],
-  },
-  {
-    slug: "dtc-skincare-relaunch",
-    title: "DTC Skincare Relaunch",
+    slug: "magic-coils",
+    title: "Magic Coils",
     category: "Beauty & Personal Care",
-    year: "2025",
-    cover: "/download (3).png",
-    tags: ["Brand Strategy", "Performance Creative", "Lifecycle"],
-    brief:
-      "A category-leading skincare brand re-platforming after three years — repositioned around a new clinical hero product.",
-    body: [
-      "We led the strategy refresh, hero claim architecture, packaging direction and creative system that carried the relaunch across owned, paid and retail channels.",
-      "Within the first 90 days, performance creative driven by the new system delivered a step change in CAC efficiency while elevating the brand's editorial presence.",
+    year: "2026",
+    cover: "/work/magic-coils/cover.webp",
+    tags: [
+      "Brand Identity",
+      "Packaging Direction",
+      "Editorial Photography",
+      "Ecommerce",
+      "Performance Creative",
+      "Social",
     ],
+    brief:
+      "A luxury professional haircare line built around a single conviction: every strand deserves to be treated like royalty.",
+    body: [
+      "Magic Coils launched as a category-defining haircare line for women whose hair tells a story. We built the brand world from the inside out — the wordmark, the editorial system, the photography language, the launch packaging — and stood up the digital storefront and performance engine alongside it.",
+      "The creative system leans into a single, confident territory: a deep burgundy stage with gold ritual objects and the brand wordmark held like a crest. Every campaign frame is built on that same palette, which lets the brand stay editorial in feed while staying instantly recognisable at any scale — from a TikTok thumbnail to a retail end-cap.",
+      "Couture House continues to operate Magic Coils end-to-end — creative, growth, and lifecycle — out of one connected team. Brand and revenue compound together; that's the whole thesis.",
+    ],
+    gallery: [
+      "/work/magic-coils/01-throne.webp",
+      "/work/magic-coils/02-strand.webp",
+      "/work/magic-coils/03-products.webp",
+      "/work/magic-coils/04-collection.webp",
+      "/work/magic-coils/05-light-of-nature.webp",
+    ],
+    video: "/work/magic-coils/reel.mp4",
   },
   {
-    slug: "service-studio-system",
-    title: "Service Studio Identity",
-    category: "Home & Lifestyle",
-    year: "2024",
-    cover: "/download (5).png",
-    tags: ["Identity", "Web", "Editorial"],
-    brief:
-      "A category-bending service studio came to us to translate their craft into a system that could scale.",
-    body: [
-      "We rebuilt the brand around a single, confident voice — designed for the founders to extend without us. Identity, web, and a launch editorial covering the studio's first 12 commissions.",
+    slug: "sacrificial-conversations",
+    title: "Sacrificial Conversations",
+    category: "Media & Entertainment",
+    year: "2026",
+    cover: "/work/sacrificial-conversations/cover.webp",
+    tags: [
+      "Brand System",
+      "Show Identity",
+      "Episode Art",
+      "Talent Direction",
+      "Distribution",
     ],
-  },
-  {
-    slug: "boutique-jewelry-ecommerce",
-    title: "Boutique Jewelry Commerce",
-    category: "Jewelry",
-    year: "2024",
-    cover: "/download (7).png",
-    tags: ["Ecommerce", "UGC", "CRM"],
     brief:
-      "Custom Shopify build, retention program and a UGC engine for a heritage jewelry house going direct.",
+      "A faith-rooted conversation series with its own visual world — built to travel across radio, YouTube, and social as one cohesive show.",
     body: [
-      "We replatformed the storefront, designed a CRM program tuned for high-AOV repeat behaviour, and stood up a creator program that fed the paid funnel with high-trust UGC.",
+      "Sacrificial Conversations is a long-form interview series exploring sisterhood, survival, and the stories behind faith leaders, gospel artists, and founders. We built the show identity, the per-episode poster system, and the multi-channel distribution play so every episode lands as one piece — on TabNashville Gospel Radio, on YouTube, and across short-form social.",
+      "Each guest gets a hero portrait set inside the show's gilded, candle-lit visual language. The system is loose enough to reflect each subject's character and tight enough that the show reads consistently from one episode to the next.",
+      "Powered by an All-Women Edition rotation, the show has become a destination format for stories that don't get told often enough — and a template we now use for any conversation-driven IP we launch.",
     ],
-  },
-  {
-    slug: "winter-collection-film",
-    title: "Winter Collection Film",
-    category: "Motion & Animation",
-    year: "2024",
-    cover: "/download (9).png",
-    tags: ["Direction", "Production", "Score"],
-    brief:
-      "A 90-second seasonal film carrying the launch of a winter collection across paid, organic and retail.",
-    body: [
-      "Concept-to-camera in seven weeks. Original score in-house. Cut down for paid social, vertical and retail screens — one film, every channel.",
-    ],
-  },
-  {
-    slug: "modern-dealership-rebrand",
-    title: "Modern Dealership Rebrand",
-    category: "Automotive",
-    year: "2024",
-    cover: "/download (11).png",
-    tags: ["Identity", "Lead Generation", "OOH"],
-    brief:
-      "Repositioning a regional dealership group around a modern retail experience — and the creative system to back it up.",
-    body: [
-      "New name, identity system, web and a localised paid + OOH program built to drive showroom traffic across five locations.",
+    gallery: [
+      "/work/sacrificial-conversations/01-monica.webp",
+      "/work/sacrificial-conversations/02-tenisha.webp",
+      "/work/sacrificial-conversations/03-thea.webp",
+      "/work/sacrificial-conversations/04-blessing-pressing.webp",
+      "/work/sacrificial-conversations/05-joy-boyz.webp",
     ],
   },
 ];

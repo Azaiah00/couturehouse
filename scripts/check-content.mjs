@@ -168,6 +168,22 @@ if (!existsSync(copyPath)) {
   else { console.log("  " + warn(`${todos} <<TODO>> placeholder(s) remaining in COPY.md`)); warnings++; }
 }
 
+// ── loose files in content-drop/ root ──────────────────────────────────
+const loose = listFiles(ROOT).filter((f) => {
+  try { return statSync(join(ROOT, f)).isFile(); } catch { return false; }
+}).filter((f) => f.toLowerCase() !== "copy.md");
+
+if (loose.length > 0) {
+  console.log(`${C.bold}Loose files in content-drop/ root${C.reset}`);
+  console.log(hr());
+  console.log(`  ${C.yellow}⚠${C.reset} ${loose.length} file(s) sitting in the root instead of a numbered subfolder.`);
+  console.log(`  ${C.dim}These won't be counted toward any section. Move them into the right folder.${C.reset}`);
+  for (const f of loose.slice(0, 15)) console.log(`    ${C.grey}└${C.reset} ${f}`);
+  if (loose.length > 15) console.log(`    ${C.grey}└ … and ${loose.length - 15} more${C.reset}`);
+  console.log("");
+  warnings++;
+}
+
 // ── summary ────────────────────────────────────────────────────────────
 console.log("");
 console.log(hr(60));
