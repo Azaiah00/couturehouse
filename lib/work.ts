@@ -92,39 +92,11 @@ export const works: Work[] = [
     ],
   },
   {
-    slug: "bng-remodel",
-    title: "BNG Remodel",
-    category: "Home & Renovation",
-    year: "2026",
-    cover: "/work/bng-remodel/cover.webp",
-    tags: [
-      "Brand Identity",
-      "Video Production",
-      "Editorial Direction",
-      "Social",
-      "Lead Generation",
-    ],
-    brief:
-      "A Nashville home-renovation practice positioned to read as a craft studio — paint, drywall, floors and full transformations, captured like editorial.",
-    body: [
-      "BNG Remodel is a hands-on renovation company we own and operate in Nashville. We rebuilt the brand around a single idea: a real home should look the way it feels — bright, considered, and lived in. That premise drives the colour direction, the editorial format of every project shoot, and the way we cut social.",
-      "The Couture House team produces the campaign content end-to-end. We shoot the work as it happens, edit short-form for Reels and TikTok, and cut long-form story pieces that follow a single transformation from gut to reveal — paint, drywall, floors, master suite, steam shower.",
-      "The category usually competes on price. BNG competes on taste. That single decision is what lets the brand show up as the renovation answer for Nashville's most design-aware homeowners.",
-    ],
-    videos: [
-      "/work/bng-remodel/hero.mp4",
-      "/work/bng-remodel/01-wood-plank.mp4",
-      "/work/bng-remodel/02-paint.mp4",
-      "/work/bng-remodel/03-shower.mp4",
-      "/work/bng-remodel/04-drywall.mp4",
-    ],
-  },
-  {
-    slug: "teddy-chisom",
-    title: "Teddy Chisom — Beverlys of Nashville",
+    slug: "beverlys-of-nashville",
+    title: "Beverlys of Nashville",
     category: "Beauty & Talent",
     year: "2026",
-    cover: "/work/teddy-chisom/cover.webp",
+    cover: "/work/beverlys-of-nashville/cover.webp",
     tags: [
       "Creative Direction",
       "Reel Editing",
@@ -132,15 +104,15 @@ export const works: Work[] = [
       "Content System",
     ],
     brief:
-      "A creative system and ongoing reel pipeline for Teddy Chisom — master stylist behind Beverlys of Nashville — turning client transformations into a recognisable on-camera brand.",
+      "A creative system and ongoing reel pipeline for Beverlys of Nashville — turning every chair transformation into a recognisable on-camera brand.",
     body: [
-      "Teddy Chisom is a wig artist and stylist whose transformations could carry their own brand. We built that brand around her — visual identity, a tight reel system, and a content cadence designed to compound week over week.",
-      "Each transformation gets the same on-camera structure: anonymous before, mid-process moment, reveal. The format is what makes the work feel like a show, not a salon. We run the editing pipeline so Teddy can keep her hands in hair.",
+      "Beverlys of Nashville is a stylist-led studio whose transformations could carry their own brand. We built that brand around it — visual identity, a tight reel system, and a content cadence designed to compound week over week.",
+      "Each transformation gets the same on-camera structure: anonymous before, mid-process moment, reveal. The format is what makes the work feel like a show, not a salon. We run the editing pipeline so the team can keep their hands in hair.",
       "It's our client model in miniature — operate the creative engine on the founder's behalf, leave the craft to the founder, share in what compounds.",
     ],
     videos: [
-      "/work/teddy-chisom/reel.mp4",
-      "/work/teddy-chisom/01-crimson-locs.mp4",
+      "/work/beverlys-of-nashville/reel.mp4",
+      "/work/beverlys-of-nashville/01-crimson-locs.mp4",
     ],
   },
 ];

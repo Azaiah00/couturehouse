@@ -25,20 +25,12 @@ const showcases = [
     image: "/work/sacrificial-conversations/02-tenisha.webp",
   },
   {
-    slug: "bng-remodel",
-    name: "BNG Remodel",
+    slug: "beverlys-of-nashville",
+    name: "Beverlys of Nashville",
     tagline:
-      "A Nashville renovation practice positioned as a craft studio &mdash; full transformations shot like editorial.",
-    category: "Home & Renovation",
-    image: "/work/bng-remodel/cover.webp",
-  },
-  {
-    slug: "teddy-chisom",
-    name: "Teddy Chisom",
-    tagline:
-      "A creative system and ongoing reel pipeline for the master stylist behind Beverlys of Nashville.",
+      "A creative system and ongoing reel pipeline for a stylist-led Nashville studio &mdash; every chair transformation cut to compound.",
     category: "Client &mdash; Beauty &amp; Talent",
-    image: "/work/teddy-chisom/cover.webp",
+    image: "/work/beverlys-of-nashville/cover.webp",
   },
 ];
 

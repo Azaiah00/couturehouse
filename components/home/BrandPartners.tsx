@@ -7,7 +7,7 @@ import { InfiniteMarquee } from "@/components/animations/InfiniteMarquee";
 const brands = [
   "MAGIC COILS",
   "SACRIFICIAL CONVERSATIONS",
-  "BNG REMODEL",
+  "BEVERLYS OF NASHVILLE",
   "FREDERICK SALES",
   "COUTURE HOUSE CO.",
 ];

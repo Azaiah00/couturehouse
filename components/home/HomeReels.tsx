@@ -4,17 +4,14 @@ import { useEffect, useRef } from "react";
 import { InfiniteMarquee } from "@/components/animations/InfiniteMarquee";
 import { TextReveal } from "@/components/animations/TextReveal";
 
-// Real Magic Coils branded reels (final, in-house produced + edited).
-// All transcoded to 720×1280 h264, muted, ~3-5MB each.
+// Reels are sourced directly from the user's drop folder.
+// All transcoded to 720×1280 h264, muted, ~2-8MB each.
 const reels = [
-  { src: "/reels/ms-01.mp4", label: "Magic Press" },
-  { src: "/reels/ms-02.mp4", label: "Wash Day" },
-  { src: "/reels/ms-03.mp4", label: "Scalp Relief" },
-  { src: "/reels/ms-04.mp4", label: "Oil vs. Souffle" },
-  { src: "/reels/ms-05.mp4", label: "Hair Serum" },
-  { src: "/reels/r01.mp4", label: "Studio 01" },
-  { src: "/reels/r02.mp4", label: "Studio 02" },
-  { src: "/reels/r05.mp4", label: "Studio 03" },
+  { src: "/reels/r01.mp4", label: "Reel 01" },
+  { src: "/reels/r02.mp4", label: "Reel 02" },
+  { src: "/reels/r03.mp4", label: "Reel 03" },
+  { src: "/reels/r04.mp4", label: "Reel 04" },
+  { src: "/reels/r05.mp4", label: "Reel 05" },
 ];
 
 function Reel({ src, label }: { src: string; label: string }) {
