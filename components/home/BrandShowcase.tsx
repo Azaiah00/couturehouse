@@ -6,12 +6,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 // Editorial-style brand spotlights — each one is its own near-fullbleed moment.
+// Order: own brands first, then client work.
 const showcases = [
   {
     slug: "magic-coils",
     name: "Magic Coils",
     tagline:
-      "A luxury professional haircare line crowned in burgundy and gold. Built end-to-end out of one connected studio.",
+      "A luxury professional haircare line crowned in burgundy and gold. Built and operated end-to-end from one connected studio.",
     category: "Beauty & Personal Care",
     image: "/work/magic-coils/02-strand.webp",
   },
@@ -19,9 +20,25 @@ const showcases = [
     slug: "sacrificial-conversations",
     name: "Sacrificial Conversations",
     tagline:
-      "A faith-rooted interview series with its own gilded visual world — running across radio, YouTube and short-form social.",
+      "A faith-rooted interview series with its own gilded visual world &mdash; running across radio, YouTube and short-form social.",
     category: "Media & Entertainment",
     image: "/work/sacrificial-conversations/02-tenisha.webp",
+  },
+  {
+    slug: "bng-remodel",
+    name: "BNG Remodel",
+    tagline:
+      "A Nashville renovation practice positioned as a craft studio &mdash; full transformations shot like editorial.",
+    category: "Home & Renovation",
+    image: "/work/bng-remodel/cover.webp",
+  },
+  {
+    slug: "teddy-chisom",
+    name: "Teddy Chisom",
+    tagline:
+      "A creative system and ongoing reel pipeline for the master stylist behind Beverlys of Nashville.",
+    category: "Client &mdash; Beauty &amp; Talent",
+    image: "/work/teddy-chisom/cover.webp",
   },
 ];
 
@@ -33,7 +50,7 @@ export function BrandShowcase() {
         <Link
           key={s.slug}
           href={`/work/${s.slug}`}
-          className="block relative h-[70vh] md:h-[85vh] overflow-hidden group"
+          className="block relative h-[60vh] md:h-[78vh] overflow-hidden group"
         >
           <Image
             src={s.image}
@@ -48,17 +65,21 @@ export function BrandShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20%" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 h-full flex flex-col justify-end pb-12 md:pb-24 site-inset max-w-[1600px] mx-auto"
+            className="relative z-10 h-full flex flex-col justify-end pb-12 md:pb-20 site-inset max-w-[1600px] mx-auto"
           >
-            <span className="eyebrow mb-4">
-              Property {String(i + 1).padStart(2, "0")} &middot; {s.category}
-            </span>
-            <h2 className="display-heading text-white text-[clamp(2.75rem,9vw,9rem)] leading-[0.9] mb-6 max-w-[16ch]">
+            <span
+              className="eyebrow mb-4"
+              dangerouslySetInnerHTML={{
+                __html: `Property ${String(i + 1).padStart(2, "0")} &middot; ${s.category}`,
+              }}
+            />
+            <h2 className="display-heading text-white text-[clamp(2.5rem,8vw,8rem)] leading-[0.9] mb-6 max-w-[16ch]">
               {s.name}
             </h2>
-            <p className="text-white/80 max-w-xl font-sans text-base md:text-lg leading-relaxed mb-8">
-              {s.tagline}
-            </p>
+            <p
+              className="text-white/80 max-w-xl font-sans text-base md:text-lg leading-relaxed mb-8"
+              dangerouslySetInnerHTML={{ __html: s.tagline }}
+            />
             <span className="inline-flex items-center gap-3 text-white text-xs uppercase tracking-[0.22em] font-sans w-fit group-hover:translate-x-1 transition-transform">
               View Case Study
               <ArrowUpRight className="w-4 h-4" />
