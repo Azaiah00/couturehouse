@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { cn } from "@/lib/utils";
 
 interface SectionHeadProps {
@@ -13,7 +14,7 @@ interface SectionHeadProps {
 export function SectionHead({ eyebrow, title, sub, center, className }: SectionHeadProps) {
   return (
     <Reveal className={cn("max-w-[760px]", center && "mx-auto text-center", className)}>
-      <div className={cn("eyebrow", center && "block")}>{eyebrow}</div>
+      <Eyebrow center={center}>{eyebrow}</Eyebrow>
       <h2 className="my-[0.3em] text-[clamp(32px,4.6vw,52px)] tracking-[-0.5px]">{title}</h2>
       {sub && <p className="text-[17px] text-[#cfc9d6]">{sub}</p>}
     </Reveal>
