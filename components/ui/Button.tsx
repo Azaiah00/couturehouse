@@ -1,52 +1,78 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+"use client";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-charcoal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-gold focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wider font-sans",
-  {
-    variants: {
-      variant: {
-        default: "bg-rose-gold text-charcoal hover:bg-white",
-        outline: "border border-rose-gold/50 bg-transparent text-white hover:bg-rose-gold/10",
-        ghost: "hover:bg-white/5 text-neutral-300 hover:text-white",
-        link: "text-rose-gold underline-offset-4 hover:underline",
-        luxury: "bg-charcoal text-white border border-rose-gold/30 hover:border-rose-gold hover:shadow-[0_0_20px_rgba(156,209,243,0.3)] transition-all duration-300",
-        crimson: "bg-crimson text-white hover:bg-[#8A1022] transition-all duration-300",
-      },
-      size: {
-        default: "h-12 px-8 py-2",
-        sm: "h-10 px-6",
-        lg: "h-14 px-10 text-base",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+import Link from "next/link";
+import { ReactNode, useRef, MouseEvent } from "react";
+import { cn } from "@/lib/utils";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+type Variant = "gold" | "ghost";
+
+const base =
+  "relative inline-flex items-center justify-center gap-2 font-sans font-bold text-[14.5px] tracking-[0.02em] rounded-full cursor-pointer transition-[transform,box-shadow] duration-300 px-[26px] py-[15px] will-change-transform";
+
+const variants: Record<Variant, string> = {
+  gold: "text-[#22190b] bg-[linear-gradient(180deg,#EBD08C,#C9A24B)] shadow-[0_8px_30px_rgba(201,162,75,0.32)] hover:shadow-[0_14px_42px_rgba(201,162,75,0.46)]",
+  ghost:
+    "text-chrome-hi bg-white/[0.04] border border-line hover:bg-white/[0.08] hover:-translate-y-0.5",
+};
+
+interface ButtonProps {
+  href: string;
+  children: ReactNode;
+  variant?: Variant;
+  className?: string;
+  /** Magnetic pull on pointer devices (gold buttons). */
+  magnetic?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Button.displayName = "Button"
+export function Button({
+  href,
+  children,
+  variant = "gold",
+  className,
+  magnetic = true,
+}: ButtonProps) {
+  const ref = useRef<HTMLAnchorElement>(null);
 
-export { Button, buttonVariants }
+  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!magnetic || variant !== "gold") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width / 2) / 6;
+    const y = (e.clientY - r.top - r.height / 2) / 6 - 2;
+    el.style.transform = `translate(${x}px, ${y}px)`;
+  };
+  const onLeave = () => {
+    if (ref.current) ref.current.style.transform = "";
+  };
+
+  const isInternal = href.startsWith("/");
+  const classes = cn(base, variants[variant], className);
+
+  if (isInternal) {
+    return (
+      <Link
+        ref={ref}
+        href={href}
+        className={classes}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      ref={ref}
+      href={href}
+      className={classes}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {children}
+    </a>
+  );
+}

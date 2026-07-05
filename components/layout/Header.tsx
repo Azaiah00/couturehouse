@@ -1,120 +1,102 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Monogram } from "@/components/ui/Monogram";
+import { Button } from "@/components/ui/Button";
+import { NAV_LINKS, BOOK_HREF } from "@/lib/siteData";
+import { cn } from "@/lib/utils";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoError, setLogoError] = useState(false);
-  const pathname = usePathname();
-
-  const navItems = [
-    { name: "Services", href: "/services" },
-    { name: "Work", href: "/work" },
-  ];
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll while the mobile menu is open.
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "glass-panel-dark py-4"
-          : "bg-transparent py-6"
-      )}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="relative z-50 group flex items-center">
-          {logoError ? (
-            <span className="font-serif text-xl md:text-2xl font-bold tracking-widest text-white">
-              COUTURE HOUSE <span className="text-crimson text-sm align-top">CO.</span>
-            </span>
-          ) : (
-            <div className="relative h-8 w-[140px] sm:h-9 sm:w-[160px] md:h-10 md:w-[180px]">
-              <Image
-                src="/logo-couture-house.png"
-                alt="Couture House Co."
-                fill
-                className="object-contain object-left"
-                priority
-                sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, 180px"
-                onError={() => setLogoError(true)}
-              />
-            </div>
-          )}
-        </Link>
+    <>
+      <nav
+        className={cn(
+          "fixed inset-x-0 top-0 z-60 border-b border-transparent transition-[background,border-color,padding] duration-300",
+          scrolled && "bg-ink/80 backdrop-blur-[14px] border-line"
+        )}
+      >
+        <div className="mx-auto flex max-w-[1160px] items-center justify-between px-7 py-4">
+          <Link href="/" className="flex items-center gap-3" aria-label="Couture House — home">
+            <Monogram size={34} />
+            <b className="font-display text-[21px] tracking-[0.5px] text-white">Couture House</b>
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          <div className="hidden items-center gap-8 md:flex">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[13.5px] font-semibold tracking-[0.02em] text-chrome transition-colors hover:text-gold-hi"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Button href={BOOK_HREF} className="!px-5 !py-[11px]" magnetic={false}>
+              Book a Demo
+            </Button>
+          </div>
+
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full border border-line text-chrome-hi md:hidden"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <div
+        className={cn(
+          "fixed inset-0 z-50 flex flex-col bg-ink/97 px-8 pb-10 pt-28 backdrop-blur-xl transition-opacity duration-300 md:hidden",
+          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        )}
+      >
+        <div className="flex flex-col gap-2">
+          {NAV_LINKS.map((link) => (
             <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-sans text-neutral-300 hover:text-white transition-colors tracking-wide"
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-line2 py-4 font-display text-[28px] text-chrome-hi"
             >
-              {item.name}
+              {link.label}
             </Link>
           ))}
-          <Link href="/contact">
-            <Button variant="luxury" size="sm">
-              Let's Talk
-            </Button>
-          </Link>
-        </nav>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden z-50 relative text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 glass-panel-dark z-40 flex flex-col items-center justify-center gap-8 px-4"
-            >
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-2xl font-serif text-white hover:text-rose-gold transition-colors text-center uppercase tracking-widest"
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Link href="/contact" className="w-full max-w-xs mt-8">
-                <Button size="lg" className="w-full" variant="luxury">
-                  Let's Talk
-                </Button>
-              </Link>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </div>
+        <div className="mt-auto">
+          <Button
+            href={BOOK_HREF}
+            className="w-full"
+            magnetic={false}
+          >
+            Book a 15-min demo →
+          </Button>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
