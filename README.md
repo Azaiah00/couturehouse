@@ -1,58 +1,61 @@
-# Couture House Co. - Premium AI Model Agency Website
+# Couture House Co.
 
-Couture House Co. is an exclusive modeling agency bridging the gap between high-fashion brands and influential models through revolutionary virtual staging technology.
+**The digital house for the beauty industry.**
 
-## Features
+Marketing site for Couture House Co. — we build couture-quality websites, booking
+systems, and branding for **Black-owned hair salons and beauty brands**.
 
-- **Stunning Visuals:** Luxury design system with charcoal black and rose gold theme.
-- **Dual Pathways:** Tailored experiences for both Brands and Models.
-- **Interactive Gallery:** Filterable model roster with detailed profile modals.
-- **Conversion Optimized:** Strategic CTAs and pricing tiers.
-- **Modern Tech:** Next.js 14+, Tailwind CSS v4, Framer Motion.
+Two offers the site sells:
 
-## Tech Stack
+1. **Websites + Booking** — a custom site with 24/7 online booking, deposits, no-show
+   protection, and a Google presence. Live in 5–10 days.
+2. **Branding & Growth** — logo/identity, online store, ad creative, agentic content
+   systems, and digital products & courses.
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Animation:** Framer Motion
-- **Forms:** React Hook Form + Zod
-- **Icons:** Lucide React
+No pricing is shown; every CTA drives to **Book a 15-min demo** (`hello@couturehouse.com`).
 
-## Getting Started
+## Stack
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/couture-house-website.git
-   cd couture-house-website
-   ```
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** (design tokens in `app/globals.css`)
+- **Framer Motion**, **GSAP**, **Lenis** for motion; scroll reveals via IntersectionObserver
+- Deployed on **Netlify** (`@netlify/plugin-nextjs`)
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## Design system
 
-3. **Run the development server:**
+Luxury couture, culturally rooted — ink black + chrome + couture gold as the spine,
+warmed with plum / amber / espresso / warm paper. Display type is **Cormorant Garamond**;
+UI/body is **Manrope**. All motion respects `prefers-reduced-motion`.
+
+## Structure
+
+```
+app/
+  page.tsx                 Home (hero, paths, compare, live booking demo, work, process, stats, CTA)
+  websites-booking/        Core offer + interactive booking demo
+  branding-growth/         Growth offer + Beverly's proof band
+  work/                    Real case studies
+  about/                   Positioning & trust
+  contact/                 Book a demo (mailto-backed form)
+  privacy/                 Privacy policy
+  sitemap.ts · robots.ts   SEO
+components/
+  home/ · layout/ · sections/ · ui/ · forms/ · animations/
+lib/
+  siteData.ts              Nav, clients, case studies, booking-demo data
+public/
+  brand/ · clients/ · work/  Real Couture House + client assets
+```
+
+## Develop
+
 ```bash
-npm run dev
-   ```
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+```
 
-4. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+## Content source of truth
 
-## Project Structure
-
-- `app/` - App Router pages and layouts
-- `components/` - Reusable UI and feature components
-- `lib/` - Utility functions
-- `public/` - Static assets
-
-## Customization
-
-- **Colors:** Update `app/globals.css` CSS variables to change the theme.
-- **Content:** All text content is currently hardcoded in the components for easy modification.
-- **Images:** Currently using Unsplash placeholders. Replace with your own assets in `public/` or update URLs.
-
-## License
-
-Proprietary. All rights reserved.
+Nav, clients, case studies, and the booking-demo data all live in `lib/siteData.ts`.
+Contact email and the "Book a demo" mailto link are defined there too.
