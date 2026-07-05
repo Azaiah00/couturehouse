@@ -67,7 +67,7 @@ export default function BrandingGrowthPage() {
         <div className="mx-auto grid max-w-[1160px] items-center gap-11 px-7 md:grid-cols-2">
           <Reveal className="relative aspect-[4/5] overflow-hidden rounded-[22px] border border-line">
             <Image
-              src="/work/hero-color.jpg"
+              src="/work/beverlys/color-editorial.jpg"
               alt="Editorial color work from Beverly's of Nashville"
               fill
               sizes="(max-width: 768px) 100vw, 560px"
