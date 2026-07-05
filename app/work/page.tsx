@@ -1,152 +1,66 @@
-"use client";
-
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { TextReveal } from "@/components/animations/TextReveal";
-import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { PageHero } from "@/components/sections/PageHero";
+import { CTABand } from "@/components/sections/CTABand";
+import { Reveal } from "@/components/ui/Reveal";
+import { CASE_STUDIES } from "@/lib/siteData";
 
-const categories = ["All", "Fashion", "Retail", "Home Goods", "Jewelry", "Automotive", "Motion & Animation"];
-
-const portfolio = [
-  { id: 1, title: "Luxury Apparel Launch", category: "Fashion", tags: ["Creative System", "Paid Social"], img: "/download (1).png" },
-  { id: 2, title: "Product Growth", category: "Retail", tags: ["Local Promos", "OOH"], img: "/download (2).png" },
-  { id: 3, title: "Service Studio", category: "Home Goods", tags: ["Branding", "Ecommerce CRO"], img: "/download (3).png" },
-  { id: 4, title: "Boutique Jewelry", category: "Jewelry", tags: ["UGC Ads", "Email/SMS"], img: "/download (4).png" },
-  { id: 5, title: "Winter Collection", category: "Motion & Animation", tags: ["Video Production", "Motion Design"], img: "/download (5).png" },
-  { id: 6, title: "Modern Dealership", category: "Automotive", tags: ["Campaign Creative", "Lead Gen"], img: "/download (6).png" },
-];
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Real salons, real brands, real bookings. Case studies from Beverly's of Nashville, Magic Coils, The Fairyy Loc Mutha, Loc'd By Love, and OG Barnes.",
+};
 
 export default function WorkPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<typeof portfolio[0] | null>(null);
-  
-  const filteredPortfolio = activeCategory === "All" 
-    ? portfolio 
-    : portfolio.filter(p => p.category === activeCategory);
-
   return (
-    <main className="pt-40 pb-20 bg-charcoal min-h-screen">
-      <div className="container mx-auto px-6 mb-16">
-        <TextReveal as="h1" className="text-5xl md:text-8xl font-serif text-white uppercase tracking-widest mb-6">
-          Selected <span className="text-crimson">Work</span>
-        </TextReveal>
-        
-        {/* Filters */}
-        <div className="flex flex-wrap gap-4 mt-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full text-sm font-sans tracking-widest uppercase transition-all duration-300 ${
-                activeCategory === cat 
-                  ? "bg-crimson text-white border-crimson border" 
-                  : "border border-white/20 text-white hover:border-dusty-rose hover:text-dusty-rose"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
+    <>
+      <PageHero
+        eyebrow="The House · Selected work"
+        title="Real salons. Real brands. Real bookings."
+        sub="Not stock photos and not placeholders — clients we've actually shipped for. Each one is proof of a different corner of what we build."
+      />
 
-      <div className="container mx-auto px-6">
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <AnimatePresence>
-            {filteredPortfolio.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className="group cursor-pointer"
-                onClick={() => setSelectedProject(project)}
-              >
-                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-cream-dark mb-4">
+      <section className="pb-[40px] pt-[20px]">
+        <div className="mx-auto flex max-w-[1160px] flex-col gap-[26px] px-7">
+          {CASE_STUDIES.map((c, i) => (
+            <Reveal key={c.slug}>
+              <article className="grid items-stretch overflow-hidden rounded-[24px] border border-line bg-[linear-gradient(180deg,#17151e,#121016)] md:grid-cols-2">
+                <figure className={`relative min-h-[300px] ${i % 2 === 1 ? "md:order-2" : ""}`}>
                   <Image
-                    src={project.img}
-                    alt={project.title}
+                    src={c.image}
+                    alt={c.imageAlt}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
+                    sizes="(max-width: 768px) 100vw, 580px"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  
-                  <div className="absolute bottom-0 left-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-dusty-rose font-sans text-xs uppercase tracking-widest mb-2">{project.category}</p>
-                    <h3 className="text-2xl font-serif text-white">{project.title}</h3>
+                </figure>
+                <div className="p-8 md:p-10">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold">
+                    {c.kicker}
+                  </div>
+                  <h2 className="my-3 text-[clamp(26px,3.4vw,38px)] text-white">{c.name}</h2>
+                  <p className="mb-5 text-[15.5px] text-[#cfc9d6]">{c.blurb}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {c.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-line2 px-3 py-1.5 text-[12px] text-chrome"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
-      {/* Detail Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-charcoal/90 backdrop-blur-xl"
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
-              className="bg-cream-dark border border-white/10 rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto flex flex-col md:flex-row relative"
-              onClick={e => e.stopPropagation()}
-            >
-              <button 
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-crimson hover:text-white transition-colors"
-                onClick={() => setSelectedProject(null)}
-              >
-                <X className="w-5 h-5" />
-              </button>
-              
-              <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto md:min-h-[600px]">
-                <Image
-                  src={selectedProject.img}
-                  alt={selectedProject.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              
-              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <p className="text-dusty-rose font-sans text-sm uppercase tracking-widest mb-4">{selectedProject.category}</p>
-                <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">{selectedProject.title}</h2>
-                
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {selectedProject.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-crimson/10 border border-crimson/20 text-white rounded-full text-xs font-sans">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="space-y-6 text-neutral-400 font-sans leading-relaxed">
-                  <p>
-                    {/* TODO: Add real case study content */}
-                    This is a placeholder for the project case study. Here we will detail the challenge, the strategy implemented, and the creative solutions delivered to achieve the brand's goals.
-                  </p>
-                  <p>
-                    Our approach focused on building a consistent visual language that scales seamlessly across paid social, email marketing, and onsite experiences.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </main>
+      <CTABand
+        title="Your salon could be the next case study."
+        sub="Book a 15-minute demo. We'll show you a real build, then map yours — live, on the call."
+      />
+    </>
   );
 }

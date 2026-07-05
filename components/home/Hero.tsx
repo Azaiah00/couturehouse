@@ -1,45 +1,38 @@
-"use client";
-
-import { HeroThree } from "@/components/animations/HeroThree";
-import { TextReveal } from "@/components/animations/TextReveal";
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Monogram } from "@/components/ui/Monogram";
+import { Button } from "@/components/ui/Button";
+import { BOOK_HREF } from "@/lib/siteData";
 
 export function Hero() {
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-      <HeroThree />
-      
-      <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center mt-20">
-        <TextReveal as="h1" className="text-4xl md:text-7xl lg:text-8xl xl:text-9xl font-serif font-bold text-white mb-6 uppercase tracking-[0.1em] md:tracking-[0.2em] leading-tight">
-          WE CREATE <br className="hidden md:block" />
-          <span className="text-crimson">WORLDS</span>
-        </TextReveal>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="text-lg md:text-2xl font-sans text-dusty-rose max-w-2xl font-light tracking-wide"
-        >
-          Creative studio for brands that demand more.
-        </motion.p>
+    <section className="relative flex min-h-screen items-center overflow-hidden px-0 pb-20 pt-[120px]">
+      <div className="absolute inset-0 z-0" aria-hidden>
+        <div className="silk" />
+        <div className="grain" />
       </div>
 
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-      >
-        <span className="text-xs uppercase tracking-widest text-neutral-400 font-sans">Scroll to explore</span>
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-crimson" />
-        </motion.div>
-      </motion.div>
+      <div className="relative z-2 mx-auto w-full max-w-[1160px] px-7">
+        <Monogram size={70} className="mb-7 fade-up" />
+
+        <h1 className="fade-up max-w-[14ch] text-[clamp(44px,7.4vw,92px)] tracking-[-1px] [animation-delay:0.25s]">
+          <span className="sweep-text">Your chair is empty because your website is.</span>
+        </h1>
+
+        <p className="fade-up my-8 max-w-[640px] font-display text-[clamp(19px,2.4vw,26px)] text-chrome [animation-delay:0.45s]">
+          Couture House builds the site, booking system, and brand that fill Black-owned salons —
+          couture quality, live in days, without the $3,000 agency invoice.
+        </p>
+
+        <div className="fade-up flex flex-wrap gap-3.5 [animation-delay:0.6s]">
+          <Button href={BOOK_HREF}>Book a 15-min demo →</Button>
+          <Button href="#demo" variant="ghost" magnetic={false}>
+            See a real salon we built
+          </Button>
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-9 left-1/2 z-2 -translate-x-1/2 text-[11px] uppercase tracking-[0.3em] text-muted">
+        Scroll
+      </div>
     </section>
   );
 }

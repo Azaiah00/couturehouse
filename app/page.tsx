@@ -1,21 +1,27 @@
 import { Hero } from "@/components/home/Hero";
-import { Showreel } from "@/components/home/Showreel";
-import { ServicesGrid } from "@/components/home/ServicesGrid";
-import { FeaturedWork } from "@/components/home/FeaturedWork";
-import { MusicTeaser } from "@/components/home/MusicTeaser";
-import { IndustriesMarquee } from "@/components/home/IndustriesMarquee";
-import { ContactCTA } from "@/components/home/ContactCTA";
+import { Marquee } from "@/components/home/Marquee";
+import { TwoPaths } from "@/components/home/TwoPaths";
+import { Compare } from "@/components/home/Compare";
+import { BookingDemo } from "@/components/home/BookingDemo";
+import { CaseStudies } from "@/components/home/CaseStudies";
+import { Process } from "@/components/home/Process";
+import { Stats } from "@/components/home/Stats";
+import { ClosingCTA } from "@/components/home/ClosingCTA";
+import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Hero />
-      <Showreel />
-      <ServicesGrid />
-      <FeaturedWork />
-      <MusicTeaser />
-      <IndustriesMarquee />
-      <ContactCTA />
-    </div>
+      <Marquee />
+      <TwoPaths />
+      <Compare />
+      <BookingDemo />
+      <CaseStudies />
+      <Process />
+      <Stats />
+      <ClosingCTA />
+      <StickyMobileCTA />
+    </>
   );
 }
