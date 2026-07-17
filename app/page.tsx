@@ -29,8 +29,9 @@ const featuredProjects = [
     number: "03",
     title: "Beverly's of Nashville",
     eyebrow: "Legacy salon / Nashville",
-    image: "/portfolio/beverlys-of-nashville.png",
-    position: "center 12%",
+    image: "/portfolio/beverlys-feature.png",
+    position: "center center",
+    fit: "contain",
     url: "https://beverlysofnashville.com/",
     summary:
       "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
@@ -207,7 +208,7 @@ export default function Home() {
         <div className="nav-links">
           <a href="#work">Work</a>
           <a href="#services">Services</a>
-          <a href="#studio">Studio</a>
+          <a href="/studio">Studio</a>
         </div>
         <a
           className="nav-cta magnetic"
@@ -319,12 +320,22 @@ export default function Home() {
             <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/extra/04.webp">
               <source src="/work/magic-coils/magicpress.mp4" type="video/mp4" />
             </video>
+            <figcaption>Magic press / Education in motion</figcaption>
           </figure>
-          <figure className="case-product">
+          <figure className="case-reel">
+            <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp">
+              <source src="/work/magic-coils/reel.webm" type="video/webm" />
+            </video>
+            <figcaption>Brand reel / The world in motion</figcaption>
+          </figure>
+          <figure className="case-product case-wide">
             <img src="/work/magic-coils/03-products.webp" alt="Magic Coils product campaign" />
           </figure>
           <figure className="case-portrait">
             <img src="/work/magic-coils/extra/03.webp" alt="Magic Coils leave-in treatment campaign portrait" />
+          </figure>
+          <figure className="case-lifestyle">
+            <img src="/work/magic-coils/extra/06.webp" alt="Magic Coils strengthening serum lifestyle campaign" />
           </figure>
         </div>
       </section>
@@ -345,7 +356,11 @@ export default function Home() {
               <div className="browser-bar" aria-hidden="true">
                 <i /><i /><i /><span>{project.url.replace("https://", "").replace(/\/$/, "")}</span>
               </div>
-              <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position }} />
+              <img
+                src={project.image}
+                alt={`${project.title} website preview`}
+                style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
+              />
               <span className="featured-view">View live <b>&#8599;</b></span>
             </a>
             <div className="featured-copy">
@@ -369,6 +384,38 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="work-glimpse section-pad" aria-labelledby="glimpse-title">
+        <header className="glimpse-heading" data-reveal>
+          <div>
+            <span className="kicker">More worlds / More range</span>
+            <h2 id="glimpse-title">A STUDIO WITH<br /><em>RANGE.</em></h2>
+          </div>
+          <p>
+            Beauty is our home base. The same eye for story, experience and
+            conversion travels wherever an ambitious brand needs it.
+          </p>
+        </header>
+        <div className="glimpse-grid">
+          {projects.slice(0, 4).map((project, index) => (
+            <a
+              className={`glimpse-card glimpse-${index + 1}`}
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              data-reveal
+              key={project.title}
+            >
+              <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position ?? "center top" }} />
+              <span>{String(index + 4).padStart(2, "0")} / {project.title}</span>
+              <b aria-hidden="true">&#8599;</b>
+            </a>
+          ))}
+        </div>
+        <a className="glimpse-link" href="#gallery" data-reveal>
+          Explore the complete gallery <span>&darr;</span>
+        </a>
+      </section>
+
       <section className="services section-pad" id="services">
         <header className="services-intro" data-reveal>
           <span className="kicker">What you can build with us</span>
@@ -389,6 +436,17 @@ export default function Home() {
               </ul>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
+        <a href="/studio" className="brand-poster-frame" data-reveal>
+          <img src="/brand/couture-house-poster.png" alt="Couture House digital worlds for hair, beauty and culture" />
+          <span className="brand-poster-enter">Enter the studio <b>&#8599;</b></span>
+        </a>
+        <div className="brand-poster-meta">
+          <span>Studio campaign / Couture House Co.</span>
+          <span>Digital, but make it feel human.</span>
         </div>
       </section>
 
@@ -434,7 +492,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="work-section more-work" aria-labelledby="more-work-title">
+      <section className="work-section more-work" id="gallery" aria-labelledby="more-work-title">
         <header className="section-head section-pad" data-reveal>
           <div>
             <span className="kicker">More selected work / 2024-26</span>
@@ -519,6 +577,7 @@ export default function Home() {
         <div>
           <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a>
           <a href="#work">Work &uarr;</a>
+          <a href="/studio">Studio &#8599;</a>
         </div>
         <small>&copy; 2026 Couture House Co.</small>
       </footer>
