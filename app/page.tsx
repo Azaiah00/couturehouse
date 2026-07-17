@@ -2,7 +2,18 @@
 
 import { useEffect } from "react";
 
-const projects = [
+type Project = {
+  title: string;
+  type: string;
+  image: string;
+  url: string;
+  tone: string;
+  className?: string;
+  video?: string;
+  position?: string;
+};
+
+const projects: Project[] = [
   {
     title: "The Dreadlocks Salon",
     type: "Salon experience · Oakland",
@@ -21,11 +32,20 @@ const projects = [
   },
   {
     title: "Magic Coils",
-    type: "Hair care e-commerce",
-    image: "/portfolio/magic-coils.png",
+    type: "Hair care · E-commerce · Content",
+    image: "/work/magic-coils/cover.webp",
+    video: "/work/magic-coils/magicpress.mp4",
     url: "https://magiccoils.net/",
     tone: "blue",
     className: "project-wide",
+  },
+  {
+    title: "Sacrificial Conversations",
+    type: "Faith · Editorial e-commerce",
+    image: "/portfolio/sacrificial-conversations.jpg",
+    url: "https://sacrificialconversations.shop/",
+    tone: "red",
+    className: "project-editorial",
   },
   {
     title: "Emblazon Arts",
@@ -33,7 +53,6 @@ const projects = [
     image: "/portfolio/emblazon-arts-studio.png",
     url: "https://emblazon-arts-studio.netlify.app/",
     tone: "pink",
-    className: "",
   },
   {
     title: "Divine Textures",
@@ -41,7 +60,6 @@ const projects = [
     image: "/portfolio/divine-textures.png",
     url: "https://divine-textures.netlify.app/",
     tone: "green",
-    className: "",
   },
   {
     title: "The 2Tite Xperience",
@@ -49,7 +67,6 @@ const projects = [
     image: "/portfolio/two-tit-experience.png",
     url: "https://2titexperience.netlify.app/",
     tone: "violet",
-    className: "",
   },
   {
     title: "OG Barnes",
@@ -57,7 +74,6 @@ const projects = [
     image: "/portfolio/og-barnes.png",
     url: "https://ogbarnes.netlify.app/",
     tone: "earth",
-    className: "",
   },
   {
     title: "Sodiq Yusuff MMA",
@@ -65,7 +81,15 @@ const projects = [
     image: "/portfolio/sodiq-yusuff.png",
     url: "https://sodiqyusuffmma.com/",
     tone: "red",
-    className: "",
+  },
+  {
+    title: "Majestic Contracting",
+    type: "Design · Build · Renovate",
+    image: "/portfolio/majestic-contracting.svg",
+    video: "/portfolio/majestic-intro.mp4",
+    url: "https://majesticdbr.com/",
+    tone: "gold",
+    className: "project-wide",
   },
   {
     title: "Party Bus R Us",
@@ -73,7 +97,6 @@ const projects = [
     image: "/portfolio/partybus-r-us.png",
     url: "https://www.partybusrus.com/",
     tone: "night",
-    className: "",
   },
 ];
 
@@ -109,8 +132,8 @@ const services = [
 ];
 
 const proofPoints = [
-  ["09", "Selected digital launches"],
-  ["05", "Hair + beauty experiences"],
+  ["11", "Selected digital launches"],
+  ["06", "Hair + beauty experiences"],
   ["01", "Studio built around your world"],
 ];
 
@@ -156,10 +179,10 @@ export default function Home() {
 
       <nav className="site-nav" aria-label="Primary navigation">
         <a className="wordmark" href="#top" aria-label="Couture House home">
-          <span className="monogram">CH.</span>
-          <span>
-            Couture House
-            <small>Digital atelier</small>
+          <img className="nav-logo" src="/brand/footer-logo.png" alt="" />
+          <span className="wordmark-copy">
+            Digital atelier
+            <small>Beauty · Culture · Business</small>
           </span>
         </a>
         <div className="nav-links">
@@ -178,6 +201,19 @@ export default function Home() {
       </nav>
 
       <section className="hero" id="top">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/brand/winter-look-01.png"
+          aria-hidden="true"
+        >
+          <source src="/brand/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orbit orbit-one" aria-hidden="true" />
         <div className="hero-orbit orbit-two" aria-hidden="true" />
         <div className="hero-meta">
@@ -239,6 +275,20 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="showreel section-pad" aria-labelledby="showreel-title">
+        <div className="showreel-head" data-reveal>
+          <span className="kicker">Selected motion · Brand worlds in motion</span>
+          <h2 id="showreel-title">THE WORK<br /><em>MOVES.</em></h2>
+          <p>Campaign films, moving identities and digital moments designed to hold attention—not simply ask for it.</p>
+        </div>
+        <div className="showreel-frame" data-reveal>
+          <video autoPlay muted loop playsInline preload="metadata" controls aria-label="Couture House selected work showreel">
+            <source src="/brand/showreel.mp4" type="video/mp4" />
+          </video>
+          <span className="showreel-stamp" aria-hidden="true">CH / 26</span>
+        </div>
+      </section>
+
       <section className="work-section" id="work">
         <header className="section-head section-pad" data-reveal>
           <div>
@@ -246,22 +296,32 @@ export default function Home() {
             <h2>THE DIGITAL<br /><em>GALLERY</em></h2>
           </div>
           <p>
-            Nine distinct businesses. Nine distinct worlds. Each built to feel
-            original, communicate clearly and move people toward the next step.
+            Eleven distinct businesses. Eleven distinct worlds. Every preview
+            is chosen to show the strongest moment—not merely the first screen.
           </p>
         </header>
 
         <div className="project-grid section-pad">
           {projects.map((project, index) => (
             <article
-              className={`project-card ${project.className}`}
+              className={`project-card ${project.className ?? ""}`}
               data-tone={project.tone}
               data-reveal
               key={project.title}
             >
               <a href={project.url} target="_blank" rel="noreferrer">
                 <div className="project-image-wrap">
-                  <img src={project.image} alt={`${project.title} website homepage`} />
+                  {project.video ? (
+                    <video autoPlay muted loop playsInline preload="metadata" poster={project.image} aria-hidden="true">
+                      <source src={project.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} selected website detail`}
+                      style={{ objectPosition: project.position ?? "center top" }}
+                    />
+                  )}
                   <div className="project-screen" aria-hidden="true">
                     <span>View live</span><b>↗</b>
                   </div>
@@ -280,12 +340,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="case-study section-pad" aria-labelledby="magic-title">
+        <div className="case-copy" data-reveal>
+          <span className="kicker">Featured world · Magic Coils</span>
+          <h2 id="magic-title">CROWNED<br />IN <em>MAGIC.</em></h2>
+          <p>
+            A complete luxury hair-care world: commerce, campaign direction,
+            product storytelling and motion—built around the beauty of textured hair.
+          </p>
+          <ul>
+            <li>Website design + development</li>
+            <li>E-commerce experience</li>
+            <li>Campaign content + motion</li>
+          </ul>
+          <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience Magic Coils <span>↗</span></a>
+        </div>
+        <div className="case-gallery" data-reveal>
+          <figure className="case-hero"><img src="/work/magic-coils/cover.webp" alt="Magic Coils Crowned in Magic campaign" /></figure>
+          <figure className="case-video"><img src="/work/magic-coils/extra/04.webp" alt="Magic Coils moisture-rich conditioner campaign portrait" /></figure>
+          <figure className="case-product"><img src="/work/magic-coils/03-products.webp" alt="Magic Coils product campaign" /></figure>
+          <figure className="case-portrait"><img src="/work/magic-coils/extra/03.webp" alt="Magic Coils leave-in treatment campaign portrait" /></figure>
+        </div>
+      </section>
+
       <section className="client-reel" aria-label="Selected collaborators">
         <p>Made with people building memorable things</p>
         <div>
           <span>MAGIC COILS</span><i>◆</i><span>BEVERLY’S</span><i>◆</i>
-          <span>EMBLAZON ARTS</span><i>◆</i><span>DIVINE TEXTURES</span><i>◆</i>
-          <span>SODIQ YUSUFF</span>
+          <span>SACRIFICIAL CONVERSATIONS</span><i>◆</i><span>EMBLAZON ARTS</span><i>◆</i>
+          <span>MAJESTIC</span><i>◆</i><span>SODIQ YUSUFF</span>
         </div>
       </section>
 
@@ -371,9 +454,8 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="wordmark footer-mark" href="#top">
-          <span className="monogram">CH.</span>
-          <span>Couture House Co.</span>
+        <a className="footer-logo-link" href="#top" aria-label="Couture House home">
+          <img src="/brand/footer-logo.png" alt="Couture House" />
         </a>
         <p>Digital atelier for beauty, culture &amp; ambitious businesses.</p>
         <div>

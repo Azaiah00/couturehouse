@@ -13,6 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
+    icons: {
+      icon: "/brand/favicon-logo.png",
+      shortcut: "/brand/favicon-logo.png",
+      apple: "/brand/favicon-logo.png",
+    },
     keywords: [
       "salon website design",
       "hair stylist website design",
