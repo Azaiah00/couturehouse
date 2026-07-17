@@ -20,6 +20,7 @@ const featuredProjects = [
     eyebrow: "Salon experience / Oakland",
     image: "/portfolio/dreadlocks-salon.png",
     position: "center top",
+    fit: "contain",
     url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/",
     summary:
       "A confident, image-led salon experience that turns loc artistry into a clear journey from discovery to booking.",
@@ -36,6 +37,18 @@ const featuredProjects = [
     summary:
       "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
     role: ["Creative direction", "Web design", "Development", "Local discovery"],
+  },
+  {
+    number: "04",
+    title: "All Things Locs",
+    eyebrow: "Natural hair / Oakland",
+    image: "/portfolio/two-tit-experience.png",
+    position: "center top",
+    fit: "contain",
+    url: "https://2titexperience.netlify.app/",
+    summary:
+      "A warm, personality-rich experience that turns specialist loc care, education and service discovery into one inviting digital home.",
+    role: ["Brand experience", "Web design", "Development", "Service journey"],
   },
 ];
 
@@ -206,15 +219,13 @@ export default function Home() {
           </span>
         </a>
         <div className="nav-links">
-          <a href="#work">Work</a>
-          <a href="#services">Services</a>
+          <a href="/work">Work</a>
+          <a href="/services">Services</a>
           <a href="/studio">Studio</a>
         </div>
         <a
           className="nav-cta magnetic"
-          href="https://www.couturehouse.co/contact"
-          target="_blank"
-          rel="noreferrer"
+          href="/start-a-project"
         >
           Start a project <span aria-hidden="true">&#8599;</span>
         </a>
@@ -262,9 +273,7 @@ export default function Home() {
               </a>
               <a
                 className="hero-secondary"
-                href="https://www.couturehouse.co/contact"
-                target="_blank"
-                rel="noreferrer"
+                href="/start-a-project"
               >
                 Start a project <span aria-hidden="true">&#8599;</span>
               </a>
@@ -323,7 +332,15 @@ export default function Home() {
             <figcaption>Magic press / Education in motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/work/magic-coils/04-collection.webp"
+              onLoadedMetadata={(event) => { event.currentTarget.playbackRate = 1.35; }}
+            >
               <source src="/work/magic-coils/reel.webm" type="video/webm" />
             </video>
             <figcaption>Brand reel / The world in motion</figcaption>
@@ -378,7 +395,7 @@ export default function Home() {
 
         <div className="mid-cta" data-reveal>
           <p>Ready for a digital experience that feels like your brand?</p>
-          <a href="https://www.couturehouse.co/contact" target="_blank" rel="noreferrer">
+          <a href="/start-a-project">
             Build your digital world <span>&#8599;</span>
           </a>
         </div>
@@ -396,7 +413,7 @@ export default function Home() {
           </p>
         </header>
         <div className="glimpse-grid">
-          {projects.slice(0, 4).map((project, index) => (
+          {projects.filter((project) => project.title !== "The 2Tite Xperience").slice(0, 4).map((project, index) => (
             <a
               className={`glimpse-card glimpse-${index + 1}`}
               href={project.url}
@@ -437,6 +454,7 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <a className="services-page-link" href="/services" data-reveal>Explore services in detail <span>&#8599;</span></a>
       </section>
 
       <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
@@ -465,6 +483,24 @@ export default function Home() {
         </p>
       </section>
 
+      <section className="full-film section-pad" aria-labelledby="full-film-title">
+        <div className="full-film-head" data-reveal>
+          <div>
+            <span className="kicker">Couture House / The full film</span>
+            <h2 id="full-film-title">SEE THE<br /><em>WHOLE WORLD.</em></h2>
+          </div>
+          <p>
+            The moving image behind our opening moment—presented here in full,
+            with space to watch the craft, character and culture unfold.
+          </p>
+        </div>
+        <div className="full-film-frame" data-reveal>
+          <video controls playsInline preload="metadata" poster="/brand/winter-look-01.png">
+            <source src="/brand/hero-video.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
       <section className="showreel showreel-compact section-pad" aria-labelledby="showreel-title">
         <div className="showreel-head" data-reveal>
           <span className="kicker">Digital experiences / Campaigns / Motion</span>
@@ -474,21 +510,30 @@ export default function Home() {
             details designed to hold attention.
           </p>
         </div>
-        <div className="showreel-frame" data-reveal>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/brand/winter-look-02.png"
-            aria-label="Couture House selected work showreel"
-            onLoadedMetadata={(event) => loopBetween(event, 0, 26)}
-            onTimeUpdate={(event) => loopBetween(event, 0, 26)}
-          >
-            <source src="/brand/showreel.mp4" type="video/mp4" />
-          </video>
-          <span className="showreel-stamp" aria-hidden="true">CH / 26</span>
+        <div className="showreel-grid" data-reveal>
+          <figure className="showreel-frame showreel-primary">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/brand/winter-look-02.png"
+              aria-label="Couture House people and campaign showreel"
+              onLoadedMetadata={(event) => loopBetween(event, 0, 26)}
+              onTimeUpdate={(event) => loopBetween(event, 0, 26)}
+            >
+              <source src="/brand/showreel.mp4" type="video/mp4" />
+            </video>
+            <figcaption>People / Story / Campaign</figcaption>
+            <span className="showreel-stamp" aria-hidden="true">CH / 26</span>
+          </figure>
+          <figure className="showreel-frame showreel-secondary">
+            <video autoPlay muted loop playsInline preload="metadata" poster="/portfolio/majestic-contracting.svg" aria-label="Majestic design and build motion website">
+              <source src="/portfolio/majestic-intro.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Design / Build / Motion</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -564,7 +609,7 @@ export default function Home() {
         <div className="cta-orb" aria-hidden="true" />
         <span className="kicker">The next world is yours</span>
         <h2>LET&apos;S MAKE<br /><em>THE INTERNET</em><br />FEEL SOMETHING.</h2>
-        <a href="https://www.couturehouse.co/contact" target="_blank" rel="noreferrer" className="cta-link">
+        <a href="/start-a-project" className="cta-link">
           <span>Start a project</span><b aria-hidden="true">&#8599;</b>
         </a>
       </section>
@@ -576,7 +621,8 @@ export default function Home() {
         <p>Digital atelier for hair, beauty, culture and ambitious businesses.</p>
         <div>
           <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a>
-          <a href="#work">Work &uarr;</a>
+          <a href="/work">Work &#8599;</a>
+          <a href="/services">Services &#8599;</a>
           <a href="/studio">Studio &#8599;</a>
         </div>
         <small>&copy; 2026 Couture House Co.</small>

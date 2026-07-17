@@ -25,6 +25,13 @@ const principles = [
   },
 ];
 
+const practice = [
+  { number: "01", title: "Strategy", copy: "We find the sharpest story, the clearest audience need and the action the experience must earn." },
+  { number: "02", title: "Design", copy: "We turn that strategy into an expressive visual language and a journey that feels natural on every screen." },
+  { number: "03", title: "Technology", copy: "We build the website, product or workflow with speed, accessibility and future growth in mind." },
+  { number: "04", title: "Content", copy: "We create the stills, motion and reusable campaign system that keeps the digital world alive after launch." },
+];
+
 export default function StudioPage() {
   return (
     <main className="studio-page">
@@ -39,18 +46,13 @@ export default function StudioPage() {
           </span>
         </Link>
         <div className="nav-links">
-          <Link href="/#work">Work</Link>
-          <Link href="/#services">Services</Link>
+          <Link href="/work">Work</Link>
+          <Link href="/services">Services</Link>
           <Link href="/studio" aria-current="page">Studio</Link>
         </div>
-        <a
-          className="nav-cta magnetic"
-          href="https://www.couturehouse.co/contact"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link className="nav-cta magnetic" href="/start-a-project">
           Start a project <span aria-hidden="true">&#8599;</span>
-        </a>
+        </Link>
       </nav>
 
       <section className="studio-hero">
@@ -122,7 +124,7 @@ export default function StudioPage() {
             Salons, stylists and hair-care brands are not a narrow market to
             us. They are a universe of expertise, expression and possibility.
           </p>
-          <Link href="/#work">See the work <span>&#8599;</span></Link>
+          <Link href="/work">See the work <span>&#8599;</span></Link>
         </div>
         <div className="studio-collage-grid">
           <figure className="studio-collage-main">
@@ -137,17 +139,45 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="studio-poster-break section-pad">
-        <img src="/brand/couture-house-poster.png" alt="Couture House digital worlds for hair, beauty and culture campaign" />
+      <section className="studio-practice section-pad" aria-labelledby="practice-title">
+        <header>
+          <span className="kicker">One atelier / Four connected disciplines</span>
+          <h2 id="practice-title">THE IDEA<br /><em>AND THE ENGINE.</em></h2>
+          <p>
+            The Studio page is where our point of view becomes a working model:
+            culture-aware strategy, expressive design and useful systems in one room.
+          </p>
+        </header>
+        <div className="studio-practice-grid">
+          {practice.map((item) => (
+            <article key={item.number}>
+              <span>{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </article>
+          ))}
+        </div>
+        <Link className="studio-practice-link" href="/services">Explore every service <span>&#8599;</span></Link>
+      </section>
+
+      <section className="studio-world-break section-pad">
+        <div className="studio-world-copy">
+          <span className="kicker">A digital atelier with a pulse</span>
+          <h2>WHERE CULTURE<br />MEETS <em>CRAFT.</em></h2>
+          <p>Original campaign direction created for Couture House Co.—a portrait of the strategy, technology and humanity behind the work.</p>
+        </div>
+        <figure>
+          <img src="/brand/studio-world-v1.png" alt="Black woman creative director in a cinematic Couture House digital atelier" />
+        </figure>
       </section>
 
       <section className="studio-final">
         <span className="kicker">Bring the vision</span>
         <h2>LET&apos;S BUILD<br />SOMETHING WITH<br /><em>A PULSE.</em></h2>
         <p>Websites, apps, automations and content shaped around your world.</p>
-        <a href="https://www.couturehouse.co/contact" target="_blank" rel="noreferrer">
+        <Link href="/start-a-project">
           Start a project <span>&#8599;</span>
-        </a>
+        </Link>
       </section>
 
       <footer>
@@ -156,8 +186,8 @@ export default function StudioPage() {
         </Link>
         <p>Digital atelier for hair, beauty, culture and ambitious businesses.</p>
         <div>
-          <Link href="/#work">Work &#8599;</Link>
-          <Link href="/#services">Services &#8599;</Link>
+          <Link href="/work">Work &#8599;</Link>
+          <Link href="/services">Services &#8599;</Link>
           <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a>
         </div>
         <small>&copy; 2026 Couture House Co.</small>
