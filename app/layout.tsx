@@ -30,13 +30,13 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1536, height: 1024, alt: "Couture House Co. — Digital, but make it feel human." }],
+      images: [{ url: `${origin}/og-v2.png`, width: 1536, height: 1024, alt: "Couture House Co. - Digital worlds for hair, beauty and culture." }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`${origin}/og.png`],
+      images: [`${origin}/og-v2.png`],
     },
   };
 }
