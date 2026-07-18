@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FastLoopVideo from "../components/FastLoopVideo";
 
 export const metadata: Metadata = {
   title: "Selected Work | Couture House Co.",
@@ -48,7 +47,7 @@ export default function WorkPage() {
         </div>
         <div className="work-page-lead-media">
           <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/extra/04.webp"><source src="/work/magic-coils/magicpress.mp4" type="video/mp4" /></video>
-          <FastLoopVideo src="/work/magic-coils/reel.webm" poster="/work/magic-coils/04-collection.webp" label="Magic Coils campaign reel" />
+          <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp" aria-label="Magic Coils campaign reel"><source src="/work/magic-coils/reel.mp4" type="video/mp4" /></video>
         </div>
       </section>
 

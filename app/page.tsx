@@ -230,9 +230,10 @@ export default function Home() {
           loop
           playsInline
           preload="metadata"
-          poster="/brand/winter-look-01.png"
           aria-hidden="true"
           onLoadedMetadata={(event) => loopBetween(event, 3, 15)}
+          onLoadedData={(event) => event.currentTarget.classList.add("is-ready")}
+          onCanPlay={(event) => event.currentTarget.classList.add("is-ready")}
           onTimeUpdate={(event) => loopBetween(event, 3, 15)}
         >
           <source src="/brand/hero-video.mp4" type="video/mp4" />
@@ -323,16 +324,8 @@ export default function Home() {
             <figcaption>Magic press / Education in motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/work/magic-coils/04-collection.webp"
-              onLoadedMetadata={(event) => { event.currentTarget.playbackRate = 1.35; }}
-            >
-              <source src="/work/magic-coils/reel.webm" type="video/webm" />
+            <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp">
+              <source src="/work/magic-coils/reel.mp4" type="video/mp4" />
             </video>
             <figcaption>Brand reel / The world in motion</figcaption>
           </figure>
@@ -486,7 +479,13 @@ export default function Home() {
           </p>
         </div>
         <div className="full-film-frame" data-reveal>
-          <video controls playsInline preload="metadata" poster="/brand/winter-look-01.png">
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            onLoadedData={(event) => event.currentTarget.classList.add("is-ready")}
+            onCanPlay={(event) => event.currentTarget.classList.add("is-ready")}
+          >
             <source src="/brand/hero-video.mp4" type="video/mp4" />
           </video>
         </div>

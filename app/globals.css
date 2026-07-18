@@ -2283,6 +2283,30 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
 .full-film-frame { width: min(100%, 78rem); margin-inline: auto; overflow: hidden; aspect-ratio: 16 / 9; border-radius: clamp(1rem, 2vw, 2rem); background: #050505; box-shadow: 0 2rem 7rem rgba(16,16,16,.18); }
 .full-film-frame video { width: 100%; height: 100%; display: block; object-fit: contain; }
 
+/* Keep video entry states cinematic: no poster-image flash before playback. */
+.hero-video,
+.full-film-frame video {
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+.hero-video.is-ready,
+.full-film-frame video.is-ready { opacity: 1; }
+.full-film-frame::before {
+  content: "FILM / COUTURE HOUSE";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,.34);
+  background: radial-gradient(circle at center, #171717, #050505 68%);
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  pointer-events: none;
+}
+.full-film-frame { position: relative; }
+.full-film-frame video { position: relative; z-index: 1; }
+
 .showreel-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: clamp(1rem, 2vw, 2rem); align-items: stretch; }
 .showreel-frame { margin: 0; aspect-ratio: 1.25 / 1; }
 .showreel-frame figcaption { position: absolute; z-index: 2; left: 1.2rem; bottom: 1.2rem; padding: .65rem .85rem; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: white; background: rgba(8,8,8,.56); backdrop-filter: blur(10px); font-size: .6rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
