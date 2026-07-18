@@ -108,10 +108,10 @@ export default function WorkPage() {
         <div className="work-asset-grid">
           <figure className="work-asset-landscape"><img src="/work/magic-coils/03-products.webp" alt="Magic Coils full product campaign" loading="lazy" decoding="async" /></figure>
           <figure className="work-asset-portrait"><img src="/work/magic-coils/extra/04.webp" alt="Magic Coils conditioner portrait campaign" loading="lazy" decoding="async" /></figure>
-          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/ingredient-trinity.png" alt="Magic Coils ingredient campaign graphic" loading="lazy" decoding="async" /></figure>
-          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/honey-oil.png" alt="Magic Coils honey oil ingredient graphic" loading="lazy" decoding="async" /></figure>
-          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/vitamin-c.png" alt="Magic Coils vitamin C ingredient graphic" loading="lazy" decoding="async" /></figure>
-          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/argan-oil.png" alt="Magic Coils argan oil ingredient graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/ingredient-trinity.webp" alt="Magic Coils ingredient campaign graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/honey-oil.webp" alt="Magic Coils honey oil ingredient graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/vitamin-c.webp" alt="Magic Coils vitamin C ingredient graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/argan-oil.webp" alt="Magic Coils argan oil ingredient graphic" loading="lazy" decoding="async" /></figure>
         </div>
       </section>
 
@@ -172,9 +172,9 @@ export default function WorkPage() {
             <a href="https://sacrificialconversations.shop/" target="_blank" rel="noreferrer">Visit the brand <span>&#8599;</span></a>
           </div>
           <div className="partnership-poster-grid">
-            <figure><img src="/work/partnership/podcast-new-episode.png" alt="Sacrificial Conversations new episode campaign flyer" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/podcast-faith-education.png" alt="Sacrificial Conversations faith and education episode flyer" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/podcast-live-merch.png" alt="Sacrificial Conversations podcast and merchandise campaign flyer" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/podcast-new-episode.webp" alt="Sacrificial Conversations new episode campaign flyer" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/podcast-faith-education.webp" alt="Sacrificial Conversations faith and education episode flyer" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/podcast-live-merch.webp" alt="Sacrificial Conversations podcast and merchandise campaign flyer" loading="lazy" decoding="async" /></figure>
           </div>
         </div>
 
@@ -186,9 +186,9 @@ export default function WorkPage() {
             <a href="https://beverlysofnashville.com/" target="_blank" rel="noreferrer">Experience Beverly&apos;s <span>&#8599;</span></a>
           </div>
           <div className="partnership-beverly-grid">
-            <figure className="partnership-king"><img src="/work/partnership/hair-care-king.png" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/silk-press-blueprint.png" alt="The Silk Press Blueprint digital product cover" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/hair-color-mastery.png" alt="Hair Color Mastery Guide digital product cover" loading="lazy" decoding="async" /></figure>
+            <figure className="partnership-king"><img src="/work/partnership/hair-care-king.webp" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/silk-press-blueprint.webp" alt="The Silk Press Blueprint digital product cover" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/hair-color-mastery.webp" alt="Hair Color Mastery Guide digital product cover" loading="lazy" decoding="async" /></figure>
           </div>
         </div>
       </section>

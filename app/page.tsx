@@ -356,19 +356,19 @@ export default function Home() {
         </header>
         <div className="product-world-gallery" data-reveal>
           <figure className="product-shot product-shot-high">
-            <img src="/work/magic-coils/product-placement/intense-hydration.jpg" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
+            <img src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
             <figcaption><span>01</span> Ingredient-led art direction</figcaption>
           </figure>
           <figure className="product-shot product-shot-low">
-            <img src="/work/magic-coils/product-placement/moisture-conditioner.jpg" alt="Magic Coils moisture rich conditioner product placement" loading="lazy" decoding="async" />
+            <img src="/work/magic-coils/product-placement/moisture-conditioner.webp" alt="Magic Coils moisture rich conditioner product placement" loading="lazy" decoding="async" />
             <figcaption><span>02</span> Editorial product worlds</figcaption>
           </figure>
           <figure className="product-shot product-shot-high">
-            <img src="/work/magic-coils/product-placement/strengthening-serum.jpg" alt="Magic Coils strengthening serum product placement" loading="lazy" decoding="async" />
+            <img src="/work/magic-coils/product-placement/strengthening-serum.webp" alt="Magic Coils strengthening serum product placement" loading="lazy" decoding="async" />
             <figcaption><span>03</span> Campaign-ready content</figcaption>
           </figure>
           <figure className="product-shot product-shot-low">
-            <img src="/work/magic-coils/product-placement/foam-wrap.jpg" alt="Magic Coils foam wrap product placement" loading="lazy" decoding="async" />
+            <img src="/work/magic-coils/product-placement/foam-wrap.webp" alt="Magic Coils foam wrap product placement" loading="lazy" decoding="async" />
             <figcaption><span>04</span> Product launch systems</figcaption>
           </figure>
         </div>
