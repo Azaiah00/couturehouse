@@ -36,7 +36,10 @@ export default function ProjectForm() {
         headers: { Accept: "application/json" },
         body: form,
       });
-      if (!response.ok) throw new Error("Inquiry could not be sent");
+      const result = await response.json() as { success?: boolean | string };
+      if (!response.ok || result.success === false || result.success === "false") {
+        throw new Error("Inquiry could not be sent");
+      }
       setStatus("success");
       formElement.reset();
       setSelectedServices([]);
