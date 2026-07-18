@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BeforeAfterSlider from "../BeforeAfterSlider";
 import PageSoundtrack from "../PageSoundtrack";
 
 export const metadata: Metadata = {
@@ -18,6 +19,51 @@ const work = [
   { number: "08", title: "Sodiq Yusuff MMA", type: "Sports / Academy", scope: "Brand platform and website", image: "/portfolio/sodiq-yusuff.png", url: "https://sodiqyusuffmma.com/", position: "center 12%" },
   { number: "09", title: "Majestic Contracting", type: "Design / Build / Renovate", scope: "Website and motion direction", image: "/portfolio/majestic-contracting.svg", video: "/portfolio/majestic-intro.mp4", url: "https://majesticdbr.com/", position: "center center" },
   { number: "10", title: "Party Bus R Us", type: "Hospitality / DMV", scope: "Website and booking experience", image: "/portfolio/partybus-r-us.png", url: "https://www.partybusrus.com/", position: "center 9%" },
+];
+
+const revivals = [
+  {
+    title: "Charlotte at Work",
+    before: "/work/photo-revival/01-charlotte-at-work-before.webp",
+    after: "/work/photo-revival/01-charlotte-at-work-after.webp",
+    alt: "Charlotte working with a loc client in her salon",
+    note: "Salon reconstruction + visual cleanup",
+  },
+  {
+    title: "Sculptural Loc Updo",
+    before: "/work/photo-revival/02-sculptural-loc-updo-before.webp",
+    after: "/work/photo-revival/02-sculptural-loc-updo-after.webp",
+    alt: "sculptural loc updo with circular details",
+    note: "Editorial polish + background replacement",
+  },
+  {
+    title: "Long Twists",
+    before: "/work/photo-revival/03-long-twists-before.webp",
+    after: "/work/photo-revival/03-long-twists-after.webp",
+    alt: "long polished twists photographed from behind",
+    note: "Luxury scene + color finishing",
+  },
+  {
+    title: "Ombré Braids",
+    before: "/work/photo-revival/04-ombre-braids-before.webp",
+    after: "/work/photo-revival/04-ombre-braids-after.webp",
+    alt: "long ombré braids with curled ends",
+    note: "Brand-aligned scene reconstruction",
+  },
+  {
+    title: "Blue Loc Extensions",
+    before: "/work/photo-revival/06-blue-loc-extensions-before.webp",
+    after: "/work/photo-revival/06-blue-loc-extensions-after.webp",
+    alt: "long blue loc extensions with a coordinating accessory",
+    note: "Composition repair + luxury environment",
+  },
+  {
+    title: "Microloc Installation",
+    before: "/work/photo-revival/07-microloc-installation-before.webp",
+    after: "/work/photo-revival/07-microloc-installation-after.webp",
+    alt: "client revealing a detailed microloc installation",
+    note: "Detail enhancement + portrait reconstruction",
+  },
 ];
 
 export default function WorkPage() {
@@ -67,6 +113,31 @@ export default function WorkPage() {
           <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/vitamin-c.png" alt="Magic Coils vitamin C ingredient graphic" loading="lazy" decoding="async" /></figure>
           <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/argan-oil.png" alt="Magic Coils argan oil ingredient graphic" loading="lazy" decoding="async" /></figure>
         </div>
+      </section>
+
+      <section className="revival-work section-pad" id="content-revival" aria-labelledby="revival-work-title">
+        <header className="revival-work-head">
+          <span className="kicker">The Dreadlocks Salon / Content revival</span>
+          <h2 id="revival-work-title">THE MEMORY<br /><em>STAYS. THE IMAGE EVOLVES.</em></h2>
+          <p>We preserve the real person, hairstyle and service moment, then rebuild everything that keeps the image from representing the work at its best.</p>
+        </header>
+        <div className="revival-work-intro">
+          <span>Drag each image to reveal the transformation.</span>
+          <p>Art direction, distraction removal, background reconstruction, luxury styling, color finishing and responsive web preparation.</p>
+        </div>
+        <div className="revival-grid">
+          {revivals.map((revival, index) => (
+            <BeforeAfterSlider
+              key={revival.title}
+              before={revival.before}
+              after={revival.after}
+              alt={revival.alt}
+              title={`${String(index + 1).padStart(2, "0")} / ${revival.title}`}
+              note={revival.note}
+            />
+          ))}
+        </div>
+        <p className="revival-disclosure">AI-assisted creative enhancement, shaped and finished through Couture House art direction. Presented as original salon content versus enhanced content—not a salon-service result.</p>
       </section>
 
       <section className="partnership-story section-pad" aria-labelledby="partnership-title">

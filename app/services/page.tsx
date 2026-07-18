@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BeforeAfterSlider from "../BeforeAfterSlider";
 import PageSoundtrack from "../PageSoundtrack";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ const services = [
     number: "04",
     title: "Content",
     promise: "A connected image system with enough character to stop the scroll and enough structure to keep working after one post.",
-    includes: ["Creative direction", "Campaign concepts", "Still imagery", "Motion and short-form video", "Launch systems", "Social and web assets"],
+    includes: ["Creative direction", "Campaign concepts", "Archive photo revival", "Still imagery", "Motion and short-form video", "Product placements", "Launch systems", "Social and web assets"],
     ideal: "New brands, product launches, seasonal campaigns and businesses whose current content does not match the quality of their work.",
   },
 ];
@@ -71,6 +72,29 @@ export default function ServicesPage() {
             </div>
           </article>
         ))}
+      </section>
+
+      <section className="revival-service section-pad" aria-labelledby="revival-service-title">
+        <div className="revival-service-copy">
+          <span className="kicker">Content revival / Real salon archives</span>
+          <h2 id="revival-service-title">OLD PHOTOS.<br /><em>NEW PRESENCE.</em></h2>
+          <p>We turn valuable but dated salon photos into polished, brand-ready content—preserving the real person and work while rebuilding the atmosphere around them.</p>
+          <ul>
+            <li>Art direction + distraction removal</li>
+            <li>Background reconstruction + luxury styling</li>
+            <li>Color finishing + web-ready presentation</li>
+          </ul>
+          <Link href="/work#content-revival">See the transformations <span>&#8599;</span></Link>
+          <small>AI-assisted creative enhancement with human art direction and finishing.</small>
+        </div>
+        <BeforeAfterSlider
+          before="/work/photo-revival/01-charlotte-at-work-before.webp"
+          after="/work/photo-revival/01-charlotte-at-work-after.webp"
+          alt="Charlotte working with a loc client in her salon"
+          title="Charlotte at Work"
+          note="From everyday salon snapshot to brand-ready campaign image."
+          priority
+        />
       </section>
 
       <section className="beauty-business section-pad">
