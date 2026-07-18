@@ -15,10 +15,9 @@ const work = [
   { number: "05", title: "Divine Textures", type: "Holistic hair care / Columbia", scope: "Web design and development", image: "/portfolio/divine-textures.png", url: "https://divine-textures.netlify.app/", position: "center 18%" },
   { number: "06", title: "OG Barnes", type: "Wellness / Loc artistry", scope: "Web design and development", image: "/portfolio/og-barnes.png", url: "https://ogbarnes.netlify.app/", position: "center 15%" },
   { number: "07", title: "Sacrificial Conversations", type: "Faith / Editorial commerce", scope: "E-commerce and campaign world", image: "/portfolio/sacrificial-conversations.jpg", url: "https://sacrificialconversations.shop/", position: "center 30%" },
-  { number: "08", title: "Emblazon Arts", type: "Culture / Curatorial studio", scope: "Editorial website", image: "/portfolio/emblazon-arts-studio.png", url: "https://emblazon-arts-studio.netlify.app/", position: "center 16%" },
-  { number: "09", title: "Sodiq Yusuff MMA", type: "Sports / Academy", scope: "Brand platform and website", image: "/portfolio/sodiq-yusuff.png", url: "https://sodiqyusuffmma.com/", position: "center 12%" },
-  { number: "10", title: "Majestic Contracting", type: "Design / Build / Renovate", scope: "Website and motion direction", image: "/portfolio/majestic-contracting.svg", video: "/portfolio/majestic-intro.mp4", url: "https://majesticdbr.com/", position: "center center" },
-  { number: "11", title: "Party Bus R Us", type: "Hospitality / DMV", scope: "Website and booking experience", image: "/portfolio/partybus-r-us.png", url: "https://www.partybusrus.com/", position: "center 9%" },
+  { number: "08", title: "Sodiq Yusuff MMA", type: "Sports / Academy", scope: "Brand platform and website", image: "/portfolio/sodiq-yusuff.png", url: "https://sodiqyusuffmma.com/", position: "center 12%" },
+  { number: "09", title: "Majestic Contracting", type: "Design / Build / Renovate", scope: "Website and motion direction", image: "/portfolio/majestic-contracting.svg", video: "/portfolio/majestic-intro.mp4", url: "https://majesticdbr.com/", position: "center center" },
+  { number: "10", title: "Party Bus R Us", type: "Hospitality / DMV", scope: "Website and booking experience", image: "/portfolio/partybus-r-us.png", url: "https://www.partybusrus.com/", position: "center 9%" },
 ];
 
 export default function WorkPage() {

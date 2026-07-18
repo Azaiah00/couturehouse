@@ -90,15 +90,6 @@ const projects: Project[] = [
     position: "center 30%",
   },
   {
-    title: "Emblazon Arts",
-    type: "Culture / Curatorial studio",
-    role: "Editorial website",
-    image: "/portfolio/emblazon-arts-studio.png",
-    url: "https://emblazon-arts-studio.netlify.app/",
-    tone: "pink",
-    position: "center 16%",
-  },
-  {
     title: "Sodiq Yusuff MMA",
     type: "Sports / Academy",
     role: "Brand platform + website",
