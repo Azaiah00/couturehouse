@@ -14,7 +14,7 @@ export default function StartProjectPage() {
       <nav className="site-nav" aria-label="Primary navigation">
         <Link className="wordmark" href="/" aria-label="Couture House home"><img className="nav-logo" src="/brand/footer-logo.png" alt="" /><span className="wordmark-copy">Digital atelier<small>Beauty / Culture / Business</small></span></Link>
         <div className="nav-links"><Link href="/work">Work</Link><Link href="/services">Services</Link><Link href="/studio">Studio</Link></div>
-        <a className="nav-cta magnetic" href="mailto:hello@couturehouse.co">Email the studio <span aria-hidden="true">&#8599;</span></a>
+        <a className="nav-cta magnetic" href="#project-form">Contact the studio <span aria-hidden="true">&darr;</span></a>
       </nav>
 
       <header className="start-hero section-pad">
@@ -23,7 +23,7 @@ export default function StartProjectPage() {
         <div><p>Tell us what you are building, where the business is getting stuck and what the next chapter should feel like.</p><span>Websites / Apps<br />Workflows / Content</span></div>
       </header>
 
-      <section className="project-form-section section-pad">
+      <section className="project-form-section section-pad" id="project-form">
         <div className="project-form-intro"><span>01 / The brief</span><h2>LET&apos;S FIND<br />THE RIGHT<br /><em>WAY IN.</em></h2><p>You do not need a perfect brief. A clear ambition and a little context are enough to begin.</p></div>
         <ProjectForm />
       </section>

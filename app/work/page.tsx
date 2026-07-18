@@ -10,7 +10,7 @@ const work = [
   { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/work/magic-coils/cover.webp", url: "https://magiccoils.net/", position: "center center" },
   { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", contain: true },
   { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature.png", url: "https://beverlysofnashville.com/", position: "center center", contain: true },
-  { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", url: "https://2titexperience.netlify.app/", position: "center top", contain: true },
+  { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", contain: true },
   { number: "05", title: "Divine Textures", type: "Holistic hair care / Columbia", scope: "Web design and development", image: "/portfolio/divine-textures.png", url: "https://divine-textures.netlify.app/", position: "center 18%" },
   { number: "06", title: "OG Barnes", type: "Wellness / Loc artistry", scope: "Web design and development", image: "/portfolio/og-barnes.png", url: "https://ogbarnes.netlify.app/", position: "center 15%" },
   { number: "07", title: "Sacrificial Conversations", type: "Faith / Editorial commerce", scope: "E-commerce and campaign world", image: "/portfolio/sacrificial-conversations.jpg", url: "https://sacrificialconversations.shop/", position: "center 30%" },
@@ -48,6 +48,20 @@ export default function WorkPage() {
         <div className="work-page-lead-media">
           <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/extra/04.webp"><source src="/work/magic-coils/magicpress.mp4" type="video/mp4" /></video>
           <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp" aria-label="Magic Coils campaign reel"><source src="/work/magic-coils/reel.mp4" type="video/mp4" /></video>
+        </div>
+      </section>
+
+      <section className="work-asset-story section-pad" aria-labelledby="campaign-depth-title">
+        <header className="work-asset-head">
+          <span className="kicker">Campaign depth / Magic Coils</span>
+          <h2 id="campaign-depth-title">ONE WORLD.<br /><em>EVERY FORMAT.</em></h2>
+          <p>Product storytelling, portraiture, education and launch content designed as one connected visual system.</p>
+        </header>
+        <div className="work-asset-grid">
+          <figure className="work-asset-wide"><img src="/work/magic-coils/03-products.webp" alt="Magic Coils full product campaign" /></figure>
+          <figure><img src="/work/magic-coils/extra/04.webp" alt="Magic Coils conditioner portrait campaign" /></figure>
+          <figure><img src="/work/magic-coils/extra/03.webp" alt="Magic Coils leave-in treatment campaign" /></figure>
+          <figure className="work-asset-wide"><img src="/work/magic-coils/05-light-of-nature.webp" alt="Magic Coils Light of Nature campaign" /></figure>
         </div>
       </section>
 

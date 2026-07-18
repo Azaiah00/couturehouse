@@ -55,7 +55,17 @@ export default function StudioPage() {
         </Link>
       </nav>
 
-      <section className="studio-hero">
+      <section className="studio-world-opening" aria-labelledby="studio-opening-title">
+        <div className="studio-world-opening-copy">
+          <span className="kicker">Couture House Co. / The studio</span>
+          <h1 id="studio-opening-title">WHERE CULTURE<br />MEETS <em>CRAFT.</em></h1>
+          <p>Strategy, technology and moving image shaped around the people, rituals and ambition behind the brand.</p>
+          <Link href="#point-of-view">Enter our point of view <span>&darr;</span></Link>
+        </div>
+        <figure><img src="/brand/studio-world-v1.png" alt="Black woman creative director in the Couture House digital atelier" /></figure>
+      </section>
+
+      <section className="studio-hero" id="point-of-view">
         <div className="studio-grid" aria-hidden="true" />
         <div className="studio-orbit studio-orbit-large" aria-hidden="true"><i /></div>
         <div className="studio-orbit studio-orbit-small" aria-hidden="true"><i /></div>
@@ -65,11 +75,11 @@ export default function StudioPage() {
         </div>
         <div className="studio-title-wrap">
           <p>The Couture House point of view</p>
-          <h1 className="studio-title">
+          <h2 className="studio-title">
             <span>DIGITAL,</span>
             <span>BUT MAKE IT <em>feel</em></span>
             <span>HUMAN.</span>
-          </h1>
+          </h2>
         </div>
         <div className="studio-hero-foot">
           <p>
@@ -117,6 +127,14 @@ export default function StudioPage() {
       </section>
 
       <section className="studio-collage section-pad">
+        <div className="studio-editorial-break" aria-labelledby="studio-direction-title">
+          <figure><img src="/brand/studio-culture-craft-v2.png" alt="Black creative director shaping an immersive digital brand world" /></figure>
+          <div className="studio-editorial-copy">
+            <span className="kicker">Creative direction / Systems / Story</span>
+            <h2 id="studio-direction-title">THE VISION<br />HAS AN <em>ENGINE.</em></h2>
+            <p>We connect the image people remember to the strategy, interface and systems that make the business move.</p>
+          </div>
+        </div>
         <div className="studio-collage-copy">
           <span className="kicker">Built for the culture</span>
           <h2>OUR NICHE<br />IS A <em>WORLD.</em></h2>
@@ -158,17 +176,6 @@ export default function StudioPage() {
           ))}
         </div>
         <Link className="studio-practice-link" href="/services">Explore every service <span>&#8599;</span></Link>
-      </section>
-
-      <section className="studio-world-break section-pad">
-        <div className="studio-world-copy">
-          <span className="kicker">A digital atelier with a pulse</span>
-          <h2>WHERE CULTURE<br />MEETS <em>CRAFT.</em></h2>
-          <p>Original campaign direction created for Couture House Co.—a portrait of the strategy, technology and humanity behind the work.</p>
-        </div>
-        <figure>
-          <img src="/brand/studio-world-v1.png" alt="Black woman creative director in a cinematic Couture House digital atelier" />
-        </figure>
       </section>
 
       <section className="studio-final">

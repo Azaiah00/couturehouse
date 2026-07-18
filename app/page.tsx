@@ -43,6 +43,7 @@ const featuredProjects = [
     title: "All Things Locs",
     eyebrow: "Natural hair / Oakland",
     image: "/portfolio/two-tit-experience.png",
+    video: "/portfolio/all-things-locs-hero.mp4",
     position: "center top",
     fit: "contain",
     url: "https://2titexperience.netlify.app/",
@@ -357,11 +358,17 @@ export default function Home() {
               <div className="browser-bar" aria-hidden="true">
                 <i /><i /><i /><span>{project.url.replace("https://", "").replace(/\/$/, "")}</span>
               </div>
-              <img
-                src={project.image}
-                alt={`${project.title} website preview`}
-                style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
-              />
+              {project.video ? (
+                <video autoPlay muted loop playsInline preload="metadata" aria-label={`${project.title} website motion preview`}>
+                  <source src={project.video} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={project.image}
+                  alt={`${project.title} website preview`}
+                  style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
+                />
+              )}
               <span className="featured-view">View live <b>&#8599;</b></span>
             </a>
             <div className="featured-copy">
@@ -480,9 +487,12 @@ export default function Home() {
         </div>
         <div className="full-film-frame" data-reveal>
           <video
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
             preload="metadata"
+            aria-label="Couture House full campaign film"
             onLoadedData={(event) => event.currentTarget.classList.add("is-ready")}
             onCanPlay={(event) => event.currentTarget.classList.add("is-ready")}
           >
@@ -501,29 +511,35 @@ export default function Home() {
           </p>
         </div>
         <div className="showreel-grid" data-reveal>
-          <figure className="showreel-frame showreel-primary">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/brand/winter-look-02.png"
-              aria-label="Couture House people and campaign showreel"
-              onLoadedMetadata={(event) => loopBetween(event, 0, 26)}
-              onTimeUpdate={(event) => loopBetween(event, 0, 26)}
-            >
-              <source src="/brand/showreel.mp4" type="video/mp4" />
-            </video>
-            <figcaption>People / Story / Campaign</figcaption>
-            <span className="showreel-stamp" aria-hidden="true">CH / 26</span>
-          </figure>
-          <figure className="showreel-frame showreel-secondary">
-            <video autoPlay muted loop playsInline preload="metadata" poster="/portfolio/majestic-contracting.svg" aria-label="Majestic design and build motion website">
-              <source src="/portfolio/majestic-intro.mp4" type="video/mp4" />
-            </video>
-            <figcaption>Design / Build / Motion</figcaption>
-          </figure>
+          <article className="motion-card motion-card-primary">
+            <div className="motion-card-meta"><span>01 / Brand story</span><p>People, texture and campaign energy.</p></div>
+            <figure className="showreel-frame showreel-primary">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster="/brand/winter-look-02.png"
+                aria-label="Couture House people and campaign showreel"
+                onLoadedMetadata={(event) => loopBetween(event, 0, 26)}
+                onTimeUpdate={(event) => loopBetween(event, 0, 26)}
+              >
+                <source src="/brand/showreel.mp4" type="video/mp4" />
+              </video>
+              <figcaption>People / Story / Campaign</figcaption>
+              <span className="showreel-stamp" aria-hidden="true">CH / 26</span>
+            </figure>
+          </article>
+          <article className="motion-card motion-card-secondary">
+            <div className="motion-card-meta"><span>02 / Digital motion</span><p>Interfaces that move with intention.</p></div>
+            <figure className="showreel-frame showreel-secondary">
+              <video autoPlay muted loop playsInline preload="metadata" poster="/portfolio/majestic-contracting.svg" aria-label="Majestic design and build motion website">
+                <source src="/portfolio/majestic-intro.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Design / Build / Motion</figcaption>
+            </figure>
+          </article>
         </div>
       </section>
 

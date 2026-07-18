@@ -6,6 +6,7 @@ const serviceOptions = ["Websites", "Apps", "Workflows", "Content"];
 
 export default function ProjectForm() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("service");
@@ -17,28 +18,36 @@ export default function ProjectForm() {
     setSelectedServices((current) => current.includes(service) ? current.filter((item) => item !== service) : [...current, service]);
   }
 
-  function submitInquiry(event: FormEvent<HTMLFormElement>) {
+  async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const business = String(form.get("business") ?? "New project");
-    const body = [
-      `Name: ${form.get("name")}`,
-      `Email: ${form.get("email")}`,
-      `Business: ${business}`,
-      `Current website: ${form.get("website") || "Not provided"}`,
-      `Services: ${selectedServices.length ? selectedServices.join(", ") : "Open to recommendation"}`,
-      `Investment range: ${form.get("budget")}`,
-      `Ideal timing: ${form.get("timeline")}`,
-      "",
-      "Project vision:",
-      String(form.get("details") ?? ""),
-    ].join("\n");
+    form.set("services", selectedServices.length ? selectedServices.join(", ") : "Open to recommendation");
+    form.set("_subject", `New Couture House project inquiry — ${business}`);
+    form.set("_template", "table");
+    form.set("_captcha", "false");
+    form.set("_replyto", String(form.get("email") ?? ""));
+    setStatus("sending");
 
-    window.location.href = `mailto:hello@couturehouse.co?subject=${encodeURIComponent(`New Couture House project inquiry — ${business}`)}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/hello@couturehouse.co", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: form,
+      });
+      if (!response.ok) throw new Error("Inquiry could not be sent");
+      setStatus("success");
+      formElement.reset();
+      setSelectedServices([]);
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
     <form className="project-form" onSubmit={submitInquiry}>
+      <input className="form-honeypot" type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="project-form-grid">
         <label><span>Your name *</span><input name="name" required autoComplete="name" placeholder="Name" /></label>
         <label><span>Email *</span><input name="email" type="email" required autoComplete="email" placeholder="you@business.com" /></label>
@@ -58,7 +67,14 @@ export default function ProjectForm() {
 
       <label className="project-form-details"><span>Tell us about the vision *</span><textarea name="details" required rows={7} placeholder="What are you building, what needs to change and what should people feel or do?" /></label>
 
-      <div className="project-form-submit"><p>This opens a ready-to-send email in your preferred mail app. You can also write directly to <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p><button type="submit">Prepare my project brief <span aria-hidden="true">&#8599;</span></button></div>
+      <div className="project-form-submit">
+        <div aria-live="polite">
+          {status === "success" ? <p className="form-success">Your brief is in our inbox. Thank you—we&apos;ll be in touch.</p> : null}
+          {status === "error" ? <p className="form-error">The form could not send just now. Please email <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p> : null}
+          {status === "idle" || status === "sending" ? <p>Your message is sent directly to the Couture House studio inbox.</p> : null}
+        </div>
+        <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send my project brief"} <span aria-hidden="true">&#8599;</span></button>
+      </div>
     </form>
   );
 }
