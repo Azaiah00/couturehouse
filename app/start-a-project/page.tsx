@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageSoundtrack from "../PageSoundtrack";
 import ProjectForm from "./ProjectForm";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function StartProjectPage() {
   return (
     <main className="start-page">
+      <PageSoundtrack src="/audio/start-project.mp3" title="Untitled (Remastered) III" />
       <div className="grain" aria-hidden="true" />
       <nav className="site-nav" aria-label="Primary navigation">
         <Link className="wordmark" href="/" aria-label="Couture House home"><img className="nav-logo" src="/brand/footer-logo.png" alt="" /><span className="wordmark-copy">Digital atelier<small>Beauty / Culture / Business</small></span></Link>

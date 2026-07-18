@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type SyntheticEvent } from "react";
+import PageSoundtrack from "./PageSoundtrack";
 
 type Project = {
   title: string;
@@ -199,6 +200,7 @@ export default function Home() {
 
   return (
     <main>
+      <PageSoundtrack src="/audio/the-saxuation.mp3" title="The Saxuation" />
       <div className="cursor-glow" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
 
@@ -340,6 +342,37 @@ export default function Home() {
             <img src="/work/magic-coils/extra/06.webp" alt="Magic Coils strengthening serum lifestyle campaign" />
           </figure>
         </div>
+      </section>
+
+      <section className="product-world section-pad" aria-labelledby="product-world-title">
+        <header className="product-world-head" data-reveal>
+          <span className="kicker">Product placement / Content creation</span>
+          <h2 id="product-world-title">STYLED<br />TO <em>SELL.</em></h2>
+          <p>
+            We turn products into visual worlds: editorial still life,
+            ingredient storytelling and launch-ready content designed to stop
+            the scroll and make the value instantly clear.
+          </p>
+        </header>
+        <div className="product-world-gallery" data-reveal>
+          <figure className="product-shot product-shot-high">
+            <img src="/work/magic-coils/product-placement/intense-hydration.jpg" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
+            <figcaption><span>01</span> Ingredient-led art direction</figcaption>
+          </figure>
+          <figure className="product-shot product-shot-low">
+            <img src="/work/magic-coils/product-placement/moisture-conditioner.jpg" alt="Magic Coils moisture rich conditioner product placement" loading="lazy" decoding="async" />
+            <figcaption><span>02</span> Editorial product worlds</figcaption>
+          </figure>
+          <figure className="product-shot product-shot-high">
+            <img src="/work/magic-coils/product-placement/strengthening-serum.jpg" alt="Magic Coils strengthening serum product placement" loading="lazy" decoding="async" />
+            <figcaption><span>03</span> Campaign-ready content</figcaption>
+          </figure>
+          <figure className="product-shot product-shot-low">
+            <img src="/work/magic-coils/product-placement/foam-wrap.jpg" alt="Magic Coils foam wrap product placement" loading="lazy" decoding="async" />
+            <figcaption><span>04</span> Product launch systems</figcaption>
+          </figure>
+        </div>
+        <a className="product-world-link" href="/services">Explore content creation <span>&#8599;</span></a>
       </section>
 
       <section className="featured-projects section-pad" aria-labelledby="featured-title">
@@ -512,7 +545,7 @@ export default function Home() {
         </div>
         <div className="showreel-grid" data-reveal>
           <article className="motion-card motion-card-primary">
-            <div className="motion-card-meta"><span>01 / Brand story</span><p>People, texture and campaign energy.</p></div>
+            <div className="motion-card-meta"><span>01 / Social motion</span><p>Vertical stories made to hold attention.</p></div>
             <figure className="showreel-frame showreel-primary">
               <video
                 autoPlay
@@ -520,15 +553,12 @@ export default function Home() {
                 loop
                 playsInline
                 preload="metadata"
-                poster="/brand/winter-look-02.png"
-                aria-label="Couture House people and campaign showreel"
-                onLoadedMetadata={(event) => loopBetween(event, 0, 26)}
-                onTimeUpdate={(event) => loopBetween(event, 0, 26)}
+                aria-label="Couture House vertical campaign showreel"
               >
-                <source src="/brand/showreel.mp4" type="video/mp4" />
+                <source src="/brand/work-moves-r01.mp4" type="video/mp4" />
               </video>
-              <figcaption>People / Story / Campaign</figcaption>
-              <span className="showreel-stamp" aria-hidden="true">CH / 26</span>
+              <figcaption>Social / Story / Motion</figcaption>
+              <span className="showreel-stamp" aria-hidden="true">CH / 85</span>
             </figure>
           </article>
           <article className="motion-card motion-card-secondary">

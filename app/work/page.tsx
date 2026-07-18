@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageSoundtrack from "../PageSoundtrack";
 
 export const metadata: Metadata = {
   title: "Selected Work | Couture House Co.",
@@ -22,6 +23,7 @@ const work = [
 export default function WorkPage() {
   return (
     <main className="work-page">
+      <PageSoundtrack src="/audio/soul-trapped.mp3" title="Soul Trapped" />
       <div className="grain" aria-hidden="true" />
       <nav className="site-nav" aria-label="Primary navigation">
         <Link className="wordmark" href="/" aria-label="Couture House home">
@@ -58,10 +60,65 @@ export default function WorkPage() {
           <p>Product storytelling, portraiture, education and launch content designed as one connected visual system.</p>
         </header>
         <div className="work-asset-grid">
-          <figure className="work-asset-wide"><img src="/work/magic-coils/03-products.webp" alt="Magic Coils full product campaign" /></figure>
-          <figure><img src="/work/magic-coils/extra/04.webp" alt="Magic Coils conditioner portrait campaign" /></figure>
-          <figure><img src="/work/magic-coils/extra/03.webp" alt="Magic Coils leave-in treatment campaign" /></figure>
-          <figure className="work-asset-wide"><img src="/work/magic-coils/05-light-of-nature.webp" alt="Magic Coils Light of Nature campaign" /></figure>
+          <figure className="work-asset-landscape"><img src="/work/magic-coils/03-products.webp" alt="Magic Coils full product campaign" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-portrait"><img src="/work/magic-coils/extra/04.webp" alt="Magic Coils conditioner portrait campaign" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/ingredient-trinity.png" alt="Magic Coils ingredient campaign graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/honey-oil.png" alt="Magic Coils honey oil ingredient graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/vitamin-c.png" alt="Magic Coils vitamin C ingredient graphic" loading="lazy" decoding="async" /></figure>
+          <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/argan-oil.png" alt="Magic Coils argan oil ingredient graphic" loading="lazy" decoding="async" /></figure>
+        </div>
+      </section>
+
+      <section className="partnership-story section-pad" aria-labelledby="partnership-title">
+        <header className="partnership-head">
+          <span className="kicker">Ongoing partnership / Teddy + Monica</span>
+          <h2 id="partnership-title">ONE PARTNERSHIP.<br /><em>MANY WORLDS.</em></h2>
+          <p>
+            From the Sacrificial Conversations podcast and apparel line to
+            Beverly&apos;s of Nashville education and salon campaigns, we build
+            the connected digital, motion and content systems behind every new chapter.
+          </p>
+        </header>
+
+        <div className="partnership-film">
+          <div className="partnership-film-copy">
+            <span>Moving image / Campaign direction</span>
+            <h3>Stories that move with the partnership.</h3>
+            <p>Animated campaign content made for social, launches and the moments between episodes.</p>
+          </div>
+          <figure>
+            <video autoPlay muted loop playsInline preload="metadata" aria-label="Teddy and Monica campaign film">
+              <source src="/brand/showreel.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+
+        <div className="partnership-chapter">
+          <div className="partnership-chapter-copy">
+            <span>Chapter 01</span>
+            <h3>Sacrificial Conversations</h3>
+            <p>Podcast creative, episode promotion, editorial campaigns, e-commerce and an apparel world built to carry the message beyond the microphone.</p>
+            <a href="https://sacrificialconversations.shop/" target="_blank" rel="noreferrer">Visit the brand <span>&#8599;</span></a>
+          </div>
+          <div className="partnership-poster-grid">
+            <figure><img src="/work/partnership/podcast-new-episode.png" alt="Sacrificial Conversations new episode campaign flyer" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/podcast-faith-education.png" alt="Sacrificial Conversations faith and education episode flyer" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/podcast-live-merch.png" alt="Sacrificial Conversations podcast and merchandise campaign flyer" loading="lazy" decoding="async" /></figure>
+          </div>
+        </div>
+
+        <div className="partnership-chapter partnership-chapter-beverly">
+          <div className="partnership-chapter-copy">
+            <span>Chapter 02</span>
+            <h3>Beverly&apos;s of Nashville</h3>
+            <p>Website, salon positioning, education products and campaign content that turn three decades of expertise into a modern brand platform.</p>
+            <a href="https://beverlysofnashville.com/" target="_blank" rel="noreferrer">Experience Beverly&apos;s <span>&#8599;</span></a>
+          </div>
+          <div className="partnership-beverly-grid">
+            <figure className="partnership-king"><img src="/work/partnership/hair-care-king.png" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/silk-press-blueprint.png" alt="The Silk Press Blueprint digital product cover" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/hair-color-mastery.png" alt="Hair Color Mastery Guide digital product cover" loading="lazy" decoding="async" /></figure>
+          </div>
         </div>
       </section>
 

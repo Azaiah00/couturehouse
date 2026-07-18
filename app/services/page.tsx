@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageSoundtrack from "../PageSoundtrack";
 
 export const metadata: Metadata = {
   title: "Services | Couture House Co.",
@@ -40,6 +41,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <main className="services-page">
+      <PageSoundtrack src="/audio/services.mp3" title="Untitled (Remastered) I" />
       <div className="grain" aria-hidden="true" />
       <nav className="site-nav" aria-label="Primary navigation">
         <Link className="wordmark" href="/" aria-label="Couture House home"><img className="nav-logo" src="/brand/footer-logo.png" alt="" /><span className="wordmark-copy">Digital atelier<small>Beauty / Culture / Business</small></span></Link>
