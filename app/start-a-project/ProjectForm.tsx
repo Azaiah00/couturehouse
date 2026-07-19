@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 
-const serviceOptions = ["Websites", "Apps", "Workflows", "Content"];
+const serviceOptions = ["Websites", "Apps", "Workflows + Automation", "Content + Music"];
 
 export default function ProjectForm() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
@@ -10,7 +10,13 @@ export default function ProjectForm() {
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("service");
-    const match = serviceOptions.find((service) => service.toLowerCase() === requested?.toLowerCase());
+    const requestedService = requested?.toLowerCase();
+    const match = serviceOptions.find((service) => {
+      const normalized = service.toLowerCase();
+      return normalized === requestedService ||
+        (requestedService === "content" && normalized === "content + music") ||
+        (requestedService === "workflows" && normalized === "workflows + automation");
+    });
     if (match) setSelectedServices([match]);
   }, []);
 

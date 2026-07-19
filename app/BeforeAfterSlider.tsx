@@ -40,7 +40,7 @@ export default function BeforeAfterSlider({
           />
         </div>
         <div className="revival-divider" style={{ left: `${position}%` }} aria-hidden="true">
-          <span>&larr;&nbsp;&nbsp;&rarr;</span>
+          <span>&larr;&nbsp; Slide &nbsp;&rarr;</span>
         </div>
         <input
           type="range"

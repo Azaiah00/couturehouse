@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AllThingsLocsPreview from "../AllThingsLocsPreview";
 import BeforeAfterSlider from "../BeforeAfterSlider";
 import PageSoundtrack from "../PageSoundtrack";
 
@@ -137,7 +138,7 @@ export default function WorkPage() {
             />
           ))}
         </div>
-        <p className="revival-disclosure">AI-assisted creative enhancement, shaped and finished through Couture House art direction. Presented as original salon content versus enhanced content—not a salon-service result.</p>
+        <p className="revival-disclosure">Creative enhancement shaped and finished through Couture House art direction. Presented as original salon content and its refined, brand-ready version—not a salon-service result.</p>
       </section>
 
       <section className="work-index section-pad" aria-labelledby="work-index-title">
@@ -147,7 +148,7 @@ export default function WorkPage() {
             <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
               <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
                 <div className="work-index-media">
-                  {project.video ? <video autoPlay muted loop playsInline preload="metadata" poster={project.image}><source src={project.video} type="video/mp4" /></video> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
+                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <video autoPlay muted loop playsInline preload="metadata" poster={project.image}><source src={project.video} type="video/mp4" /></video> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
                   <span>View live &#8599;</span>
                 </div>
                 <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
@@ -203,10 +204,8 @@ export default function WorkPage() {
             <a href="https://beverlysofnashville.com/" target="_blank" rel="noreferrer">Experience Beverly&apos;s <span>&#8599;</span></a>
           </div>
           <div className="partnership-beverly-grid">
-            <figure className="partnership-king"><img src="/work/partnership/hair-care-king.webp" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
-            <figure className="partnership-king-alt"><img src="/work/partnership/hair-care-king-neon.webp" alt="The Hair Care King campaign in a neon salon setting" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/silk-press-blueprint.webp" alt="The Silk Press Blueprint digital product cover" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/hair-color-mastery.webp" alt="Hair Color Mastery Guide digital product cover" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/hair-care-king.webp" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
+            <figure><img src="/work/partnership/hair-color-mastery-approved.png" alt="Hair Color Mastery Guide campaign cover" loading="lazy" decoding="async" /></figure>
           </div>
         </div>
       </section>

@@ -25,16 +25,16 @@ const services = [
   },
   {
     number: "03",
-    title: "Workflows",
-    promise: "Quiet systems that keep leads warm, information organized and the business moving while you do the work only you can do.",
-    includes: ["Lead and inquiry routing", "CRM and intake systems", "Booking follow-up", "Client communication", "Content operations", "Campaign automation"],
-    ideal: "Growing teams losing time to repeated tasks, scattered information or inconsistent follow-up.",
+    title: "Workflows + Automation",
+    promise: "Connected systems, business hubs and automations that keep leads warm, information organized and the operation moving while you do the work only you can do.",
+    includes: ["Lead and inquiry routing", "CRM and intake systems", "Booking and payment workflows", "Client communication", "Business hubs and dashboards", "Content operations", "AI consulting and integration planning", "Campaign automation"],
+    ideal: "Growing businesses losing time to repeated tasks, scattered information, disconnected tools or inconsistent follow-up.",
   },
   {
     number: "04",
     title: "Content",
-    promise: "A connected image system with enough character to stop the scroll and enough structure to keep working after one post.",
-    includes: ["Creative direction", "Campaign concepts", "Archive photo revival", "Still imagery", "Motion and short-form video", "Product placements", "Launch systems", "Social and web assets"],
+    promise: "A connected visual and sound system with enough character to stop the scroll and enough structure to keep working after one post.",
+    includes: ["Creative direction", "Campaign concepts", "Archive photo revival", "Still imagery", "Motion and short-form video", "Original music and instrumentals", "Audio branding", "Product placements", "Launch systems", "Social and web assets"],
     ideal: "New brands, product launches, seasonal campaigns and businesses whose current content does not match the quality of their work.",
   },
 ];
@@ -63,7 +63,7 @@ export default function ServicesPage() {
 
       <section className="service-detail-list section-pad" aria-label="Couture House services">
         {services.map((service) => (
-          <article className="service-detail" id={service.title.toLowerCase()} key={service.number}>
+          <article className="service-detail" id={service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")} key={service.number}>
             <div className="service-detail-title"><span>{service.number}</span><h2>{service.title}</h2></div>
             <div className="service-detail-body">
               <p className="service-detail-promise">{service.promise}</p>
@@ -72,6 +72,28 @@ export default function ServicesPage() {
             </div>
           </article>
         ))}
+      </section>
+
+      <section className="service-motion-showcase section-pad" aria-labelledby="service-motion-title">
+        <header className="service-motion-head">
+          <span className="kicker">Content creation / Magic Coils</span>
+          <h2 id="service-motion-title">MOTION MADE<br /><em>TO MOVE PEOPLE.</em></h2>
+          <p>Short-form campaign reels designed as part of a larger brand world—built for launches, social storytelling and the moments that make people stop.</p>
+        </header>
+        <div className="service-motion-grid">
+          <figure>
+            <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils campaign reel featuring luxury hair-care storytelling">
+              <source src="/services/magic-coils-reel-01.mp4" type="video/mp4" />
+            </video>
+            <figcaption><span>01</span> Campaign motion / Magic Coils</figcaption>
+          </figure>
+          <figure>
+            <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils short-form product campaign reel">
+              <source src="/services/magic-coils-reel-02.mp4" type="video/mp4" />
+            </video>
+            <figcaption><span>02</span> Product storytelling / Magic Coils</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section className="revival-service section-pad" aria-labelledby="revival-service-title">
@@ -85,7 +107,7 @@ export default function ServicesPage() {
             <li>Color finishing + web-ready presentation</li>
           </ul>
           <Link href="/work#content-revival">See the transformations <span>&#8599;</span></Link>
-          <small>AI-assisted creative enhancement with human art direction and finishing.</small>
+          <small>Creative enhancement guided by human art direction, careful finishing and the story already present in the original.</small>
         </div>
         <BeforeAfterSlider
           before="/work/photo-revival/08-precision-flat-loc-design-before.webp"

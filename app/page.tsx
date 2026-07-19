@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type SyntheticEvent } from "react";
+import AllThingsLocsPreview from "./AllThingsLocsPreview";
 import PageSoundtrack from "./PageSoundtrack";
 
 type Project = {
@@ -137,17 +138,17 @@ const services = [
   },
   {
     number: "03",
-    title: "Workflows",
+    title: "Workflows + Automation",
     description:
-      "Quiet systems that follow up, organize, publish and keep the business moving while you create.",
-    tags: ["Automation", "CRM", "Booking", "Operations"],
+      "Connected systems, business hubs and automations that organize the operation and keep work moving without constant manual effort.",
+    tags: ["Automation", "Business hubs", "CRM", "AI consulting"],
   },
   {
     number: "04",
     title: "Content",
     description:
-      "Campaign concepts, motion, social assets and stories built to work together - not disappear after one post.",
-    tags: ["Creative direction", "Campaigns", "Motion", "Social"],
+      "Campaign concepts, motion, original music and visual stories built to work together—not disappear after one post.",
+    tags: ["Creative direction", "Campaigns", "Motion", "Music creation"],
   },
 ];
 
@@ -360,7 +361,9 @@ export default function Home() {
               <div className="browser-bar" aria-hidden="true">
                 <i /><i /><i /><span>{project.url.replace("https://", "").replace(/\/$/, "")}</span>
               </div>
-              {project.video ? (
+              {project.title === "All Things Locs" ? (
+                <AllThingsLocsPreview />
+              ) : project.video ? (
                 <video autoPlay muted loop playsInline preload="metadata" aria-label={`${project.title} website motion preview`}>
                   <source src={project.video} type="video/mp4" />
                 </video>
