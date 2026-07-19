@@ -88,11 +88,11 @@ export default function ServicesPage() {
           <small>AI-assisted creative enhancement with human art direction and finishing.</small>
         </div>
         <BeforeAfterSlider
-          before="/work/photo-revival/01-charlotte-at-work-before.webp"
-          after="/work/photo-revival/01-charlotte-at-work-after.webp"
-          alt="Charlotte working with a loc client in her salon"
-          title="Charlotte at Work"
-          note="From everyday salon snapshot to brand-ready campaign image."
+          before="/work/photo-revival/08-precision-flat-loc-design-before.webp"
+          after="/work/photo-revival/08-precision-flat-loc-design-after.webp"
+          alt="precision flat-loc design photographed from above"
+          title="Precision Flat-Loc Design"
+          note="From distracting salon snapshot to a focused, brand-ready detail image."
           priority
         />
       </section>

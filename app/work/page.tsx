@@ -23,13 +23,6 @@ const work = [
 
 const revivals = [
   {
-    title: "Charlotte at Work",
-    before: "/work/photo-revival/01-charlotte-at-work-before.webp",
-    after: "/work/photo-revival/01-charlotte-at-work-after.webp",
-    alt: "Charlotte working with a loc client in her salon",
-    note: "Salon reconstruction + visual cleanup",
-  },
-  {
     title: "Sculptural Loc Updo",
     before: "/work/photo-revival/02-sculptural-loc-updo-before.webp",
     after: "/work/photo-revival/02-sculptural-loc-updo-after.webp",
@@ -49,6 +42,13 @@ const revivals = [
     after: "/work/photo-revival/04-ombre-braids-after.webp",
     alt: "long ombré braids with curled ends",
     note: "Brand-aligned scene reconstruction",
+  },
+  {
+    title: "Curly Braided Finish",
+    before: "/work/photo-revival/05-curly-braided-finish-before.webp",
+    after: "/work/photo-revival/05-curly-braided-finish-after.webp",
+    alt: "curly braided finish photographed from behind",
+    note: "Backdrop reconstruction + editorial finishing",
   },
   {
     title: "Blue Loc Extensions",
@@ -140,6 +140,23 @@ export default function WorkPage() {
         <p className="revival-disclosure">AI-assisted creative enhancement, shaped and finished through Couture House art direction. Presented as original salon content versus enhanced content—not a salon-service result.</p>
       </section>
 
+      <section className="work-index section-pad" aria-labelledby="work-index-title">
+        <header className="work-index-head"><span className="kicker">The complete gallery</span><h2 id="work-index-title">SELECTED<br /><em>WORLDS.</em></h2><p>Each project is shown through a high-value moment from the experience—not a generic thumbnail.</p></header>
+        <div className="work-index-grid">
+          {work.slice(1).map((project, index) => (
+            <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
+              <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
+                <div className="work-index-media">
+                  {project.video ? <video autoPlay muted loop playsInline preload="metadata" poster={project.image}><source src={project.video} type="video/mp4" /></video> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
+                  <span>View live &#8599;</span>
+                </div>
+                <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="partnership-story section-pad" aria-labelledby="partnership-title">
         <header className="partnership-head">
           <span className="kicker">Ongoing partnership / Teddy + Monica</span>
@@ -187,26 +204,10 @@ export default function WorkPage() {
           </div>
           <div className="partnership-beverly-grid">
             <figure className="partnership-king"><img src="/work/partnership/hair-care-king.webp" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
+            <figure className="partnership-king-alt"><img src="/work/partnership/hair-care-king-neon.webp" alt="The Hair Care King campaign in a neon salon setting" loading="lazy" decoding="async" /></figure>
             <figure><img src="/work/partnership/silk-press-blueprint.webp" alt="The Silk Press Blueprint digital product cover" loading="lazy" decoding="async" /></figure>
             <figure><img src="/work/partnership/hair-color-mastery.webp" alt="Hair Color Mastery Guide digital product cover" loading="lazy" decoding="async" /></figure>
           </div>
-        </div>
-      </section>
-
-      <section className="work-index section-pad" aria-labelledby="work-index-title">
-        <header className="work-index-head"><span className="kicker">The complete gallery</span><h2 id="work-index-title">SELECTED<br /><em>WORLDS.</em></h2><p>Each project is shown through a high-value moment from the experience—not a generic thumbnail.</p></header>
-        <div className="work-index-grid">
-          {work.slice(1).map((project, index) => (
-            <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
-              <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
-                <div className="work-index-media">
-                  {project.video ? <video autoPlay muted loop playsInline preload="metadata" poster={project.image}><source src={project.video} type="video/mp4" /></video> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
-                  <span>View live &#8599;</span>
-                </div>
-                <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
-              </a>
-            </article>
-          ))}
         </div>
       </section>
 

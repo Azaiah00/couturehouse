@@ -344,37 +344,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="product-world section-pad" aria-labelledby="product-world-title">
-        <header className="product-world-head" data-reveal>
-          <span className="kicker">Product placement / Content creation</span>
-          <h2 id="product-world-title">STYLED<br />TO <em>SELL.</em></h2>
-          <p>
-            We turn products into visual worlds: editorial still life,
-            ingredient storytelling and launch-ready content designed to stop
-            the scroll and make the value instantly clear.
-          </p>
-        </header>
-        <div className="product-world-gallery" data-reveal>
-          <figure className="product-shot product-shot-high">
-            <img src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
-            <figcaption><span>01</span> Ingredient-led art direction</figcaption>
-          </figure>
-          <figure className="product-shot product-shot-low">
-            <img src="/work/magic-coils/product-placement/moisture-conditioner.webp" alt="Magic Coils moisture rich conditioner product placement" loading="lazy" decoding="async" />
-            <figcaption><span>02</span> Editorial product worlds</figcaption>
-          </figure>
-          <figure className="product-shot product-shot-high">
-            <img src="/work/magic-coils/product-placement/strengthening-serum.webp" alt="Magic Coils strengthening serum product placement" loading="lazy" decoding="async" />
-            <figcaption><span>03</span> Campaign-ready content</figcaption>
-          </figure>
-          <figure className="product-shot product-shot-low">
-            <img src="/work/magic-coils/product-placement/foam-wrap.webp" alt="Magic Coils foam wrap product placement" loading="lazy" decoding="async" />
-            <figcaption><span>04</span> Product launch systems</figcaption>
-          </figure>
-        </div>
-        <a className="product-world-link" href="/services">Explore content creation <span>&#8599;</span></a>
-      </section>
-
       <section className="featured-projects section-pad" aria-labelledby="featured-title">
         <header className="featured-heading" data-reveal>
           <span className="kicker">Hair + beauty first</span>
@@ -479,6 +448,37 @@ export default function Home() {
           ))}
         </div>
         <a className="services-page-link" href="/services" data-reveal>Explore services in detail <span>&#8599;</span></a>
+      </section>
+
+      <section className="product-world section-pad" aria-labelledby="product-world-title">
+        <header className="product-world-head" data-reveal>
+          <span className="kicker">Product placement / Content creation</span>
+          <h2 id="product-world-title">STYLED<br />TO <em>SELL.</em></h2>
+          <p>
+            We turn products into visual worlds: editorial still life,
+            ingredient storytelling and launch-ready content designed to stop
+            the scroll and make the value instantly clear.
+          </p>
+        </header>
+        <div className="product-world-gallery" data-reveal>
+          <figure className="product-shot product-shot-high">
+            <img src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
+            <figcaption><span>01</span> Ingredient-led art direction</figcaption>
+          </figure>
+          <figure className="product-shot product-shot-low">
+            <img src="/work/magic-coils/product-placement/moisture-conditioner.webp" alt="Magic Coils moisture rich conditioner product placement" loading="lazy" decoding="async" />
+            <figcaption><span>02</span> Editorial product worlds</figcaption>
+          </figure>
+          <figure className="product-shot product-shot-high">
+            <img src="/work/magic-coils/product-placement/strengthening-serum.webp" alt="Magic Coils strengthening serum product placement" loading="lazy" decoding="async" />
+            <figcaption><span>03</span> Campaign-ready content</figcaption>
+          </figure>
+          <figure className="product-shot product-shot-low">
+            <img src="/work/magic-coils/product-placement/foam-wrap.webp" alt="Magic Coils foam wrap product placement" loading="lazy" decoding="async" />
+            <figcaption><span>04</span> Product launch systems</figcaption>
+          </figure>
+        </div>
+        <a className="product-world-link" href="/services">Explore content creation <span>&#8599;</span></a>
       </section>
 
       <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
