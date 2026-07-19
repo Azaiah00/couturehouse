@@ -22,7 +22,7 @@ const featuredProjects = [
     eyebrow: "Salon experience / Oakland",
     image: "/portfolio/dreadlocks-salon.png",
     position: "center top",
-    fit: "contain",
+    fit: "contain" as const,
     url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/",
     summary:
       "A confident, image-led salon experience that turns loc artistry into a clear journey from discovery to booking.",
@@ -34,7 +34,7 @@ const featuredProjects = [
     eyebrow: "Legacy salon / Nashville",
     image: "/portfolio/beverlys-feature.png",
     position: "center center",
-    fit: "contain",
+    fit: "contain" as const,
     url: "https://beverlysofnashville.com/",
     summary:
       "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
@@ -47,7 +47,7 @@ const featuredProjects = [
     image: "/portfolio/two-tit-experience.png",
     video: "/portfolio/all-things-locs-hero.mp4",
     position: "center top",
-    fit: "contain",
+    fit: "contain" as const,
     url: "https://2titexperience.netlify.app/",
     summary:
       "A warm, personality-rich experience that turns specialist loc care, education and service discovery into one inviting digital home.",
