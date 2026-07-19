@@ -95,8 +95,8 @@ export default function WorkPage() {
           <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <span>&#8599;</span></a>
         </div>
         <div className="work-page-lead-media">
-          <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/extra/04.webp"><source src="/work/magic-coils/magicpress.mp4" type="video/mp4" /></video>
-          <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp" aria-label="Magic Coils campaign reel"><source src="/work/magic-coils/reel.mp4" type="video/mp4" /></video>
+          <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils luxury campaign reel"><source src="/work/magic-coils/featured-reel-01.mp4" type="video/mp4" /></video>
+          <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils product storytelling reel"><source src="/work/magic-coils/featured-reel-02.mp4" type="video/mp4" /></video>
         </div>
       </section>
 

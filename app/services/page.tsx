@@ -76,22 +76,22 @@ export default function ServicesPage() {
 
       <section className="service-motion-showcase section-pad" aria-labelledby="service-motion-title">
         <header className="service-motion-head">
-          <span className="kicker">Content creation / Magic Coils</span>
-          <h2 id="service-motion-title">MOTION MADE<br /><em>TO MOVE PEOPLE.</em></h2>
-          <p>Short-form campaign reels designed as part of a larger brand world—built for launches, social storytelling and the moments that make people stop.</p>
+          <span className="kicker">Content creation / Sacrificial Conversations</span>
+          <h2 id="service-motion-title">STORIES BUILT<br /><em>TO KEEP MOVING.</em></h2>
+          <p>Short-form editorial reels that extend a brand beyond a single post—built for launches, social storytelling and a consistent visual presence between every major moment.</p>
         </header>
         <div className="service-motion-grid">
           <figure>
-            <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils campaign reel featuring luxury hair-care storytelling">
-              <source src="/services/magic-coils-reel-01.mp4" type="video/mp4" />
+            <video autoPlay muted loop playsInline preload="metadata" aria-label="Sacrificial Conversations editorial campaign reel">
+              <source src="/services/sacrificial-conversations-reel-01.mp4" type="video/mp4" />
             </video>
-            <figcaption><span>01</span> Campaign motion / Magic Coils</figcaption>
+            <figcaption><span>01</span> Editorial motion / Sacrificial Conversations</figcaption>
           </figure>
           <figure>
-            <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils short-form product campaign reel">
-              <source src="/services/magic-coils-reel-02.mp4" type="video/mp4" />
+            <video autoPlay muted loop playsInline preload="metadata" aria-label="Sacrificial Conversations short-form social reel">
+              <source src="/services/sacrificial-conversations-reel-02.mp4" type="video/mp4" />
             </video>
-            <figcaption><span>02</span> Product storytelling / Magic Coils</figcaption>
+            <figcaption><span>02</span> Social storytelling / Sacrificial Conversations</figcaption>
           </figure>
         </div>
       </section>
