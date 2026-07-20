@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageSoundtrack from "../PageSoundtrack";
+import SiteFooter from "../SiteFooter";
+import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
   title: "The Studio | Couture House Co.",
@@ -39,23 +41,7 @@ export default function StudioPage() {
       <PageSoundtrack src="/audio/destiny-sax.mp3" title="Destiny Sax" />
       <div className="grain" aria-hidden="true" />
 
-      <nav className="site-nav" aria-label="Primary navigation">
-        <Link className="wordmark" href="/" aria-label="Couture House home">
-          <img className="nav-logo" src="/brand/footer-logo.png" alt="" />
-          <span className="wordmark-copy">
-            Digital atelier
-            <small>Beauty / Culture / Business</small>
-          </span>
-        </Link>
-        <div className="nav-links">
-          <Link href="/work">Work</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/studio" aria-current="page">Studio</Link>
-        </div>
-        <Link className="nav-cta magnetic" href="/start-a-project">
-          Start a project <span aria-hidden="true">&#8599;</span>
-        </Link>
-      </nav>
+      <SiteNav />
 
       <section className="studio-world-opening" aria-labelledby="studio-opening-title">
         <div className="studio-world-opening-copy">
@@ -189,18 +175,7 @@ export default function StudioPage() {
         </Link>
       </section>
 
-      <footer>
-        <Link className="footer-logo-link" href="/" aria-label="Couture House home">
-          <img src="/brand/footer-logo.png" alt="Couture House" />
-        </Link>
-        <p>Digital atelier for hair, beauty, culture and ambitious businesses.</p>
-        <div>
-          <Link href="/work">Work &#8599;</Link>
-          <Link href="/services">Services &#8599;</Link>
-          <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a>
-        </div>
-        <small>&copy; 2026 Couture House Co.</small>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

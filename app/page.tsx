@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, type SyntheticEvent } from "react";
+import { useEffect } from "react";
+import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import AllThingsLocsPreview from "./AllThingsLocsPreview";
+import AutoPlayVideo from "./AutoPlayVideo";
 import PageSoundtrack from "./PageSoundtrack";
+import SiteFooter from "./SiteFooter";
+import SiteNav from "./SiteNav";
 
 type Project = {
   title: string;
@@ -152,18 +156,6 @@ const services = [
   },
 ];
 
-function loopBetween(
-  event: SyntheticEvent<HTMLVideoElement>,
-  start: number,
-  end: number,
-) {
-  const video = event.currentTarget;
-  if (video.currentTime < start || video.currentTime >= end) {
-    video.currentTime = start;
-    void video.play().catch(() => undefined);
-  }
-}
-
 export default function Home() {
   useEffect(() => {
     const root = document.documentElement;
@@ -205,43 +197,10 @@ export default function Home() {
       <div className="cursor-glow" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
 
-      <nav className="site-nav" aria-label="Primary navigation">
-        <a className="wordmark" href="#top" aria-label="Couture House home">
-          <img className="nav-logo" src="/brand/footer-logo.png" alt="" />
-          <span className="wordmark-copy">
-            Digital atelier
-            <small>Beauty / Culture / Business</small>
-          </span>
-        </a>
-        <div className="nav-links">
-          <a href="/work">Work</a>
-          <a href="/services">Services</a>
-          <a href="/studio">Studio</a>
-        </div>
-        <a
-          className="nav-cta magnetic"
-          href="/start-a-project"
-        >
-          Start a project <span aria-hidden="true">&#8599;</span>
-        </a>
-      </nav>
+      <SiteNav />
 
       <section className="hero" id="top">
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          onLoadedMetadata={(event) => loopBetween(event, 3, 15)}
-          onLoadedData={(event) => event.currentTarget.classList.add("is-ready")}
-          onCanPlay={(event) => event.currentTarget.classList.add("is-ready")}
-          onTimeUpdate={(event) => loopBetween(event, 3, 15)}
-        >
-          <source src="/brand/hero-video.mp4" type="video/mp4" />
-        </video>
+        <AutoPlayVideo className="hero-video" src="/brand/hero-video.mp4" startAt={3} endAt={15} ariaHidden />
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orbit orbit-one" aria-hidden="true" />
         <div className="hero-orbit orbit-two" aria-hidden="true" />
@@ -265,13 +224,13 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a className="hero-primary" href="#work">
-                View selected work <span aria-hidden="true">&darr;</span>
+                View selected work <ArrowDown className="inline-icon" aria-hidden="true" />
               </a>
               <a
                 className="hero-secondary"
                 href="/start-a-project"
               >
-                Start a project <span aria-hidden="true">&#8599;</span>
+                Start a project <ArrowUpRight className="inline-icon" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -293,8 +252,8 @@ export default function Home() {
       <section className="client-reel client-reel-early" aria-label="Selected collaborators">
         <p>Selected work for brands building memorable things</p>
         <div>
-          <span>MAGIC COILS</span><i>◆</i><span>BEVERLY&apos;S</span><i>◆</i>
-          <span>THE DREADLOCKS SALON</span><i>◆</i><span>DIVINE TEXTURES</span><i>◆</i>
+          <span>MAGIC COILS</span><i><Sparkles aria-hidden="true" /></i><span>BEVERLY&apos;S</span><i><Sparkles aria-hidden="true" /></i>
+          <span>THE DREADLOCKS SALON</span><i><Sparkles aria-hidden="true" /></i><span>DIVINE TEXTURES</span><i><Sparkles aria-hidden="true" /></i>
           <span>MAJESTIC</span><i>◆</i><span>SODIQ YUSUFF</span>
         </div>
       </section>
@@ -322,15 +281,11 @@ export default function Home() {
             <img src="/work/magic-coils/cover.webp" alt="Magic Coils Crowned in Magic campaign" />
           </figure>
           <figure className="case-video">
-            <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/extra/04.webp">
-              <source src="/work/magic-coils/magicpress.mp4" type="video/mp4" />
-            </video>
+            <AutoPlayVideo src="/work/magic-coils/magicpress.mp4" ariaLabel="Magic Press education reel" />
             <figcaption>Magic press / Education in motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <video autoPlay muted loop playsInline preload="metadata" poster="/work/magic-coils/04-collection.webp">
-              <source src="/work/magic-coils/reel.mp4" type="video/mp4" />
-            </video>
+            <AutoPlayVideo src="/work/magic-coils/reel.mp4" ariaLabel="Magic Coils brand reel" />
             <figcaption>Brand reel / The world in motion</figcaption>
           </figure>
           <figure className="case-product case-wide">
@@ -364,9 +319,7 @@ export default function Home() {
               {project.title === "All Things Locs" ? (
                 <AllThingsLocsPreview />
               ) : project.video ? (
-                <video autoPlay muted loop playsInline preload="metadata" aria-label={`${project.title} website motion preview`}>
-                  <source src={project.video} type="video/mp4" />
-                </video>
+                <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website motion preview`} />
               ) : (
                 <img
                   src={project.image}
@@ -522,18 +475,7 @@ export default function Home() {
           </p>
         </div>
         <div className="full-film-frame" data-reveal>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label="Couture House full campaign film"
-            onLoadedData={(event) => event.currentTarget.classList.add("is-ready")}
-            onCanPlay={(event) => event.currentTarget.classList.add("is-ready")}
-          >
-            <source src="/brand/hero-video.mp4" type="video/mp4" />
-          </video>
+          <AutoPlayVideo src="/brand/hero-video.mp4" ariaLabel="Couture House full campaign film" />
         </div>
       </section>
 
@@ -550,16 +492,7 @@ export default function Home() {
           <article className="motion-card motion-card-primary">
             <div className="motion-card-meta"><span>01 / Social motion</span><p>Vertical stories made to hold attention.</p></div>
             <figure className="showreel-frame showreel-primary">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Couture House vertical campaign showreel"
-              >
-                <source src="/brand/work-moves-r01.mp4" type="video/mp4" />
-              </video>
+              <AutoPlayVideo src="/brand/work-moves-r01.mp4" ariaLabel="Couture House vertical campaign showreel" />
               <figcaption>Social / Story / Motion</figcaption>
               <span className="showreel-stamp" aria-hidden="true">CH / 85</span>
             </figure>
@@ -567,9 +500,7 @@ export default function Home() {
           <article className="motion-card motion-card-secondary">
             <div className="motion-card-meta"><span>02 / Digital motion</span><p>Interfaces that move with intention.</p></div>
             <figure className="showreel-frame showreel-secondary">
-              <video autoPlay muted loop playsInline preload="metadata" poster="/portfolio/majestic-contracting.svg" aria-label="Majestic design and build motion website">
-                <source src="/portfolio/majestic-intro.mp4" type="video/mp4" />
-              </video>
+              <AutoPlayVideo src="/portfolio/majestic-intro.mp4" ariaLabel="Majestic design and build motion website" />
               <figcaption>Design / Build / Motion</figcaption>
             </figure>
           </article>
@@ -594,9 +525,7 @@ export default function Home() {
               <a href={project.url} target="_blank" rel="noreferrer">
                 <div className="project-image-wrap">
                   {project.video ? (
-                    <video autoPlay muted loop playsInline preload="metadata" poster={project.image} aria-hidden="true">
-                      <source src={project.video} type="video/mp4" />
-                    </video>
+                    <AutoPlayVideo src={project.video} ariaHidden />
                   ) : (
                     <img src={project.image} alt={`${project.title} selected website detail`} style={{ objectPosition: project.position ?? "center top" }} />
                   )}
@@ -653,19 +582,7 @@ export default function Home() {
         </a>
       </section>
 
-      <footer>
-        <a className="footer-logo-link" href="#top" aria-label="Couture House home">
-          <img src="/brand/footer-logo.png" alt="Couture House" />
-        </a>
-        <p>Digital atelier for hair, beauty, culture and ambitious businesses.</p>
-        <div>
-          <a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a>
-          <a href="/work">Work &#8599;</a>
-          <a href="/services">Services &#8599;</a>
-          <a href="/studio">Studio &#8599;</a>
-        </div>
-        <small>&copy; 2026 Couture House Co.</small>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

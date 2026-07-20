@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BeforeAfterSlider from "../BeforeAfterSlider";
+import AutoPlayVideo from "../AutoPlayVideo";
 import PageSoundtrack from "../PageSoundtrack";
+import SiteFooter from "../SiteFooter";
+import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
   title: "Services | Couture House Co.",
@@ -44,11 +47,7 @@ export default function ServicesPage() {
     <main className="services-page">
       <PageSoundtrack src="/audio/services.mp3" title="Untitled (Remastered) I" />
       <div className="grain" aria-hidden="true" />
-      <nav className="site-nav" aria-label="Primary navigation">
-        <Link className="wordmark" href="/" aria-label="Couture House home"><img className="nav-logo" src="/brand/footer-logo.png" alt="" /><span className="wordmark-copy">Digital atelier<small>Beauty / Culture / Business</small></span></Link>
-        <div className="nav-links"><Link href="/work">Work</Link><Link href="/services" aria-current="page">Services</Link><Link href="/studio">Studio</Link></div>
-        <Link className="nav-cta magnetic" href="/start-a-project">Start a project <span aria-hidden="true">&#8599;</span></Link>
-      </nav>
+      <SiteNav />
 
       <header className="services-page-hero section-pad">
         <span className="kicker">Design on the surface / systems underneath</span>
@@ -82,15 +81,11 @@ export default function ServicesPage() {
         </header>
         <div className="service-motion-grid">
           <figure>
-            <video autoPlay muted loop playsInline preload="metadata" aria-label="Sacrificial Conversations editorial campaign reel">
-              <source src="/services/sacrificial-conversations-reel-01.mp4" type="video/mp4" />
-            </video>
+            <AutoPlayVideo src="/services/sacrificial-conversations-reel-01.mp4" ariaLabel="Sacrificial Conversations editorial campaign reel" />
             <figcaption><span>01</span> Editorial motion / Sacrificial Conversations</figcaption>
           </figure>
           <figure>
-            <video autoPlay muted loop playsInline preload="metadata" aria-label="Sacrificial Conversations short-form social reel">
-              <source src="/services/sacrificial-conversations-reel-02.mp4" type="video/mp4" />
-            </video>
+            <AutoPlayVideo src="/services/sacrificial-conversations-reel-02.mp4" ariaLabel="Sacrificial Conversations short-form social reel" />
             <figcaption><span>02</span> Social storytelling / Sacrificial Conversations</figcaption>
           </figure>
         </div>
@@ -136,7 +131,7 @@ export default function ServicesPage() {
 
       <section className="page-cta"><span className="kicker">Bring the goal, bottleneck or big idea</span><h2>LET&apos;S SHAPE<br /><em>THE RIGHT SYSTEM.</em></h2><Link href="/start-a-project">Start a project <span>&#8599;</span></Link></section>
 
-      <footer><Link className="footer-logo-link" href="/"><img src="/brand/footer-logo.png" alt="Couture House" /></Link><p>Digital atelier for hair, beauty, culture and ambitious businesses.</p><div><Link href="/work">Work &#8599;</Link><Link href="/studio">Studio &#8599;</Link><a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a></div><small>&copy; 2026 Couture House Co.</small></footer>
+      <SiteFooter />
     </main>
   );
 }

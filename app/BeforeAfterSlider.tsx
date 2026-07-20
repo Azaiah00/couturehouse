@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { MoveHorizontal } from "lucide-react";
 
 type BeforeAfterSliderProps = {
   before: string;
@@ -40,7 +41,7 @@ export default function BeforeAfterSlider({
           />
         </div>
         <div className="revival-divider" style={{ left: `${position}%` }} aria-hidden="true">
-          <span>&larr;&nbsp; Slide &nbsp;&rarr;</span>
+          <span><MoveHorizontal aria-hidden="true" /> Slide</span>
         </div>
         <input
           type="range"

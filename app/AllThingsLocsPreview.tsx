@@ -1,9 +1,9 @@
+import AutoPlayVideo from "./AutoPlayVideo";
+
 export default function AllThingsLocsPreview() {
   return (
     <div className="all-things-locs-preview" aria-label="All Things Locs website preview with a moving hero">
-      <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        <source src="/portfolio/all-things-locs-hero.mp4" type="video/mp4" />
-      </video>
+      <AutoPlayVideo src="/portfolio/all-things-locs-hero.mp4" ariaHidden />
       <div className="all-things-locs-shade" aria-hidden="true" />
       <div className="all-things-locs-nav" aria-hidden="true">
         <span className="all-things-locs-logo">THE 2TITE <b>XPERIENCE</b><small>TAÉ · OWNER &amp; THE LOC FAIRY</small></span>

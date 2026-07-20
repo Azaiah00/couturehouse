@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const serviceOptions = ["Websites", "Apps", "Workflows + Automation", "Content + Music"];
 
@@ -82,7 +83,7 @@ export default function ProjectForm() {
           {status === "error" ? <p className="form-error">The form could not send just now. Please email <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p> : null}
           {status === "idle" || status === "sending" ? <p>Your message is sent directly to the Couture House studio inbox.</p> : null}
         </div>
-        <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send my project brief"} <span aria-hidden="true">&#8599;</span></button>
+        <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send my project brief"} <ArrowUpRight aria-hidden="true" /></button>
       </div>
     </form>
   );

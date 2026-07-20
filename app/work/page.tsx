@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AllThingsLocsPreview from "../AllThingsLocsPreview";
+import AutoPlayVideo from "../AutoPlayVideo";
 import BeforeAfterSlider from "../BeforeAfterSlider";
 import PageSoundtrack from "../PageSoundtrack";
+import SiteFooter from "../SiteFooter";
+import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
   title: "Selected Work | Couture House Co.",
@@ -72,14 +75,7 @@ export default function WorkPage() {
     <main className="work-page">
       <PageSoundtrack src="/audio/soul-trapped.mp3" title="Soul Trapped" />
       <div className="grain" aria-hidden="true" />
-      <nav className="site-nav" aria-label="Primary navigation">
-        <Link className="wordmark" href="/" aria-label="Couture House home">
-          <img className="nav-logo" src="/brand/footer-logo.png" alt="" />
-          <span className="wordmark-copy">Digital atelier<small>Beauty / Culture / Business</small></span>
-        </Link>
-        <div className="nav-links"><Link href="/work" aria-current="page">Work</Link><Link href="/services">Services</Link><Link href="/studio">Studio</Link></div>
-        <Link className="nav-cta magnetic" href="/start-a-project">Start a project <span aria-hidden="true">&#8599;</span></Link>
-      </nav>
+      <SiteNav />
 
       <header className="work-page-hero section-pad">
         <span className="kicker">Selected work / 2024–26</span>
@@ -95,8 +91,8 @@ export default function WorkPage() {
           <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <span>&#8599;</span></a>
         </div>
         <div className="work-page-lead-media">
-          <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils luxury campaign reel"><source src="/work/magic-coils/featured-reel-01.mp4" type="video/mp4" /></video>
-          <video autoPlay muted loop playsInline preload="metadata" aria-label="Magic Coils product storytelling reel"><source src="/work/magic-coils/featured-reel-02.mp4" type="video/mp4" /></video>
+          <AutoPlayVideo src="/work/magic-coils/featured-reel-01.mp4" ariaLabel="Magic Coils luxury campaign reel" />
+          <AutoPlayVideo src="/work/magic-coils/featured-reel-02.mp4" ariaLabel="Magic Coils product storytelling reel" />
         </div>
       </section>
 
@@ -148,7 +144,7 @@ export default function WorkPage() {
             <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
               <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
                 <div className="work-index-media">
-                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <video autoPlay muted loop playsInline preload="metadata" poster={project.image}><source src={project.video} type="video/mp4" /></video> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
+                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
                   <span>View live &#8599;</span>
                 </div>
                 <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
@@ -176,9 +172,7 @@ export default function WorkPage() {
             <p>Animated campaign content made for social, launches and the moments between episodes.</p>
           </div>
           <figure>
-            <video autoPlay muted loop playsInline preload="metadata" aria-label="Teddy and Monica campaign film">
-              <source src="/brand/showreel.mp4" type="video/mp4" />
-            </video>
+            <AutoPlayVideo src="/brand/showreel.mp4" ariaLabel="Teddy and Monica campaign film" />
           </figure>
         </div>
 
@@ -216,7 +210,7 @@ export default function WorkPage() {
         <Link href="/start-a-project">Start a project <span>&#8599;</span></Link>
       </section>
 
-      <footer><Link className="footer-logo-link" href="/"><img src="/brand/footer-logo.png" alt="Couture House" /></Link><p>Digital atelier for hair, beauty, culture and ambitious businesses.</p><div><Link href="/services">Services &#8599;</Link><Link href="/studio">Studio &#8599;</Link><a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a></div><small>&copy; 2026 Couture House Co.</small></footer>
+      <SiteFooter />
     </main>
   );
 }

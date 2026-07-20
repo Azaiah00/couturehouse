@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageSoundtrack from "../PageSoundtrack";
+import SiteFooter from "../SiteFooter";
+import SiteNav from "../SiteNav";
 import ProjectForm from "./ProjectForm";
 
 export const metadata: Metadata = {
@@ -13,11 +15,7 @@ export default function StartProjectPage() {
     <main className="start-page">
       <PageSoundtrack src="/audio/start-project.mp3" title="Untitled (Remastered) III" />
       <div className="grain" aria-hidden="true" />
-      <nav className="site-nav" aria-label="Primary navigation">
-        <Link className="wordmark" href="/" aria-label="Couture House home"><img className="nav-logo" src="/brand/footer-logo.png" alt="" /><span className="wordmark-copy">Digital atelier<small>Beauty / Culture / Business</small></span></Link>
-        <div className="nav-links"><Link href="/work">Work</Link><Link href="/services">Services</Link><Link href="/studio">Studio</Link></div>
-        <a className="nav-cta magnetic" href="#project-form">Contact the studio <span aria-hidden="true">&darr;</span></a>
-      </nav>
+      <SiteNav />
 
       <header className="start-hero section-pad">
         <span className="kicker">Start a project / Couture House Co.</span>
@@ -35,7 +33,7 @@ export default function StartProjectPage() {
         <div><article><span>01</span><h3>We read closely.</h3><p>Your inquiry is reviewed for the goal, fit and most useful starting point.</p></article><article><span>02</span><h3>We reply thoughtfully.</h3><p>Expect a focused response with next questions or a conversation link.</p></article><article><span>03</span><h3>We shape the path.</h3><p>If the fit is right, we recommend a scope, rhythm and clear next step.</p></article></div>
       </section>
 
-      <footer><Link className="footer-logo-link" href="/"><img src="/brand/footer-logo.png" alt="Couture House" /></Link><p>Digital atelier for hair, beauty, culture and ambitious businesses.</p><div><Link href="/work">Work &#8599;</Link><Link href="/services">Services &#8599;</Link><a href="https://www.instagram.com/couturehouse.co/" target="_blank" rel="noreferrer">Instagram &#8599;</a></div><small>&copy; 2026 Couture House Co.</small></footer>
+      <SiteFooter />
     </main>
   );
 }
