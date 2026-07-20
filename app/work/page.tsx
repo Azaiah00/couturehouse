@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import AllThingsLocsPreview from "../AllThingsLocsPreview";
 import AutoPlayVideo from "../AutoPlayVideo";
 import BeforeAfterSlider from "../BeforeAfterSlider";
+import MobileSwipeHint from "../MobileSwipeHint";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
@@ -14,15 +16,15 @@ export const metadata: Metadata = {
 
 const work = [
   { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/work/magic-coils/cover.webp", url: "https://magiccoils.net/", position: "center center" },
-  { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", contain: true },
-  { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature.png", url: "https://beverlysofnashville.com/", position: "center center", contain: true },
-  { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", contain: true },
-  { number: "05", title: "Divine Textures", type: "Holistic hair care / Columbia", scope: "Web design and development", image: "/portfolio/divine-textures.png", url: "https://divine-textures.netlify.app/", position: "center 18%" },
-  { number: "06", title: "OG Barnes", type: "Wellness / Loc artistry", scope: "Web design and development", image: "/portfolio/og-barnes.png", url: "https://ogbarnes.netlify.app/", position: "center 15%" },
-  { number: "07", title: "Sacrificial Conversations", type: "Faith / Editorial commerce", scope: "E-commerce and campaign world", image: "/portfolio/sacrificial-conversations.jpg", url: "https://sacrificialconversations.shop/", position: "center 30%" },
-  { number: "08", title: "Sodiq Yusuff MMA", type: "Sports / Academy", scope: "Brand platform and website", image: "/portfolio/sodiq-yusuff.png", url: "https://sodiqyusuffmma.com/", position: "center 12%" },
-  { number: "09", title: "Majestic Contracting", type: "Design / Build / Renovate", scope: "Website and motion direction", image: "/portfolio/majestic-contracting.svg", video: "/portfolio/majestic-intro.mp4", url: "https://majesticdbr.com/", position: "center center" },
-  { number: "10", title: "Party Bus R Us", type: "Hospitality / DMV", scope: "Website and booking experience", image: "/portfolio/partybus-r-us.png", url: "https://www.partybusrus.com/", position: "center 9%" },
+  { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", previewAspect: "1905 / 848" },
+  { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature.png", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1918 / 909" },
+  { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", previewAspect: "16 / 9" },
+  { number: "05", title: "Divine Textures", type: "Holistic hair care / Columbia", scope: "Web design and development", image: "/portfolio/divine-textures.png", url: "https://divine-textures.netlify.app/", position: "center 18%", previewAspect: "1905 / 848" },
+  { number: "06", title: "OG Barnes", type: "Wellness / Loc artistry", scope: "Web design and development", image: "/portfolio/og-barnes.png", url: "https://ogbarnes.netlify.app/", position: "center 15%", previewAspect: "1905 / 848" },
+  { number: "07", title: "Sacrificial Conversations", type: "Faith / Editorial commerce", scope: "E-commerce and campaign world", image: "/portfolio/sacrificial-conversations.jpg", url: "https://sacrificialconversations.shop/", position: "center 30%", previewAspect: "1024 / 571" },
+  { number: "08", title: "Sodiq Yusuff MMA", type: "Sports / Academy", scope: "Brand platform and website", image: "/portfolio/sodiq-yusuff.png", url: "https://sodiqyusuffmma.com/", position: "center 12%", previewAspect: "1905 / 848" },
+  { number: "09", title: "Majestic Contracting", type: "Design / Build / Renovate", scope: "Website and motion direction", image: "/portfolio/majestic-contracting.svg", video: "/portfolio/majestic-intro.mp4", url: "https://majesticdbr.com/", position: "center center", previewAspect: "960 / 594" },
+  { number: "10", title: "Party Bus R Us", type: "Hospitality / DMV", scope: "Website and booking experience", image: "/portfolio/partybus-r-us.png", url: "https://www.partybusrus.com/", position: "center 9%", previewAspect: "1905 / 848" },
 ];
 
 const revivals = [
@@ -88,7 +90,7 @@ export default function WorkPage() {
           <span>01 / Featured world</span>
           <h2 id="work-magic-title">Magic Coils</h2>
           <p>A luxury hair-care world designed across commerce, education, product storytelling and moving image.</p>
-          <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <span>&#8599;</span></a>
+          <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
         </div>
         <div className="work-page-lead-media">
           <AutoPlayVideo src="/work/magic-coils/featured-reel-01.mp4" ariaLabel="Magic Coils luxury campaign reel" />
@@ -122,6 +124,7 @@ export default function WorkPage() {
           <span>Drag each image to reveal the transformation.</span>
           <p>Art direction, distraction removal, background reconstruction, luxury styling, color finishing and responsive web preparation.</p>
         </div>
+        <MobileSwipeHint label="Swipe to see every transformation" />
         <div className="revival-grid">
           {revivals.map((revival, index) => (
             <BeforeAfterSlider
@@ -143,9 +146,9 @@ export default function WorkPage() {
           {work.slice(1).map((project, index) => (
             <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
               <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
-                <div className="work-index-media">
-                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position, objectFit: project.contain ? "contain" : "cover" }} />}
-                  <span>View live &#8599;</span>
+                <div className="work-index-media" style={{ aspectRatio: project.previewAspect }}>
+                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position }} />}
+                  <span>View live <ArrowUpRight aria-hidden="true" /></span>
                 </div>
                 <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
               </a>
@@ -181,7 +184,7 @@ export default function WorkPage() {
             <span>Chapter 01</span>
             <h3>Sacrificial Conversations</h3>
             <p>Podcast creative, episode promotion, editorial campaigns, e-commerce and an apparel world built to carry the message beyond the microphone.</p>
-            <a href="https://sacrificialconversations.shop/" target="_blank" rel="noreferrer">Visit the brand <span>&#8599;</span></a>
+            <a href="https://sacrificialconversations.shop/" target="_blank" rel="noreferrer">Visit the brand <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
           </div>
           <div className="partnership-poster-grid">
             <figure><img src="/work/partnership/podcast-new-episode.webp" alt="Sacrificial Conversations new episode campaign flyer" loading="lazy" decoding="async" /></figure>
@@ -195,7 +198,7 @@ export default function WorkPage() {
             <span>Chapter 02</span>
             <h3>Beverly&apos;s of Nashville</h3>
             <p>Website, salon positioning, education products and campaign content that turn three decades of expertise into a modern brand platform.</p>
-            <a href="https://beverlysofnashville.com/" target="_blank" rel="noreferrer">Experience Beverly&apos;s <span>&#8599;</span></a>
+            <a href="https://beverlysofnashville.com/" target="_blank" rel="noreferrer">Experience Beverly&apos;s <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
           </div>
           <div className="partnership-beverly-grid">
             <figure><img src="/work/partnership/hair-care-king.webp" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
@@ -207,7 +210,7 @@ export default function WorkPage() {
       <section className="page-cta">
         <span className="kicker">Your work belongs here</span>
         <h2>LET&apos;S BUILD<br /><em>THE NEXT WORLD.</em></h2>
-        <Link href="/start-a-project">Start a project <span>&#8599;</span></Link>
+        <Link href="/start-a-project">Start a project <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
       </section>
 
       <SiteFooter />

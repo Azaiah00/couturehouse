@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
@@ -48,7 +49,7 @@ export default function StudioPage() {
           <span className="kicker">Couture House Co. / The studio</span>
           <h1 id="studio-opening-title">WHERE CULTURE<br />MEETS <em>CRAFT.</em></h1>
           <p>Strategy, technology and moving image shaped around the people, rituals and ambition behind the brand.</p>
-          <Link href="#point-of-view">Enter our point of view <span>&darr;</span></Link>
+          <Link href="#point-of-view">Enter our point of view <ArrowDown className="link-icon" aria-hidden="true" /></Link>
         </div>
         <figure><img src="/brand/studio-world-v1.png" alt="Black woman creative director in the Couture House digital atelier" /></figure>
       </section>
@@ -74,7 +75,7 @@ export default function StudioPage() {
             Technology should never flatten the people, culture or craft behind
             a business. We design digital experiences with a pulse.
           </p>
-          <a href="#belief">Our point of view <span>&darr;</span></a>
+          <a href="#belief">Our point of view <ArrowDown className="link-icon" aria-hidden="true" /></a>
         </div>
       </section>
 
@@ -130,7 +131,7 @@ export default function StudioPage() {
             Salons, stylists and hair-care brands are not a narrow market to
             us. They are a universe of expertise, expression and possibility.
           </p>
-          <Link href="/work">See the work <span>&#8599;</span></Link>
+          <Link href="/work">See the work <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
         </div>
         <div className="studio-collage-grid">
           <figure className="studio-collage-main">
@@ -163,7 +164,7 @@ export default function StudioPage() {
             </article>
           ))}
         </div>
-        <Link className="studio-practice-link" href="/services">Explore every service <span>&#8599;</span></Link>
+        <Link className="studio-practice-link" href="/services">Explore every service <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
       </section>
 
       <section className="studio-final">
@@ -171,7 +172,7 @@ export default function StudioPage() {
         <h2>LET&apos;S BUILD<br />SOMETHING WITH<br /><em>A PULSE.</em></h2>
         <p>Websites, apps, automations and content shaped around your world.</p>
         <Link href="/start-a-project">
-          Start a project <span>&#8599;</span>
+          Start a project <ArrowUpRight className="link-icon" aria-hidden="true" />
         </Link>
       </section>
 

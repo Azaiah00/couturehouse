@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import AllThingsLocsPreview from "./AllThingsLocsPreview";
 import AutoPlayVideo from "./AutoPlayVideo";
+import MobileSwipeHint from "./MobileSwipeHint";
 import PageSoundtrack from "./PageSoundtrack";
 import SiteFooter from "./SiteFooter";
 import SiteNav from "./SiteNav";
@@ -17,6 +18,7 @@ type Project = {
   tone: string;
   video?: string;
   position?: string;
+  previewAspect: string;
 };
 
 const featuredProjects = [
@@ -27,6 +29,7 @@ const featuredProjects = [
     image: "/portfolio/dreadlocks-salon.png",
     position: "center top",
     fit: "contain" as const,
+    previewAspect: "1905 / 848",
     url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/",
     summary:
       "A confident, image-led salon experience that turns loc artistry into a clear journey from discovery to booking.",
@@ -39,6 +42,7 @@ const featuredProjects = [
     image: "/portfolio/beverlys-feature.png",
     position: "center center",
     fit: "contain" as const,
+    previewAspect: "1918 / 909",
     url: "https://beverlysofnashville.com/",
     summary:
       "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
@@ -52,6 +56,7 @@ const featuredProjects = [
     video: "/portfolio/all-things-locs-hero.mp4",
     position: "center top",
     fit: "contain" as const,
+    previewAspect: "16 / 9",
     url: "https://2titexperience.netlify.app/",
     summary:
       "A warm, personality-rich experience that turns specialist loc care, education and service discovery into one inviting digital home.",
@@ -68,6 +73,7 @@ const projects: Project[] = [
     url: "https://divine-textures.netlify.app/",
     tone: "green",
     position: "center 18%",
+    previewAspect: "1905 / 848",
   },
   {
     title: "The 2Tite Xperience",
@@ -77,6 +83,7 @@ const projects: Project[] = [
     url: "https://2titexperience.netlify.app/",
     tone: "violet",
     position: "center 12%",
+    previewAspect: "1909 / 850",
   },
   {
     title: "OG Barnes",
@@ -86,6 +93,7 @@ const projects: Project[] = [
     url: "https://ogbarnes.netlify.app/",
     tone: "earth",
     position: "center 15%",
+    previewAspect: "1905 / 848",
   },
   {
     title: "Sacrificial Conversations",
@@ -95,6 +103,7 @@ const projects: Project[] = [
     url: "https://sacrificialconversations.shop/",
     tone: "red",
     position: "center 30%",
+    previewAspect: "1024 / 571",
   },
   {
     title: "Sodiq Yusuff MMA",
@@ -104,6 +113,7 @@ const projects: Project[] = [
     url: "https://sodiqyusuffmma.com/",
     tone: "red",
     position: "center 12%",
+    previewAspect: "1905 / 848",
   },
   {
     title: "Majestic Contracting",
@@ -113,6 +123,7 @@ const projects: Project[] = [
     video: "/portfolio/majestic-intro.mp4",
     url: "https://majesticdbr.com/",
     tone: "gold",
+    previewAspect: "960 / 594",
   },
   {
     title: "Party Bus R Us",
@@ -122,6 +133,7 @@ const projects: Project[] = [
     url: "https://www.partybusrus.com/",
     tone: "night",
     position: "center 9%",
+    previewAspect: "1905 / 848",
   },
 ];
 
@@ -254,7 +266,7 @@ export default function Home() {
         <div>
           <span>MAGIC COILS</span><i><Sparkles aria-hidden="true" /></i><span>BEVERLY&apos;S</span><i><Sparkles aria-hidden="true" /></i>
           <span>THE DREADLOCKS SALON</span><i><Sparkles aria-hidden="true" /></i><span>DIVINE TEXTURES</span><i><Sparkles aria-hidden="true" /></i>
-          <span>MAJESTIC</span><i>◆</i><span>SODIQ YUSUFF</span>
+          <span>MAJESTIC</span><i><Sparkles aria-hidden="true" /></i><span>SODIQ YUSUFF</span>
         </div>
       </section>
 
@@ -273,7 +285,7 @@ export default function Home() {
             <li>Campaign content + motion</li>
           </ul>
           <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">
-            Experience Magic Coils <span>&#8599;</span>
+            Experience Magic Coils <ArrowUpRight className="link-icon" aria-hidden="true" />
           </a>
         </div>
         <div className="case-gallery" data-reveal>
@@ -312,7 +324,7 @@ export default function Home() {
 
         {featuredProjects.map((project, index) => (
           <article className={`featured-card ${index % 2 ? "featured-reverse" : ""}`} data-reveal key={project.title}>
-            <a className="featured-browser" href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
+            <a className="featured-browser" style={{ aspectRatio: project.previewAspect }} href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
               <div className="browser-bar" aria-hidden="true">
                 <i /><i /><i /><span>{project.url.replace("https://", "").replace(/\/$/, "")}</span>
               </div>
@@ -327,7 +339,7 @@ export default function Home() {
                   style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
                 />
               )}
-              <span className="featured-view">View live <b>&#8599;</b></span>
+              <span className="featured-view">View live <ArrowUpRight aria-hidden="true" /></span>
             </a>
             <div className="featured-copy">
               <span>{project.number}</span>
@@ -337,7 +349,7 @@ export default function Home() {
               <ul aria-label={`${project.title} project scope`}>
                 {project.role.map((item) => <li key={item}>{item}</li>)}
               </ul>
-              <a href={project.url} target="_blank" rel="noreferrer">Experience the website <span>&#8599;</span></a>
+              <a href={project.url} target="_blank" rel="noreferrer">Experience the website <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
             </div>
           </article>
         ))}
@@ -345,7 +357,7 @@ export default function Home() {
         <div className="mid-cta" data-reveal>
           <p>Ready for a digital experience that feels like your brand?</p>
           <a href="/start-a-project">
-            Build your digital world <span>&#8599;</span>
+            Build your digital world <ArrowUpRight className="link-icon" aria-hidden="true" />
           </a>
         </div>
       </section>
@@ -361,6 +373,7 @@ export default function Home() {
             conversion travels wherever an ambitious brand needs it.
           </p>
         </header>
+        <MobileSwipeHint label="Swipe to explore more websites" />
         <div className="glimpse-grid">
           {projects.filter((project) => project.title !== "The 2Tite Xperience").slice(0, 4).map((project, index) => (
             <a
@@ -368,17 +381,18 @@ export default function Home() {
               href={project.url}
               target="_blank"
               rel="noreferrer"
+              style={{ aspectRatio: project.previewAspect }}
               data-reveal
               key={project.title}
             >
               <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position ?? "center top" }} />
               <span>{String(index + 4).padStart(2, "0")} / {project.title}</span>
-              <b aria-hidden="true">&#8599;</b>
+              <ArrowUpRight aria-hidden="true" />
             </a>
           ))}
         </div>
         <a className="glimpse-link" href="#gallery" data-reveal>
-          Explore the complete gallery <span>&darr;</span>
+          Explore the complete gallery <ArrowDown className="link-icon" aria-hidden="true" />
         </a>
       </section>
 
@@ -403,7 +417,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <a className="services-page-link" href="/services" data-reveal>Explore services in detail <span>&#8599;</span></a>
+        <a className="services-page-link" href="/services" data-reveal>Explore services in detail <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
       </section>
 
       <section className="product-world section-pad" aria-labelledby="product-world-title">
@@ -416,6 +430,7 @@ export default function Home() {
             the scroll and make the value instantly clear.
           </p>
         </header>
+        <MobileSwipeHint label="Swipe to see every product story" />
         <div className="product-world-gallery" data-reveal>
           <figure className="product-shot product-shot-high">
             <img src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
@@ -434,13 +449,13 @@ export default function Home() {
             <figcaption><span>04</span> Product launch systems</figcaption>
           </figure>
         </div>
-        <a className="product-world-link" href="/services">Explore content creation <span>&#8599;</span></a>
+        <a className="product-world-link" href="/services">Explore content creation <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
       </section>
 
       <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
         <a href="/studio" className="brand-poster-frame" data-reveal>
           <img src="/brand/couture-house-poster.png" alt="Couture House digital worlds for hair, beauty and culture" />
-          <span className="brand-poster-enter">Enter the studio <b>&#8599;</b></span>
+          <span className="brand-poster-enter">Enter the studio <ArrowUpRight aria-hidden="true" /></span>
         </a>
         <div className="brand-poster-meta">
           <span>Studio campaign / Couture House Co.</span>
@@ -523,13 +538,13 @@ export default function Home() {
           {projects.map((project, index) => (
             <article className="project-card" data-tone={project.tone} data-reveal key={project.title}>
               <a href={project.url} target="_blank" rel="noreferrer">
-                <div className="project-image-wrap">
+                <div className="project-image-wrap" style={{ aspectRatio: project.previewAspect }}>
                   {project.video ? (
                     <AutoPlayVideo src={project.video} ariaHidden />
                   ) : (
                     <img src={project.image} alt={`${project.title} selected website detail`} style={{ objectPosition: project.position ?? "center top" }} />
                   )}
-                  <div className="project-screen" aria-hidden="true"><span>View live</span><b>&#8599;</b></div>
+                  <div className="project-screen" aria-hidden="true"><span>View live</span><ArrowUpRight /></div>
                 </div>
                 <div className="project-info">
                   <span>{String(index + 4).padStart(2, "0")}</span>
@@ -538,7 +553,7 @@ export default function Home() {
                     <p>{project.type}</p>
                     <small>{project.role}</small>
                   </div>
-                  <b aria-hidden="true">&#8599;</b>
+                  <ArrowUpRight aria-hidden="true" />
                 </div>
               </a>
             </article>
@@ -578,7 +593,7 @@ export default function Home() {
         <span className="kicker">The next world is yours</span>
         <h2>LET&apos;S MAKE<br /><em>THE INTERNET</em><br />FEEL SOMETHING.</h2>
         <a href="/start-a-project" className="cta-link">
-          <span>Start a project</span><b aria-hidden="true">&#8599;</b>
+          <span>Start a project</span><ArrowUpRight aria-hidden="true" />
         </a>
       </section>
 

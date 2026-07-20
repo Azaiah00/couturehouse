@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check, Plus } from "lucide-react";
 
 const serviceOptions = ["Websites", "Apps", "Workflows + Automation", "Content + Music"];
 
@@ -67,7 +67,10 @@ export default function ProjectForm() {
 
       <fieldset className="project-form-services">
         <legend>What are we creating?</legend>
-        <div>{serviceOptions.map((service) => <button className={selectedServices.includes(service) ? "is-selected" : ""} type="button" aria-pressed={selectedServices.includes(service)} onClick={() => toggleService(service)} key={service}>{service}<span aria-hidden="true">+</span></button>)}</div>
+        <div>{serviceOptions.map((service) => {
+          const isSelected = selectedServices.includes(service);
+          return <button className={isSelected ? "is-selected" : ""} type="button" aria-pressed={isSelected} onClick={() => toggleService(service)} key={service}>{service}{isSelected ? <Check aria-hidden="true" /> : <Plus aria-hidden="true" />}</button>;
+        })}</div>
       </fieldset>
 
       <div className="project-form-grid">

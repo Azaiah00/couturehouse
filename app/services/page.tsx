@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import BeforeAfterSlider from "../BeforeAfterSlider";
 import AutoPlayVideo from "../AutoPlayVideo";
 import PageSoundtrack from "../PageSoundtrack";
@@ -67,7 +68,7 @@ export default function ServicesPage() {
             <div className="service-detail-body">
               <p className="service-detail-promise">{service.promise}</p>
               <div className="service-detail-columns"><div><small>What it can include</small><ul>{service.includes.map((item) => <li key={item}>{item}</li>)}</ul></div><div><small>Best for</small><p>{service.ideal}</p></div></div>
-              <Link href={`/start-a-project?service=${service.title.toLowerCase()}`}>Build with us <span>&#8599;</span></Link>
+              <Link href={`/start-a-project?service=${service.title.toLowerCase()}`}>Build with us <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
             </div>
           </article>
         ))}
@@ -101,7 +102,7 @@ export default function ServicesPage() {
             <li>Background reconstruction + luxury styling</li>
             <li>Color finishing + web-ready presentation</li>
           </ul>
-          <Link href="/work#content-revival">See the transformations <span>&#8599;</span></Link>
+          <Link href="/work#content-revival">See the transformations <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
           <small>Creative enhancement guided by human art direction, careful finishing and the story already present in the original.</small>
         </div>
         <BeforeAfterSlider
@@ -129,7 +130,7 @@ export default function ServicesPage() {
         <ol><li><span>01</span><h3>Discovery</h3><p>We listen for the business goal, audience truth and emotional target.</p></li><li><span>02</span><h3>Direction</h3><p>You receive a focused recommendation for the experience and scope.</p></li><li><span>03</span><h3>Creation</h3><p>Strategy, design, build and content come together in a visible rhythm.</p></li><li><span>04</span><h3>Launch</h3><p>We refine, release and hand over the tools needed to keep moving.</p></li></ol>
       </section>
 
-      <section className="page-cta"><span className="kicker">Bring the goal, bottleneck or big idea</span><h2>LET&apos;S SHAPE<br /><em>THE RIGHT SYSTEM.</em></h2><Link href="/start-a-project">Start a project <span>&#8599;</span></Link></section>
+      <section className="page-cta"><span className="kicker">Bring the goal, bottleneck or big idea</span><h2>LET&apos;S SHAPE<br /><em>THE RIGHT SYSTEM.</em></h2><Link href="/start-a-project">Start a project <ArrowUpRight className="link-icon" aria-hidden="true" /></Link></section>
 
       <SiteFooter />
     </main>
