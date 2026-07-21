@@ -286,12 +286,12 @@ export default function Home() {
         </div>
         <div className="case-gallery case-gallery-reels" data-reveal>
           <figure className="case-video">
-            <AutoPlayVideo src="/work/magic-coils/magicpress.mp4" ariaLabel="Magic Press education reel" />
-            <figcaption>Magic press / Education in motion</figcaption>
+            <AutoPlayVideo src="/work/magic-coils/featured-reel-01.mp4" ariaLabel="Magic Coils editorial portrait reel" />
+            <figcaption>Editorial portrait / Campaign motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <AutoPlayVideo src="/work/magic-coils/reel.mp4" ariaLabel="Magic Coils brand reel" />
-            <figcaption>Brand reel / The world in motion</figcaption>
+            <AutoPlayVideo src="/work/magic-coils/featured-reel-02.mp4" ariaLabel="Magic Coils salon finish reel" />
+            <figcaption>Salon finish / Hair in motion</figcaption>
           </figure>
         </div>
       </section>

@@ -134,9 +134,6 @@ export default function StudioPage() {
           <Link href="/work">See the work <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
         </div>
         <div className="studio-collage-grid">
-          <figure className="studio-collage-main">
-            <img src="/brand/winter-look-02.png" alt="Couture House editorial fashion portrait" />
-          </figure>
           <figure>
             <img src="/work/magic-coils/extra/04.webp" alt="Magic Coils campaign portrait" />
           </figure>

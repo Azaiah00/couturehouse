@@ -35,20 +35,6 @@ const revivals = [
     note: "Editorial polish + background replacement",
   },
   {
-    title: "Long Twists",
-    before: "/work/photo-revival/03-long-twists-before.webp",
-    after: "/work/photo-revival/03-long-twists-after.webp",
-    alt: "long polished twists photographed from behind",
-    note: "Luxury scene + color finishing",
-  },
-  {
-    title: "Ombré Braids",
-    before: "/work/photo-revival/04-ombre-braids-before.webp",
-    after: "/work/photo-revival/04-ombre-braids-after.webp",
-    alt: "long ombré braids with curled ends",
-    note: "Brand-aligned scene reconstruction",
-  },
-  {
     title: "Curly Braided Finish",
     before: "/work/photo-revival/05-curly-braided-finish-before.webp",
     after: "/work/photo-revival/05-curly-braided-finish-after.webp",
@@ -101,11 +87,9 @@ export default function WorkPage() {
         <header className="work-asset-head">
           <span className="kicker">Campaign depth / Magic Coils</span>
           <h2 id="campaign-depth-title">ONE WORLD.<br /><em>EVERY FORMAT.</em></h2>
-          <p>Product storytelling, portraiture, education and launch content designed as one connected visual system.</p>
+          <p>Ingredient storytelling and launch content designed as one connected visual system.</p>
         </header>
         <div className="work-asset-grid">
-          <figure className="work-asset-landscape"><img src="/work/magic-coils/03-products.webp" alt="Magic Coils full product campaign" loading="lazy" decoding="async" /></figure>
-          <figure className="work-asset-portrait"><img src="/work/magic-coils/extra/04.webp" alt="Magic Coils conditioner portrait campaign" loading="lazy" decoding="async" /></figure>
           <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/ingredient-trinity.webp" alt="Magic Coils ingredient campaign graphic" loading="lazy" decoding="async" /></figure>
           <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/honey-oil.webp" alt="Magic Coils honey oil ingredient graphic" loading="lazy" decoding="async" /></figure>
           <figure className="work-asset-graphic"><img src="/work/magic-coils/ingredient-campaign/vitamin-c.webp" alt="Magic Coils vitamin C ingredient graphic" loading="lazy" decoding="async" /></figure>
