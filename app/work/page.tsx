@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import AllThingsLocsPreview from "../AllThingsLocsPreview";
 import AutoPlayVideo from "../AutoPlayVideo";
 import BeforeAfterSlider from "../BeforeAfterSlider";
-import MobileSwipeHint from "../MobileSwipeHint";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
@@ -121,10 +120,9 @@ export default function WorkPage() {
           <p>We preserve the real person, hairstyle and service moment, then rebuild everything that keeps the image from representing the work at its best.</p>
         </header>
         <div className="revival-work-intro">
-          <span>Drag each image to reveal the transformation.</span>
+          <span>Original and enhanced versions, presented together.</span>
           <p>Art direction, distraction removal, background reconstruction, luxury styling, color finishing and responsive web preparation.</p>
         </div>
-        <MobileSwipeHint label="Swipe to see every transformation" />
         <div className="revival-grid">
           {revivals.map((revival, index) => (
             <BeforeAfterSlider
@@ -147,7 +145,7 @@ export default function WorkPage() {
             <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
               <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
                 <div className="work-index-media" style={{ aspectRatio: project.previewAspect }}>
-                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position }} />}
+                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position }} />}
                   <span>View live <ArrowUpRight aria-hidden="true" /></span>
                 </div>
                 <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
@@ -163,8 +161,8 @@ export default function WorkPage() {
           <h2 id="partnership-title">ONE PARTNERSHIP.<br /><em>MANY WORLDS.</em></h2>
           <p>
             From the Sacrificial Conversations podcast and apparel line to
-            Beverly&apos;s of Nashville education and salon campaigns, we build
-            the connected digital, motion and content systems behind every new chapter.
+            every campaign chapter around them, we build connected digital,
+            motion and content systems that keep the story moving.
           </p>
         </header>
 
@@ -193,18 +191,6 @@ export default function WorkPage() {
           </div>
         </div>
 
-        <div className="partnership-chapter partnership-chapter-beverly">
-          <div className="partnership-chapter-copy">
-            <span>Chapter 02</span>
-            <h3>Beverly&apos;s of Nashville</h3>
-            <p>Website, salon positioning, education products and campaign content that turn three decades of expertise into a modern brand platform.</p>
-            <a href="https://beverlysofnashville.com/" target="_blank" rel="noreferrer">Experience Beverly&apos;s <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
-          </div>
-          <div className="partnership-beverly-grid">
-            <figure><img src="/work/partnership/hair-care-king.webp" alt="The Hair Care King of Nashville campaign" loading="lazy" decoding="async" /></figure>
-            <figure><img src="/work/partnership/hair-color-mastery-approved.png" alt="Hair Color Mastery Guide campaign cover" loading="lazy" decoding="async" /></figure>
-          </div>
-        </div>
       </section>
 
       <section className="page-cta">

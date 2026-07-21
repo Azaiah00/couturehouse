@@ -54,6 +54,26 @@ export default function BeforeAfterSlider({
         <span className="revival-label revival-label-before">Original content</span>
         <span className="revival-label revival-label-after">Couture House enhanced</span>
       </div>
+      <div className="revival-mobile-pair">
+        <div>
+          <span>Original content</span>
+          <img
+            src={before}
+            alt={`Original content — ${alt}`}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </div>
+        <div>
+          <span>Couture House enhanced</span>
+          <img
+            src={after}
+            alt={`Couture House enhanced — ${alt}`}
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </div>
+      </div>
       {(title || note) && (
         <figcaption>
           {title && <strong>{title}</strong>}

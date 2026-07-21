@@ -36,7 +36,7 @@ test("server-renders the Couture House experience", async () => {
   assert.match(html, /Digital worlds/);
   assert.match(html, /WORK THAT/);
   assert.match(html, /Swipe to explore more websites/);
-  assert.match(html, /Swipe to see every product story/);
+  assert.match(html, /Swipe right to see more products/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working/);
 });
 
@@ -50,13 +50,25 @@ test("keeps mobile media previews complete and discoverable", async () => {
 
   assert.match(page, /previewAspect:\s*"1905 \/ 848"/);
   assert.match(page, /Swipe to explore more websites/);
-  assert.match(page, /Swipe to see every product story/);
-  assert.match(work, /Swipe to see every transformation/);
+  assert.match(page, /Swipe right to see more products/);
+  assert.ok(
+    page.indexOf('className="product-world-gallery"') < page.indexOf('Swipe right to see more products'),
+    "the mobile swipe instruction should sit beneath the product carousel",
+  );
+  assert.doesNotMatch(page, /case-hero|case-product case-wide|motion-card-secondary/);
+  assert.doesNotMatch(work, /Swipe to see every transformation/);
+  assert.match(work, /Original and enhanced versions, presented together/);
+  assert.doesNotMatch(work, /partnership-chapter-beverly|hair-color-mastery-approved/);
+  assert.match(await readFile(new URL("../app/BeforeAfterSlider.tsx", import.meta.url), "utf8"), /revival-mobile-pair/);
   assert.match(work, /previewAspect:\s*"960 \/ 594"/);
   assert.match(css, /\.full-film-frame\s*\{\s*aspect-ratio:\s*16 \/ 9/);
   assert.match(css, /\.featured-browser \.browser-bar\s*\{\s*display:\s*none/);
   assert.match(css, /\.work-asset-landscape\s*\{[^}]*aspect-ratio:\s*2000 \/ 904/s);
   assert.match(css, /\.mobile-swipe-hint\s*\{[^}]*display:\s*flex/s);
+  assert.match(css, /\.website-preview-image\s*\{[^}]*object-fit:\s*contain\s*!important/s);
+  assert.match(css, /\.revival-comparison-media\s*\{\s*display:\s*none/s);
+  assert.match(css, /\.revival-mobile-pair\s*\{\s*display:\s*grid/s);
+  assert.match(css, /\.full-film-frame video\s*\{\s*object-fit:\s*cover/s);
   assert.match(form, /ArrowUpRight, Check, Plus/);
   assert.doesNotMatch(page + work, /&#8599;|&darr;|◆/);
 });

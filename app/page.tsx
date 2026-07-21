@@ -284,10 +284,7 @@ export default function Home() {
             Experience Magic Coils <ArrowUpRight className="link-icon" aria-hidden="true" />
           </a>
         </div>
-        <div className="case-gallery" data-reveal>
-          <figure className="case-hero">
-            <img src="/work/magic-coils/cover.webp" alt="Magic Coils Crowned in Magic campaign" />
-          </figure>
+        <div className="case-gallery case-gallery-reels" data-reveal>
           <figure className="case-video">
             <AutoPlayVideo src="/work/magic-coils/magicpress.mp4" ariaLabel="Magic Press education reel" />
             <figcaption>Magic press / Education in motion</figcaption>
@@ -295,15 +292,6 @@ export default function Home() {
           <figure className="case-reel">
             <AutoPlayVideo src="/work/magic-coils/reel.mp4" ariaLabel="Magic Coils brand reel" />
             <figcaption>Brand reel / The world in motion</figcaption>
-          </figure>
-          <figure className="case-product case-wide">
-            <img src="/work/magic-coils/03-products.webp" alt="Magic Coils product campaign" />
-          </figure>
-          <figure className="case-portrait">
-            <img src="/work/magic-coils/extra/03.webp" alt="Magic Coils leave-in treatment campaign portrait" />
-          </figure>
-          <figure className="case-lifestyle">
-            <img src="/work/magic-coils/extra/06.webp" alt="Magic Coils strengthening serum lifestyle campaign" />
           </figure>
         </div>
       </section>
@@ -330,6 +318,7 @@ export default function Home() {
                 <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website motion preview`} />
               ) : (
                 <img
+                  className="website-preview-image"
                   src={project.image}
                   alt={`${project.title} website preview`}
                   style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
@@ -381,7 +370,7 @@ export default function Home() {
               data-reveal
               key={project.title}
             >
-              <img src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position ?? "center top" }} />
+              <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position ?? "center top" }} />
               <span>{String(index + 4).padStart(2, "0")} / {project.title}</span>
               <ArrowUpRight aria-hidden="true" />
             </a>
@@ -426,7 +415,6 @@ export default function Home() {
             the scroll and make the value instantly clear.
           </p>
         </header>
-        <MobileSwipeHint label="Swipe to see every product story" />
         <div className="product-world-gallery" data-reveal>
           <figure className="product-shot product-shot-high">
             <img src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
@@ -445,6 +433,7 @@ export default function Home() {
             <figcaption><span>04</span> Product launch systems</figcaption>
           </figure>
         </div>
+        <MobileSwipeHint label="Swipe right to see more products" />
         <a className="product-world-link" href="/services">Explore content creation <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
       </section>
 
@@ -508,13 +497,6 @@ export default function Home() {
               <span className="showreel-stamp" aria-hidden="true">CH / 85</span>
             </figure>
           </article>
-          <article className="motion-card motion-card-secondary">
-            <div className="motion-card-meta"><span>02 / Digital motion</span><p>Interfaces that move with intention.</p></div>
-            <figure className="showreel-frame showreel-secondary">
-              <AutoPlayVideo src="/portfolio/majestic-intro.mp4" ariaLabel="Majestic design and build motion website" />
-              <figcaption>Design / Build / Motion</figcaption>
-            </figure>
-          </article>
         </div>
       </section>
 
@@ -538,7 +520,7 @@ export default function Home() {
                   {project.video ? (
                     <AutoPlayVideo src={project.video} ariaHidden />
                   ) : (
-                    <img src={project.image} alt={`${project.title} selected website detail`} style={{ objectPosition: project.position ?? "center top" }} />
+                    <img className="website-preview-image" src={project.image} alt={`${project.title} selected website detail`} style={{ objectPosition: project.position ?? "center top" }} />
                   )}
                   <div className="project-screen" aria-hidden="true"><span>View live</span><ArrowUpRight /></div>
                 </div>
