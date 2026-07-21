@@ -991,6 +991,14 @@ main {
   font-weight: 400;
 }
 
+.outcome-audience {
+  max-width: 34rem;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  color: rgba(255,255,255,.7);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.6;
+}
+
 .outcome-list {
   padding-top: 10vh;
 }
@@ -1319,19 +1327,9 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
 }
 
 .hero-deck {
-  width: min(100%, 66rem);
+  width: max-content;
+  max-width: 100%;
   margin-top: clamp(2rem, 4vh, 3.5rem);
-  display: grid;
-  grid-template-columns: minmax(18rem, 32rem) 1fr;
-  gap: 2rem clamp(2rem, 6vw, 7rem);
-  align-items: end;
-}
-
-.hero-deck > p {
-  margin: 0;
-  color: rgba(255,255,255,.82);
-  font-size: clamp(1rem, 1.35vw, 1.25rem);
-  line-height: 1.5;
 }
 
 .hero-actions {
@@ -1703,7 +1701,6 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
   .hero-title { font-size: clamp(4rem, 12.5vw, 7rem); }
   .hero-title .line-two { margin-left: 0; }
   .hero-title .line-three { margin-left: 10vw; }
-  .hero-deck { grid-template-columns: 1fr; }
   .hero-actions { justify-content: flex-start; }
   .featured-heading,
   .featured-card { grid-template-columns: 1fr; }
@@ -1723,8 +1720,8 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
   .hero-title { font-size: clamp(3.5rem, 17vw, 5.25rem); line-height: .82; }
   .hero-title .line-two,
   .hero-title .line-three { margin-left: 0; }
-  .hero-deck { margin-top: 1.8rem; gap: 1.3rem; }
-  .hero-deck > p { max-width: 22rem; font-size: .95rem; }
+  .hero-deck { margin-top: 1.8rem; }
+  .outcome-audience { max-width: 22rem; margin-top: 1.5rem; font-size: .95rem; }
   .hero-actions { gap: .55rem; }
   .hero-primary,
   .hero-secondary { min-height: 3rem; padding: .75rem .9rem; font-size: .56rem; }

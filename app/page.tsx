@@ -230,10 +230,6 @@ export default function Home() {
             <span className="hero-line line-three">&amp; culture.</span>
           </h1>
           <div className="hero-deck">
-            <p>
-              We help Black-owned salons, stylists and hair-care brands look as
-              exceptional online as the work they do in the real world.
-            </p>
             <div className="hero-actions">
               <a className="hero-primary" href="#work">
                 View selected work <ArrowDown className="inline-icon" aria-hidden="true" />
@@ -565,6 +561,10 @@ export default function Home() {
         <div className="outcome-sticky">
           <span className="kicker">Beauty meets business</span>
           <h2>Beautiful enough to stop the scroll.<em>Sharp enough to fill the chair.</em></h2>
+          <p className="outcome-audience">
+            We help Black-owned salons, stylists and hair-care brands look as
+            exceptional online as the work they do in the real world.
+          </p>
         </div>
         <div className="outcome-list">
           <article data-reveal><span>01</span><h3>Book-first journeys</h3><p>Clear service stories, irresistible work and fewer steps between interest and appointment.</p></article>
