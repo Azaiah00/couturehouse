@@ -11,7 +11,7 @@ const preferenceKey = "couture-house-sound";
 
 export default function PageSoundtrack({ src, title }: PageSoundtrackProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [status, setStatus] = useState<"loading" | "playing" | "paused" | "blocked">("loading");
+  const [status, setStatus] = useState<"loading" | "playing" | "paused" | "blocked">("blocked");
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -21,6 +21,10 @@ export default function PageSoundtrack({ src, title }: PageSoundtrackProps) {
     const storedPreference = window.sessionStorage.getItem(preferenceKey);
     if (storedPreference === "off") {
       setStatus("paused");
+      return;
+    }
+    if (storedPreference !== "on") {
+      setStatus("blocked");
       return;
     }
 
@@ -61,7 +65,7 @@ export default function PageSoundtrack({ src, title }: PageSoundtrackProps) {
 
   return (
     <div className={`soundtrack-control soundtrack-${status}`}>
-      <audio ref={audioRef} src={src} autoPlay loop preload="metadata" />
+      <audio ref={audioRef} src={src} loop preload="none" />
       {needsInvitation && <span className="soundtrack-invitation">This world has a soundtrack</span>}
       <button type="button" onClick={toggleSound} aria-label={`${status === "playing" ? "Pause" : "Play"} ${title}`}>
         <span className="soundtrack-bars" aria-hidden="true"><i /><i /><i /><i /></span>

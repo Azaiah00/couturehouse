@@ -40,6 +40,27 @@ test("server-renders the Couture House experience", async () => {
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working/);
 });
 
+test("defers noncritical video, audio, and image loading", async () => {
+  const [video, soundtrack, page, work, services] = await Promise.all([
+    readFile(new URL("../app/AutoPlayVideo.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/PageSoundtrack.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/work/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/services/page.tsx", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(video, /priority\s*=\s*false/);
+  assert.match(video, /preload=\{priority \? "metadata" : "none"\}/);
+  assert.match(video, /shouldLoad && <source/);
+  assert.doesNotMatch(video, /preload="auto"/);
+  assert.match(soundtrack, /preload="none"/);
+  assert.doesNotMatch(soundtrack, /<audio[^>]*autoPlay/);
+  assert.match(page, /hero-video[\s\S]*priority ariaHidden/);
+  assert.match(page, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
+  assert.match(work, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
+  assert.doesNotMatch(services, /<BeforeAfterSlider[\s\S]*\bpriority\b[\s\S]*\/>/);
+});
+
 test("keeps mobile media previews complete and discoverable", async () => {
   const [css, page, work, form, studio] = await Promise.all([
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),

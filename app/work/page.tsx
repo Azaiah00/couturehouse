@@ -129,7 +129,7 @@ export default function WorkPage() {
             <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
               <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
                 <div className="work-index-media" style={{ aspectRatio: project.previewAspect }}>
-                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position }} />}
+                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} loading="lazy" decoding="async" style={{ objectPosition: project.position }} />}
                   <span>View live <ArrowUpRight aria-hidden="true" /></span>
                 </div>
                 <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>

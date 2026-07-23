@@ -212,7 +212,7 @@ export default function Home() {
       <SiteNav />
 
       <section className="hero" id="top">
-        <AutoPlayVideo className="hero-video" src="/brand/hero-video.mp4" startAt={3} endAt={15} ariaHidden />
+        <AutoPlayVideo className="hero-video" src="/brand/hero-video.mp4" startAt={3} endAt={15} priority ariaHidden />
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orbit orbit-one" aria-hidden="true" />
         <div className="hero-orbit orbit-two" aria-hidden="true" />
@@ -321,6 +321,8 @@ export default function Home() {
                   className="website-preview-image"
                   src={project.image}
                   alt={`${project.title} website preview`}
+                  loading="lazy"
+                  decoding="async"
                   style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
                 />
               )}
@@ -370,7 +372,7 @@ export default function Home() {
               data-reveal
               key={project.title}
             >
-              <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} style={{ objectPosition: project.position ?? "center top" }} />
+              <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} loading="lazy" decoding="async" style={{ objectPosition: project.position ?? "center top" }} />
               <span>{String(index + 4).padStart(2, "0")} / {project.title}</span>
               <ArrowUpRight aria-hidden="true" />
             </a>
@@ -439,7 +441,7 @@ export default function Home() {
 
       <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
         <a href="/studio" className="brand-poster-frame" data-reveal>
-          <img src="/brand/couture-house-poster.png" alt="Couture House digital worlds for hair, beauty and culture" />
+          <img src="/brand/couture-house-poster.png" alt="Couture House digital worlds for hair, beauty and culture" loading="lazy" decoding="async" />
           <span className="brand-poster-enter">Enter the studio <ArrowUpRight aria-hidden="true" /></span>
         </a>
         <div className="brand-poster-meta">
@@ -520,7 +522,7 @@ export default function Home() {
                   {project.video ? (
                     <AutoPlayVideo src={project.video} ariaHidden />
                   ) : (
-                    <img className="website-preview-image" src={project.image} alt={`${project.title} selected website detail`} style={{ objectPosition: project.position ?? "center top" }} />
+                    <img className="website-preview-image" src={project.image} alt={`${project.title} selected website detail`} loading="lazy" decoding="async" style={{ objectPosition: project.position ?? "center top" }} />
                   )}
                   <div className="project-screen" aria-hidden="true"><span>View live</span><ArrowUpRight /></div>
                 </div>

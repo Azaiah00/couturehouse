@@ -111,7 +111,6 @@ export default function ServicesPage() {
           alt="precision flat-loc design photographed from above"
           title="Precision Flat-Loc Design"
           note="From distracting salon snapshot to a focused, brand-ready detail image."
-          priority
         />
       </section>
 
