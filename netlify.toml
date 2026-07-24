@@ -1,6 +1,36 @@
 [build]
-command = "npx next build"
+command = "npm run build"
 publish = ".next"
 
 [build.environment]
 NODE_VERSION = "22.13.0"
+
+[[headers]]
+for = "/_next/static/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/brand/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/portfolio/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/work/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/services/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/audio/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
