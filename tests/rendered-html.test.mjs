@@ -41,8 +41,9 @@ test("server-renders the Couture House experience", async () => {
 });
 
 test("defers noncritical video, audio, and image loading", async () => {
-  const [video, soundtrack, page, work, services] = await Promise.all([
+  const [video, clickVideo, soundtrack, page, work, services] = await Promise.all([
     readFile(new URL("../app/AutoPlayVideo.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/ClickToPlayVideo.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/PageSoundtrack.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/work/page.tsx", import.meta.url), "utf8"),
@@ -52,10 +53,14 @@ test("defers noncritical video, audio, and image loading", async () => {
   assert.match(video, /priority\s*=\s*false/);
   assert.match(video, /preload=\{priority \? "metadata" : "none"\}/);
   assert.match(video, /shouldLoad && <source/);
+  assert.match(video, /posterOnlyOnMobile/);
   assert.doesNotMatch(video, /preload="auto"/);
+  assert.match(clickVideo, /active \? \(/);
+  assert.match(clickVideo, /preload="metadata"/);
+  assert.match(clickVideo, /onClick=\{\(\) => setActive\(true\)\}/);
   assert.match(soundtrack, /preload="none"/);
   assert.doesNotMatch(soundtrack, /<audio[^>]*autoPlay/);
-  assert.match(page, /hero-video[\s\S]*priority ariaHidden/);
+  assert.match(page, /hero-video[\s\S]*priority posterOnlyOnMobile ariaHidden/);
   assert.match(page, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
   assert.match(work, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
   assert.doesNotMatch(services, /<BeforeAfterSlider[\s\S]*\bpriority\b[\s\S]*\/>/);

@@ -2436,6 +2436,86 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
 .service-motion-grid video { width: 100%; aspect-ratio: 9 / 16; display: block; object-fit: cover; border-radius: clamp(.7rem,1.4vw,1.2rem); background: #0d0d0d; box-shadow: 0 1.2rem 3rem rgba(18,12,8,.16); }
 .service-motion-grid figcaption { padding: .85rem .25rem .2rem; display: flex; justify-content: space-between; gap: 1rem; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .service-motion-grid figcaption span { color: var(--coral); font-family: var(--font-serif); font-style: italic; }
+
+.click-video,
+.click-video-trigger,
+.click-video > video,
+.click-video-trigger > img {
+  width: 100%;
+  height: 100%;
+}
+.click-video {
+  position: relative;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+.click-video-trigger {
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  color: white;
+  background: #0d0d0d;
+  cursor: pointer;
+}
+.click-video-trigger > img,
+.click-video > video {
+  display: block;
+  object-fit: cover;
+}
+.click-video-trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(0,0,0,.62));
+  transition: background .25s ease;
+}
+.click-video-play {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  justify-items: center;
+  gap: .75rem;
+  transform: translate(-50%, -50%);
+}
+.click-video-play svg {
+  width: 4rem;
+  height: 4rem;
+  padding: 1.15rem;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  fill: white;
+  background: rgba(5,5,5,.42);
+  backdrop-filter: blur(12px);
+  transition: transform .25s ease, background .25s ease;
+}
+.click-video-play b {
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.click-video-trigger:hover .click-video-play svg,
+.click-video-trigger:focus-visible .click-video-play svg {
+  transform: scale(1.08);
+  background: var(--coral);
+}
+.click-video-trigger:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: -3px;
+}
+.autoplay-video.is-poster { opacity: 1; }
+.case-gallery .click-video,
+.work-page-lead-media .click-video,
+.service-motion-grid .click-video,
+.partnership-film .click-video,
+.motion-card .click-video,
+.full-film-frame .click-video {
+  border-radius: inherit;
+}
+.service-motion-grid .click-video { aspect-ratio: 9 / 16; }
 .beauty-business { padding-top: clamp(7rem, 10vw, 11rem); padding-bottom: clamp(7rem, 10vw, 11rem); color: var(--ink); background: var(--pink); }
 .beauty-business h2,
 .engagement-flow h2 { margin: 0 0 clamp(4rem,7vw,7rem); font-size: clamp(4rem, 8vw, 8rem); font-weight: 800; letter-spacing: -.075em; line-height: .8; }

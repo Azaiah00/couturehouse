@@ -12,6 +12,7 @@ type AutoPlayVideoProps = {
   startAt?: number;
   endAt?: number;
   priority?: boolean;
+  posterOnlyOnMobile?: boolean;
 };
 
 export default function AutoPlayVideo({
@@ -24,18 +25,32 @@ export default function AutoPlayVideo({
   startAt,
   endAt,
   priority = false,
+  posterOnlyOnMobile = false,
 }: AutoPlayVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(priority);
+  const [shouldLoad, setShouldLoad] = useState(priority && !posterOnlyOnMobile);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     if (priority) {
-      setShouldLoad(true);
-      return;
+      const mobileQuery = window.matchMedia("(max-width: 700px)");
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+      const updatePriorityLoading = () => {
+        const usePoster = posterOnlyOnMobile && (mobileQuery.matches || reducedMotionQuery.matches || connection?.saveData);
+        setShouldLoad(!usePoster);
+      };
+
+      updatePriorityLoading();
+      mobileQuery.addEventListener("change", updatePriorityLoading);
+      reducedMotionQuery.addEventListener("change", updatePriorityLoading);
+      return () => {
+        mobileQuery.removeEventListener("change", updatePriorityLoading);
+        reducedMotionQuery.removeEventListener("change", updatePriorityLoading);
+      };
     }
 
     setShouldLoad(false);
@@ -49,7 +64,7 @@ export default function AutoPlayVideo({
     );
     loadObserver.observe(video);
     return () => loadObserver.disconnect();
-  }, [priority, src]);
+  }, [posterOnlyOnMobile, priority, src]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -110,7 +125,7 @@ export default function AutoPlayVideo({
   };
 
   return (
-    <video ref={videoRef} className={`autoplay-video ${playing ? "is-playing" : ""} ${className}`.trim()} autoPlay={priority} muted loop playsInline preload={priority ? "metadata" : "none"} controls={false} disablePictureInPicture poster={poster} aria-label={ariaLabel} aria-hidden={ariaHidden || undefined} style={style} onPlaying={() => setPlaying(true)} onTimeUpdate={keepLoopInRange}>
+    <video ref={videoRef} className={`autoplay-video ${playing ? "is-playing" : ""} ${poster && !shouldLoad ? "is-poster" : ""} ${className}`.trim()} autoPlay={priority} muted loop playsInline preload={priority ? "metadata" : "none"} controls={false} disablePictureInPicture poster={poster} aria-label={ariaLabel} aria-hidden={ariaHidden || undefined} style={style} onPlaying={() => setPlaying(true)} onTimeUpdate={keepLoopInRange}>
       {shouldLoad && <source src={src} type="video/mp4" />}
     </video>
   );

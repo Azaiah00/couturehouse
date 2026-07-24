@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import AllThingsLocsPreview from "./AllThingsLocsPreview";
 import AutoPlayVideo from "./AutoPlayVideo";
+import ClickToPlayVideo from "./ClickToPlayVideo";
 import MobileSwipeHint from "./MobileSwipeHint";
 import PageSoundtrack from "./PageSoundtrack";
 import SiteFooter from "./SiteFooter";
@@ -212,7 +213,7 @@ export default function Home() {
       <SiteNav />
 
       <section className="hero" id="top">
-        <AutoPlayVideo className="hero-video" src="/brand/hero-video.mp4" startAt={3} endAt={15} priority ariaHidden />
+        <AutoPlayVideo className="hero-video" src="/brand/hero-video.mp4" poster="/brand/hero-poster.webp" startAt={3} endAt={15} priority posterOnlyOnMobile ariaHidden />
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orbit orbit-one" aria-hidden="true" />
         <div className="hero-orbit orbit-two" aria-hidden="true" />
@@ -290,7 +291,7 @@ export default function Home() {
             <figcaption>Editorial portrait / Campaign motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <AutoPlayVideo src="/work/magic-coils/featured-reel-02.mp4" ariaLabel="Magic Coils salon finish reel" />
+            <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/cover.webp" ariaLabel="Magic Coils salon finish reel" />
             <figcaption>Salon finish / Hair in motion</figcaption>
           </figure>
         </div>
@@ -477,7 +478,7 @@ export default function Home() {
           </p>
         </div>
         <div className="full-film-frame" data-reveal>
-          <AutoPlayVideo src="/brand/hero-video.mp4" ariaLabel="Couture House full campaign film" />
+          <ClickToPlayVideo src="/brand/hero-video.mp4" poster="/brand/video-poster.webp" ariaLabel="Couture House full campaign film" />
         </div>
       </section>
 
@@ -494,7 +495,7 @@ export default function Home() {
           <article className="motion-card motion-card-primary">
             <div className="motion-card-meta"><span>01 / Social motion</span><p>Vertical stories made to hold attention.</p></div>
             <figure className="showreel-frame showreel-primary">
-              <AutoPlayVideo src="/brand/work-moves-r01.mp4" ariaLabel="Couture House vertical campaign showreel" />
+              <ClickToPlayVideo src="/brand/work-moves-r01.mp4" poster="/brand/video-poster.webp" ariaLabel="Couture House vertical campaign showreel" />
               <figcaption>Social / Story / Motion</figcaption>
               <span className="showreel-stamp" aria-hidden="true">CH / 85</span>
             </figure>

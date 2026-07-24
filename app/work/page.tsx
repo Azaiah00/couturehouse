@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import AllThingsLocsPreview from "../AllThingsLocsPreview";
 import AutoPlayVideo from "../AutoPlayVideo";
+import ClickToPlayVideo from "../ClickToPlayVideo";
 import BeforeAfterSlider from "../BeforeAfterSlider";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
@@ -79,7 +80,7 @@ export default function WorkPage() {
         </div>
         <div className="work-page-lead-media">
           <AutoPlayVideo src="/work/magic-coils/featured-reel-01.mp4" ariaLabel="Magic Coils luxury campaign reel" />
-          <AutoPlayVideo src="/work/magic-coils/featured-reel-02.mp4" ariaLabel="Magic Coils product storytelling reel" />
+          <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/cover.webp" ariaLabel="Magic Coils product storytelling reel" />
         </div>
       </section>
 
@@ -157,7 +158,7 @@ export default function WorkPage() {
             <p>Animated campaign content made for social, launches and the moments between episodes.</p>
           </div>
           <figure>
-            <AutoPlayVideo src="/brand/showreel.mp4" ariaLabel="Teddy and Monica campaign film" />
+            <ClickToPlayVideo src="/brand/showreel.mp4" poster="/work/partnership/podcast-new-episode.webp" ariaLabel="Teddy and Monica campaign film" />
           </figure>
         </div>
 

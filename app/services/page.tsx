@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import BeforeAfterSlider from "../BeforeAfterSlider";
 import AutoPlayVideo from "../AutoPlayVideo";
+import ClickToPlayVideo from "../ClickToPlayVideo";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
@@ -86,7 +87,7 @@ export default function ServicesPage() {
             <figcaption><span>01</span> Editorial motion / Sacrificial Conversations</figcaption>
           </figure>
           <figure>
-            <AutoPlayVideo src="/services/sacrificial-conversations-reel-02.mp4" ariaLabel="Sacrificial Conversations short-form social reel" />
+            <ClickToPlayVideo src="/services/sacrificial-conversations-reel-02.mp4" poster="/portfolio/sacrificial-conversations.jpg" ariaLabel="Sacrificial Conversations short-form social reel" />
             <figcaption><span>02</span> Social storytelling / Sacrificial Conversations</figcaption>
           </figure>
         </div>
