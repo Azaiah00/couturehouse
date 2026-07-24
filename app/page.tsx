@@ -43,7 +43,7 @@ const featuredProjects = [
     image: "/portfolio/beverlys-feature.png",
     position: "center center",
     fit: "contain" as const,
-    previewAspect: "1918 / 909",
+    previewAspect: "1234 / 712",
     url: "https://beverlysofnashville.com/",
     summary:
       "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
@@ -120,11 +120,11 @@ const projects: Project[] = [
     title: "Majestic Contracting",
     type: "Design / Build / Renovate",
     role: "Website + motion direction",
-    image: "/portfolio/majestic-contracting.svg",
-    video: "/portfolio/majestic-intro.mp4",
+    image: "/portfolio/majestic-contracting-preview.png",
     url: "https://majesticdbr.com/",
     tone: "gold",
-    previewAspect: "960 / 594",
+    position: "center top",
+    previewAspect: "1234 / 712",
   },
   {
     title: "Party Bus R Us",

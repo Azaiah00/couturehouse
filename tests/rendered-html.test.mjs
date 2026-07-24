@@ -93,7 +93,8 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.doesNotMatch(work, /Long Twists|Ombré Braids/);
   assert.equal((work.match(/before:\s*"\/work\/photo-revival\//g) ?? []).length, 4);
   assert.match(await readFile(new URL("../app/BeforeAfterSlider.tsx", import.meta.url), "utf8"), /revival-mobile-pair/);
-  assert.match(work, /previewAspect:\s*"960 \/ 594"/);
+  assert.match(work, /majestic-contracting-preview\.png/);
+  assert.match(work, /previewAspect:\s*"1234 \/ 712"/);
   assert.match(css, /\.full-film-frame\s*\{\s*aspect-ratio:\s*16 \/ 9/);
   assert.match(css, /\.featured-browser \.browser-bar\s*\{\s*display:\s*none/);
   assert.match(css, /\.work-asset-landscape\s*\{[^}]*aspect-ratio:\s*2000 \/ 904/s);
