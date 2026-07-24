@@ -47,7 +47,7 @@ export default function StudioPage() {
       <section className="studio-world-opening" aria-labelledby="studio-opening-title">
         <div className="studio-world-opening-copy">
           <span className="kicker">Couture House Co. / The studio</span>
-          <h1 id="studio-opening-title">WHERE CULTURE<br />MEETS <em>CRAFT.</em></h1>
+          <h1 id="studio-opening-title" aria-label="Where culture meets craft.">WHERE CULTURE<br />MEETS <em>CRAFT.</em></h1>
           <p>Strategy, technology and moving image shaped around the people, rituals and ambition behind the brand.</p>
           <Link href="#point-of-view">Enter our point of view <ArrowDown className="link-icon" aria-hidden="true" /></Link>
         </div>

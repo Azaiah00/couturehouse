@@ -67,7 +67,7 @@ export default function WorkPage() {
 
       <header className="work-page-hero section-pad">
         <span className="kicker">Selected work / 2024–26</span>
-        <h1>WORLDS BUILT<br />TO BE <em>FELT.</em></h1>
+        <h1 aria-label="Worlds built to be felt.">WORLDS BUILT<br />TO BE <em>FELT.</em></h1>
         <div><p>Websites, content, campaigns and motion shaped around the people a business wants to move.</p><span>Hair + beauty first<br />Culture always<br />Built to act</span></div>
       </header>
 

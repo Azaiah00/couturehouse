@@ -19,7 +19,7 @@ export default function StartProjectPage() {
 
       <header className="start-hero section-pad">
         <span className="kicker">Start a project / Couture House Co.</span>
-        <h1>BRING THE<br /><em>VISION.</em></h1>
+        <h1 aria-label="Bring the vision.">BRING THE<br /><em>VISION.</em></h1>
         <div><p>Tell us what you are building, where the business is getting stuck and what the next chapter should feel like.</p><span>Websites / Apps<br />Workflows + Automation<br />Content + Music</span></div>
       </header>
 

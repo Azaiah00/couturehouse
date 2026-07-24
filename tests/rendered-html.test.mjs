@@ -34,6 +34,7 @@ test("server-renders the Couture House experience", async () => {
   assert.doesNotMatch(html, developmentPreviewMeta);
   assert.match(html, /<title>Couture House Co\./i);
   assert.match(html, /Digital worlds/);
+  assert.match(html, /aria-label="Digital worlds for hair, beauty and culture\."/);
   assert.match(html, /WORK THAT/);
   assert.match(html, /Swipe to explore more websites/);
   assert.match(html, /Swipe right to see more products/);

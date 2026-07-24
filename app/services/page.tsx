@@ -53,7 +53,7 @@ export default function ServicesPage() {
 
       <header className="services-page-hero section-pad">
         <span className="kicker">Design on the surface / systems underneath</span>
-        <h1>FROM FIRST<br />IMPRESSION TO<br /><em>DAILY OPERATION.</em></h1>
+        <h1 aria-label="From first impression to daily operation.">FROM FIRST<br />IMPRESSION TO<br /><em>DAILY OPERATION.</em></h1>
         <p>One studio for the website people see, the content that brings them there and the systems that keep everything moving.</p>
       </header>
 

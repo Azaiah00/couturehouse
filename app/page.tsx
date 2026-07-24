@@ -225,7 +225,7 @@ export default function Home() {
 
         <div className="hero-lockup">
           <p className="hero-eyebrow">Websites / Apps / Automations / Content</p>
-          <h1 className="hero-title">
+          <h1 className="hero-title" aria-label="Digital worlds for hair, beauty and culture.">
             <span className="hero-line line-one">Digital worlds</span>
             <span className="hero-line line-two">for <em>hair, beauty</em></span>
             <span className="hero-line line-three">&amp; culture.</span>
