@@ -21,7 +21,7 @@ export default function ClickToPlayVideo({
   return (
     <div className={`click-video ${active ? "is-active" : ""} ${className}`.trim()}>
       {active ? (
-        <video controls autoPlay playsInline preload="metadata" aria-label={ariaLabel}>
+        <video controls autoPlay muted playsInline preload="metadata" poster={poster} aria-label={ariaLabel}>
           <source src={src} type="video/mp4" />
         </video>
       ) : (

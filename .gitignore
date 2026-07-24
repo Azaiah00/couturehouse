@@ -42,6 +42,8 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/audit-*.png
+/deploy-*.zip
 
 # Local Netlify folder
 .netlify

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const work = [
   { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/work/magic-coils/cover.webp", url: "https://magiccoils.net/", position: "center center" },
   { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", previewAspect: "1905 / 848" },
-  { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature.png", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1234 / 712" },
+  { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature-2026.webp", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1234 / 712" },
   { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", previewAspect: "16 / 9" },
   { number: "05", title: "Divine Textures", type: "Holistic hair care / Columbia", scope: "Web design and development", image: "/portfolio/divine-textures.png", url: "https://divine-textures.netlify.app/", position: "center 18%", previewAspect: "1905 / 848" },
   { number: "06", title: "OG Barnes", type: "Wellness / Loc artistry", scope: "Web design and development", image: "/portfolio/og-barnes.png", url: "https://ogbarnes.netlify.app/", position: "center 15%", previewAspect: "1905 / 848" },
@@ -79,8 +79,8 @@ export default function WorkPage() {
           <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
         </div>
         <div className="work-page-lead-media">
-          <AutoPlayVideo src="/work/magic-coils/featured-reel-01.mp4" ariaLabel="Magic Coils luxury campaign reel" />
-          <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/cover.webp" ariaLabel="Magic Coils product storytelling reel" />
+          <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01.webp" ariaLabel="Magic Coils luxury campaign reel" />
+          <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02.webp" ariaLabel="Magic Coils product storytelling reel" />
         </div>
       </section>
 

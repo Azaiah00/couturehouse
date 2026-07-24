@@ -51,7 +51,7 @@ export default function StudioPage() {
           <p>Strategy, technology and moving image shaped around the people, rituals and ambition behind the brand.</p>
           <Link href="#point-of-view">Enter our point of view <ArrowDown className="link-icon" aria-hidden="true" /></Link>
         </div>
-        <figure><img src="/brand/studio-world-v1.png" alt="Black woman creative director in the Couture House digital atelier" fetchPriority="high" decoding="async" /></figure>
+        <figure><img src="/brand/studio-world-v1.webp" alt="Black woman creative director in the Couture House digital atelier" fetchPriority="high" decoding="async" /></figure>
       </section>
 
       <section className="studio-hero" id="point-of-view">
@@ -117,7 +117,7 @@ export default function StudioPage() {
 
       <section className="studio-collage section-pad">
         <div className="studio-editorial-break" aria-labelledby="studio-direction-title">
-          <figure><img src="/brand/studio-culture-craft-v2.png" alt="Black creative director shaping an immersive digital brand world" loading="lazy" decoding="async" /></figure>
+          <figure><img src="/brand/studio-culture-craft-v2.webp" alt="Black creative director shaping an immersive digital brand world" loading="lazy" decoding="async" /></figure>
           <div className="studio-editorial-copy">
             <span className="kicker">Creative direction / Systems / Story</span>
             <h2 id="studio-direction-title">THE VISION<br />HAS AN <em>ENGINE.</em></h2>
@@ -135,7 +135,7 @@ export default function StudioPage() {
         </div>
         <div className="studio-collage-grid">
           <figure>
-            <img src="/work/magic-coils/extra/04.webp" alt="Magic Coils campaign portrait" loading="lazy" decoding="async" />
+            <img src="/work/magic-coils/reel-poster-02.webp" alt="Magic Coils campaign portrait" loading="lazy" decoding="async" />
           </figure>
           <figure>
             <img src="/work/magic-coils/extra/06.webp" alt="Magic Coils lifestyle campaign" loading="lazy" decoding="async" />

@@ -40,7 +40,7 @@ const featuredProjects = [
     number: "03",
     title: "Beverly's of Nashville",
     eyebrow: "Legacy salon / Nashville",
-    image: "/portfolio/beverlys-feature.png",
+    image: "/portfolio/beverlys-feature-2026.webp",
     position: "center center",
     fit: "contain" as const,
     previewAspect: "1234 / 712",
@@ -287,11 +287,11 @@ export default function Home() {
         </div>
         <div className="case-gallery case-gallery-reels" data-reveal>
           <figure className="case-video">
-            <AutoPlayVideo src="/work/magic-coils/featured-reel-01.mp4" ariaLabel="Magic Coils editorial portrait reel" />
+            <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01.webp" ariaLabel="Magic Coils editorial portrait reel" />
             <figcaption>Editorial portrait / Campaign motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/cover.webp" ariaLabel="Magic Coils salon finish reel" />
+            <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02.webp" ariaLabel="Magic Coils salon finish reel" />
             <figcaption>Salon finish / Hair in motion</figcaption>
           </figure>
         </div>
@@ -442,7 +442,7 @@ export default function Home() {
 
       <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
         <a href="/studio" className="brand-poster-frame" data-reveal>
-          <img src="/brand/couture-house-poster.png" alt="Couture House digital worlds for hair, beauty and culture" loading="lazy" decoding="async" />
+          <img src="/brand/couture-house-poster.webp" alt="Couture House digital worlds for hair, beauty and culture" loading="lazy" decoding="async" />
           <span className="brand-poster-enter">Enter the studio <ArrowUpRight aria-hidden="true" /></span>
         </a>
         <div className="brand-poster-meta">

@@ -57,6 +57,8 @@ test("defers noncritical video, audio, and image loading", async () => {
   assert.doesNotMatch(video, /preload="auto"/);
   assert.match(clickVideo, /active \? \(/);
   assert.match(clickVideo, /preload="metadata"/);
+  assert.match(clickVideo, /poster=\{poster\}/);
+  assert.match(clickVideo, /autoPlay muted playsInline/);
   assert.match(clickVideo, /onClick=\{\(\) => setActive\(true\)\}/);
   assert.match(soundtrack, /preload="none"/);
   assert.doesNotMatch(soundtrack, /<audio[^>]*autoPlay/);
@@ -64,6 +66,19 @@ test("defers noncritical video, audio, and image loading", async () => {
   assert.match(page, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
   assert.match(work, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
   assert.doesNotMatch(services, /<BeforeAfterSlider[\s\S]*\bpriority\b[\s\S]*\/>/);
+});
+
+test("publishes the current vinext output on Netlify", async () => {
+  const [netlify, packageJson, staticBuild] = await Promise.all([
+    readFile(new URL("../netlify.toml", import.meta.url), "utf8"),
+    readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../scripts/build-netlify-static.mjs", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(netlify, /command = "npm run build:netlify"/);
+  assert.match(netlify, /publish = "dist"/);
+  assert.match(packageJson, /"build:netlify": "vinext build && node scripts\/build-netlify-static\.mjs"/);
+  assert.match(staticBuild, /"\/work", "\/services", "\/studio", "\/start-a-project"/);
 });
 
 test("keeps mobile media previews complete and discoverable", async () => {
@@ -80,6 +95,7 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.match(page, /Swipe right to see more products/);
   assert.match(page, /featured-reel-01\.mp4/);
   assert.match(page, /featured-reel-02\.mp4/);
+  assert.match(page, /beverlys-feature-2026\.webp/);
   assert.doesNotMatch(page, /magicpress\.mp4|magic-coils\/reel\.mp4/);
   assert.ok(
     page.indexOf('className="product-world-gallery"') < page.indexOf('Swipe right to see more products'),
@@ -89,7 +105,7 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.doesNotMatch(work, /Swipe to see every transformation/);
   assert.match(work, /Original and enhanced versions, presented together/);
   assert.doesNotMatch(work, /partnership-chapter-beverly|hair-color-mastery-approved/);
-  assert.doesNotMatch(work, /03-products\.webp|magic-coils\/extra\/04\.webp/);
+  assert.doesNotMatch(work, /03-products\.webp/);
   assert.doesNotMatch(work, /Long Twists|Ombré Braids/);
   assert.equal((work.match(/before:\s*"\/work\/photo-revival\//g) ?? []).length, 4);
   assert.match(await readFile(new URL("../app/BeforeAfterSlider.tsx", import.meta.url), "utf8"), /revival-mobile-pair/);
@@ -105,6 +121,7 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.match(css, /\.full-film-frame video\s*\{\s*object-fit:\s*cover/s);
   assert.match(form, /ArrowUpRight, Check, Plus/);
   assert.doesNotMatch(studio, /winter-look-02\.png/);
-  assert.equal((studio.match(/magic-coils\/extra\/(?:04|06)\.webp/g) ?? []).length, 2);
+  assert.match(studio, /magic-coils\/reel-poster-02\.webp/);
+  assert.match(studio, /magic-coils\/extra\/06\.webp/);
   assert.doesNotMatch(page + work, /&#8599;|&darr;|◆/);
 });
