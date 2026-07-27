@@ -87,7 +87,7 @@ export default function ServicesPage() {
             <figcaption><span>01</span> Editorial motion / Sacrificial Conversations</figcaption>
           </figure>
           <figure>
-            <ClickToPlayVideo src="/services/sacrificial-conversations-reel-02.mp4" poster="/portfolio/sacrificial-conversations.jpg" ariaLabel="Sacrificial Conversations short-form social reel" />
+            <ClickToPlayVideo src="/services/sacrificial-conversations-reel-02.mp4" poster="/services/sacrificial-conversations-reel-02-poster-v2.webp" ariaLabel="Sacrificial Conversations short-form social reel" />
             <figcaption><span>02</span> Social storytelling / Sacrificial Conversations</figcaption>
           </figure>
         </div>

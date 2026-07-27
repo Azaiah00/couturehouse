@@ -79,8 +79,8 @@ export default function WorkPage() {
           <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
         </div>
         <div className="work-page-lead-media">
-          <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01.webp" ariaLabel="Magic Coils luxury campaign reel" />
-          <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02.webp" ariaLabel="Magic Coils product storytelling reel" />
+          <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01-v2.webp" ariaLabel="Magic Coils luxury campaign reel" />
+          <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils product storytelling reel" />
         </div>
       </section>
 
@@ -158,7 +158,7 @@ export default function WorkPage() {
             <p>Animated campaign content made for social, launches and the moments between episodes.</p>
           </div>
           <figure>
-            <ClickToPlayVideo src="/brand/showreel.mp4" poster="/work/partnership/podcast-new-episode.webp" ariaLabel="Teddy and Monica campaign film" />
+            <ClickToPlayVideo src="/brand/showreel.mp4" poster="/work/partnership/teddy-monica-campaign-film-poster-v2.webp" ariaLabel="Teddy and Monica campaign film" />
           </figure>
         </div>
 

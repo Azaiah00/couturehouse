@@ -69,6 +69,24 @@ test("defers noncritical video, audio, and image loading", async () => {
   assert.doesNotMatch(services, /<BeforeAfterSlider[\s\S]*\bpriority\b[\s\S]*\/>/);
 });
 
+test("uses a frame from each source video as its click-to-play poster", async () => {
+  const [page, work, services] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/work/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/services/page.tsx", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(page, /featured-reel-01\.mp4" poster="\/work\/magic-coils\/reel-poster-01-v2\.webp"/);
+  assert.match(page, /featured-reel-02\.mp4" poster="\/work\/magic-coils\/reel-poster-02-v2\.webp"/);
+  assert.match(page, /hero-video\.mp4" poster="\/brand\/full-campaign-film-poster-v2\.webp"/);
+  assert.match(page, /work-moves-r01\.mp4" poster="\/brand\/work-moves-poster-v2\.webp"/);
+  assert.match(services, /sacrificial-conversations-reel-02\.mp4" poster="\/services\/sacrificial-conversations-reel-02-poster-v2\.webp"/);
+  assert.match(work, /showreel\.mp4" poster="\/work\/partnership\/teddy-monica-campaign-film-poster-v2\.webp"/);
+  assert.doesNotMatch(page + work, /ClickToPlayVideo[^>]*poster="\/brand\/video-poster\.webp"/);
+  assert.doesNotMatch(services, /sacrificial-conversations-reel-02\.mp4" poster="\/portfolio\/sacrificial-conversations\.jpg"/);
+  assert.doesNotMatch(work, /showreel\.mp4" poster="\/work\/partnership\/podcast-new-episode\.webp"/);
+});
+
 test("publishes the current vinext output on Netlify", async () => {
   const [netlify, packageJson, staticBuild] = await Promise.all([
     readFile(new URL("../netlify.toml", import.meta.url), "utf8"),

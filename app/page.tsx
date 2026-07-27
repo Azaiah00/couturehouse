@@ -287,11 +287,11 @@ export default function Home() {
         </div>
         <div className="case-gallery case-gallery-reels" data-reveal>
           <figure className="case-video">
-            <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01.webp" ariaLabel="Magic Coils editorial portrait reel" />
+            <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01-v2.webp" ariaLabel="Magic Coils editorial portrait reel" />
             <figcaption>Editorial portrait / Campaign motion</figcaption>
           </figure>
           <figure className="case-reel">
-            <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02.webp" ariaLabel="Magic Coils salon finish reel" />
+            <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils salon finish reel" />
             <figcaption>Salon finish / Hair in motion</figcaption>
           </figure>
         </div>
@@ -478,7 +478,7 @@ export default function Home() {
           </p>
         </div>
         <div className="full-film-frame" data-reveal>
-          <ClickToPlayVideo src="/brand/hero-video.mp4" poster="/brand/video-poster.webp" ariaLabel="Couture House full campaign film" />
+          <ClickToPlayVideo src="/brand/hero-video.mp4" poster="/brand/full-campaign-film-poster-v2.webp" ariaLabel="Couture House full campaign film" />
         </div>
       </section>
 
@@ -495,7 +495,7 @@ export default function Home() {
           <article className="motion-card motion-card-primary">
             <div className="motion-card-meta"><span>01 / Social motion</span><p>Vertical stories made to hold attention.</p></div>
             <figure className="showreel-frame showreel-primary">
-              <ClickToPlayVideo src="/brand/work-moves-r01.mp4" poster="/brand/video-poster.webp" ariaLabel="Couture House vertical campaign showreel" />
+              <ClickToPlayVideo src="/brand/work-moves-r01.mp4" poster="/brand/work-moves-poster-v2.webp" ariaLabel="Couture House vertical campaign showreel" />
               <figcaption>Social / Story / Motion</figcaption>
               <span className="showreel-stamp" aria-hidden="true">CH / 85</span>
             </figure>
