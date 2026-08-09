@@ -14,31 +14,34 @@ export default function PageSoundtrack({ src, title }: PageSoundtrackProps) {
   const [status, setStatus] = useState<"loading" | "playing" | "paused" | "blocked">("blocked");
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+    const timer = window.setTimeout(() => {
+      const audio = audioRef.current;
+      if (!audio) return;
 
-    audio.volume = 0.38;
-    const storedPreference = window.sessionStorage.getItem(preferenceKey);
-    if (storedPreference === "off") {
-      setStatus("paused");
-      return;
-    }
-    if (storedPreference !== "on") {
-      setStatus("blocked");
-      return;
-    }
-
-    const start = async () => {
-      try {
-        await audio.play();
-        window.sessionStorage.setItem(preferenceKey, "on");
-        setStatus("playing");
-      } catch {
-        setStatus("blocked");
+      audio.volume = 0.38;
+      const storedPreference = window.sessionStorage.getItem(preferenceKey);
+      if (storedPreference === "off") {
+        setStatus("paused");
+        return;
       }
-    };
+      if (storedPreference !== "on") {
+        setStatus("blocked");
+        return;
+      }
 
-    void start();
+      const start = async () => {
+        try {
+          await audio.play();
+          window.sessionStorage.setItem(preferenceKey, "on");
+          setStatus("playing");
+        } catch {
+          setStatus("blocked");
+        }
+      };
+
+      void start();
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [src]);
 
   const toggleSound = async () => {

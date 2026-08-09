@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
-  title: "The Studio | Couture House Co.",
+  title: "Hair & Beauty Digital Studio | Couture House Co.",
   description:
     "Meet Couture House Co., the digital atelier creating human-centered websites, apps, automations and content for hair, beauty and culture.",
+  alternates: { canonical: "/studio/" },
+  openGraph: {
+    title: "Hair & Beauty Digital Studio | Couture House Co.",
+    description: "Meet the digital atelier creating human-centered websites, booking experiences, automations and content for hair, beauty and culture.",
+    url: "/studio/",
+    type: "website",
+    images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "Couture House digital atelier for hair, beauty and culture" }],
+  },
 };
 
 const principles = [
@@ -51,7 +60,7 @@ export default function StudioPage() {
           <p>Strategy, technology and moving image shaped around the people, rituals and ambition behind the brand.</p>
           <Link href="#point-of-view">Enter our point of view <ArrowDown className="link-icon" aria-hidden="true" /></Link>
         </div>
-        <figure><img src="/brand/studio-world-v1.webp" alt="Black woman creative director in the Couture House digital atelier" fetchPriority="high" decoding="async" /></figure>
+        <figure><Image src="/brand/studio-world-v1.webp" alt="Black woman creative director in the Couture House digital atelier" width={1600} height={900} sizes="(max-width: 760px) 100vw, 50vw" priority unoptimized /></figure>
       </section>
 
       <section className="studio-hero" id="point-of-view">
@@ -117,7 +126,7 @@ export default function StudioPage() {
 
       <section className="studio-collage section-pad">
         <div className="studio-editorial-break" aria-labelledby="studio-direction-title">
-          <figure><img src="/brand/studio-culture-craft-v2.webp" alt="Black creative director shaping an immersive digital brand world" loading="lazy" decoding="async" /></figure>
+          <figure><Image src="/brand/studio-culture-craft-v2.webp" alt="Black creative director shaping an immersive digital brand world" width={1600} height={900} sizes="(max-width: 760px) 100vw, 55vw" unoptimized /></figure>
           <div className="studio-editorial-copy">
             <span className="kicker">Creative direction / Systems / Story</span>
             <h2 id="studio-direction-title">THE VISION<br />HAS AN <em>ENGINE.</em></h2>
@@ -131,14 +140,14 @@ export default function StudioPage() {
             Salons, stylists and hair-care brands are not a narrow market to
             us. They are a universe of expertise, expression and possibility.
           </p>
-          <Link href="/work">See the work <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+          <Link href="/work/">See the work <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
         </div>
         <div className="studio-collage-grid">
           <figure>
-            <img src="/work/magic-coils/reel-poster-02.webp" alt="Magic Coils campaign portrait" loading="lazy" decoding="async" />
+            <Image src="/work/magic-coils/reel-poster-02.webp" alt="Magic Coils campaign portrait" width={720} height={965} sizes="(max-width: 760px) 100vw, 50vw" unoptimized />
           </figure>
           <figure>
-            <img src="/work/magic-coils/extra/06.webp" alt="Magic Coils lifestyle campaign" loading="lazy" decoding="async" />
+            <Image src="/work/magic-coils/extra/06.webp" alt="Magic Coils lifestyle campaign" width={1493} height={2000} sizes="(max-width: 760px) 100vw, 50vw" unoptimized />
           </figure>
         </div>
       </section>
@@ -161,14 +170,14 @@ export default function StudioPage() {
             </article>
           ))}
         </div>
-        <Link className="studio-practice-link" href="/services">Explore every service <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+        <Link className="studio-practice-link" href="/services/">Explore every service <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
       </section>
 
       <section className="studio-final">
         <span className="kicker">Bring the vision</span>
         <h2>LET&apos;S BUILD<br />SOMETHING WITH<br /><em>A PULSE.</em></h2>
         <p>Websites, apps, automations and content shaped around your world.</p>
-        <Link href="/start-a-project">
+        <Link href="/start-a-project/">
           Start a project <ArrowUpRight className="link-icon" aria-hidden="true" />
         </Link>
       </section>

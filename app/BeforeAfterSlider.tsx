@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MoveHorizontal } from "lucide-react";
+import Image from "next/image";
 
 type BeforeAfterSliderProps = {
   before: string;
@@ -25,19 +26,23 @@ export default function BeforeAfterSlider({
   return (
     <figure className="revival-comparison">
       <div className="revival-comparison-media">
-        <img
+        <Image
           className="revival-before"
           src={after}
           alt={`Couture House enhanced — ${alt}`}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
+          fill
+          sizes="(max-width: 760px) 92vw, 45vw"
+          priority={priority}
+          unoptimized
         />
         <div className="revival-after" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-          <img
+          <Image
             src={before}
             alt={`Original content — ${alt}`}
-            loading={priority ? "eager" : "lazy"}
-            decoding="async"
+            fill
+            sizes="(max-width: 760px) 92vw, 45vw"
+            priority={priority}
+            unoptimized
           />
         </div>
         <div className="revival-divider" style={{ left: `${position}%` }} aria-hidden="true">
@@ -57,20 +62,24 @@ export default function BeforeAfterSlider({
       <div className="revival-mobile-pair">
         <div>
           <span>Original content</span>
-          <img
+          <Image
             src={before}
             alt={`Original content — ${alt}`}
-            loading={priority ? "eager" : "lazy"}
-            decoding="async"
+            fill
+            sizes="92vw"
+            priority={priority}
+            unoptimized
           />
         </div>
         <div>
           <span>Couture House enhanced</span>
-          <img
+          <Image
             src={after}
             alt={`Couture House enhanced — ${alt}`}
-            loading={priority ? "eager" : "lazy"}
-            decoding="async"
+            fill
+            sizes="92vw"
+            priority={priority}
+            unoptimized
           />
         </div>
       </div>

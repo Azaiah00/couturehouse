@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Analytics from "./Analytics";
+import StructuredData from "./StructuredData";
 
 const title = "Couture House Co. | Digital Solutions for Hair, Beauty & Culture";
 const description =
@@ -9,6 +11,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://couturehouse.co"),
   title,
   description,
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/brand/favicon-logo.png",
     shortcut: "/brand/favicon-logo.png",
@@ -26,6 +31,7 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
+    url: "/",
     images: [
       {
         url: "/og-v2.png",
@@ -55,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><StructuredData /><Analytics />{children}</body>
     </html>
   );
 }

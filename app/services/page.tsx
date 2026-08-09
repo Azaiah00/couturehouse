@@ -9,14 +9,23 @@ import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
-  title: "Services | Couture House Co.",
-  description: "Website design, apps, workflow automation and content systems for salons, stylists, hair-care brands and ambitious businesses.",
+  title: "Salon Website Design, Booking & Automation | Couture House Co.",
+  description: "Websites, booking journeys, commerce, automation and content systems for salons, stylists and hair-care brands.",
+  alternates: { canonical: "/services/" },
+  openGraph: {
+    title: "Salon Website Design, Booking & Automation | Couture House Co.",
+    description: "Websites, booking journeys, commerce, automation and content systems for salons, stylists and hair-care brands.",
+    url: "/services/",
+    type: "website",
+    images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "Couture House digital services for salons and hair-care brands" }],
+  },
 };
 
 const services = [
   {
     number: "01",
     title: "Websites",
+    detailPath: "/services/salon-website-design/",
     promise: "A digital front door people want to enter—and an easier path from attention to action.",
     includes: ["Brand and audience strategy", "UX architecture and conversion journeys", "Editorial UI design", "Responsive development", "Booking and e-commerce", "SEO and performance foundations"],
     ideal: "Salons, independent stylists, educators, product brands and businesses ready to replace a generic template with a real point of view.",
@@ -24,6 +33,7 @@ const services = [
   {
     number: "02",
     title: "Apps",
+    detailPath: "/services/booking-portals-automation/",
     promise: "Useful digital products that turn a strong idea into something clients, communities and teams can use every day.",
     includes: ["Product strategy", "User journeys", "Interface design", "Interactive prototypes", "Client portals", "Mobile-first experiences"],
     ideal: "Memberships, education platforms, internal tools, marketplaces and new digital services that need clarity before code.",
@@ -31,6 +41,7 @@ const services = [
   {
     number: "03",
     title: "Workflows + Automation",
+    detailPath: "/services/booking-portals-automation/",
     promise: "Connected systems, business hubs and automations that keep leads warm, information organized and the operation moving while you do the work only you can do.",
     includes: ["Lead and inquiry routing", "CRM and intake systems", "Booking and payment workflows", "Client communication", "Business hubs and dashboards", "Content operations", "AI consulting and integration planning", "Campaign automation"],
     ideal: "Growing businesses losing time to repeated tasks, scattered information, disconnected tools or inconsistent follow-up.",
@@ -38,6 +49,7 @@ const services = [
   {
     number: "04",
     title: "Content",
+    detailPath: "/services/content-creation/",
     promise: "A connected visual and sound system with enough character to stop the scroll and enough structure to keep working after one post.",
     includes: ["Creative direction", "Campaign concepts", "Archive photo revival", "Still imagery", "Motion and short-form video", "Original music and instrumentals", "Audio branding", "Product placements", "Launch systems", "Social and web assets"],
     ideal: "New brands, product launches, seasonal campaigns and businesses whose current content does not match the quality of their work.",
@@ -69,10 +81,17 @@ export default function ServicesPage() {
             <div className="service-detail-body">
               <p className="service-detail-promise">{service.promise}</p>
               <div className="service-detail-columns"><div><small>What it can include</small><ul>{service.includes.map((item) => <li key={item}>{item}</li>)}</ul></div><div><small>Best for</small><p>{service.ideal}</p></div></div>
-              <Link href={`/start-a-project?service=${service.title.toLowerCase()}`}>Build with us <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+              <div className="service-detail-actions"><Link href={service.detailPath}>Explore this service <ArrowUpRight className="link-icon" aria-hidden="true" /></Link><Link href={`/start-a-project/?service=${service.title.toLowerCase()}`}>Build with us <ArrowUpRight className="link-icon" aria-hidden="true" /></Link></div>
             </div>
           </article>
         ))}
+      </section>
+
+      <section className="commerce-callout section-pad">
+        <span className="kicker">Selling products too?</span>
+        <h2>SHOPIFY FOR<br /><em>HAIR + BEAUTY.</em></h2>
+        <p>Connect product education, ritual and purchase in a store designed around the way your customers actually shop.</p>
+        <Link href="/services/shopify-ecommerce/">Explore Shopify e-commerce <ArrowUpRight aria-hidden="true" /></Link>
       </section>
 
       <section className="service-motion-showcase section-pad" aria-labelledby="service-motion-title">
@@ -103,7 +122,7 @@ export default function ServicesPage() {
             <li>Background reconstruction + luxury styling</li>
             <li>Color finishing + web-ready presentation</li>
           </ul>
-          <Link href="/work#content-revival">See the transformations <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+          <Link href="/work/#content-revival">See the transformations <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
           <small>Creative enhancement guided by human art direction, careful finishing and the story already present in the original.</small>
         </div>
         <BeforeAfterSlider
@@ -130,7 +149,7 @@ export default function ServicesPage() {
         <ol><li><span>01</span><h3>Discovery</h3><p>We listen for the business goal, audience truth and emotional target.</p></li><li><span>02</span><h3>Direction</h3><p>You receive a focused recommendation for the experience and scope.</p></li><li><span>03</span><h3>Creation</h3><p>Strategy, design, build and content come together in a visible rhythm.</p></li><li><span>04</span><h3>Launch</h3><p>We refine, release and hand over the tools needed to keep moving.</p></li></ol>
       </section>
 
-      <section className="page-cta"><span className="kicker">Bring the goal, bottleneck or big idea</span><h2>LET&apos;S SHAPE<br /><em>THE RIGHT SYSTEM.</em></h2><Link href="/start-a-project">Start a project <ArrowUpRight className="link-icon" aria-hidden="true" /></Link></section>
+      <section className="page-cta"><span className="kicker">Bring the goal, bottleneck or big idea</span><h2>LET&apos;S SHAPE<br /><em>THE RIGHT SYSTEM.</em></h2><Link href="/start-a-project/">Start a project <ArrowUpRight className="link-icon" aria-hidden="true" /></Link></section>
 
       <SiteFooter />
     </main>

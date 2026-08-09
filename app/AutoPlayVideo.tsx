@@ -53,7 +53,6 @@ export default function AutoPlayVideo({
       };
     }
 
-    setShouldLoad(false);
     const loadObserver = new IntersectionObserver(
       (entries) => {
         if (!entries[0]?.isIntersecting) return;

@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
 import ProjectForm from "./ProjectForm";
 
 export const metadata: Metadata = {
-  title: "Start a Project | Couture House Co.",
-  description: "Tell Couture House Co. about your website, app, workflow or content project.",
+  title: "Start a Salon Website or Digital Project | Couture House Co.",
+  description: "Tell Couture House Co. about your salon website, booking journey, commerce, automation or content project.",
+  alternates: { canonical: "/start-a-project/" },
+  openGraph: {
+    title: "Start a Salon Website or Digital Project | Couture House Co.",
+    description: "Tell Couture House Co. about your salon website, booking journey, commerce, automation or content project.",
+    url: "/start-a-project/",
+    type: "website",
+    images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "Start a project with Couture House Co." }],
+  },
 };
 
 export default function StartProjectPage() {
@@ -31,6 +38,7 @@ export default function StartProjectPage() {
       <section className="start-expect section-pad">
         <span className="kicker">What happens next</span>
         <div><article><span>01</span><h3>We read closely.</h3><p>Your inquiry is reviewed for the goal, fit and most useful starting point.</p></article><article><span>02</span><h3>We reply thoughtfully.</h3><p>Expect a focused response with next questions or a conversation link.</p></article><article><span>03</span><h3>We shape the path.</h3><p>If the fit is right, we recommend a scope, rhythm and clear next step.</p></article></div>
+        <p className="start-direct-contact">Prefer email? Write directly to <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p>
       </section>
 
       <SiteFooter />

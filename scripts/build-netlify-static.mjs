@@ -2,7 +2,21 @@ import { cp, mkdir, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const routes = ["/", "/work", "/services", "/studio", "/start-a-project"];
+const routes = [
+  "/",
+  "/work/",
+  "/services/",
+  "/services/salon-website-design/",
+  "/services/booking-portals-automation/",
+  "/services/shopify-ecommerce/",
+  "/services/content-creation/",
+  "/case-studies/magic-coils/",
+  "/case-studies/beverlys-of-nashville/",
+  "/studio/",
+  "/start-a-project/",
+  "/privacy/",
+  "/terms/",
+];
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("static-build", `${Date.now()}`);
 

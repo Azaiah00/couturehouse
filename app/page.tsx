@@ -2,25 +2,13 @@
 
 import { useEffect } from "react";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
+import Image from "next/image";
 import AllThingsLocsPreview from "./AllThingsLocsPreview";
 import AutoPlayVideo from "./AutoPlayVideo";
 import ClickToPlayVideo from "./ClickToPlayVideo";
-import MobileSwipeHint from "./MobileSwipeHint";
 import PageSoundtrack from "./PageSoundtrack";
 import SiteFooter from "./SiteFooter";
 import SiteNav from "./SiteNav";
-
-type Project = {
-  title: string;
-  type: string;
-  role: string;
-  image: string;
-  url: string;
-  tone: string;
-  video?: string;
-  position?: string;
-  previewAspect: string;
-};
 
 const featuredProjects = [
   {
@@ -31,6 +19,8 @@ const featuredProjects = [
     position: "center top",
     fit: "contain" as const,
     previewAspect: "1905 / 848",
+    width: 1905,
+    height: 848,
     url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/",
     summary:
       "A confident, image-led salon experience that turns loc artistry into a clear journey from discovery to booking.",
@@ -44,6 +34,8 @@ const featuredProjects = [
     position: "center center",
     fit: "contain" as const,
     previewAspect: "1234 / 712",
+    width: 1234,
+    height: 712,
     url: "https://beverlysofnashville.com/",
     summary:
       "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
@@ -62,79 +54,6 @@ const featuredProjects = [
     summary:
       "A warm, personality-rich experience that turns specialist loc care, education and service discovery into one inviting digital home.",
     role: ["Brand experience", "Web design", "Development", "Service journey"],
-  },
-];
-
-const projects: Project[] = [
-  {
-    title: "Divine Textures",
-    type: "Holistic hair care / Columbia",
-    role: "Web design + development",
-    image: "/portfolio/divine-textures.png",
-    url: "https://divine-textures.netlify.app/",
-    tone: "green",
-    position: "center 18%",
-    previewAspect: "1905 / 848",
-  },
-  {
-    title: "The 2Tite Xperience",
-    type: "Sisterlocks / Oakland",
-    role: "Brand experience + website",
-    image: "/portfolio/two-tit-experience.png",
-    url: "https://2titexperience.netlify.app/",
-    tone: "violet",
-    position: "center 12%",
-    previewAspect: "1909 / 850",
-  },
-  {
-    title: "OG Barnes",
-    type: "Wellness / Loc artistry",
-    role: "Web design + development",
-    image: "/portfolio/og-barnes.png",
-    url: "https://ogbarnes.netlify.app/",
-    tone: "earth",
-    position: "center 15%",
-    previewAspect: "1905 / 848",
-  },
-  {
-    title: "Sacrificial Conversations",
-    type: "Faith / Editorial commerce",
-    role: "E-commerce + campaign world",
-    image: "/portfolio/sacrificial-conversations.jpg",
-    url: "https://sacrificialconversations.shop/",
-    tone: "red",
-    position: "center 30%",
-    previewAspect: "1024 / 571",
-  },
-  {
-    title: "Sodiq Yusuff MMA",
-    type: "Sports / Academy",
-    role: "Brand platform + website",
-    image: "/portfolio/sodiq-yusuff.png",
-    url: "https://sodiqyusuffmma.com/",
-    tone: "red",
-    position: "center 12%",
-    previewAspect: "1905 / 848",
-  },
-  {
-    title: "Majestic Contracting",
-    type: "Design / Build / Renovate",
-    role: "Website + motion direction",
-    image: "/portfolio/majestic-contracting-preview.png",
-    url: "https://majesticdbr.com/",
-    tone: "gold",
-    position: "center top",
-    previewAspect: "1234 / 712",
-  },
-  {
-    title: "Party Bus R Us",
-    type: "Hospitality / DMV",
-    role: "Website + booking experience",
-    image: "/portfolio/partybus-r-us.png",
-    url: "https://www.partybusrus.com/",
-    tone: "night",
-    position: "center 9%",
-    previewAspect: "1905 / 848",
   },
 ];
 
@@ -213,7 +132,7 @@ export default function Home() {
       <SiteNav />
 
       <section className="hero" id="top">
-        <AutoPlayVideo className="hero-video" src="/brand/hero-video.mp4" poster="/brand/hero-poster.webp" startAt={3} endAt={15} priority posterOnlyOnMobile ariaHidden />
+        <AutoPlayVideo className="hero-video" src="/brand/hero-loop-v2.mp4" poster="/brand/hero-poster.webp" priority posterOnlyOnMobile ariaHidden />
         <div className="hero-shade" aria-hidden="true" />
         <div className="hero-orbit orbit-one" aria-hidden="true" />
         <div className="hero-orbit orbit-two" aria-hidden="true" />
@@ -237,7 +156,7 @@ export default function Home() {
               </a>
               <a
                 className="hero-secondary"
-                href="/start-a-project"
+                href="/start-a-project/"
               >
                 Start a project <ArrowUpRight className="inline-icon" aria-hidden="true" />
               </a>
@@ -245,7 +164,7 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="hero-signature">Digital, but make it feel human.</p>
+        <p className="hero-signature">Websites and booking experiences for Black-owned salons, stylists and hair-care brands.</p>
         <div className="intro-wipe" aria-hidden="true"><i /><i /><i /></div>
       </section>
 
@@ -264,6 +183,23 @@ export default function Home() {
           <span>MAGIC COILS</span><i><Sparkles aria-hidden="true" /></i><span>BEVERLY&apos;S</span><i><Sparkles aria-hidden="true" /></i>
           <span>THE DREADLOCKS SALON</span><i><Sparkles aria-hidden="true" /></i><span>DIVINE TEXTURES</span><i><Sparkles aria-hidden="true" /></i>
           <span>MAJESTIC</span><i><Sparkles aria-hidden="true" /></i><span>SODIQ YUSUFF</span>
+        </div>
+      </section>
+
+      <section className="outcomes outcomes-early">
+        <div className="outcome-sticky">
+          <span className="kicker">Beauty meets business</span>
+          <h2>Beautiful enough to stop the scroll.<em>Sharp enough to fill the chair.</em></h2>
+          <p className="outcome-audience">
+            We help Black-owned salons, stylists and hair-care brands get found,
+            earn trust and turn attention into appointments and sales.
+          </p>
+        </div>
+        <div className="outcome-list">
+          <article data-reveal><span>01</span><h3>Book-first journeys</h3><p>Clear service stories, irresistible work and fewer steps between interest and appointment.</p></article>
+          <article data-reveal><span>02</span><h3>Findable by design</h3><p>Fast, mobile-first foundations built to support local search and real-world discovery.</p></article>
+          <article data-reveal><span>03</span><h3>Quietly automated</h3><p>Follow-ups and workflows that keep momentum moving without adding more to your day.</p></article>
+          <article data-reveal><span>04</span><h3>Content with a system</h3><p>A visual language your team can reuse across launches, campaigns and everyday moments.</p></article>
         </div>
       </section>
 
@@ -318,12 +254,14 @@ export default function Home() {
               ) : project.video ? (
                 <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website motion preview`} />
               ) : (
-                <img
+                <Image
                   className="website-preview-image"
                   src={project.image}
                   alt={`${project.title} website preview`}
-                  loading="lazy"
-                  decoding="async"
+                  width={project.width}
+                  height={project.height}
+                  sizes="(max-width: 760px) 100vw, 65vw"
+                  unoptimized
                   style={{ objectPosition: project.position, objectFit: project.fit ?? "cover" }}
                 />
               )}
@@ -344,44 +282,10 @@ export default function Home() {
 
         <div className="mid-cta" data-reveal>
           <p>Ready for a digital experience that feels like your brand?</p>
-          <a href="/start-a-project">
+          <a href="/start-a-project/">
             Build your digital world <ArrowUpRight className="link-icon" aria-hidden="true" />
           </a>
         </div>
-      </section>
-
-      <section className="work-glimpse section-pad" aria-labelledby="glimpse-title">
-        <header className="glimpse-heading" data-reveal>
-          <div>
-            <span className="kicker">More worlds / More range</span>
-            <h2 id="glimpse-title">A STUDIO WITH<br /><em>RANGE.</em></h2>
-          </div>
-          <p>
-            Beauty is our home base. The same eye for story, experience and
-            conversion travels wherever an ambitious brand needs it.
-          </p>
-        </header>
-        <MobileSwipeHint label="Swipe to explore more websites" />
-        <div className="glimpse-grid">
-          {projects.filter((project) => project.title !== "The 2Tite Xperience").slice(0, 4).map((project, index) => (
-            <a
-              className={`glimpse-card glimpse-${index + 1}`}
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-              style={{ aspectRatio: project.previewAspect }}
-              data-reveal
-              key={project.title}
-            >
-              <img className="website-preview-image" src={project.image} alt={`${project.title} website preview`} loading="lazy" decoding="async" style={{ objectPosition: project.position ?? "center top" }} />
-              <span>{String(index + 4).padStart(2, "0")} / {project.title}</span>
-              <ArrowUpRight aria-hidden="true" />
-            </a>
-          ))}
-        </div>
-        <a className="glimpse-link" href="#gallery" data-reveal>
-          Explore the complete gallery <ArrowDown className="link-icon" aria-hidden="true" />
-        </a>
       </section>
 
       <section className="services section-pad" id="services">
@@ -405,44 +309,12 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <a className="services-page-link" href="/services" data-reveal>Explore services in detail <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
-      </section>
-
-      <section className="product-world section-pad" aria-labelledby="product-world-title">
-        <header className="product-world-head" data-reveal>
-          <span className="kicker">Product placement / Content creation</span>
-          <h2 id="product-world-title">STYLED<br />TO <em>SELL.</em></h2>
-          <p>
-            We turn products into visual worlds: editorial still life,
-            ingredient storytelling and launch-ready content designed to stop
-            the scroll and make the value instantly clear.
-          </p>
-        </header>
-        <div className="product-world-gallery" data-reveal>
-          <figure className="product-shot product-shot-high">
-            <img src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils intense hydration shampoo product placement" loading="lazy" decoding="async" />
-            <figcaption><span>01</span> Ingredient-led art direction</figcaption>
-          </figure>
-          <figure className="product-shot product-shot-low">
-            <img src="/work/magic-coils/product-placement/moisture-conditioner.webp" alt="Magic Coils moisture rich conditioner product placement" loading="lazy" decoding="async" />
-            <figcaption><span>02</span> Editorial product worlds</figcaption>
-          </figure>
-          <figure className="product-shot product-shot-high">
-            <img src="/work/magic-coils/product-placement/strengthening-serum.webp" alt="Magic Coils strengthening serum product placement" loading="lazy" decoding="async" />
-            <figcaption><span>03</span> Campaign-ready content</figcaption>
-          </figure>
-          <figure className="product-shot product-shot-low">
-            <img src="/work/magic-coils/product-placement/foam-wrap.webp" alt="Magic Coils foam wrap product placement" loading="lazy" decoding="async" />
-            <figcaption><span>04</span> Product launch systems</figcaption>
-          </figure>
-        </div>
-        <MobileSwipeHint label="Swipe right to see more products" />
-        <a className="product-world-link" href="/services">Explore content creation <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
+        <a className="services-page-link" href="/services/" data-reveal>Explore services in detail <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
       </section>
 
       <section className="brand-poster section-pad" aria-label="Couture House editorial campaign">
-        <a href="/studio" className="brand-poster-frame" data-reveal>
-          <img src="/brand/couture-house-poster.webp" alt="Couture House digital worlds for hair, beauty and culture" loading="lazy" decoding="async" />
+        <a href="/studio/" className="brand-poster-frame" data-reveal>
+          <Image src="/brand/couture-house-poster.webp" alt="Couture House digital worlds for hair, beauty and culture" width={1536} height={1024} sizes="100vw" unoptimized />
           <span className="brand-poster-enter">Enter the studio <ArrowUpRight aria-hidden="true" /></span>
         </a>
         <div className="brand-poster-meta">
@@ -466,99 +338,6 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="full-film section-pad" aria-labelledby="full-film-title">
-        <div className="full-film-head" data-reveal>
-          <div>
-            <span className="kicker">Couture House / The full film</span>
-            <h2 id="full-film-title">SEE THE<br /><em>WHOLE WORLD.</em></h2>
-          </div>
-          <p>
-            The moving image behind our opening moment—presented here in full,
-            with space to watch the craft, character and culture unfold.
-          </p>
-        </div>
-        <div className="full-film-frame" data-reveal>
-          <ClickToPlayVideo src="/brand/hero-video.mp4" poster="/brand/full-campaign-film-poster-v2.webp" ariaLabel="Couture House full campaign film" />
-        </div>
-      </section>
-
-      <section className="showreel showreel-compact section-pad" aria-labelledby="showreel-title">
-        <div className="showreel-head" data-reveal>
-          <span className="kicker">Digital experiences / Campaigns / Motion</span>
-          <h2 id="showreel-title">THE WORK<br /><em>MOVES.</em></h2>
-          <p>
-            A concentrated edit of brand worlds, campaign moments and digital
-            details designed to hold attention.
-          </p>
-        </div>
-        <div className="showreel-grid" data-reveal>
-          <article className="motion-card motion-card-primary">
-            <div className="motion-card-meta"><span>01 / Social motion</span><p>Vertical stories made to hold attention.</p></div>
-            <figure className="showreel-frame showreel-primary">
-              <ClickToPlayVideo src="/brand/work-moves-r01.mp4" poster="/brand/work-moves-poster-v2.webp" ariaLabel="Couture House vertical campaign showreel" />
-              <figcaption>Social / Story / Motion</figcaption>
-              <span className="showreel-stamp" aria-hidden="true">CH / 85</span>
-            </figure>
-          </article>
-        </div>
-      </section>
-
-      <section className="work-section more-work" id="gallery" aria-labelledby="more-work-title">
-        <header className="section-head section-pad" data-reveal>
-          <div>
-            <span className="kicker">More selected work / 2024-26</span>
-            <h2 id="more-work-title">BEYOND<br /><em>THE SALON.</em></h2>
-          </div>
-          <p>
-            The same strategic eye, applied across commerce, culture,
-            hospitality, sport and the spaces where people gather.
-          </p>
-        </header>
-
-        <div className="project-grid section-pad">
-          {projects.map((project, index) => (
-            <article className="project-card" data-tone={project.tone} data-reveal key={project.title}>
-              <a href={project.url} target="_blank" rel="noreferrer">
-                <div className="project-image-wrap" style={{ aspectRatio: project.previewAspect }}>
-                  {project.video ? (
-                    <AutoPlayVideo src={project.video} ariaHidden />
-                  ) : (
-                    <img className="website-preview-image" src={project.image} alt={`${project.title} selected website detail`} loading="lazy" decoding="async" style={{ objectPosition: project.position ?? "center top" }} />
-                  )}
-                  <div className="project-screen" aria-hidden="true"><span>View live</span><ArrowUpRight /></div>
-                </div>
-                <div className="project-info">
-                  <span>{String(index + 4).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{project.title}</h3>
-                    <p>{project.type}</p>
-                    <small>{project.role}</small>
-                  </div>
-                  <ArrowUpRight aria-hidden="true" />
-                </div>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="outcomes">
-        <div className="outcome-sticky">
-          <span className="kicker">Beauty meets business</span>
-          <h2>Beautiful enough to stop the scroll.<em>Sharp enough to fill the chair.</em></h2>
-          <p className="outcome-audience">
-            We help Black-owned salons, stylists and hair-care brands look as
-            exceptional online as the work they do in the real world.
-          </p>
-        </div>
-        <div className="outcome-list">
-          <article data-reveal><span>01</span><h3>Book-first journeys</h3><p>Clear service stories, irresistible work and fewer steps between interest and appointment.</p></article>
-          <article data-reveal><span>02</span><h3>Findable by design</h3><p>Fast, mobile-first foundations built to support local search and real-world discovery.</p></article>
-          <article data-reveal><span>03</span><h3>Quietly automated</h3><p>Follow-ups and workflows that keep momentum moving without adding more to your day.</p></article>
-          <article data-reveal><span>04</span><h3>Content with a system</h3><p>A visual language your team can reuse across launches, campaigns and everyday moments.</p></article>
-        </div>
-      </section>
-
       <section className="process section-pad">
         <span className="kicker" data-reveal>How we work</span>
         <div className="process-heading" data-reveal>
@@ -577,7 +356,7 @@ export default function Home() {
         <div className="cta-orb" aria-hidden="true" />
         <span className="kicker">The next world is yours</span>
         <h2>LET&apos;S MAKE<br /><em>THE INTERNET</em><br />FEEL SOMETHING.</h2>
-        <a href="/start-a-project" className="cta-link">
+        <a href="/start-a-project/" className="cta-link">
           <span>Start a project</span><ArrowUpRight aria-hidden="true" />
         </a>
       </section>

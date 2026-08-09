@@ -1,6 +1,7 @@
 "use client";
 
 import { Play } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 type ClickToPlayVideoProps = {
@@ -26,7 +27,7 @@ export default function ClickToPlayVideo({
         </video>
       ) : (
         <button className="click-video-trigger" type="button" onClick={() => setActive(true)} aria-label={`Play ${ariaLabel}`}>
-          <img src={poster} alt="" loading="lazy" decoding="async" />
+          <Image src={poster} alt="" fill sizes="(max-width: 760px) 92vw, 50vw" unoptimized />
           <span className="click-video-play" aria-hidden="true">
             <Play />
             <b>Play film</b>

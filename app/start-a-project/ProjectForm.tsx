@@ -10,15 +10,18 @@ export default function ProjectForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("service");
-    const requestedService = requested?.toLowerCase();
-    const match = serviceOptions.find((service) => {
-      const normalized = service.toLowerCase();
-      return normalized === requestedService ||
-        (requestedService === "content" && normalized === "content + music") ||
-        (requestedService === "workflows" && normalized === "workflows + automation");
-    });
-    if (match) setSelectedServices([match]);
+    const timer = window.setTimeout(() => {
+      const requested = new URLSearchParams(window.location.search).get("service");
+      const requestedService = requested?.toLowerCase();
+      const match = serviceOptions.find((service) => {
+        const normalized = service.toLowerCase();
+        return normalized === requestedService ||
+          (requestedService === "content" && normalized === "content + music") ||
+          (requestedService === "workflows" && normalized === "workflows + automation");
+      });
+      if (match) setSelectedServices([match]);
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   function toggleService(service: string) {
@@ -48,6 +51,7 @@ export default function ProjectForm() {
         throw new Error("Inquiry could not be sent");
       }
       setStatus("success");
+      window.dispatchEvent(new Event("couture:lead"));
       formElement.reset();
       setSelectedServices([]);
     } catch {
@@ -79,6 +83,11 @@ export default function ProjectForm() {
       </div>
 
       <label className="project-form-details"><span>Tell us about the vision *</span><textarea name="details" required rows={7} placeholder="What are you building, what needs to change and what should people feel or do?" /></label>
+
+      <label className="project-form-consent">
+        <input name="privacy-consent" type="checkbox" required />
+        <span>I agree that Couture House Co. may use this information to respond to my inquiry. Read the <a href="/privacy/">privacy policy</a>.</span>
+      </label>
 
       <div className="project-form-submit">
         <div aria-live="polite">

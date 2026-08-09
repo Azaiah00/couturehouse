@@ -35,12 +35,17 @@ for = "/portfolio/*"
 Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/work/*"
+for = "/work/magic-coils/*"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/services/*"
+for = "/work/photo-revival/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/work/partnership/*"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
 
@@ -48,3 +53,13 @@ Cache-Control = "public, max-age=31536000, immutable"
 for = "/audio/*"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+from = "/for-brands"
+to = "/services/"
+status = 301
+
+[[redirects]]
+from = "/for-brands/"
+to = "/services/"
+status = 301

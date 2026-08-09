@@ -36,8 +36,9 @@ test("server-renders the Couture House experience", async () => {
   assert.match(html, /Digital worlds/);
   assert.match(html, /aria-label="Digital worlds for hair, beauty and culture\."/);
   assert.match(html, /WORK THAT/);
-  assert.match(html, /Swipe to explore more websites/);
-  assert.match(html, /Swipe right to see more products/);
+  assert.match(html, /Beauty meets business/);
+  assert.match(html, /Explore services in detail/);
+  assert.doesNotMatch(html, /Swipe to explore more websites|Swipe right to see more products/);
   assert.doesNotMatch(html, /Your site is taking shape|Codex is working/);
 });
 
@@ -64,8 +65,8 @@ test("defers noncritical video, audio, and image loading", async () => {
   assert.match(soundtrack, /preload="none"/);
   assert.doesNotMatch(soundtrack, /<audio[^>]*autoPlay/);
   assert.match(page, /hero-video[\s\S]*priority posterOnlyOnMobile ariaHidden/);
-  assert.match(page, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
-  assert.match(work, /website-preview-image[\s\S]*loading="lazy"[\s\S]*decoding="async"/);
+  assert.match(page, /website-preview-image[\s\S]*sizes="\(max-width: 760px\) 100vw, 65vw"[\s\S]*unoptimized/);
+  assert.match(work, /website-preview-image[\s\S]*sizes="\(max-width: 760px\) 100vw, 50vw"[\s\S]*unoptimized/);
   assert.doesNotMatch(services, /<BeforeAfterSlider[\s\S]*\bpriority\b[\s\S]*\/>/);
 });
 
@@ -78,8 +79,9 @@ test("uses a frame from each source video as its click-to-play poster", async ()
 
   assert.match(page, /featured-reel-01\.mp4" poster="\/work\/magic-coils\/reel-poster-01-v2\.webp"/);
   assert.match(page, /featured-reel-02\.mp4" poster="\/work\/magic-coils\/reel-poster-02-v2\.webp"/);
-  assert.match(page, /hero-video\.mp4" poster="\/brand\/full-campaign-film-poster-v2\.webp"/);
-  assert.match(page, /work-moves-r01\.mp4" poster="\/brand\/work-moves-poster-v2\.webp"/);
+  assert.doesNotMatch(page, /hero-video\.mp4" poster="\/brand\/full-campaign-film-poster-v2\.webp"/);
+  assert.doesNotMatch(page, /work-moves-r01\.mp4" poster="\/brand\/work-moves-poster-v2\.webp"/);
+  assert.match(work, /hero-video\.mp4" poster="\/brand\/full-campaign-film-poster-v2\.webp"/);
   assert.match(services, /sacrificial-conversations-reel-02\.mp4" poster="\/services\/sacrificial-conversations-reel-02-poster-v2\.webp"/);
   assert.match(work, /showreel\.mp4" poster="\/work\/partnership\/teddy-monica-campaign-film-poster-v2\.webp"/);
   assert.doesNotMatch(page + work, /ClickToPlayVideo[^>]*poster="\/brand\/video-poster\.webp"/);
@@ -97,7 +99,10 @@ test("publishes the current vinext output on Netlify", async () => {
   assert.match(netlify, /command = "npm run build:netlify"/);
   assert.match(netlify, /publish = "dist"/);
   assert.match(packageJson, /"build:netlify": "vinext build && node scripts\/build-netlify-static\.mjs"/);
-  assert.match(staticBuild, /"\/work", "\/services", "\/studio", "\/start-a-project"/);
+  assert.match(staticBuild, /"\/work\/"/);
+  assert.match(staticBuild, /"\/services\/salon-website-design\/"/);
+  assert.match(staticBuild, /"\/case-studies\/magic-coils\/"/);
+  assert.match(staticBuild, /"\/start-a-project\/"/);
 });
 
 test("keeps mobile media previews complete and discoverable", async () => {
@@ -110,16 +115,13 @@ test("keeps mobile media previews complete and discoverable", async () => {
   ]);
 
   assert.match(page, /previewAspect:\s*"1905 \/ 848"/);
-  assert.match(page, /Swipe to explore more websites/);
-  assert.match(page, /Swipe right to see more products/);
+  assert.doesNotMatch(page, /Swipe to explore more websites/);
+  assert.doesNotMatch(page, /Swipe right to see more products/);
   assert.match(page, /featured-reel-01\.mp4/);
   assert.match(page, /featured-reel-02\.mp4/);
   assert.match(page, /beverlys-feature-2026\.webp/);
   assert.doesNotMatch(page, /magicpress\.mp4|magic-coils\/reel\.mp4/);
-  assert.ok(
-    page.indexOf('className="product-world-gallery"') < page.indexOf('Swipe right to see more products'),
-    "the mobile swipe instruction should sit beneath the product carousel",
-  );
+  assert.doesNotMatch(page, /className="product-world-gallery"|className="work-glimpse"|className="more-work"/);
   assert.doesNotMatch(page, /case-hero|case-product case-wide|motion-card-secondary/);
   assert.doesNotMatch(work, /Swipe to see every transformation/);
   assert.match(work, /Original and enhanced versions, presented together/);
