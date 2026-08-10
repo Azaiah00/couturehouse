@@ -13,6 +13,7 @@ type ServiceLandingProps = {
   outcomes: { title: string; copy: string }[];
   includes: string[];
   bestFor: string;
+  projectHref?: string;
   offer?: {
     name: string;
     startingAt: string;
@@ -23,7 +24,7 @@ type ServiceLandingProps = {
   };
 };
 
-export default function ServiceLanding({ path, eyebrow, title, accent, intro, problem, outcomes, includes, bestFor, offer }: ServiceLandingProps) {
+export default function ServiceLanding({ path, eyebrow, title, accent, intro, problem, outcomes, includes, bestFor, projectHref = "/start-a-project/", offer }: ServiceLandingProps) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -53,7 +54,7 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
         <span className="kicker">{eyebrow}</span>
         <h1>{title}<br /><em>{accent}</em></h1>
         <p>{intro}</p>
-        <Link href="/start-a-project/">Discuss your project <ArrowUpRight aria-hidden="true" /></Link>
+        <Link href={projectHref}>Discuss your project <ArrowUpRight aria-hidden="true" /></Link>
       </header>
 
       <section className="service-landing-problem section-pad">
@@ -85,12 +86,12 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
             </dl>
             <ul>{offer.details.map((item) => <li key={item}>{item}</li>)}</ul>
             <p><strong>Booking platforms:</strong> {offer.integrations}</p>
-            <Link href="/start-a-project/">Request your project plan <ArrowUpRight aria-hidden="true" /></Link>
+            <Link href={projectHref}>Request your project plan <ArrowUpRight aria-hidden="true" /></Link>
           </div>
         </section>
       )}
 
-      <section className="page-cta"><span className="kicker">Start with the business goal</span><h2>LET&apos;S BUILD THE<br /><em>RIGHT NEXT STEP.</em></h2><Link href="/start-a-project/">Start a project <ArrowUpRight aria-hidden="true" /></Link></section>
+      <section className="page-cta"><span className="kicker">Start with the business goal</span><h2>LET&apos;S BUILD THE<br /><em>RIGHT NEXT STEP.</em></h2><Link href={projectHref}>Start a project <ArrowUpRight aria-hidden="true" /></Link></section>
       <SiteFooter />
     </main>
   );
