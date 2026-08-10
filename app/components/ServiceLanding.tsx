@@ -13,9 +13,17 @@ type ServiceLandingProps = {
   outcomes: { title: string; copy: string }[];
   includes: string[];
   bestFor: string;
+  offer?: {
+    name: string;
+    startingAt: string;
+    timeline: string;
+    description: string;
+    details: string[];
+    integrations: string;
+  };
 };
 
-export default function ServiceLanding({ path, eyebrow, title, accent, intro, problem, outcomes, includes, bestFor }: ServiceLandingProps) {
+export default function ServiceLanding({ path, eyebrow, title, accent, intro, problem, outcomes, includes, bestFor, offer }: ServiceLandingProps) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -24,6 +32,16 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
     description: intro,
     provider: { "@id": "https://couturehouse.co/#organization" },
     audience: { "@type": "Audience", audienceType: "Salons, hair stylists and hair-care brands" },
+    ...(offer ? {
+      offers: {
+        "@type": "Offer",
+        name: offer.name,
+        price: offer.startingAt.replace(/[^0-9]/g, ""),
+        priceCurrency: "USD",
+        description: `${offer.description} Typical timeline: ${offer.timeline}.`,
+        url: `https://couturehouse.co${path}`,
+      },
+    } : {}),
   };
 
   return (
@@ -52,6 +70,25 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
         <div><span className="kicker">What the engagement can include</span><h2>A FOCUSED SCOPE.<br /><em>BUILT AROUND YOU.</em></h2></div>
         <div><ul>{includes.map((item) => <li key={item}>{item}</li>)}</ul><p><strong>Best for:</strong> {bestFor}</p></div>
       </section>
+
+      {offer && (
+        <section className="service-offer section-pad" aria-labelledby="service-offer-title">
+          <div className="service-offer-heading">
+            <span className="kicker">A clear place to begin</span>
+            <h2 id="service-offer-title">{offer.name}</h2>
+            <p>{offer.description}</p>
+          </div>
+          <div className="service-offer-facts">
+            <dl>
+              <div><dt>Starting investment</dt><dd>{offer.startingAt}</dd></div>
+              <div><dt>Typical timeline</dt><dd>{offer.timeline}</dd></div>
+            </dl>
+            <ul>{offer.details.map((item) => <li key={item}>{item}</li>)}</ul>
+            <p><strong>Booking platforms:</strong> {offer.integrations}</p>
+            <Link href="/start-a-project/">Request your project plan <ArrowUpRight aria-hidden="true" /></Link>
+          </div>
+        </section>
+      )}
 
       <section className="page-cta"><span className="kicker">Start with the business goal</span><h2>LET&apos;S BUILD THE<br /><em>RIGHT NEXT STEP.</em></h2><Link href="/start-a-project/">Start a project <ArrowUpRight aria-hidden="true" /></Link></section>
       <SiteFooter />
