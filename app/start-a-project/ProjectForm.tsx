@@ -77,8 +77,7 @@ export default function ProjectForm() {
         })}</div>
       </fieldset>
 
-      <div className="project-form-grid">
-        <label><span>Investment range *</span><select name="budget" required defaultValue=""><option value="" disabled>Select a range</option><option>Under $5,000</option><option>$5,000–$10,000</option><option>$10,000–$25,000</option><option>$25,000+</option><option>Not sure yet</option></select></label>
+      <div className="project-form-grid project-form-grid-single">
         <label><span>Ideal timing *</span><select name="timeline" required defaultValue=""><option value="" disabled>Select timing</option><option>As soon as possible</option><option>Within 1–2 months</option><option>Within 3–6 months</option><option>Later this year</option><option>Still exploring</option></select></label>
       </div>
 

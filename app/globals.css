@@ -2565,6 +2565,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
 .project-form-intro p { max-width: 29rem; line-height: 1.6; }
 .project-form { min-width: 0; }
 .project-form-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem 1.2rem; }
+.project-form-grid-single { grid-template-columns: 1fr; }
 .project-form label > span,
 .project-form legend { display: block; margin-bottom: .8rem; font-size: .61rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .project-form input,
@@ -3066,20 +3067,6 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
 .service-landing-scope ul { margin: 0; padding: 0; list-style: none; }
 .service-landing-scope li { padding: 1rem 0; border-bottom: 1px solid rgba(16,16,16,.16); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .service-landing-scope p { margin: 2.5rem 0 0; line-height: 1.65; }
-.service-offer { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem,8vw,9rem); color: var(--paper-bright); background: var(--coral); }
-.service-offer-heading { position: sticky; top: 7rem; align-self: start; }
-.service-offer-heading .kicker { color: rgba(255,255,255,.7); }
-.service-offer-heading h2 { max-width: 42rem; margin: 2rem 0; font-size: clamp(3.6rem,7vw,7.3rem); letter-spacing: -.075em; line-height: .82; }
-.service-offer-heading > p { max-width: 34rem; margin: 0; color: rgba(255,255,255,.76); font-size: clamp(1rem,1.5vw,1.2rem); line-height: 1.65; }
-.service-offer-facts dl { margin: 0 0 3rem; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: rgba(255,255,255,.22); }
-.service-offer-facts dl > div { padding: clamp(1.5rem,3vw,2.5rem); background: rgba(16,16,16,.14); }
-.service-offer-facts dt { margin-bottom: 1rem; color: rgba(255,255,255,.66); font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.service-offer-facts dd { margin: 0; font-family: var(--font-serif); font-size: clamp(2.3rem,4vw,4.5rem); font-style: italic; line-height: .9; }
-.service-offer-facts ul { margin: 0; padding: 0; list-style: none; }
-.service-offer-facts li { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.25); font-size: .75rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-.service-offer-facts > p { margin: 2.25rem 0; color: rgba(255,255,255,.77); line-height: 1.65; }
-.service-offer-facts > a { width: max-content; padding-bottom: .65rem; display: inline-flex; align-items: center; gap: 1rem; border-bottom: 1px solid currentColor; color: var(--acid); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.service-offer-facts > a svg { width: 1rem; }
 .service-detail-actions { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
 .service-detail-actions > a { margin: 0; }
 .commerce-callout { color: var(--ink); background: var(--acid); }
@@ -3088,12 +3075,9 @@ footer small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.4)
 
 @media (max-width: 760px) {
   .service-landing-problem,
-  .service-landing-scope,
-  .service-offer { grid-template-columns: 1fr; }
+  .service-landing-scope { grid-template-columns: 1fr; }
   .service-landing-outcomes { grid-template-columns: 1fr; }
   .service-landing-hero { min-height: 86svh; }
-  .service-offer-heading { position: static; }
-  .service-offer-facts dl { grid-template-columns: 1fr; }
 }
 
 .case-study-page { color: var(--paper-bright); background: var(--ink); }
