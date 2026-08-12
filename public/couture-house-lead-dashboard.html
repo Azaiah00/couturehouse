@@ -19,6 +19,7 @@
     @media(max-width:1000px){.hero{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,1fr)}.pitch{grid-template-columns:1fr}.filter-row{grid-template-columns:1fr 1fr}.actions{grid-column:1/-1;justify-content:flex-start}.lead-table th:nth-child(4),.lead-table td:nth-child(4){display:none}}
     @media(max-width:760px){.shell{width:min(100% - 20px,1540px)}.hero{padding-top:35px}.hero h1{font-size:49px}.topbar .save-state{display:none}.filter-row{grid-template-columns:1fr}.actions{overflow:auto;justify-content:flex-start}.table-wrap{border:0;background:transparent;box-shadow:none;overflow:visible}.lead-table,.lead-table tbody,.lead-table tr,.lead-table td{display:block;width:100%}.lead-table thead{display:none}.lead-table tr{border:1px solid var(--line);border-radius:15px;margin-bottom:12px;background:#151518;overflow:hidden}.lead-table td{border-bottom:0;padding:8px 14px}.lead-table td:first-child{padding-top:16px}.lead-table td:last-child{padding-bottom:16px}.url{max-width:none}.modal-grid{grid-template-columns:1fr}.modal-grid .wide{grid-column:auto}.footer-note{display:block}.pitch-card blockquote{font-size:15px}}
     @media print{.topbar,.hero-note,.pitch,.toolbar,.actions,.icon-btn,.btn,.footer-note{display:none!important}body{background:#fff;color:#111}.hero{display:block;padding:15px}.hero h1{font-size:36px}.hero p,.meta,.url small{color:#555}.stat-grid{grid-template-columns:repeat(4,1fr)}.stat,.table-wrap{background:#fff;border-color:#bbb;box-shadow:none}.lead-table th{position:static;background:#eee;color:#222}.lead-table td{border-color:#ddd}.tag{border-color:#aaa}.tag:before{background:#b00}}
+    .meter span{width:10%}
   </style>
 </head>
 <body>
@@ -26,10 +27,10 @@
   <main class="shell">
     <section class="hero">
       <div><div class="eyebrow">Outbound campaign · August 2026</div><h1>Broken links.<br><em>Warm openings.</em></h1><p>A carefully screened call list of Black-owned salons and independent hair professionals whose publicly listed website failed a live browser check. Use the evidence, be helpful, and recheck the link immediately before each call.</p></div>
-      <aside class="hero-note"><strong>27 verified leads</strong><p>Screened from 110 public business websites. Healthy, slow-only, and product-only records were removed. The requested target was approximately 100; this file contains only the leads that passed the strict first verification.</p><div class="meter"><span></span></div><div class="meter-label"><span>27 evidence-backed</span><span>100 target</span></div></aside>
+      <aside class="hero-note"><strong>10 verified leads</strong><p>Corrected after a full second audit of all 27 original candidates. Every lead below returned a true DNS failure in a clean browser and an independent system lookup. Timeout-only, redirecting, parked, and directly reachable sites were removed.</p><div class="meter"><span></span></div><div class="meter-label"><span>10 double-checked</span><span>100 target</span></div></aside>
     </section>
     <section class="stat-grid" aria-label="Campaign statistics">
-      <div class="stat"><span class="n" id="statTotal">27</span><span class="l">Verified leads</span></div>
+      <div class="stat"><span class="n" id="statTotal">10</span><span class="l">Verified leads</span></div>
       <div class="stat"><span class="n" id="statCalled">0</span><span class="l">Contacted</span></div>
       <div class="stat"><span class="n" id="statInterested">0</span><span class="l">Interested</span></div>
       <div class="stat"><span class="n" id="statFollow">0</span><span class="l">Follow-ups</span></div>
@@ -48,7 +49,7 @@
         <div class="actions"><button class="btn small" id="exportCsv">Export CSV</button><button class="btn small" id="exportJson">Backup</button><label class="btn small" for="importJson">Restore<input id="importJson" type="file" accept="application/json" hidden /></label><button class="btn small primary" id="snapshot">Download snapshot</button></div>
       </div>
     </section>
-    <div class="result-line"><span><strong id="resultCount">27</strong> leads shown</span><span>Website check: Aug 11, 2026 ET · Always recheck before dialing</span></div>
+    <div class="result-line"><span><strong id="resultCount">10</strong> leads shown</span><span>Website recheck: Aug 12, 2026 ET · Always recheck before dialing</span></div>
     <section class="table-wrap">
       <table class="lead-table"><thead><tr><th>Business</th><th>Contact</th><th>Listed website / failure</th><th>Research links</th><th>Outcome</th><th>Notes</th></tr></thead><tbody id="leadRows"></tbody></table>
       <div class="empty" id="empty" hidden>No leads match these filters.</div>
@@ -76,7 +77,7 @@
   <footer class="shell footer-note"><span>Research aid, not a guarantee of current ownership or operating status. Ownership evidence comes from an explicit Black-owned business directory; no race was inferred from names or photos.</span><span>Use public business contact information responsibly, honor opt-out requests, and keep a suppression list.</span></footer>
 
   <script>
-  const LEADS = [
+  const ALL_LEADS = [
     {id:"oh-my-nappy",name:"Oh! my nappy hair salons",city:"Atlanta",state:"Georgia",phone:"(404) 221-8900",website:"https://www.ohmynappyhairga.com/",source:"https://www.supportblackowned.com/oh-my-nappy-hair-salons",category:"Beauty Salon",failure:"DNS / host not found"},
     {id:"aabies",name:"Aabies Hair Braiding",city:"Charlotte",state:"North Carolina",phone:"704-499-0001",website:"https://aabies.com/",source:"https://www.supportblackowned.com/aabies-hair-braiding",category:"Hair Stylist",failure:"DNS / host not found"},
     {id:"chatto",name:"Chatto Eco-Friendly Salon",city:"Chicago",state:"Illinois",phone:"(312) 719-6005",website:"https://www.chatto.com/",source:"https://www.supportblackowned.com/chatto-eco-friendly-salon",category:"Beauty Salon",failure:"DNS / host not found"},
@@ -105,6 +106,10 @@
     {id:"duafe",name:"Duafe Holistic Hair Care",city:"Philadelphia",state:"Pennsylvania",phone:"(267) 297-7636",website:"https://www.duafehairsalon.com/",source:"https://www.supportblackowned.com/duafe-holistic-hair-care",category:"Beauty Salon",failure:"DNS / host not found"},
     {id:"vraie",name:"Vraie Beaute",city:"Long Beach",state:"California",phone:"(323) 557-9682",website:"http://www.tpamperme.com/",source:"https://www.supportblackowned.com/vraie-beaute",category:"Barber / Stylist",failure:"DNS / host not found"}
   ];
+  const VERIFIED_IDS = ["skyhh","yayas","treasures","lavishlocs","crownd","royalty-box","kosmetike","bamba","terry-mais","vraie"];
+  const LEADS = ALL_LEADS
+    .filter(lead => VERIFIED_IDS.includes(lead.id))
+    .map(lead => ({...lead, failure: lead.id === "royalty-box" ? "Listed wwww link fails; correct apex also has no DNS record" : "DNS name does not exist (browser + system lookup)"}));
 
   const STORE_KEY = "coutureHouse.brokenWebsiteLeads.v1";
   const snapshotEl = document.getElementById("snapshot-data");
@@ -118,19 +123,19 @@
   const socialSearch = (l,site) => `https://www.google.com/search?q=${encodeURIComponent(`site:${site} "${l.name}" "${l.city}"`)}`;
   function save(){localStorage.setItem(STORE_KEY,JSON.stringify(state));updateStats();}
   function toast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("show"),1900)}
-  function updateStats(){const all=LEADS.map(l=>progress(l.id));$("#statCalled").textContent=all.filter(p=>p.status!=="Not called").length;$("#statInterested").textContent=all.filter(p=>p.status==="Interested"||p.signal==="interested").length;$("#statFollow").textContent=all.filter(p=>p.status==="Follow-up"||p.followup).length;}
+  function updateStats(){const all=LEADS.map(l=>progress(l.id));$("#statTotal").textContent=LEADS.length;$("#statCalled").textContent=all.filter(p=>p.status!=="Not called").length;$("#statInterested").textContent=all.filter(p=>p.status==="Interested"||p.signal==="interested").length;$("#statFollow").textContent=all.filter(p=>p.status==="Follow-up"||p.followup).length;}
   function buildStateFilter(){[...new Set(LEADS.map(l=>l.state))].sort().forEach(s=>$("#stateFilter").insertAdjacentHTML("beforeend",`<option>${esc(s)}</option>`));}
   function filtered(){const q=$("#search").value.trim().toLowerCase(),st=$("#stateFilter").value,out=$("#statusFilter").value,cat=$("#categoryFilter").value;return LEADS.filter(l=>{const p=progress(l.id);return(!q||`${l.name} ${l.city} ${l.state} ${l.phone} ${l.website} ${p.owner} ${p.notes}`.toLowerCase().includes(q))&&(!st||l.state===st)&&(!out||p.status===out)&&(!cat||l.category===cat)});}
   function render(){const list=filtered();$("#resultCount").textContent=list.length;$("#empty").hidden=list.length>0;$("#leadRows").innerHTML=list.map(l=>{const p=progress(l.id);const ig=p.instagram||socialSearch(l,"instagram.com"),fb=p.facebook||socialSearch(l,"facebook.com");return `<tr>
     <td><div class="lead-name">${esc(l.name)}</div><div class="meta">${esc(l.city)}, ${esc(l.state)} · ${esc(l.category)}</div>${p.owner?`<div class="meta">Owner: ${esc(p.owner)}</div>`:""}</td>
     <td class="contact"><a href="tel:${esc(l.phone.replace(/[^+\d]/g,""))}">${esc(l.phone)}</a>${p.email?`<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>`:`<span class="meta">Email not found</span>`}</td>
-    <td class="url"><span class="tag">Unreachable</span><br><a href="${esc(l.website)}" target="_blank" rel="noreferrer">${esc(l.website)}</a><small>${esc(l.failure)} · checked Aug 11</small></td>
+    <td class="url"><span class="tag">Unreachable</span><br><a href="${esc(l.website)}" target="_blank" rel="noreferrer">${esc(l.website)}</a><small>${esc(l.failure)} · rechecked Aug 12</small></td>
     <td><div class="link-stack"><a class="btn small" href="${mapsUrl(l)}" target="_blank" rel="noreferrer">Google Maps</a><a class="btn small" href="${esc(l.source)}" target="_blank" rel="noreferrer">Ownership source</a><a class="btn small" href="${esc(ig)}" target="_blank" rel="noreferrer">${p.instagram?"Instagram":"Find IG"}</a><a class="btn small" href="${esc(fb)}" target="_blank" rel="noreferrer">${p.facebook?"Facebook":"Find FB"}</a></div></td>
     <td class="outcome"><select data-status="${l.id}" aria-label="Call outcome for ${esc(l.name)}">${["Not called","No answer","Spoke","Interested","Follow-up","Not interested","Bad number","Closed"].map(x=>`<option${x===p.status?" selected":""}>${x}</option>`).join("")}</select><small>${p.followup?`Follow up ${esc(p.followup)}`:(p.contacted?`Contacted ${esc(p.contacted)}`:"No activity")}</small></td>
     <td><button class="btn small ${p.notes?"primary":""}" data-edit="${l.id}">${p.notes?"Edit notes":"Add notes"}</button></td></tr>`}).join("");
     document.querySelectorAll("[data-status]").forEach(el=>el.addEventListener("change",e=>{const id=e.target.dataset.status;state[id]={...progress(id),status:e.target.value,contacted:progress(id).contacted||new Date().toISOString().slice(0,10)};save();render()}));
     document.querySelectorAll("[data-edit]").forEach(el=>el.addEventListener("click",()=>openLead(el.dataset.edit)));updateStats();}
-  function openLead(id){activeId=id;const l=LEADS.find(x=>x.id===id),p=progress(id);$("#dialogName").textContent=l.name;$("#dialogLocation").textContent=`${l.city}, ${l.state} · ${l.phone}`;$("#editStatus").value=p.status;$("#editContacted").value=p.contacted;$("#editOwner").value=p.owner;$("#editEmail").value=p.email;$("#editInstagram").value=p.instagram;$("#editFacebook").value=p.facebook;$("#editFollowup").value=p.followup;$("#editSignal").value=p.signal;$("#editNotes").value=p.notes;$("#dialogEvidence").innerHTML=`<strong>Evidence:</strong> This business appears in an explicit Black-owned business directory under ${esc(l.category)}. Its listed website returned “${esc(l.failure)}” during a live browser check on Aug 11, 2026 ET. <a href="${esc(l.source)}" target="_blank">Open original listing</a> · <a href="${esc(l.website)}" target="_blank">Recheck website</a>`;$("#leadDialog").showModal();}
+  function openLead(id){activeId=id;const l=LEADS.find(x=>x.id===id),p=progress(id);$("#dialogName").textContent=l.name;$("#dialogLocation").textContent=`${l.city}, ${l.state} · ${l.phone}`;$("#editStatus").value=p.status;$("#editContacted").value=p.contacted;$("#editOwner").value=p.owner;$("#editEmail").value=p.email;$("#editInstagram").value=p.instagram;$("#editFacebook").value=p.facebook;$("#editFollowup").value=p.followup;$("#editSignal").value=p.signal;$("#editNotes").value=p.notes;$("#dialogEvidence").innerHTML=`<strong>Evidence:</strong> This business appears in an explicit Black-owned business directory under ${esc(l.category)}. Its listed website returned “${esc(l.failure)}” in a clean browser and an independent system check on Aug 12, 2026 ET. <a href="${esc(l.source)}" target="_blank">Open original listing</a> · <a href="${esc(l.website)}" target="_blank">Recheck website</a>`;$("#leadDialog").showModal();}
   $("#leadForm").addEventListener("submit",e=>{if(!activeId)return;state[activeId]={status:$("#editStatus").value,contacted:$("#editContacted").value,owner:$("#editOwner").value.trim(),email:$("#editEmail").value.trim(),instagram:$("#editInstagram").value.trim(),facebook:$("#editFacebook").value.trim(),followup:$("#editFollowup").value,signal:$("#editSignal").value,notes:$("#editNotes").value.trim()};save();render();toast("Lead notes saved")});
   $("#clearLead").addEventListener("click",()=>{if(activeId&&confirm("Clear saved progress for this lead?")){delete state[activeId];save();$("#leadDialog").close();render();toast("Lead progress cleared")}});
   ["#search","#stateFilter","#statusFilter","#categoryFilter"].forEach(s=>$(s).addEventListener("input",render));
