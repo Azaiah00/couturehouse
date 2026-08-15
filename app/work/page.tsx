@@ -60,13 +60,6 @@ const revivals = [
     note: "Clutter removal + texture-focused finishing",
   },
   {
-    title: "2Tite / Long Twist Finish",
-    before: "/work/photo-revival/12-2tite-long-twist-finish-before.webp",
-    after: "/work/photo-revival/12-2tite-long-twist-finish-after.webp",
-    alt: "long two-strand twist finish with dimensional color",
-    note: "Salon backdrop refinement + color finishing",
-  },
-  {
     title: "Sculptural Loc Updo",
     before: "/work/photo-revival/02-sculptural-loc-updo-before.webp",
     after: "/work/photo-revival/02-sculptural-loc-updo-after.webp",
@@ -79,13 +72,6 @@ const revivals = [
     after: "/work/photo-revival/05-curly-braided-finish-after.webp",
     alt: "curly braided finish photographed from behind",
     note: "Backdrop reconstruction + editorial finishing",
-  },
-  {
-    title: "Blue Loc Extensions",
-    before: "/work/photo-revival/06-blue-loc-extensions-before.webp",
-    after: "/work/photo-revival/06-blue-loc-extensions-after.webp",
-    alt: "long blue loc extensions with a coordinating accessory",
-    note: "Composition repair + luxury environment",
   },
   {
     title: "Microloc Installation",
