@@ -124,11 +124,13 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.doesNotMatch(page, /className="product-world-gallery"|className="work-glimpse"|className="more-work"/);
   assert.doesNotMatch(page, /case-hero|case-product case-wide|motion-card-secondary/);
   assert.doesNotMatch(work, /Swipe to see every transformation/);
-  assert.match(work, /Original and enhanced versions, presented together/);
+  assert.match(work, /Original and enhanced work from two salon worlds, presented together/);
+  assert.match(work, /Charlotte \/ Double Loc Bun/);
+  assert.match(work, /2Tite \/ Beaded Loc Finish/);
   assert.doesNotMatch(work, /partnership-chapter-beverly|hair-color-mastery-approved/);
   assert.doesNotMatch(work, /03-products\.webp/);
   assert.doesNotMatch(work, /Long Twists|Ombré Braids/);
-  assert.equal((work.match(/before:\s*"\/work\/photo-revival\//g) ?? []).length, 4);
+  assert.equal((work.match(/before:\s*"\/work\/photo-revival\//g) ?? []).length, 8);
   assert.match(await readFile(new URL("../app/BeforeAfterSlider.tsx", import.meta.url), "utf8"), /revival-mobile-pair/);
   assert.match(work, /majestic-contracting-preview\.png/);
   assert.match(work, /previewAspect:\s*"1234 \/ 712"/);

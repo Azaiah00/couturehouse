@@ -39,6 +39,34 @@ const work = [
 
 const revivals = [
   {
+    title: "Charlotte / Double Loc Bun",
+    before: "/work/photo-revival/09-charlotte-double-loc-bun-before.webp",
+    after: "/work/photo-revival/09-charlotte-double-loc-bun-after.webp",
+    alt: "double loc bun with sculpted parting",
+    note: "Background reconstruction + editorial light",
+  },
+  {
+    title: "2Tite / Beaded Loc Finish",
+    before: "/work/photo-revival/11-2tite-beaded-loc-finish-before.webp",
+    after: "/work/photo-revival/11-2tite-beaded-loc-finish-after.webp",
+    alt: "beaded loc finish photographed from behind",
+    note: "Environment cleanup + composition polish",
+  },
+  {
+    title: "Charlotte / Long Loc Finish",
+    before: "/work/photo-revival/10-charlotte-long-loc-finish-before.webp",
+    after: "/work/photo-revival/10-charlotte-long-loc-finish-after.webp",
+    alt: "long finished locs with detailed parting",
+    note: "Clutter removal + texture-focused finishing",
+  },
+  {
+    title: "2Tite / Long Twist Finish",
+    before: "/work/photo-revival/12-2tite-long-twist-finish-before.webp",
+    after: "/work/photo-revival/12-2tite-long-twist-finish-after.webp",
+    alt: "long two-strand twist finish with dimensional color",
+    note: "Salon backdrop refinement + color finishing",
+  },
+  {
     title: "Sculptural Loc Updo",
     before: "/work/photo-revival/02-sculptural-loc-updo-before.webp",
     after: "/work/photo-revival/02-sculptural-loc-updo-after.webp",
@@ -119,12 +147,12 @@ export default function WorkPage() {
 
       <section className="revival-work section-pad" id="content-revival" aria-labelledby="revival-work-title">
         <header className="revival-work-head">
-          <span className="kicker">The Dreadlocks Salon / Content revival</span>
+          <span className="kicker">The Dreadlocks Salon Charlotte + 2Tite Experience / Content revival</span>
           <h2 id="revival-work-title">THE MEMORY<br /><em>STAYS. THE IMAGE EVOLVES.</em></h2>
           <p>We preserve the real person, hairstyle and service moment, then rebuild everything that keeps the image from representing the work at its best.</p>
         </header>
         <div className="revival-work-intro">
-          <span>Original and enhanced versions, presented together.</span>
+          <span>Original and enhanced work from two salon worlds, presented together.</span>
           <p>Art direction, distraction removal, background reconstruction, luxury styling, color finishing and responsive web preparation.</p>
         </div>
         <div className="revival-grid">
