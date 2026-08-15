@@ -55,6 +55,21 @@ const featuredProjects = [
       "A warm, personality-rich experience that turns specialist loc care, education and service discovery into one inviting digital home.",
     role: ["Brand experience", "Web design", "Development", "Service journey"],
   },
+  {
+    number: "05",
+    title: "Washington WizKids",
+    eyebrow: "Sports media / Washington, DC",
+    image: "/portfolio/washington-wizkids.png",
+    position: "center center",
+    fit: "cover" as const,
+    previewAspect: "1731 / 909",
+    width: 1731,
+    height: 909,
+    url: "https://washingtonwizkids.com/",
+    summary:
+      "An independent Wizards media hub bringing daily news, original analysis, community conversation and player research into one home court.",
+    role: ["Digital strategy", "Web design", "Development", "Interactive data"],
+  },
 ];
 
 const services = [
@@ -182,7 +197,8 @@ export default function Home() {
         <div>
           <span>MAGIC COILS</span><i><Sparkles aria-hidden="true" /></i><span>BEVERLY&apos;S</span><i><Sparkles aria-hidden="true" /></i>
           <span>THE DREADLOCKS SALON</span><i><Sparkles aria-hidden="true" /></i><span>DIVINE TEXTURES</span><i><Sparkles aria-hidden="true" /></i>
-          <span>MAJESTIC</span><i><Sparkles aria-hidden="true" /></i><span>SODIQ YUSUFF</span>
+          <span>MAJESTIC</span><i><Sparkles aria-hidden="true" /></i><span>SODIQ YUSUFF</span><i><Sparkles aria-hidden="true" /></i>
+          <span>WASHINGTON WIZKIDS</span>
         </div>
       </section>
 

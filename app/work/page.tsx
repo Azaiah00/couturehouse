@@ -34,6 +34,7 @@ const work = [
   { number: "08", title: "Sodiq Yusuff MMA", type: "Sports / Academy", scope: "Brand platform and website", image: "/portfolio/sodiq-yusuff.png", url: "https://sodiqyusuffmma.com/", position: "center 12%", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "09", title: "Majestic Contracting", type: "Design / Build / Renovate", scope: "Website and motion direction", image: "/portfolio/majestic-contracting-preview.png", url: "https://majesticdbr.com/", position: "center top", previewAspect: "1234 / 712", width: 1234, height: 712 },
   { number: "10", title: "Party Bus R Us", type: "Hospitality / DMV", scope: "Website and booking experience", image: "/portfolio/partybus-r-us.png", url: "https://www.partybusrus.com/", position: "center 9%", previewAspect: "1905 / 848", width: 1905, height: 848 },
+  { number: "11", title: "Washington WizKids", type: "Sports media / Washington, DC", scope: "Digital strategy, web design, development, interactive data", image: "/portfolio/washington-wizkids.png", url: "https://washingtonwizkids.com/", position: "center center", previewAspect: "1731 / 909", width: 1731, height: 909 },
 ];
 
 const revivals = [
