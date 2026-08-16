@@ -61,3 +61,17 @@ for (const route of routes) {
   await writeFile(join(outputPath, "index.html"), html, "utf8");
   console.log(`Rendered ${route}`);
 }
+
+const netlifyHeaders = `/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+`;
+
+await writeFile(join(staticDirectory, "_headers"), netlifyHeaders, "utf8");
+console.log("Wrote Netlify cache and security headers");
