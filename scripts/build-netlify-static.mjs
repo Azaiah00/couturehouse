@@ -69,6 +69,15 @@ const netlifyHeaders = `/*
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
+/work
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/work/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/work/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 `;
