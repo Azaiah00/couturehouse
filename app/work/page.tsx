@@ -39,27 +39,6 @@ const work = [
 
 const revivals = [
   {
-    title: "Charlotte / Double Loc Bun",
-    before: "/work/photo-revival/09-charlotte-double-loc-bun-before.webp",
-    after: "/work/photo-revival/09-charlotte-double-loc-bun-after.webp",
-    alt: "double loc bun with sculpted parting",
-    note: "Background reconstruction + editorial light",
-  },
-  {
-    title: "2Tite / Beaded Loc Finish",
-    before: "/work/photo-revival/11-2tite-beaded-loc-finish-before.webp",
-    after: "/work/photo-revival/11-2tite-beaded-loc-finish-after.webp",
-    alt: "beaded loc finish photographed from behind",
-    note: "Environment cleanup + composition polish",
-  },
-  {
-    title: "Charlotte / Long Loc Finish",
-    before: "/work/photo-revival/10-charlotte-long-loc-finish-before.webp",
-    after: "/work/photo-revival/10-charlotte-long-loc-finish-after.webp",
-    alt: "long finished locs with detailed parting",
-    note: "Clutter removal + texture-focused finishing",
-  },
-  {
     title: "Sculptural Loc Updo",
     before: "/work/photo-revival/02-sculptural-loc-updo-before.webp",
     after: "/work/photo-revival/02-sculptural-loc-updo-after.webp",
@@ -67,18 +46,39 @@ const revivals = [
     note: "Editorial polish + background replacement",
   },
   {
+    title: "Charlotte / Double Loc Bun",
+    before: "/work/photo-revival/09-charlotte-double-loc-bun-before.webp",
+    after: "/work/photo-revival/09-charlotte-double-loc-bun-after.webp",
+    alt: "double loc bun with sculpted parting",
+    note: "Background reconstruction + editorial light",
+  },
+  {
+    title: "2Tite / Linda's Long Microlocs",
+    before: "/work/photo-revival/13-2tite-linda-long-microlocs-before.webp",
+    after: "/work/photo-revival/13-2tite-linda-long-microlocs-after.webp",
+    alt: "long microlocs photographed from behind",
+    note: "Full-length composition + salon reconstruction",
+  },
+  {
     title: "Curly Braided Finish",
     before: "/work/photo-revival/05-curly-braided-finish-before.webp",
     after: "/work/photo-revival/05-curly-braided-finish-after.webp",
     alt: "curly braided finish photographed from behind",
-    note: "Backdrop reconstruction + editorial finishing",
+    note: "Backdrop reconstruction + curl definition",
   },
   {
-    title: "Microloc Installation",
-    before: "/work/photo-revival/07-microloc-installation-before.webp",
-    after: "/work/photo-revival/07-microloc-installation-after.webp",
-    alt: "client revealing a detailed microloc installation",
-    note: "Detail enhancement + portrait reconstruction",
+    title: "2Tite / Funmi's Red Curled Updo",
+    before: "/work/photo-revival/14-2tite-funmi-red-curled-updo-before.webp",
+    after: "/work/photo-revival/14-2tite-funmi-red-curled-updo-after.webp",
+    alt: "red curled loc updo with pearl details",
+    note: "Color-preserving polish + environmental cleanup",
+  },
+  {
+    title: "2Tite / Linda's Men's Cornrows",
+    before: "/work/photo-revival/15-2tite-linda-mens-cornrows-before.webp",
+    after: "/work/photo-revival/15-2tite-linda-mens-cornrows-after.webp",
+    alt: "men's cornrows in a clean geometric pattern",
+    note: "Distraction removal + braid-detail finishing",
   },
 ];
 

@@ -125,12 +125,16 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.doesNotMatch(page, /case-hero|case-product case-wide|motion-card-secondary/);
   assert.doesNotMatch(work, /Swipe to see every transformation/);
   assert.match(work, /Original and enhanced work from two salon worlds, presented together/);
+  assert.match(work, /Sculptural Loc Updo/);
   assert.match(work, /Charlotte \/ Double Loc Bun/);
-  assert.match(work, /2Tite \/ Beaded Loc Finish/);
+  assert.match(work, /2Tite \/ Linda's Long Microlocs/);
+  assert.match(work, /Curly Braided Finish/);
+  assert.match(work, /2Tite \/ Funmi's Red Curled Updo/);
+  assert.match(work, /2Tite \/ Linda's Men's Cornrows/);
   assert.doesNotMatch(work, /partnership-chapter-beverly|hair-color-mastery-approved/);
   assert.doesNotMatch(work, /03-products\.webp/);
   assert.doesNotMatch(work, /Long Twists|Ombré Braids/);
-  assert.doesNotMatch(work, /Blue Loc Extensions|2Tite \/ Long Twist Finish/);
+  assert.doesNotMatch(work, /Blue Loc Extensions|Microloc Installation|Charlotte \/ Long Loc Finish|2Tite \/ Beaded Loc Finish|2Tite \/ Long Twist Finish/);
   assert.equal((work.match(/before:\s*"\/work\/photo-revival\//g) ?? []).length, 6);
   assert.match(await readFile(new URL("../app/BeforeAfterSlider.tsx", import.meta.url), "utf8"), /revival-mobile-pair/);
   assert.match(work, /majestic-contracting-preview\.png/);
