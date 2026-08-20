@@ -111,15 +111,15 @@ export default function WorkPage() {
 
       <section className="work-asset-story section-pad" aria-labelledby="campaign-depth-title">
         <header className="work-asset-head">
-          <span className="kicker">Campaign depth / Magic Coils</span>
+          <span className="kicker">Product placement / Magic Coils</span>
           <h2 id="campaign-depth-title">ONE WORLD.<br /><em>EVERY FORMAT.</em></h2>
-          <p>Ingredient storytelling and launch content designed as one connected visual system.</p>
+          <p>Editorial product placements designed to turn the collection into one connected visual world.</p>
         </header>
         <div className="work-asset-grid">
-          <figure className="work-asset-graphic"><Image src="/work/magic-coils/ingredient-campaign/ingredient-trinity.webp" alt="Magic Coils ingredient campaign graphic" width={900} height={1117} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
-          <figure className="work-asset-graphic"><Image src="/work/magic-coils/ingredient-campaign/honey-oil.webp" alt="Magic Coils honey oil ingredient graphic" width={900} height={1117} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
-          <figure className="work-asset-graphic"><Image src="/work/magic-coils/ingredient-campaign/vitamin-c.webp" alt="Magic Coils vitamin C ingredient graphic" width={900} height={1117} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
-          <figure className="work-asset-graphic"><Image src="/work/magic-coils/ingredient-campaign/argan-oil.webp" alt="Magic Coils argan oil ingredient graphic" width={900} height={1117} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
+          <figure className="work-asset-graphic"><Image src="/work/magic-coils/product-placement/strengthening-serum.webp" alt="Magic Coils Honey and Argan Strengthening Serum product placement" width={900} height={1205} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
+          <figure className="work-asset-graphic"><Image src="/work/magic-coils/product-placement/moisture-conditioner.webp" alt="Magic Coils Moisture Rich Conditioner product placement" width={900} height={1205} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
+          <figure className="work-asset-graphic"><Image src="/work/magic-coils/product-placement/intense-hydration.webp" alt="Magic Coils Intense Hydration Shampoo product placement" width={900} height={1205} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
+          <figure className="work-asset-graphic"><Image src="/work/magic-coils/product-placement/foam-wrap.webp" alt="Magic Coils Control Foam Wrap Lotion product placement" width={900} height={1205} sizes="(max-width: 760px) 100vw, 25vw" unoptimized /></figure>
         </div>
       </section>
 
