@@ -42,11 +42,21 @@ export default function Analytics() {
     const trackLead = () => window.gtag?.("event", "generate_lead", {
       page_path: window.location.pathname,
     });
+    const trackAudit = (event: Event) => {
+      const customEvent = event as CustomEvent<Record<string, string>>;
+      const eventName = event.type.replace("couture:", "");
+      window.gtag?.("event", eventName, {
+        page_path: window.location.pathname,
+        ...(customEvent.detail || {}),
+      });
+    };
     document.addEventListener("click", trackClick);
     window.addEventListener("couture:lead", trackLead);
+    ["couture:audit_view", "couture:audit_start", "couture:audit_complete", "couture:audit_qualified_call_click"].forEach((name) => window.addEventListener(name, trackAudit));
     return () => {
       document.removeEventListener("click", trackClick);
       window.removeEventListener("couture:lead", trackLead);
+      ["couture:audit_view", "couture:audit_start", "couture:audit_complete", "couture:audit_qualified_call_click"].forEach((name) => window.removeEventListener(name, trackAudit));
     };
   }, []);
 

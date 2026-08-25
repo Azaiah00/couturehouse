@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Couture House Social Studio</title>
+  <style>
+    :root { --ink:#080808; --paper:#f0ebe3; --cream:#fffaf2; --acid:#d7ff38; --coral:#ff725e; --pink:#ff9fc9; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; background:#222; }
+    body { font-family:Arial,"Helvetica Neue",Helvetica,sans-serif; }
+    .artboard { width:1080px; height:1350px; position:relative; overflow:hidden; color:var(--cream); background:var(--ink); isolation:isolate; }
+    .story { width:1080px; height:1920px; }
+    .artboard::after { content:""; position:absolute; z-index:20; inset:0; pointer-events:none; opacity:.12; mix-blend-mode:screen; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
+    .bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-3; }
+    .shade { position:absolute; z-index:-2; inset:0; background:linear-gradient(90deg,rgba(8,8,8,.92) 0%,rgba(8,8,8,.6) 52%,rgba(8,8,8,.12) 100%); }
+    .frame { position:absolute; inset:28px; border:1px solid rgba(255,255,255,.23); z-index:15; pointer-events:none; }
+    .topline { position:absolute; top:58px; left:68px; right:68px; z-index:5; display:flex; justify-content:space-between; align-items:center; font-size:19px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+    .topline span:last-child { color:var(--acid); }
+    .mark { width:88px; height:auto; filter:brightness(0) invert(1); opacity:.9; }
+    .copy { position:absolute; z-index:5; left:68px; right:68px; top:220px; }
+    .eyebrow { display:block; margin-bottom:38px; color:var(--acid); font-size:18px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; }
+    h1,h2,p { margin:0; }
+    .display { max-width:870px; font-size:108px; font-weight:800; letter-spacing:-.075em; line-height:.79; text-transform:uppercase; }
+    .display em { color:var(--coral); font-family:Georgia,"Times New Roman",serif; font-weight:400; text-transform:none; }
+    .display .outline { color:transparent; -webkit-text-stroke:2px var(--cream); }
+    .sub { max-width:720px; margin-top:50px; color:rgba(255,250,242,.76); font-size:29px; line-height:1.4; }
+    .footerline { position:absolute; z-index:5; left:68px; right:68px; bottom:62px; display:flex; justify-content:space-between; align-items:end; font-size:17px; font-weight:800; letter-spacing:.14em; line-height:1.45; text-transform:uppercase; }
+    .footerline .cta { padding:18px 24px; border-radius:999px; color:var(--ink); background:var(--acid); }
+    .number { color:var(--coral); font-family:Georgia,"Times New Roman",serif; font-size:70px; font-style:italic; font-weight:400; letter-spacing:-.04em; }
+    .light { color:var(--ink); background:var(--paper); }
+    .light .frame { border-color:rgba(8,8,8,.25); }
+    .light .topline { color:var(--ink); }
+    .light .display { color:var(--ink); }
+    .light .sub { color:rgba(8,8,8,.7); }
+    .light .footerline { color:var(--ink); }
+    .accent-block { position:absolute; right:-120px; bottom:160px; width:610px; height:610px; border-radius:50%; background:var(--pink); filter:blur(0); z-index:-2; }
+    .screen { position:absolute; overflow:hidden; border:1px solid rgba(255,255,255,.28); box-shadow:0 30px 80px rgba(0,0,0,.5); background:#111; }
+    .screen img { width:100%; height:100%; object-fit:cover; object-position:top; }
+    .site-proof .copy { top:155px; width:530px; }
+    .site-proof .display { font-size:82px; }
+    .site-proof .screen { right:65px; top:230px; width:445px; height:790px; transform:rotate(2deg); }
+    .site-proof .screen::before { content:""; display:block; height:26px; background:var(--paper); }
+    .site-proof .screen img { height:calc(100% - 26px); }
+    .site-proof .footerline { color:var(--cream); }
+    .minimal .copy { top:260px; }
+    .minimal .display { max-width:940px; font-size:118px; }
+    .minimal .sub { font-size:32px; }
+    .quote { position:absolute; top:165px; left:68px; color:var(--coral); font-family:Georgia,"Times New Roman",serif; font-size:190px; line-height:.6; }
+    .review .copy { top:300px; }
+    .review .display { font-family:Georgia,"Times New Roman",serif; font-size:72px; font-weight:400; letter-spacing:-.045em; line-height:1.02; text-transform:none; }
+    .story .copy { top:310px; }
+    .story .display { font-size:126px; }
+    .story .sub { max-width:760px; font-size:38px; }
+    .story .topline { top:90px; }
+    .story .footerline { bottom:105px; }
+    .poll { margin-top:70px; display:grid; gap:22px; max-width:760px; }
+    .poll span { padding:30px 38px; border:2px solid var(--cream); border-radius:999px; font-size:28px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .image-slice { position:absolute; z-index:-1; right:0; bottom:0; width:58%; height:67%; object-fit:cover; object-position:center; clip-path:polygon(28% 0,100% 0,100% 100%,0 100%); }
+    .rule { width:110px; height:8px; margin:46px 0; background:var(--acid); }
+    .asset-hidden { display:none !important; }
+  </style>
+</head>
+<body>
+  <section class="artboard" data-asset="carousel-01">
+    <img class="bg" src="/marketing/instagram/assets/generated/couture-sculptural-locs-v1.png" alt="" /><div class="shade"></div><div class="frame"></div>
+    <div class="topline"><span>Couture House / Salon intelligence</span><span>Swipe →</span></div>
+    <div class="copy"><span class="eyebrow">The website check / 01</span><h1 class="display">5 SIGNS YOUR SALON HAS <em>outgrown</em> ITS WEBSITE.</h1><p class="sub">The problem is not always how it looks.</p></div>
+    <div class="footerline"><span>Digital worlds for hair, beauty & culture.</span><span>couturehouse.co</span></div>
+  </section>
+  <section class="artboard light minimal" data-asset="carousel-02"><div class="frame"></div><div class="accent-block"></div><div class="topline"><span>Couture House</span><span>01 / 05</span></div><div class="copy"><span class="number">01</span><div class="rule"></div><h2 class="display">YOUR SERVICES ARE HARD TO UNDERSTAND <em>on a phone.</em></h2><p class="sub">A new client should know what to choose, who it is for, and what happens next.</p></div><div class="footerline"><span>Clarity before the calendar.</span><span>Swipe →</span></div></section>
+  <section class="artboard site-proof" data-asset="carousel-03"><div class="frame"></div><div class="topline"><span>Couture House</span><span>02 / 05</span></div><div class="copy"><span class="number">02</span><div class="rule"></div><h2 class="display">YOUR BEST WORK IS BURIED <em>40 posts down.</em></h2><p class="sub">Instagram shows the moment. Your website should organize the proof.</p></div><div class="screen"><img src="/public/portfolio/dreadlocks-salon.png" alt="" /></div><div class="footerline"><span>Proof deserves a permanent home.</span><span>Swipe →</span></div></section>
+  <section class="artboard light minimal" data-asset="carousel-04"><div class="frame"></div><div class="topline"><span>Couture House</span><span>03 / 05</span></div><div class="copy"><span class="number">03</span><div class="rule"></div><h2 class="display">EVERY VISITOR GETS DROPPED ON A <em>booking screen.</em></h2><p class="sub">High-trust services need education before the calendar.</p></div><div class="footerline"><span>Your booking link is not your website.</span><span>Swipe →</span></div></section>
+  <section class="artboard review" data-asset="carousel-05"><img class="bg" src="/marketing/instagram/assets/generated/couture-digital-world-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House</span><span>04 / 05</span></div><span class="quote">“</span><div class="copy"><span class="number">04</span><h2 class="display">Your reviews and expertise are missing.</h2><p class="sub">New clients need reasons to trust you before they choose a service.</p></div><div class="footerline"><span>Trust is part of the experience.</span><span>Swipe →</span></div></section>
+  <section class="artboard light minimal" data-asset="carousel-06"><div class="frame"></div><div class="topline"><span>Couture House</span><span>05 / 05</span></div><div class="copy"><span class="number">05</span><div class="rule"></div><h2 class="display">GOOGLE CANNOT UNDERSTAND WHAT YOU DO OR <em>where you work.</em></h2><p class="sub">Clear service and location information belongs on a site you own.</p></div><div class="footerline"><span>Findable by design.</span><span>Swipe →</span></div></section>
+  <section class="artboard" data-asset="carousel-07"><img class="bg" src="/marketing/instagram/assets/generated/couture-texture-macro-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House / Free review</span><span>Save + share</span></div><div class="copy"><span class="eyebrow">Your next move</span><h2 class="display">HAS YOUR SALON <em>outgrown</em> ITS WEBSITE?</h2><p class="sub">DM <strong>AUDIT</strong> for a free three-point review.</p></div><div class="footerline"><span class="cta">DM “AUDIT”</span><span>couturehouse.co</span></div></section>
+
+  <section class="artboard" data-asset="cover-positioning"><img class="bg" src="/marketing/instagram/assets/generated/couture-sculptural-locs-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House / 001</span><span>Salon websites</span></div><div class="copy"><span class="eyebrow">Built for the culture</span><h2 class="display">DIGITAL HOMES FOR <em>hair, beauty</em> & CULTURE.</h2></div><div class="footerline"><span>Websites / Booking / Content</span><span>couturehouse.co</span></div></section>
+  <section class="artboard site-proof" data-asset="cover-beverlys"><div class="frame"></div><div class="topline"><span>Couture House / Crowned Online</span><span>Case study 01</span></div><div class="copy"><span class="eyebrow">Beverly's of Nashville</span><h2 class="display">A LEGACY SALON, <em>reintroduced.</em></h2></div><div class="screen"><img src="/public/portfolio/beverlys-feature-2026.webp" alt="" /></div><div class="footerline"><span>Creative direction / Web design / Development</span><span>View the work</span></div></section>
+  <section class="artboard" data-asset="cover-redflags"><img class="bg" src="/marketing/instagram/assets/generated/couture-digital-world-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House / Book or Bounce?</span><span>Website check</span></div><div class="copy"><span class="eyebrow">Salon owners / Save this</span><h2 class="display">YOUR WEBSITE MAY BE <em>costing</em> BOOKINGS.</h2></div><div class="footerline"><span class="cta">5 RED FLAGS</span><span>Swipe →</span></div></section>
+
+  <section class="artboard story" data-asset="story-start"><img class="bg" src="/marketing/instagram/assets/generated/couture-texture-macro-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House</span><span>Start here / 01</span></div><div class="copy"><span class="eyebrow">Who we build for</span><h2 class="display">BLACK-OWNED SALONS + <em>stylists.</em></h2><p class="sub">Websites, booking experiences and content systems designed to get found, earn trust and turn attention into appointments.</p></div><div class="footerline"><span>Digital atelier / New York + Everywhere</span><span>couturehouse.co</span></div></section>
+  <section class="artboard story" data-asset="story-poll"><img class="bg" src="/marketing/instagram/assets/generated/couture-digital-world-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House / Salon pulse</span><span>Tap one</span></div><div class="copy"><span class="eyebrow">Quick question</span><h2 class="display">WHERE DO MOST NEW CLIENTS <em>find you?</em></h2><div class="poll"><span>Instagram</span><span>Google</span><span>Referrals</span><span>Booking platform</span></div></div><div class="footerline"><span>Your answer shapes the next build.</span><span>couturehouse.co</span></div></section>
+  <section class="artboard story site-proof" data-asset="story-proof"><div class="frame"></div><div class="topline"><span>Couture House / Selected work</span><span>Crowned Online</span></div><div class="copy"><span class="eyebrow">Beverly's of Nashville</span><h2 class="display">LEGACY, <em>carried forward.</em></h2><p class="sub">A clearer digital home for a trusted Nashville salon.</p></div><div class="screen"><img src="/public/portfolio/beverlys-feature-2026.webp" alt="" /></div><div class="footerline"><span>Web design / Development / Local discovery</span><span>See the work →</span></div></section>
+  <section class="artboard story" data-asset="story-audit"><img class="bg" src="/marketing/instagram/assets/generated/couture-sculptural-locs-v1.png" alt="" /><div class="shade"></div><div class="frame"></div><div class="topline"><span>Couture House / Free review</span><span>Limited weekly</span></div><div class="copy"><span class="eyebrow">Three focused observations</span><h2 class="display">IS YOUR WEBSITE READY FOR YOUR <em>next client?</em></h2><p class="sub">Send your link. We’ll look at trust, booking and discovery.</p></div><div class="footerline"><span class="cta">DM “AUDIT”</span><span>No pressure / Real feedback</span></div></section>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const requested = params.get("asset");
+    if (requested) document.querySelectorAll("[data-asset]").forEach(el => el.classList.toggle("asset-hidden", el.dataset.asset !== requested));
+    const scale = Number(params.get("scale") || 1);
+    if (scale > 0 && scale !== 1) document.documentElement.style.zoom = String(scale);
+  </script>
+</body>
+</html>

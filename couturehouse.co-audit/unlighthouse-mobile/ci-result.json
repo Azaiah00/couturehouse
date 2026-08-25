@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/",
+    "score": 0.97,
+    "performance": 0.95,
+    "accessibility": 0.95,
+    "best-practices": 0.96,
+    "seo": 1
+  },
+  {
+    "path": "/services",
+    "score": 0.97,
+    "performance": 0.97,
+    "accessibility": 0.95,
+    "best-practices": 0.96,
+    "seo": 1
+  },
+  {
+    "path": "/start-a-project",
+    "score": 0.97,
+    "performance": 0.98,
+    "accessibility": 0.95,
+    "best-practices": 0.96,
+    "seo": 1
+  },
+  {
+    "path": "/studio",
+    "score": 0.97,
+    "performance": 0.98,
+    "accessibility": 0.95,
+    "best-practices": 0.96,
+    "seo": 1
+  },
+  {
+    "path": "/work",
+    "score": 0.97,
+    "performance": 0.95,
+    "accessibility": 0.95,
+    "best-practices": 0.96,
+    "seo": 1
+  }
+]

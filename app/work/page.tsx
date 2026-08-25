@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 const work = [
-  { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/work/magic-coils/cover.webp", url: "https://magiccoils.net/", position: "center center", previewAspect: "2400 / 1085", width: 2400, height: 1085 },
+  { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/portfolio/magic-coils-updated.webp", url: "https://magiccoils.net/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature-2026.webp", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1234 / 712", width: 1234, height: 712 },
   { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", previewAspect: "16 / 9" },
@@ -53,7 +53,7 @@ const revivals = [
     note: "Background reconstruction + editorial light",
   },
   {
-    title: "2Tite / Linda's Long Microlocs",
+    title: "2titexperience / Linda's Long Microlocs",
     before: "/work/photo-revival/13-2tite-linda-long-microlocs-before.webp",
     after: "/work/photo-revival/13-2tite-linda-long-microlocs-after.webp",
     alt: "long microlocs photographed from behind",
@@ -67,14 +67,14 @@ const revivals = [
     note: "Backdrop reconstruction + curl definition",
   },
   {
-    title: "2Tite / Funmi's Red Curled Updo",
+    title: "2titexperience / Funmi's Red Curled Updo",
     before: "/work/photo-revival/14-2tite-funmi-red-curled-updo-before.webp",
     after: "/work/photo-revival/14-2tite-funmi-red-curled-updo-after.webp",
     alt: "red curled loc updo with pearl details",
     note: "Color-preserving polish + environmental cleanup",
   },
   {
-    title: "2Tite / Linda's Men's Cornrows",
+    title: "2titexperience / Linda's Men's Cornrows",
     before: "/work/photo-revival/15-2tite-linda-mens-cornrows-before.webp",
     after: "/work/photo-revival/15-2tite-linda-mens-cornrows-after.webp",
     alt: "men's cornrows in a clean geometric pattern",
@@ -107,6 +107,11 @@ export default function WorkPage() {
           <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01-v2.webp" ariaLabel="Magic Coils luxury campaign reel" />
           <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils product storytelling reel" />
         </div>
+        <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="View the updated Magic Coils website">
+          <div className="browser-bar" aria-hidden="true"><i /><i /><i /><span>magiccoils.net</span></div>
+          <Image src="/portfolio/magic-coils-updated.webp" alt="Updated Magic Coils website homepage featuring the Crowned in Magic product routine experience" width={1905} height={848} sizes="(max-width: 760px) 100vw, 90vw" unoptimized />
+          <span className="work-page-lead-site-label">Updated website / August 2026 <ArrowUpRight aria-hidden="true" /></span>
+        </a>
       </section>
 
       <section className="work-asset-story section-pad" aria-labelledby="campaign-depth-title">
@@ -133,7 +138,7 @@ export default function WorkPage() {
 
       <section className="revival-work section-pad" id="content-revival" aria-labelledby="revival-work-title">
         <header className="revival-work-head">
-          <span className="kicker">The Dreadlocks Salon Charlotte + 2Tite Experience / Content revival</span>
+          <span className="kicker">The Dreadlocks Salon Charlotte + 2titexperience / Content revival</span>
           <h2 id="revival-work-title">THE MEMORY<br /><em>STAYS. THE IMAGE EVOLVES.</em></h2>
           <p>We preserve the real person, hairstyle and service moment, then rebuild everything that keeps the image from representing the work at its best.</p>
         </header>
