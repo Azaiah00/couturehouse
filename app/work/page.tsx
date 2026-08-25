@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 const work = [
-  { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/work/magic-coils/cover.webp", url: "https://magiccoils.net/", position: "center center", previewAspect: "2400 / 1085", width: 2400, height: 1085 },
+  { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/portfolio/magic-coils-updated.webp", url: "https://magiccoils.net/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature-2026.webp", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1234 / 712", width: 1234, height: 712 },
   { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", previewAspect: "16 / 9" },
@@ -107,6 +107,11 @@ export default function WorkPage() {
           <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01-v2.webp" ariaLabel="Magic Coils luxury campaign reel" />
           <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils product storytelling reel" />
         </div>
+        <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="View the updated Magic Coils website">
+          <div className="browser-bar" aria-hidden="true"><i /><i /><i /><span>magiccoils.net</span></div>
+          <Image src="/portfolio/magic-coils-updated.webp" alt="Updated Magic Coils website homepage featuring the Crowned in Magic product routine experience" width={1905} height={848} sizes="(max-width: 760px) 100vw, 90vw" unoptimized />
+          <span className="work-page-lead-site-label">Updated website / August 2026 <ArrowUpRight aria-hidden="true" /></span>
+        </a>
       </section>
 
       <section className="work-asset-story section-pad" aria-labelledby="campaign-depth-title">

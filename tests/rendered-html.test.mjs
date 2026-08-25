@@ -119,6 +119,8 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.doesNotMatch(page, /Swipe right to see more products/);
   assert.match(page, /featured-reel-01\.mp4/);
   assert.match(page, /featured-reel-02\.mp4/);
+  assert.match(page, /magic-coils-updated\.webp/);
+  assert.match(page, /Visit the website/);
   assert.match(page, /beverlys-feature-2026\.webp/);
   assert.doesNotMatch(page, /magicpress\.mp4|magic-coils\/reel\.mp4/);
   assert.doesNotMatch(page, /className="product-world-gallery"|className="work-glimpse"|className="more-work"/);
@@ -138,6 +140,8 @@ test("keeps mobile media previews complete and discoverable", async () => {
   assert.equal((work.match(/before:\s*"\/work\/photo-revival\//g) ?? []).length, 6);
   assert.match(await readFile(new URL("../app/BeforeAfterSlider.tsx", import.meta.url), "utf8"), /revival-mobile-pair/);
   assert.match(work, /majestic-contracting-preview\.png/);
+  assert.match(work, /magic-coils-updated\.webp/);
+  assert.match(work, /Updated website \/ August 2026/);
   assert.match(work, /previewAspect:\s*"1234 \/ 712"/);
   assert.match(css, /\.full-film-frame\s*\{\s*aspect-ratio:\s*16 \/ 9/);
   assert.match(css, /\.featured-browser \.browser-bar\s*\{\s*display:\s*none/);

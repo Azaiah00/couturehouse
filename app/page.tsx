@@ -231,6 +231,11 @@ export default function Home() {
             <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils salon finish reel" />
             <figcaption>Salon finish / Hair in motion</figcaption>
           </figure>
+          <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="View the updated Magic Coils website">
+            <div className="browser-bar" aria-hidden="true"><i /><i /><i /><span>magiccoils.net</span></div>
+            <Image src="/portfolio/magic-coils-updated.webp" alt="Updated Magic Coils website homepage featuring the Crowned in Magic product routine experience" width={1905} height={848} sizes="(max-width: 760px) 100vw, 58vw" unoptimized />
+            <span className="work-page-lead-site-label">Visit the website <ArrowUpRight aria-hidden="true" /></span>
+          </a>
         </div>
       </section>
 
