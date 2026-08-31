@@ -1,4 +1,4 @@
-import { cp, mkdir, readdir, writeFile } from "node:fs/promises";
+import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -8,6 +8,7 @@ const routes = [
   "/services/",
   "/services/salon-website-design/",
   "/services/booking-portals-automation/",
+  "/booking-suite/",
   "/services/shopify-ecommerce/",
   "/services/content-creation/",
   "/case-studies/magic-coils/",
@@ -83,4 +84,10 @@ const netlifyHeaders = `/*
 `;
 
 await writeFile(join(staticDirectory, "_headers"), netlifyHeaders, "utf8");
+await Promise.all([
+  rm(join(staticDirectory, "server"), { recursive: true, force: true }),
+  rm(join(staticDirectory, "client"), { recursive: true, force: true }),
+  rm(join(staticDirectory, ".vite"), { recursive: true, force: true }),
+  rm(join(staticDirectory, "couture-house-lead-dashboard.html"), { force: true }),
+]);
 console.log("Wrote Netlify cache and security headers");

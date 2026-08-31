@@ -12,6 +12,7 @@ export default function SiteFooter() {
         <a href="mailto:hello@couturehouse.co">hello@couturehouse.co<ArrowUpRight aria-hidden="true" /></a>
         <Link href="/work/">Work<ArrowUpRight aria-hidden="true" /></Link>
         <Link href="/services/">Services<ArrowUpRight aria-hidden="true" /></Link>
+        <Link href="/booking-suite/">Booking Suite Demo<ArrowUpRight aria-hidden="true" /></Link>
         <Link href="/studio/">Studio<ArrowUpRight aria-hidden="true" /></Link>
         <Link href="/privacy/">Privacy<ArrowUpRight aria-hidden="true" /></Link>
         <Link href="/terms/">Terms<ArrowUpRight aria-hidden="true" /></Link>

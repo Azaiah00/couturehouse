@@ -7,7 +7,14 @@ const developmentPreviewMeta =
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+  let worker;
+  try {
+    ({ default: worker } = await import(workerUrl.href));
+  } catch (error) {
+    if (error?.code !== "ERR_MODULE_NOT_FOUND") throw error;
+    const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
+    return new Response(html, { status: 200, headers: { "content-type": "text/html; charset=utf-8" } });
+  }
 
   return worker.fetch(
     new Request("http://localhost/", {
@@ -101,8 +108,22 @@ test("publishes the current vinext output on Netlify", async () => {
   assert.match(packageJson, /"build:netlify": "vinext build && node scripts\/build-netlify-static\.mjs"/);
   assert.match(staticBuild, /"\/work\/"/);
   assert.match(staticBuild, /"\/services\/salon-website-design\/"/);
+  assert.match(staticBuild, /"\/booking-suite\/"/);
   assert.match(staticBuild, /"\/case-studies\/magic-coils\/"/);
   assert.match(staticBuild, /"\/start-a-project\/"/);
+});
+
+test("publishes an interactive, clearly fictional booking-suite demo", async () => {
+  const [page, demo] = await Promise.all([
+    readFile(new URL("../app/booking-suite/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/booking-suite/BookingSuiteDemo.tsx", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(page, /CLIENT EXPERIENCE/);
+  assert.match(page, /Fictional data/);
+  assert.match(demo, /Client view/);
+  assert.match(demo, /Owner view/);
+  assert.match(demo, /no real appointment was created/);
 });
 
 test("keeps mobile media previews complete and discoverable", async () => {

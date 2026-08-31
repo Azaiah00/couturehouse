@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { href: "/work/", path: "/work", label: "Work" },
@@ -15,6 +15,8 @@ const links = [
 export default function SiteNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavigationRef = useRef<HTMLDivElement>(null);
   const normalizedPathname = pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
   const isProjectPage = normalizedPathname === "/start-a-project";
 
@@ -22,12 +24,22 @@ export default function SiteNav() {
     if (!open) return;
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(mobileNavigationRef.current?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? []);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     };
     document.body.classList.add("mobile-menu-open");
     window.addEventListener("keydown", closeOnEscape);
+    mobileNavigationRef.current?.querySelector<HTMLElement>("a[href]")?.focus();
+    const menuButton = menuButtonRef.current;
     return () => {
       document.body.classList.remove("mobile-menu-open");
       window.removeEventListener("keydown", closeOnEscape);
+      menuButton?.focus();
     };
   }, [open]);
 
@@ -46,11 +58,11 @@ export default function SiteNav() {
         ) : (
           <Link className="nav-cta magnetic" href="/start-a-project/">Start a project <ArrowUpRight aria-hidden="true" /></Link>
         )}
-        <button className="nav-menu-toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((current) => !current)}>
+        <button ref={menuButtonRef} className="nav-menu-toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((current) => !current)}>
           {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
-      <div className="mobile-navigation" id="mobile-navigation" aria-hidden={!open}>
+      <div ref={mobileNavigationRef} className="mobile-navigation" id="mobile-navigation" aria-hidden={!open}>
         <span className="mobile-navigation-kicker">Couture House / Explore</span>
         <div className="mobile-navigation-links">
           <Link href="/" aria-current={normalizedPathname === "/" ? "page" : undefined} onClick={() => setOpen(false)}><span>00</span>Home<ArrowUpRight aria-hidden="true" /></Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import type { ReactNode } from "react";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
 
@@ -14,9 +15,10 @@ type ServiceLandingProps = {
   includes: string[];
   bestFor: string;
   projectHref?: string;
+  children?: ReactNode;
 };
 
-export default function ServiceLanding({ path, eyebrow, title, accent, intro, problem, outcomes, includes, bestFor, projectHref = "/start-a-project/" }: ServiceLandingProps) {
+export default function ServiceLanding({ path, eyebrow, title, accent, intro, problem, outcomes, includes, bestFor, projectHref = "/start-a-project/", children }: ServiceLandingProps) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -53,6 +55,8 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
         <div><span className="kicker">What the engagement can include</span><h2>A FOCUSED SCOPE.<br /><em>BUILT AROUND YOU.</em></h2></div>
         <div><ul>{includes.map((item) => <li key={item}>{item}</li>)}</ul><p><strong>Best for:</strong> {bestFor}</p></div>
       </section>
+
+      {children}
 
       <section className="page-cta"><span className="kicker">Start with the business goal</span><h2>LET&apos;S BUILD THE<br /><em>RIGHT NEXT STEP.</em></h2><Link href={projectHref}>Start a project <ArrowUpRight aria-hidden="true" /></Link></section>
       <SiteFooter />
