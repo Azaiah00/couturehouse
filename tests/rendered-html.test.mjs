@@ -115,9 +115,10 @@ test("publishes the current vinext output on Netlify", async () => {
 });
 
 test("publishes an interactive, clearly fictional booking-suite demo", async () => {
-  const [page, demo] = await Promise.all([
+  const [page, demo, navigation] = await Promise.all([
     readFile(new URL("../app/booking-suite/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/booking-suite/BookingSuiteDemo.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/SiteNav.tsx", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /CLIENT EXPERIENCE/);
@@ -125,6 +126,23 @@ test("publishes an interactive, clearly fictional booking-suite demo", async () 
   assert.match(demo, /Client view/);
   assert.match(demo, /Owner view/);
   assert.match(demo, /no real appointment was created/);
+  assert.match(navigation, /href: "\/booking-suite\/"[\s\S]*label: "Booking Demo"/);
+});
+
+test("captures project inquiries with Netlify Forms and spam protection", async () => {
+  const [form, detector] = await Promise.all([
+    readFile(new URL("../app/start-a-project/ProjectForm.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../public/__forms.html", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(form, /name="project-inquiry"/);
+  assert.match(form, /data-netlify="true"/);
+  assert.match(form, /netlify-honeypot="bot-field"/);
+  assert.match(form, /fetch\("\/__forms\.html"/);
+  assert.doesNotMatch(form, /formsubmit\.co|_captcha|_honey/);
+  assert.match(detector, /name="form-name" value="project-inquiry"/);
+  assert.match(detector, /name="bot-field"/);
+  assert.match(detector, /name="privacy-consent"/);
 });
 
 test("keeps mobile media previews complete and discoverable", async () => {

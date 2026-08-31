@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 const links = [
   { href: "/work/", path: "/work", label: "Work" },
   { href: "/services/", path: "/services", label: "Services" },
+  { href: "/booking-suite/", path: "/booking-suite", label: "Booking Demo" },
   { href: "/studio/", path: "/studio", label: "Studio" },
 ];
 
@@ -67,7 +68,7 @@ export default function SiteNav() {
         <div className="mobile-navigation-links">
           <Link href="/" aria-current={normalizedPathname === "/" ? "page" : undefined} onClick={() => setOpen(false)}><span>00</span>Home<ArrowUpRight aria-hidden="true" /></Link>
           {links.map((link, index) => <Link href={link.href} aria-current={normalizedPathname === link.path ? "page" : undefined} onClick={() => setOpen(false)} key={link.href}><span>0{index + 1}</span>{link.label}<ArrowUpRight aria-hidden="true" /></Link>)}
-          <Link href="/start-a-project/" aria-current={isProjectPage ? "page" : undefined} onClick={() => setOpen(false)}><span>04</span>Start a project<ArrowUpRight aria-hidden="true" /></Link>
+          <Link href="/start-a-project/" aria-current={isProjectPage ? "page" : undefined} onClick={() => setOpen(false)}><span>0{links.length + 1}</span>Start a project<ArrowUpRight aria-hidden="true" /></Link>
         </div>
         <div className="mobile-navigation-foot">
           <p>Digital worlds for hair, beauty, culture and ambitious businesses.</p>

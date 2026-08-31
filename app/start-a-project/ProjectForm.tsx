@@ -34,20 +34,18 @@ export default function ProjectForm() {
     const form = new FormData(formElement);
     const business = String(form.get("business") ?? "New project");
     form.set("services", selectedServices.length ? selectedServices.join(", ") : "Open to recommendation");
-    form.set("_subject", `New Couture House project inquiry — ${business}`);
-    form.set("_template", "table");
-    form.set("_captcha", "false");
-    form.set("_replyto", String(form.get("email") ?? ""));
+    form.set("subject", `New Couture House project inquiry — ${business}`);
     setStatus("sending");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/hello@couturehouse.co", {
+      const encodedForm = new URLSearchParams();
+      form.forEach((value, key) => encodedForm.append(key, String(value)));
+      const response = await fetch("/__forms.html", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: form,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodedForm.toString(),
       });
-      const result = await response.json() as { success?: boolean | string };
-      if (!response.ok || result.success === false || result.success === "false") {
+      if (!response.ok) {
         throw new Error("Inquiry could not be sent");
       }
       setStatus("success");
@@ -60,13 +58,14 @@ export default function ProjectForm() {
   }
 
   return (
-    <form className="project-form" onSubmit={submitInquiry}>
-      <input className="form-honeypot" type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+    <form className="project-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitInquiry}>
+      <input type="hidden" name="form-name" value="project-inquiry" />
+      <input className="form-honeypot" type="text" name="bot-field" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="project-form-grid">
-        <label><span>Your name *</span><input name="name" required autoComplete="name" placeholder="Name" /></label>
-        <label><span>Email *</span><input name="email" type="email" required autoComplete="email" placeholder="you@business.com" /></label>
-        <label><span>Business / brand *</span><input name="business" required autoComplete="organization" placeholder="Business name" /></label>
-        <label><span>Current website</span><input name="website" type="url" inputMode="url" placeholder="https://" /></label>
+        <label><span>Your name *</span><input name="name" required minLength={2} maxLength={100} autoComplete="name" placeholder="Name" /></label>
+        <label><span>Email *</span><input name="email" type="email" required maxLength={254} autoComplete="email" placeholder="you@business.com" /></label>
+        <label><span>Business / brand *</span><input name="business" required minLength={2} maxLength={140} autoComplete="organization" placeholder="Business name" /></label>
+        <label><span>Current website</span><input name="website" type="url" inputMode="url" maxLength={500} placeholder="https://" /></label>
       </div>
 
       <fieldset className="project-form-services">
@@ -81,7 +80,7 @@ export default function ProjectForm() {
         <label><span>Ideal timing *</span><select name="timeline" required defaultValue=""><option value="" disabled>Select timing</option><option>As soon as possible</option><option>Within 1–2 months</option><option>Within 3–6 months</option><option>Later this year</option><option>Still exploring</option></select></label>
       </div>
 
-      <label className="project-form-details"><span>Tell us about the vision *</span><textarea name="details" required rows={7} placeholder="What are you building, what needs to change and what should people feel or do?" /></label>
+      <label className="project-form-details"><span>Tell us about the vision *</span><textarea name="details" required minLength={20} maxLength={5000} rows={7} placeholder="What are you building, what needs to change and what should people feel or do?" /></label>
 
       <label className="project-form-consent">
         <input name="privacy-consent" type="checkbox" required />
@@ -90,9 +89,9 @@ export default function ProjectForm() {
 
       <div className="project-form-submit">
         <div aria-live="polite">
-          {status === "success" ? <p className="form-success">Your brief is in our inbox. Thank you—we&apos;ll be in touch.</p> : null}
+          {status === "success" ? <p className="form-success">Your brief was received. Thank you—we&apos;ll be in touch.</p> : null}
           {status === "error" ? <p className="form-error">The form could not send just now. Please email <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p> : null}
-          {status === "idle" || status === "sending" ? <p>Your message is sent directly to the Couture House studio inbox.</p> : null}
+          {status === "idle" || status === "sending" ? <p>Your message is securely submitted to the Couture House studio.</p> : null}
         </div>
         <button type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send my project brief"} <ArrowUpRight aria-hidden="true" /></button>
       </div>
