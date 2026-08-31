@@ -1,0 +1,41 @@
+{
+  "domain": "couturehouse.co",
+  "audit_date": "2026-08-31",
+  "overall_score": 84,
+  "weighted_seo_score": 84,
+  "routes_audited": 14,
+  "portfolio_destinations_checked": 11,
+  "tests": { "passed": 6, "failed": 0 },
+  "scores": {
+    "visual_identity": 94,
+    "frontend": 88,
+    "mobile": 89,
+    "accessibility": 82,
+    "technical_seo": 84,
+    "content": 87,
+    "schema": 88,
+    "performance": 77,
+    "backend": 60,
+    "security": 86,
+    "portfolio_freshness": 94
+  },
+  "domain_authority": {
+    "moz_da": null,
+    "status": "unavailable",
+    "source_tier": 0,
+    "supported_backlink_factors": 0,
+    "required_backlink_factors": 7,
+    "backlink_health_score": null
+  },
+  "critical_fixes": [
+    "Removed internal lead dashboard from public output",
+    "Removed server/client build internals and generated prerender secret from public output",
+    "Added booking-suite route to static generation and sitemap",
+    "Refreshed four stale portfolio captures"
+  ],
+  "remaining_high_priority": [
+    "Replace third-party-only inquiry submission with a first-party protected endpoint",
+    "Verify production HTML caching and sensitive-path 404 responses",
+    "Add and enforce a tested Content Security Policy"
+  ]
+}

@@ -6,7 +6,7 @@ export default function AllThingsLocsPreview() {
       <AutoPlayVideo src="/portfolio/all-things-locs-hero.mp4" ariaHidden />
       <div className="all-things-locs-shade" aria-hidden="true" />
       <div className="all-things-locs-nav" aria-hidden="true">
-        <span className="all-things-locs-logo">THE 2TITE <b>XPERIENCE</b><small>TAÉ · OWNER &amp; THE LOC FAIRY</small></span>
+        <span className="all-things-locs-logo">2TITEXPERIENCE<small>TAÉ · OWNER &amp; THE LOC FAIRY</small></span>
         <span className="all-things-locs-links">HOME&nbsp;&nbsp;&nbsp; ABOUT&nbsp;&nbsp;&nbsp; SERVICES&nbsp;&nbsp;&nbsp; GALLERY&nbsp;&nbsp;&nbsp; FAQ</span>
         <span className="all-things-locs-book">BOOK NOW</span>
       </div>

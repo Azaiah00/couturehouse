@@ -1,41 +1,96 @@
 {
-  "domain": "couturehouse.co",
-  "audit_date": "2026-08-31",
-  "overall_score": 84,
-  "weighted_seo_score": 84,
-  "routes_audited": 14,
-  "portfolio_destinations_checked": 11,
-  "tests": { "passed": 6, "failed": 0 },
-  "scores": {
-    "visual_identity": 94,
-    "frontend": 88,
-    "mobile": 89,
-    "accessibility": 82,
-    "technical_seo": 84,
-    "content": 87,
-    "schema": 88,
-    "performance": 77,
-    "backend": 60,
-    "security": 86,
-    "portfolio_freshness": 94
+  "summary": {
+    "health_score": 57,
+    "business_type": "Niche digital creative and technology studio serving salons, stylists, hair-care brands, and selected businesses",
+    "top_findings": [
+      "Work and Services HTML is accidentally cached as immutable for one year",
+      "The homepage repeats too much portfolio and motion content",
+      "No canonical tags or structured data exist",
+      "The five-page architecture cannot capture specific commercial search intent",
+      "The site lacks founder identity, testimonials, case-study outcomes, and measurement"
+    ],
+    "quick_wins": [
+      "Fix Work and Services cache headers",
+      "Add canonical URLs and normalize trailing slashes",
+      "Redirect the obsolete for-brands URL",
+      "Move the niche audience and booking outcome into the first viewport",
+      "Compress and clip the desktop hero video"
+    ]
   },
-  "domain_authority": {
-    "moz_da": null,
-    "status": "unavailable",
-    "source_tier": 0,
-    "supported_backlink_factors": 0,
-    "required_backlink_factors": 7,
-    "backlink_health_score": null
-  },
-  "critical_fixes": [
-    "Removed internal lead dashboard from public output",
-    "Removed server/client build internals and generated prerender secret from public output",
-    "Added booking-suite route to static generation and sitemap",
-    "Refreshed four stale portfolio captures"
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 68,
+      "what_works": ["HTTPS and HSTS", "Valid robots and sitemap", "Server-rendered content", "Unique titles and descriptions"],
+      "findings": [
+        {"title": "Immutable HTML caching", "severity": "High", "description": "Work and Services HTML returns a one-year immutable cache header.", "recommendation": "Restrict immutable rules to actual media assets."},
+        {"title": "Missing canonical tags", "severity": "High", "description": "All five indexable pages lack canonical URLs.", "recommendation": "Add absolute self-referencing canonicals using final trailing-slash URLs."},
+        {"title": "Redirecting sitemap/internal URLs", "severity": "High", "description": "Slashless URLs redirect to slash URLs.", "recommendation": "Update sitemap and internal links to final 200 URLs."}
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 62,
+      "what_works": ["Distinctive voice", "Culturally relevant point of view", "Strong visual portfolio proof"],
+      "findings": [
+        {"title": "Homepage overload", "severity": "High", "description": "Multiple galleries, films, and proof modules repeat the same message.", "recommendation": "Reduce homepage content by 25-35% and move depth to Work/case studies."},
+        {"title": "Abstract services", "severity": "High", "description": "Capability categories do not answer buyer questions about deliverables, price, timeline, platforms, or ownership.", "recommendation": "Productize Websites + Booking, Commerce + Content, and Automation + Care."}
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 58,
+      "what_works": ["One H1 per page", "Unique descriptions", "Accessible raw HTML"],
+      "findings": [
+        {"title": "Generic inner-page targeting", "severity": "High", "description": "Titles and artistic H1s underuse salon website and booking intent.", "recommendation": "Add explicit commercial search language while retaining expressive headings."},
+        {"title": "Shallow architecture", "severity": "High", "description": "Only five routes exist and portfolio links mostly leave the site.", "recommendation": "Create service pages and internal case studies."}
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {"title": "No structured data", "severity": "Medium", "description": "Zero JSON-LD, microdata, or RDFa blocks exist.", "recommendation": "Add truthful Organization, WebSite, WebPage, Service, BreadcrumbList, and CollectionPage data."}
+      ]
+    },
+    {
+      "name": "Performance",
+      "score": 97,
+      "what_works": ["Mobile lab performance 95-98", "Desktop lab performance 99", "Deferred noncritical media"],
+      "findings": [
+        {"title": "Oversized desktop hero", "severity": "High", "description": "The 10.4 MB hero video contains more footage than the 12-second displayed range.", "recommendation": "Clip, recompress, and provide modern and fallback formats."},
+        {"title": "No responsive image delivery", "severity": "Medium", "description": "All 75 rendered images lack intrinsic dimensions and responsive sources.", "recommendation": "Add width/height and srcset/sizes or an equivalent image pipeline."}
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 36,
+      "what_works": ["Crawler-accessible content", "Clear niche language", "Semantic headings and lists"],
+      "findings": [
+        {"title": "Weak citability", "severity": "Medium", "description": "There are few named experts, dated facts, client quotes, or measurable outcomes.", "recommendation": "Publish attributable case studies, founder bios, service facts, and first-party results."}
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 55,
+      "what_works": ["All rendered images include alt attributes", "Descriptive filenames", "Extensive lazy loading"],
+      "findings": [
+        {"title": "Missing intrinsic dimensions", "severity": "Medium", "description": "Images do not provide width and height attributes.", "recommendation": "Add dimensions to reduce layout-shift risk."},
+        {"title": "Oversized PNG assets", "severity": "Medium", "description": "Several PNGs are between 1.4 MB and 2.8 MB.", "recommendation": "Convert delivery assets to optimized WebP/AVIF where appropriate."}
+      ]
+    }
   ],
-  "remaining_high_priority": [
-    "Replace third-party-only inquiry submission with a first-party protected endpoint",
-    "Verify production HTML caching and sensitive-path 404 responses",
-    "Add and enforce a tested Content Security Policy"
-  ]
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes", "timeframe": "Next 72 hours", "items": ["Fix immutable HTML caching", "Add canonicals and normalize URLs", "Redirect obsolete indexed routes"]},
+      {"name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 1-2", "items": ["Shorten homepage", "Compress hero", "Add founder/testimonials/legal/contact", "Install analytics and CRM"]},
+      {"name": "Phase 3: Content & Authority", "timeframe": "Weeks 3-8", "items": ["Publish service pages", "Publish case studies", "Add schema", "Launch scorecard"]},
+      {"name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": ["Track field CWV", "Review search and conversion data", "Execute social/outreach calendar", "Build client and industry links"]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "unlighthouse-mobile/ and unlighthouse-desktop/"
+  }
 }

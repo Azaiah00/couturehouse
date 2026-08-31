@@ -9,6 +9,7 @@ const routes = [
   "/services/salon-website-design/",
   "/services/booking-portals-automation/",
   "/booking-suite/",
+  "/salon-website-audit/",
   "/services/shopify-ecommerce/",
   "/services/content-creation/",
   "/case-studies/magic-coils/",

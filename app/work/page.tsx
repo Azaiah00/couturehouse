@@ -53,7 +53,7 @@ const revivals = [
     note: "Background reconstruction + editorial light",
   },
   {
-    title: "2Tite / Linda's Long Microlocs",
+    title: "2titexperience / Linda's Long Microlocs",
     before: "/work/photo-revival/13-2tite-linda-long-microlocs-before.webp",
     after: "/work/photo-revival/13-2tite-linda-long-microlocs-after.webp",
     alt: "long microlocs photographed from behind",
@@ -67,14 +67,14 @@ const revivals = [
     note: "Backdrop reconstruction + curl definition",
   },
   {
-    title: "2Tite / Funmi's Red Curled Updo",
+    title: "2titexperience / Funmi's Red Curled Updo",
     before: "/work/photo-revival/14-2tite-funmi-red-curled-updo-before.webp",
     after: "/work/photo-revival/14-2tite-funmi-red-curled-updo-after.webp",
     alt: "red curled loc updo with pearl details",
     note: "Color-preserving polish + environmental cleanup",
   },
   {
-    title: "2Tite / Linda's Men's Cornrows",
+    title: "2titexperience / Linda's Men's Cornrows",
     before: "/work/photo-revival/15-2tite-linda-mens-cornrows-before.webp",
     after: "/work/photo-revival/15-2tite-linda-mens-cornrows-after.webp",
     alt: "men's cornrows in a clean geometric pattern",
@@ -138,7 +138,7 @@ export default function WorkPage() {
 
       <section className="revival-work section-pad" id="content-revival" aria-labelledby="revival-work-title">
         <header className="revival-work-head">
-          <span className="kicker">The Dreadlocks Salon Charlotte + 2Tite Experience / Content revival</span>
+          <span className="kicker">The Dreadlocks Salon Charlotte + 2titexperience / Content revival</span>
           <h2 id="revival-work-title">THE MEMORY<br /><em>STAYS. THE IMAGE EVOLVES.</em></h2>
           <p>We preserve the real person, hairstyle and service moment, then rebuild everything that keeps the image from representing the work at its best.</p>
         </header>
