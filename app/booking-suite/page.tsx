@@ -76,10 +76,29 @@ export default function BookingSuitePage() {
         </div>
       </section>
 
+      <section className="booking-suite-compare section-pad" aria-labelledby="booking-suite-compare-title">
+        <header>
+          <span className="kicker">Choose the right kind of platform</span>
+          <h2 id="booking-suite-compare-title">READY-MADE IS FAST.<br /><em>CUSTOM STARTS WITH YOU.</em></h2>
+          <p>Booksy and GlossGenius are strong ready-made tools. A Couture House build is for the business whose client journey, service logic or internal workflow needs to work differently.</p>
+        </header>
+        <div className="booking-suite-compare-grid">
+          <article>
+            <span>READY-MADE PLATFORMS</span><h3>Best when speed and familiar features lead.</h3>
+            <ul><li><Check aria-hidden="true" /> Faster setup</li><li><Check aria-hidden="true" /> Mature all-in-one tools</li><li><Check aria-hidden="true" /> Lower upfront investment</li></ul>
+          </article>
+          <article>
+            <span>COUTURE HOUSE CUSTOM</span><h3>Best when the workflow should follow your business.</h3>
+            <ul><li><Check aria-hidden="true" /> Branded end-to-end journey</li><li><Check aria-hidden="true" /> Specialized rules and intake</li><li><Check aria-hidden="true" /> Flexible integrations and roadmap</li></ul>
+          </article>
+        </div>
+        <p className="booking-suite-compare-note">The right choice depends on budget, timing and operational complexity. We will tell you honestly when a ready-made platform is the better fit.</p>
+      </section>
+
       <section className="booking-suite-close section-pad">
         <span className="kicker">Built for salons, stylists, barbers and beauty teams</span>
         <h2>YOUR CLIENT JOURNEY<br />SHOULD NOT LOOK<br /><em>OFF THE SHELF.</em></h2>
-        <div><p>Bring us the booking bottleneck. We will map the right combination of experience, automation and integrations around it.</p><Link href="/start-a-project/?service=booking-suite">Build my booking system <ArrowUpRight aria-hidden="true" /></Link><Link href="/services/booking-portals-automation/">See what the engagement includes</Link></div>
+        <div><p>Bring us the booking bottleneck. We will map the right combination of experience, automation and integrations around it.</p><Link href="/start-a-project/?service=booking-suite">Get my booking blueprint <ArrowUpRight aria-hidden="true" /></Link><Link href="/services/booking-portals-automation/">See what the engagement includes</Link></div>
       </section>
 
       <SiteFooter />
