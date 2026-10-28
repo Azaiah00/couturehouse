@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import Image from "../components/StaticImage";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
@@ -26,6 +25,7 @@ const dimensions = [
 ];
 
 const faqs = [
+  ["When will I hear from you?", "We’ll reply within 24 hours of receiving your request to confirm the next steps and when to expect your review."],
   ["Is this an automated website score?", "No. Couture House reviews the visible website, mobile journey, Instagram and booking path, then sends three focused human observations."],
   ["Will you redesign the website for free?", "No. The review identifies the first opportunities. Strategy, design, development and implementation are separate engagements."],
   ["Will the review be posted publicly?", "No. A submission is private. Public teardowns or case studies require separate approval."],
@@ -55,12 +55,12 @@ export default function SalonWebsiteAuditPage() {
       </section>
 
       <section className="audit-proof section-pad" aria-labelledby="audit-proof-title">
-        <div className="audit-proof-copy"><span className="kicker">Built inside the niche</span><h2 id="audit-proof-title">WE KNOW WHAT<br />THE CLIENT NEEDS<br /><em>TO FEEL.</em></h2><p>Couture House builds digital worlds for salons, stylists and hair-care businesses. The review is grounded in real service journeys—not generic design advice.</p><Link href="/work/">Explore selected work <ArrowUpRight aria-hidden="true" /></Link></div>
+        <div className="audit-proof-copy"><span className="kicker">Built inside the niche</span><h2 id="audit-proof-title">WE KNOW WHAT<br />THE CLIENT NEEDS<br /><em>TO FEEL.</em></h2><p>Couture House builds digital worlds for salons, stylists and hair-care businesses. The review is grounded in real service journeys—not generic design advice.</p><a href="/work/">Explore selected work <ArrowUpRight aria-hidden="true" /></a></div>
         <div className="audit-proof-images"><Image src="/portfolio/dreadlocks-salon.png" alt="The Dreadlocks Salon website by Couture House" width={1905} height={848} sizes="(max-width:760px) 100vw, 45vw" unoptimized /><Image src="/portfolio/beverlys-feature-2026.webp" alt="Beverly's of Nashville website by Couture House" width={1234} height={712} sizes="(max-width:760px) 100vw, 45vw" unoptimized /></div>
       </section>
 
       <section className="audit-request section-pad" id="request-review" aria-labelledby="audit-request-title">
-        <div className="audit-request-intro"><span className="kicker">Your website / Our eyes</span><h2 id="audit-request-title">SEND THE LINK.<br /><em>WE'LL FIND THE SIGNAL.</em></h2><p>This is for active salon, stylist and textured-hair businesses that want a more credible, useful and ownable digital presence.</p><ul><li>Three focused observations</li><li>One genuine strength to build on</li><li>A clear next-step recommendation</li></ul></div>
+        <div className="audit-request-intro"><span className="kicker">Your website / Our eyes</span><h2 id="audit-request-title">SEND THE LINK.<br /><em>WE'LL FIND THE SIGNAL.</em></h2><p>This is for active salon, stylist and textured-hair businesses that want a more credible, useful and ownable digital presence. We’ll reply within 24 hours to confirm the next steps and review timing.</p><ul><li>Three focused observations</li><li>One genuine strength to build on</li><li>A clear next-step recommendation</li></ul></div>
         <AuditForm />
       </section>
 

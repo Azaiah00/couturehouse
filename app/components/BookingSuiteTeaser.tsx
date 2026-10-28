@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight, CalendarDays, LayoutDashboard, ShieldCheck } from "lucide-react";
 
 export default function BookingSuiteTeaser() {
@@ -9,8 +8,8 @@ export default function BookingSuiteTeaser() {
         <h2 id="booking-suite-teaser-title">FROM FIRST CLICK<br />TO <em>FULL CHAIR.</em></h2>
         <p>Walk through the client booking flow, then switch sides and see the private owner dashboard that keeps appointments, clients, services and availability connected.</p>
         <div className="booking-suite-teaser-actions">
-          <Link href="/booking-suite/">Try the booking suite <ArrowUpRight aria-hidden="true" /></Link>
-          <Link href="/start-a-project/?service=booking-suite">Build one for my business</Link>
+          <a href="/booking-suite/">Try the booking suite <ArrowUpRight aria-hidden="true" /></a>
+          <a href="/start-a-project/?service=booking-suite">Build one for my business</a>
         </div>
         <small>Fictional demo data. Nothing you click creates a real appointment.</small>
       </div>

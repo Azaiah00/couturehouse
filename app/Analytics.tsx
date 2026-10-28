@@ -32,6 +32,11 @@ export default function Analytics() {
     const trackClick = (event: MouseEvent) => {
       const target = (event.target as Element | null)?.closest("a,button");
       if (!target) return;
+      const measured = target.closest<HTMLElement>("[data-track]");
+      if (measured) window.gtag?.("event", measured.dataset.track, {
+        page_path: window.location.pathname,
+        project_name: measured.dataset.project,
+      });
       const href = target instanceof HTMLAnchorElement ? target.href : undefined;
       window.gtag?.("event", "site_interaction", {
         link_text: target.textContent?.trim().slice(0, 100),
@@ -50,10 +55,20 @@ export default function Analytics() {
         ...(customEvent.detail || {}),
       });
     };
+    const exposureObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const element = entry.target as HTMLElement;
+        window.gtag?.("event", element.dataset.trackExposure, { page_path: window.location.pathname });
+        exposureObserver.unobserve(element);
+      }
+    }, { threshold: 0 });
+    document.querySelectorAll("[data-track-exposure]").forEach(element => exposureObserver.observe(element));
     document.addEventListener("click", trackClick);
     window.addEventListener("couture:lead", trackLead);
     ["couture:audit_view", "couture:audit_start", "couture:audit_complete", "couture:audit_qualified_call_click"].forEach((name) => window.addEventListener(name, trackAudit));
     return () => {
+      exposureObserver.disconnect();
       document.removeEventListener("click", trackClick);
       window.removeEventListener("couture:lead", trackLead);
       ["couture:audit_view", "couture:audit_start", "couture:audit_complete", "couture:audit_qualified_call_click"].forEach((name) => window.removeEventListener(name, trackAudit));

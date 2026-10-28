@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MoveHorizontal } from "lucide-react";
-import Image from "next/image";
+import Image from "./components/StaticImage";
 
 type BeforeAfterSliderProps = {
   before: string;

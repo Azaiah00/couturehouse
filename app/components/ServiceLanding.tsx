@@ -1,4 +1,5 @@
-import Link from "next/link";
+import EngagementDetails from "./EngagementDetails";
+import ReviewInvitation from "./ReviewInvitation";
 import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import SiteFooter from "../SiteFooter";
@@ -38,7 +39,7 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
         <span className="kicker">{eyebrow}</span>
         <h1>{title}<br /><em>{accent}</em></h1>
         <p>{intro}</p>
-        <Link href={projectHref}>Discuss your project <ArrowUpRight aria-hidden="true" /></Link>
+        <a href={projectHref}>Discuss your project <ArrowUpRight aria-hidden="true" /></a>
       </header>
 
       <section className="service-landing-problem section-pad">
@@ -56,9 +57,12 @@ export default function ServiceLanding({ path, eyebrow, title, accent, intro, pr
         <div><ul>{includes.map((item) => <li key={item}>{item}</li>)}</ul><p><strong>Best for:</strong> {bestFor}</p></div>
       </section>
 
+      <section className="service-proof section-pad"><span className="kicker">See the work</span><h2>FROM SCOPE TO EXPERIENCE.</h2><p>Explore the details before deciding what your business needs.</p><a href={path.includes("content") ? "/work/#content-revival" : path.includes("booking") ? "/booking-suite/" : path.includes("shopify") ? "/case-studies/magic-coils/" : "/case-studies/beverlys-of-nashville/"}>{path.includes("content") ? "Explore photo revival + campaigns" : path.includes("booking") ? "Try the fictional booking demo" : path.includes("shopify") ? "Explore Magic Coils" : "Explore Beverly’s of Nashville"} <ArrowUpRight aria-hidden="true" /></a></section>
       {children}
 
-      <section className="page-cta"><span className="kicker">Start with the business goal</span><h2>LET&apos;S BUILD THE<br /><em>RIGHT NEXT STEP.</em></h2><Link href={projectHref}>Start a project <ArrowUpRight aria-hidden="true" /></Link></section>
+      <EngagementDetails />
+      <ReviewInvitation />
+      <section className="page-cta"><span className="kicker">Start with the business goal</span><h2>LET&apos;S BUILD THE<br /><em>RIGHT NEXT STEP.</em></h2><a href={projectHref}>Start a project <ArrowUpRight aria-hidden="true" /></a></section>
       <SiteFooter />
     </main>
   );

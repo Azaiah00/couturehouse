@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import Image from "../components/StaticImage";
 import { ArrowUpRight } from "lucide-react";
 import AllThingsLocsPreview from "../AllThingsLocsPreview";
 import AutoPlayVideo from "../AutoPlayVideo";
@@ -25,9 +24,9 @@ export const metadata: Metadata = {
 
 const work = [
   { number: "01", title: "Magic Coils", type: "Hair care / Commerce / Campaign", scope: "Strategy, website, e-commerce, content, motion", image: "/portfolio/magic-coils-updated.webp", url: "https://magiccoils.net/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
-  { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
-  { number: "03", title: "Beverly's of Nashville", type: "Legacy salon / Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature-2026.webp", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1234 / 712", width: 1234, height: 712 },
-  { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://2titexperience.netlify.app/", position: "center top", previewAspect: "16 / 9" },
+  { number: "02", title: "The Dreadlocks Salon", type: "Salon / Oakland", scope: "Strategy, UX/UI, development, booking journey", image: "/portfolio/dreadlocks-salon.png", url: "https://dreadlockssalon.com/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
+  { number: "03", title: "Beverly's of Nashville", type: "Beverly’s / Teddy Chisom · Nashville", scope: "Creative direction, web design, development, local discovery", image: "/portfolio/beverlys-feature-2026.webp", url: "https://beverlysofnashville.com/", position: "center center", previewAspect: "1234 / 712", width: 1234, height: 712 },
+  { number: "04", title: "All Things Locs", type: "Natural hair / Oakland", scope: "Brand experience, web design, development, service journey", image: "/portfolio/two-tit-experience.png", video: "/portfolio/all-things-locs-hero.mp4", url: "https://the2titexperience.com/", position: "center top", previewAspect: "16 / 9" },
   { number: "05", title: "Divine Textures", type: "Holistic hair care / Columbia", scope: "Web design and development", image: "/portfolio/divine-textures.png", url: "https://divine-textures.netlify.app/", position: "center 18%", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "06", title: "OG Barnes", type: "Wellness / Loc artistry", scope: "Web design and development", image: "/portfolio/og-barnes.png", url: "https://ogbarnes.netlify.app/", position: "center 15%", previewAspect: "1905 / 848", width: 1905, height: 848 },
   { number: "07", title: "Sacrificial Conversations", type: "Faith / Editorial commerce", scope: "E-commerce and campaign world", image: "/portfolio/sacrificial-conversations-2026.png", url: "https://sacrificialconversations.shop/", position: "center top", previewAspect: "1905 / 848", width: 1905, height: 848 },
@@ -85,7 +84,6 @@ const revivals = [
 export default function WorkPage() {
   return (
     <main className="work-page">
-      <PageSoundtrack src="/audio/soul-trapped.mp3" title="Soul Trapped" />
       <div className="grain" aria-hidden="true" />
       <SiteNav />
 
@@ -93,21 +91,39 @@ export default function WorkPage() {
         <span className="kicker">Selected work / 2024–26</span>
         <h1 aria-label="Worlds built to be felt.">WORLDS BUILT<br />TO BE <em>FELT.</em></h1>
         <div><p>Websites, content, campaigns and motion shaped around the people a business wants to move.</p><span>Hair + beauty first<br />Culture always<br />Built to act</span></div>
+        <nav className="work-jump-links" aria-label="Explore the work"><a href="#websites">Websites</a><a href="#campaigns">Campaigns + film</a><a href="#content-revival">Photo revival</a><a href="#case-studies">Case studies</a></nav>
       </header>
 
-      <section className="work-page-lead section-pad" aria-labelledby="work-magic-title">
+      <section className="work-index section-pad" id="websites" data-track-exposure="portfolio_view" aria-labelledby="work-index-title">
+        <header className="work-index-head"><span className="kicker">The complete gallery</span><h2 id="work-index-title">SELECTED<br /><em>WORLDS.</em></h2><p>Explore the websites first. Then go deeper into the campaign films, content and decisions behind them.</p></header>
+        <div className="work-index-grid">
+          {work.map((project) => (
+            <article className="work-index-card" key={project.title}>
+              <a href={project.url} target="_blank" rel="noreferrer" data-track="portfolio_click" data-project={project.title}>
+                <div className="work-index-media" style={{ aspectRatio: project.previewAspect }}>
+                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <Image className="website-preview-image" src={project.image} alt={`${project.title} website preview`} width={project.width} height={project.height} sizes="(max-width: 760px) 100vw, 50vw" unoptimized style={{ objectPosition: project.position }} />}
+                  <span>View live <ArrowUpRight aria-hidden="true" /></span>
+                </div>
+                <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small>{project.number === "03" && <p className="project-context">Earlier website shown. The live site now presents Teddy Chisom, The Hair Care King, at Beverly’s.</p>}</div></div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="work-page-lead section-pad" id="campaigns" aria-labelledby="work-magic-title">
         <div className="work-page-lead-copy">
           <span>01 / Featured world</span>
           <h2 id="work-magic-title">Magic Coils</h2>
           <p>A luxury hair-care world designed across commerce, education, product storytelling and moving image.</p>
           <a href="https://magiccoils.net/" target="_blank" rel="noreferrer">Experience the website <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
-          <Link href="/case-studies/magic-coils/">Read the case study <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+          <a href="/case-studies/magic-coils/">Read the case study <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
         </div>
         <div className="work-page-lead-media">
           <ClickToPlayVideo src="/work/magic-coils/featured-reel-01.mp4" poster="/work/magic-coils/reel-poster-01-v2.webp" ariaLabel="Magic Coils luxury campaign reel" />
           <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils product storytelling reel" />
         </div>
-        <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="View the updated Magic Coils website">
+        <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="Updated website / August 2026: Magic Coils">
           <div className="browser-bar" aria-hidden="true"><i /><i /><i /><span>magiccoils.net</span></div>
           <Image src="/portfolio/magic-coils-updated.webp" alt="Updated Magic Coils website homepage featuring the Crowned in Magic product routine experience" width={1905} height={848} sizes="(max-width: 760px) 100vw, 90vw" unoptimized />
           <span className="work-page-lead-site-label">Updated website / August 2026 <ArrowUpRight aria-hidden="true" /></span>
@@ -161,22 +177,7 @@ export default function WorkPage() {
         <p className="revival-disclosure">Creative enhancement shaped and finished through Couture House art direction. Presented as original salon content and its refined, brand-ready version—not a salon-service result.</p>
       </section>
 
-      <section className="work-index section-pad" aria-labelledby="work-index-title">
-        <header className="work-index-head"><span className="kicker">The complete gallery</span><h2 id="work-index-title">SELECTED<br /><em>WORLDS.</em></h2><p>Each project is shown through a high-value moment from the experience—not a generic thumbnail.</p></header>
-        <div className="work-index-grid">
-          {work.slice(1).map((project, index) => (
-            <article className={`work-index-card ${index % 5 === 0 ? "work-index-wide" : ""}`} key={project.title}>
-              <a href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
-                <div className="work-index-media" style={{ aspectRatio: project.previewAspect }}>
-                  {project.title === "All Things Locs" ? <AllThingsLocsPreview /> : project.video ? <AutoPlayVideo src={project.video} ariaLabel={`${project.title} website preview`} /> : <Image className="website-preview-image" src={project.image} alt={`${project.title} website preview`} width={project.width} height={project.height} sizes="(max-width: 760px) 100vw, 50vw" unoptimized style={{ objectPosition: project.position }} />}
-                  <span>View live <ArrowUpRight aria-hidden="true" /></span>
-                </div>
-                <div className="work-index-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p><small>{project.scope}</small></div></div>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
+
 
       <section className="partnership-story section-pad" aria-labelledby="partnership-title">
         <header className="partnership-head">
@@ -216,17 +217,18 @@ export default function WorkPage() {
 
       </section>
 
-      <section className="case-study-links section-pad" aria-labelledby="case-study-links-title">
+      <section className="case-study-links section-pad" id="case-studies" aria-labelledby="case-study-links-title">
         <header><span className="kicker">Go behind the work</span><h2 id="case-study-links-title">SELECTED<br /><em>CASE STUDIES.</em></h2></header>
-        <div><Link href="/case-studies/magic-coils/"><span>01 / Hair-care e-commerce</span><h3>Magic Coils</h3><ArrowUpRight aria-hidden="true" /></Link><Link href="/case-studies/beverlys-of-nashville/"><span>02 / Legacy salon</span><h3>Beverly&apos;s of Nashville</h3><ArrowUpRight aria-hidden="true" /></Link></div>
+        <div><a href="/case-studies/magic-coils/"><span>01 / Hair-care e-commerce</span><h3>Magic Coils</h3><ArrowUpRight aria-hidden="true" /></a><a href="/case-studies/beverlys-of-nashville/"><span>02 / Legacy salon</span><h3>Beverly&apos;s of Nashville</h3><ArrowUpRight aria-hidden="true" /></a></div>
       </section>
 
       <section className="page-cta">
         <span className="kicker">Your work belongs here</span>
         <h2>LET&apos;S BUILD<br /><em>THE NEXT WORLD.</em></h2>
-        <Link href="/start-a-project/">Start a project <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+        <a href="/start-a-project/">Start a project <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
       </section>
 
+      <PageSoundtrack src="/audio/soul-trapped.mp3" title="Soul Trapped" />
       <SiteFooter />
     </main>
   );

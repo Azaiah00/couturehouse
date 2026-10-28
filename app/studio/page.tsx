@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
+import Image from "../components/StaticImage";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
@@ -48,7 +47,6 @@ const practice = [
 export default function StudioPage() {
   return (
     <main className="studio-page">
-      <PageSoundtrack src="/audio/destiny-sax.mp3" title="Destiny Sax" />
       <div className="grain" aria-hidden="true" />
 
       <SiteNav />
@@ -58,7 +56,7 @@ export default function StudioPage() {
           <span className="kicker">Couture House Co. / The studio</span>
           <h1 id="studio-opening-title" aria-label="Where culture meets craft.">WHERE CULTURE<br />MEETS <em>CRAFT.</em></h1>
           <p>Strategy, technology and moving image shaped around the people, rituals and ambition behind the brand.</p>
-          <Link href="#point-of-view">Enter our point of view <ArrowDown className="link-icon" aria-hidden="true" /></Link>
+          <a href="#point-of-view">Enter our point of view <ArrowDown className="link-icon" aria-hidden="true" /></a>
         </div>
         <figure><Image src="/brand/studio-world-v1.webp" alt="Black woman creative director in the Couture House digital atelier" width={1600} height={900} sizes="(max-width: 760px) 100vw, 50vw" priority unoptimized /></figure>
       </section>
@@ -140,7 +138,7 @@ export default function StudioPage() {
             Salons, stylists and hair-care brands are not a narrow market to
             us. They are a universe of expertise, expression and possibility.
           </p>
-          <Link href="/work/">See the work <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+          <a href="/work/">See the work <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
         </div>
         <div className="studio-collage-grid">
           <figure>
@@ -170,18 +168,19 @@ export default function StudioPage() {
             </article>
           ))}
         </div>
-        <Link className="studio-practice-link" href="/services/">Explore every service <ArrowUpRight className="link-icon" aria-hidden="true" /></Link>
+        <a className="studio-practice-link" href="/services/">Explore every service <ArrowUpRight className="link-icon" aria-hidden="true" /></a>
       </section>
 
       <section className="studio-final">
         <span className="kicker">Bring the vision</span>
         <h2>LET&apos;S BUILD<br />SOMETHING WITH<br /><em>A PULSE.</em></h2>
         <p>Websites, apps, automations and content shaped around your world.</p>
-        <Link href="/start-a-project/">
+        <a href="/start-a-project/">
           Start a project <ArrowUpRight className="link-icon" aria-hidden="true" />
-        </Link>
+        </a>
       </section>
 
+      <PageSoundtrack src="/audio/destiny-sax.mp3" title="Destiny Sax" />
       <SiteFooter />
     </main>
   );

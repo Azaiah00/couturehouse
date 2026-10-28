@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Check, ShieldCheck } from "lucide-react";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
@@ -98,7 +97,7 @@ export default function BookingSuitePage() {
       <section className="booking-suite-close section-pad">
         <span className="kicker">Built for salons, stylists, barbers and beauty teams</span>
         <h2>YOUR CLIENT JOURNEY<br />SHOULD NOT LOOK<br /><em>OFF THE SHELF.</em></h2>
-        <div><p>Bring us the booking bottleneck. We will map the right combination of experience, automation and integrations around it.</p><Link href="/start-a-project/?service=booking-suite">Get my booking blueprint <ArrowUpRight aria-hidden="true" /></Link><Link href="/services/booking-portals-automation/">See what the engagement includes</Link></div>
+        <div><p>Bring us the booking bottleneck. We will map the right combination of experience, automation and integrations around it.</p><a href="/start-a-project/?service=booking-suite">Get my booking blueprint <ArrowUpRight aria-hidden="true" /></a><a href="/services/booking-portals-automation/">See what the engagement includes</a></div>
       </section>
 
       <SiteFooter />

@@ -60,6 +60,8 @@ export default function ProjectForm() {
   return (
     <form className="project-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitInquiry}>
       <input type="hidden" name="form-name" value="project-inquiry" />
+      <input type="hidden" name="services" value={selectedServices.join(", ")} />
+      <input type="hidden" name="subject" value="New Couture House project inquiry" />
       <input className="form-honeypot" type="text" name="bot-field" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="project-form-grid">
         <label><span>Your name *</span><input name="name" required minLength={2} maxLength={100} autoComplete="name" placeholder="Name" /></label>
@@ -89,7 +91,7 @@ export default function ProjectForm() {
 
       <div className="project-form-submit">
         <div aria-live="polite">
-          {status === "success" ? <p className="form-success">Your brief was received. Thank you—we&apos;ll be in touch.</p> : null}
+          {status === "success" ? <p className="form-success">Your brief was received. We&apos;ll reply within 24 hours with the next step.</p> : null}
           {status === "error" ? <p className="form-error">The form could not send just now. Please email <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p> : null}
           {status === "idle" || status === "sending" ? <p>Your message is securely submitted to the Couture House studio.</p> : null}
         </div>

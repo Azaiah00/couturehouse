@@ -100,7 +100,7 @@ test("publishes the current vinext output on Netlify", async () => {
   const [netlify, packageJson, staticBuild] = await Promise.all([
     readFile(new URL("../netlify.toml", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readFile(new URL("../scripts/build-netlify-static.mjs", import.meta.url), "utf8"),
+    readFile(new URL("../scripts/routes.json", import.meta.url), "utf8"),
   ]);
 
   assert.match(netlify, /command = "npm run build:netlify"/);
@@ -125,7 +125,11 @@ test("publishes an interactive, clearly fictional booking-suite demo", async () 
   assert.match(page, /Fictional data/);
   assert.match(demo, /Client view/);
   assert.match(demo, /Owner view/);
-  assert.match(demo, /no real appointment was created/);
+  assert.match(demo, /Sample booking added\. No real appointment or payment was created\./);
+  assert.match(demo, /Sample experience only\. No payment or personal details are collected\./);
+  assert.match(demo, /client:\s*"Demo Client"/);
+  assert.doesNotMatch(demo, /\b(?:fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|import|require)\s*\(/);
+  assert.doesNotMatch(demo, /\b(?:localStorage|sessionStorage|indexedDB)\b|document\.cookie|<form\b|<iframe\b|formAction\s*=|window\.open\s*\(/);
   assert.match(navigation, /href: "\/booking-suite\/"[\s\S]*label: "Booking Demo"/);
 });
 

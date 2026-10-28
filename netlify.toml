@@ -6,31 +6,5 @@ publish = "dist"
 NODE_VERSION = "22.13.0"
 NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
-[[headers]]
-for = "/_next/static/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
 
-[[headers]]
-for = "/assets/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "/*"
-[headers.values]
-Cache-Control = "public, max-age=0, must-revalidate"
-X-Content-Type-Options = "nosniff"
-X-Frame-Options = "SAMEORIGIN"
-Referrer-Policy = "strict-origin-when-cross-origin"
-Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-
-[[redirects]]
-from = "/for-brands"
-to = "/services/"
-status = 301
-
-[[redirects]]
-from = "/for-brands/"
-to = "/services/"
-status = 301
+# Headers and redirects live in public/_headers and public/_redirects.

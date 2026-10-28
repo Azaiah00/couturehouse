@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PageSoundtrack from "../PageSoundtrack";
 import SiteFooter from "../SiteFooter";
 import SiteNav from "../SiteNav";
 import ProjectForm from "./ProjectForm";
@@ -20,7 +19,6 @@ export const metadata: Metadata = {
 export default function StartProjectPage() {
   return (
     <main className="start-page">
-      <PageSoundtrack src="/audio/start-project.mp3" title="Untitled (Remastered) III" />
       <div className="grain" aria-hidden="true" />
       <SiteNav />
 
@@ -31,13 +29,13 @@ export default function StartProjectPage() {
       </header>
 
       <section className="project-form-section section-pad" id="project-form">
-        <div className="project-form-intro"><span>01 / The brief</span><h2>LET&apos;S FIND<br />THE RIGHT<br /><em>WAY IN.</em></h2><p>You do not need a perfect brief. A clear ambition and a little context are enough to begin.</p></div>
+        <div className="project-form-intro"><span>01 / The brief</span><h2>LET&apos;S FIND<br />THE RIGHT<br /><em>WAY IN.</em></h2><p>You do not need a perfect brief. A clear ambition and a little context are enough to begin. We’ll reply within 24 hours of receiving your inquiry.</p></div>
         <ProjectForm />
       </section>
 
       <section className="start-expect section-pad">
         <span className="kicker">What happens next</span>
-        <div><article><span>01</span><h3>We read closely.</h3><p>Your inquiry is reviewed for the goal, fit and most useful starting point.</p></article><article><span>02</span><h3>We reply thoughtfully.</h3><p>Expect a focused response with next questions or a conversation link.</p></article><article><span>03</span><h3>We shape the path.</h3><p>If the fit is right, we recommend a scope, rhythm and clear next step.</p></article></div>
+        <div><article><span>01</span><h3>We read closely.</h3><p>Your inquiry is reviewed for the goal, fit and most useful starting point.</p></article><article><span>02</span><h3>We reply thoughtfully.</h3><p>We’ll reply within 24 hours with next questions or a conversation link.</p></article><article><span>03</span><h3>We shape the path.</h3><p>If the fit is right, we recommend a scope, rhythm and clear next step.</p></article></div>
         <p className="start-direct-contact">Prefer email? Write directly to <a href="mailto:hello@couturehouse.co">hello@couturehouse.co</a>.</p>
       </section>
 

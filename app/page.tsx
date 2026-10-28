@@ -1,8 +1,9 @@
 "use client";
 
+import ReviewInvitation from "./components/ReviewInvitation";
 import { useEffect } from "react";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
-import Image from "next/image";
+import Image from "./components/StaticImage";
 import AllThingsLocsPreview from "./AllThingsLocsPreview";
 import AutoPlayVideo from "./AutoPlayVideo";
 import ClickToPlayVideo from "./ClickToPlayVideo";
@@ -21,7 +22,7 @@ const featuredProjects = [
     previewAspect: "1905 / 848",
     width: 1905,
     height: 848,
-    url: "https://the-dreadlocks-salon-oakland-ca.netlify.app/",
+    url: "https://dreadlockssalon.com/",
     summary:
       "A confident, image-led salon experience that turns loc artistry into a clear journey from discovery to booking.",
     role: ["Strategy", "UX / UI", "Development", "Booking journey"],
@@ -38,7 +39,7 @@ const featuredProjects = [
     height: 712,
     url: "https://beverlysofnashville.com/",
     summary:
-      "A modern digital home for a trusted Nashville salon, balancing legacy, personality and an easier path to services.",
+      "A modern digital home for a trusted Nashville salon. Earlier website shown; the live site now presents Teddy Chisom, The Hair Care King, at Beverly’s.",
     role: ["Creative direction", "Web design", "Development", "Local discovery"],
   },
   {
@@ -50,7 +51,7 @@ const featuredProjects = [
     position: "center top",
     fit: "contain" as const,
     previewAspect: "16 / 9",
-    url: "https://2titexperience.netlify.app/",
+    url: "https://the2titexperience.com/",
     summary:
       "A warm, personality-rich experience that turns specialist loc care, education and service discovery into one inviting digital home.",
     role: ["Brand experience", "Web design", "Development", "Service journey"],
@@ -125,7 +126,6 @@ export default function Home() {
 
   return (
     <main>
-      <PageSoundtrack src="/audio/the-saxuation.mp3" title="The Saxuation" />
       <div className="cursor-glow" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
 
@@ -165,7 +165,6 @@ export default function Home() {
         </div>
 
         <p className="hero-signature">Websites and booking experiences for Black-owned salons, stylists and hair-care brands.</p>
-        <div className="intro-wipe" aria-hidden="true"><i /><i /><i /></div>
       </section>
 
       <section className="ticker" aria-label="Our capabilities">
@@ -186,6 +185,8 @@ export default function Home() {
           <span>WASHINGTON WIZKIDS</span>
         </div>
       </section>
+
+      <ReviewInvitation />
 
       <section className="outcomes outcomes-early">
         <div className="outcome-sticky">
@@ -231,7 +232,7 @@ export default function Home() {
             <ClickToPlayVideo src="/work/magic-coils/featured-reel-02.mp4" poster="/work/magic-coils/reel-poster-02-v2.webp" ariaLabel="Magic Coils salon finish reel" />
             <figcaption>Salon finish / Hair in motion</figcaption>
           </figure>
-          <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="View the updated Magic Coils website">
+          <a className="work-page-lead-site" href="https://magiccoils.net/" target="_blank" rel="noreferrer" aria-label="Visit the website: Magic Coils">
             <div className="browser-bar" aria-hidden="true"><i /><i /><i /><span>magiccoils.net</span></div>
             <Image src="/portfolio/magic-coils-updated.webp" alt="Updated Magic Coils website homepage featuring the Crowned in Magic product routine experience" width={1905} height={848} sizes="(max-width: 760px) 100vw, 58vw" unoptimized />
             <span className="work-page-lead-site-label">Visit the website <ArrowUpRight aria-hidden="true" /></span>
@@ -251,7 +252,7 @@ export default function Home() {
 
         {featuredProjects.map((project, index) => (
           <article className={`featured-card ${index % 2 ? "featured-reverse" : ""}`} data-reveal key={project.title}>
-            <a className="featured-browser" style={{ aspectRatio: project.previewAspect }} href={project.url} target="_blank" rel="noreferrer" aria-label={`View ${project.title} website`}>
+            <a className="featured-browser" style={{ aspectRatio: project.previewAspect }} href={project.url} target="_blank" rel="noreferrer">
               <div className="browser-bar" aria-hidden="true">
                 <i /><i /><i /><span>{project.url.replace("https://", "").replace(/\/$/, "")}</span>
               </div>
@@ -367,6 +368,7 @@ export default function Home() {
         </a>
       </section>
 
+      <PageSoundtrack src="/audio/the-saxuation.mp3" title="The Saxuation" />
       <SiteFooter />
     </main>
   );

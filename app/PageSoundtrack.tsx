@@ -1,82 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-type PageSoundtrackProps = {
-  src: string;
-  title: string;
-};
-
-const preferenceKey = "couture-house-sound";
-
-export default function PageSoundtrack({ src, title }: PageSoundtrackProps) {
+export default function PageSoundtrack({ src, title }: { src: string; title: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [status, setStatus] = useState<"loading" | "playing" | "paused" | "blocked">("blocked");
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      const audio = audioRef.current;
-      if (!audio) return;
-
-      audio.volume = 0.38;
-      const storedPreference = window.sessionStorage.getItem(preferenceKey);
-      if (storedPreference === "off") {
-        setStatus("paused");
-        return;
-      }
-      if (storedPreference !== "on") {
-        setStatus("blocked");
-        return;
-      }
-
-      const start = async () => {
-        try {
-          await audio.play();
-          window.sessionStorage.setItem(preferenceKey, "on");
-          setStatus("playing");
-        } catch {
-          setStatus("blocked");
-        }
-      };
-
-      void start();
-    }, 0);
-    return () => window.clearTimeout(timer);
-  }, [src]);
-
-  const toggleSound = async () => {
+  const [playing, setPlaying] = useState(false);
+  const [error, setError] = useState(false);
+  async function toggleSound() {
     const audio = audioRef.current;
     if (!audio) return;
-
-    if (!audio.paused) {
-      audio.pause();
-      window.sessionStorage.setItem(preferenceKey, "off");
-      setStatus("paused");
-      return;
-    }
-
-    try {
-      await audio.play();
-      window.sessionStorage.setItem(preferenceKey, "on");
-      setStatus("playing");
-    } catch {
-      setStatus("blocked");
-    }
-  };
-
-  const needsInvitation = status === "blocked";
-
-  return (
-    <div className={`soundtrack-control soundtrack-${status}`}>
-      <audio ref={audioRef} src={src} loop preload="none" />
-      {needsInvitation && <span className="soundtrack-invitation">This world has a soundtrack</span>}
-      <button type="button" onClick={toggleSound} aria-label={`${status === "playing" ? "Pause" : "Play"} ${title}`}>
-        <span className="soundtrack-bars" aria-hidden="true"><i /><i /><i /><i /></span>
-        <span className="soundtrack-copy">
-          <small>{needsInvitation ? "Play soundtrack" : status === "playing" ? "Sound on" : status === "loading" ? "Loading sound" : "Sound off"}</small>
-          <strong>{title}</strong>
-        </span>
-      </button>
-    </div>
-  );
+    if (!audio.paused) { audio.pause(); setPlaying(false); return; }
+    audio.volume = 0.38;
+    try { await audio.play(); setPlaying(true); setError(false); }
+    catch { setError(true); }
+  }
+  return <div className={`soundtrack-control soundtrack-${playing ? "playing" : "paused"}`}>
+    <audio ref={audioRef} src={src} loop preload="none" onError={() => { setError(true); setPlaying(false); }} />
+    <button type="button" onClick={toggleSound}>
+      <span className="soundtrack-bars" aria-hidden="true"><i /><i /><i /><i /></span>
+      <span className="soundtrack-copy"><small>{playing ? "Pause soundtrack" : "Play soundtrack"}</small><strong>{title}</strong></span>
+    </button>
+    {error && <span role="status">Audio unavailable. Please try again.</span>}
+  </div>;
 }

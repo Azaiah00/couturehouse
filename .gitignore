@@ -47,3 +47,6 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Responsive images are generated from public originals by prebuild/predev.
+/public/media/

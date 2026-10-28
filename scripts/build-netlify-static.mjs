@@ -1,24 +1,9 @@
-import { cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const routes = [
-  "/",
-  "/work/",
-  "/services/",
-  "/services/salon-website-design/",
-  "/services/booking-portals-automation/",
-  "/booking-suite/",
-  "/salon-website-audit/",
-  "/services/shopify-ecommerce/",
-  "/services/content-creation/",
-  "/case-studies/magic-coils/",
-  "/case-studies/beverlys-of-nashville/",
-  "/studio/",
-  "/start-a-project/",
-  "/privacy/",
-  "/terms/",
-];
+const routeManifest = JSON.parse(await readFile(new URL("./routes.json", import.meta.url), "utf8"));
+const routes = routeManifest.map(route => route.path);
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("static-build", `${Date.now()}`);
 
@@ -64,27 +49,15 @@ for (const route of routes) {
   console.log(`Rendered ${route}`);
 }
 
-const netlifyHeaders = `/*
-  Cache-Control: public, max-age=0, must-revalidate
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-
-/work
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/work/
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/work/index.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
+// Publish-directory rules are honored by both CLI and Git-based deploys.
+await cp(new URL("../public/_headers", import.meta.url), join(staticDirectory, "_headers"));
+await cp(new URL("../public/_redirects", import.meta.url), join(staticDirectory, "_redirects"));
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routeManifest.map(({path, lastmod}) => `
+  <url><loc>https://couturehouse.co${path}</loc><lastmod>${lastmod}</lastmod></url>`).join("")}
+</urlset>
 `;
-
-await writeFile(join(staticDirectory, "_headers"), netlifyHeaders, "utf8");
+await writeFile(join(staticDirectory, "sitemap.xml"), sitemap);
 await Promise.all([
   rm(join(staticDirectory, "server"), { recursive: true, force: true }),
   rm(join(staticDirectory, "client"), { recursive: true, force: true }),
