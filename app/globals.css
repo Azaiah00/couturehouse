@@ -3871,3 +3871,8 @@ section[id] { scroll-margin-top: 6rem; }
 
 .audit-request { --coral: #b83e20; }
 .audit-request .kicker, .audit-dimensions .kicker, .audit-faq .kicker { color: #504a43; }
+
+@media (max-width: 760px) {
+  .start-hero { min-height: auto; gap: 2rem; padding-bottom: 3rem; }
+  .start-hero h1 { margin: 1rem 0; }
+}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
+import { trackEvent } from "../analytics-events";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -16,7 +17,7 @@ function attribution() {
 }
 
 function track(name: string, detail: Record<string, string> = {}) {
-  window.dispatchEvent(new CustomEvent(`couture:${name}`, { detail: { ...attribution(), ...detail } }));
+  trackEvent(name, { ...attribution(), form_name: "salon-website-review", ...detail });
 }
 
 export default function AuditForm() {
@@ -52,9 +53,11 @@ export default function AuditForm() {
       });
       if (!response.ok) throw new Error("Audit request failed");
       track("audit_complete", { business_type: businessType, primary_goal: primaryGoal });
+      trackEvent("generate_lead", { form_name: "salon-website-review" });
       setStatus("success");
       formElement.reset();
     } catch {
+      track("audit_error");
       setStatus("error");
     }
   }

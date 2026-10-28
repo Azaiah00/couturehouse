@@ -15,9 +15,11 @@ async function walk(dir) {
     if (!/\.(png|jpe?g|webp)$/i.test(path)) continue;
     const data = await readFile(path);
     const meta = await sharp(data).metadata();
-    if (!meta.width || !meta.height || data.length < 35000 || meta.pages > 1) continue;
+    const isNavigationLogo = relative(root, path) === 'brand/footer-logo.png';
+    if (!meta.width || !meta.height || (data.length < 35000 && !isNavigationLogo) || meta.pages > 1) continue;
     const id = basename(path).replace(/\.[^.]+$/, '') + '-' + createHash('sha256').update(data).digest('hex').slice(0, 10);
-    const widths = [...new Set([480, 960, 1600, Math.min(2400, meta.width)].filter(w => w <= meta.width))].sort((a,b) => a-b);
+    const candidateWidths = isNavigationLogo ? [96, 192, meta.width] : [480, 960, 1600, Math.min(2400, meta.width)];
+    const widths = [...new Set(candidateWidths.filter(w => w <= meta.width))].sort((a,b) => a-b);
     const variants = [];
     for (const width of widths) {
       const filename = `${id}-${width}.webp`;

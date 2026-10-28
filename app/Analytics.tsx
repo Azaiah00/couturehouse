@@ -1,20 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
-const measurementId = "G-4TMQXSC4M5";
+import { ensureAnalytics, measurementId, trackEvent } from "./analytics-events";
 
 export default function Analytics() {
   useEffect(() => {
-    window.dataLayer = window.dataLayer ?? [];
-    window.gtag = window.gtag ?? ((...args: unknown[]) => window.dataLayer?.push(args));
+    ensureAnalytics();
 
     if (!document.querySelector(`script[data-ga-id="${measurementId}"]`)) {
       const script = document.createElement("script");
@@ -23,55 +14,35 @@ export default function Analytics() {
       script.dataset.gaId = measurementId;
       document.head.appendChild(script);
     }
-    window.gtag("js", new Date());
-    window.gtag("config", measurementId, {
-      page_path: window.location.pathname,
-      page_location: window.location.href,
-    });
-
     const trackClick = (event: MouseEvent) => {
-      const target = (event.target as Element | null)?.closest("a,button");
+      const target = event.target instanceof Element ? event.target.closest("a,button") : null;
       if (!target) return;
       const measured = target.closest<HTMLElement>("[data-track]");
-      if (measured) window.gtag?.("event", measured.dataset.track, {
-        page_path: window.location.pathname,
+      if (measured?.dataset.track) trackEvent(measured.dataset.track, {
         project_name: measured.dataset.project,
       });
       const href = target instanceof HTMLAnchorElement ? target.href : undefined;
-      window.gtag?.("event", "site_interaction", {
+      if (!measured && target instanceof HTMLAnchorElement && target.pathname === "/salon-website-audit/") {
+        trackEvent("review_cta");
+      }
+      trackEvent("site_interaction", {
         link_text: target.textContent?.trim().slice(0, 100),
         link_url: href,
-        page_path: window.location.pathname,
-      });
-    };
-    const trackLead = () => window.gtag?.("event", "generate_lead", {
-      page_path: window.location.pathname,
-    });
-    const trackAudit = (event: Event) => {
-      const customEvent = event as CustomEvent<Record<string, string>>;
-      const eventName = event.type.replace("couture:", "");
-      window.gtag?.("event", eventName, {
-        page_path: window.location.pathname,
-        ...(customEvent.detail || {}),
       });
     };
     const exposureObserver = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         const element = entry.target as HTMLElement;
-        window.gtag?.("event", element.dataset.trackExposure, { page_path: window.location.pathname });
+        if (element.dataset.trackExposure) trackEvent(element.dataset.trackExposure);
         exposureObserver.unobserve(element);
       }
     }, { threshold: 0 });
     document.querySelectorAll("[data-track-exposure]").forEach(element => exposureObserver.observe(element));
     document.addEventListener("click", trackClick);
-    window.addEventListener("couture:lead", trackLead);
-    ["couture:audit_view", "couture:audit_start", "couture:audit_complete", "couture:audit_qualified_call_click"].forEach((name) => window.addEventListener(name, trackAudit));
     return () => {
       exposureObserver.disconnect();
       document.removeEventListener("click", trackClick);
-      window.removeEventListener("couture:lead", trackLead);
-      ["couture:audit_view", "couture:audit_start", "couture:audit_complete", "couture:audit_qualified_call_click"].forEach((name) => window.removeEventListener(name, trackAudit));
     };
   }, []);
 

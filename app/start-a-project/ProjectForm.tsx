@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Plus } from "lucide-react";
+import { trackEvent } from "../analytics-events";
 
 const serviceOptions = ["Websites", "Apps", "Workflows + Automation", "Content + Music"];
 
 export default function ProjectForm() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const started = useRef(false);
 
   useEffect(() => {
+    trackEvent("project_inquiry_view", { form_name: "project-inquiry" });
     const timer = window.setTimeout(() => {
       const requested = new URLSearchParams(window.location.search).get("service");
       const requestedService = requested?.toLowerCase();
@@ -23,6 +26,12 @@ export default function ProjectForm() {
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
+
+  function markStarted() {
+    if (started.current) return;
+    started.current = true;
+    trackEvent("project_inquiry_start", { form_name: "project-inquiry" });
+  }
 
   function toggleService(service: string) {
     setSelectedServices((current) => current.includes(service) ? current.filter((item) => item !== service) : [...current, service]);
@@ -49,16 +58,18 @@ export default function ProjectForm() {
         throw new Error("Inquiry could not be sent");
       }
       setStatus("success");
-      window.dispatchEvent(new Event("couture:lead"));
+      trackEvent("project_inquiry_complete", { form_name: "project-inquiry" });
+      trackEvent("generate_lead", { form_name: "project-inquiry" });
       formElement.reset();
       setSelectedServices([]);
     } catch {
+      trackEvent("project_inquiry_error", { form_name: "project-inquiry" });
       setStatus("error");
     }
   }
 
   return (
-    <form className="project-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitInquiry}>
+    <form className="project-form" name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitInquiry} onFocus={markStarted}>
       <input type="hidden" name="form-name" value="project-inquiry" />
       <input type="hidden" name="services" value={selectedServices.join(", ")} />
       <input type="hidden" name="subject" value="New Couture House project inquiry" />
